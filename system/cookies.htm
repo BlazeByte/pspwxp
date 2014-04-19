@@ -1,57 +1,7 @@
 <html>
-<head>
-<title>Cookies Page</title>
-</head>
-
 <body>
 <form action="" method="post" name="settings" id="settings">
-  <ul>
-    <li>Theme
-      <input name="theme" type="text" id="theme" />
-</li>
-    <li>BGImage
-      <input type="text" name="bg" id="bg" />
-    </li>
-    <li>BGColor
-      <input type="text" name="bgcolor" id="bgcolor" />
-    </li>
-    <li>BGImage? Yes No
-      <input type="text" name="chkbg" id="chkbg" />
-    </li>
-    <li>First Use 
-      <input type="text" name="firstuse" id="firstuse" />
-    </li>
-    <li>Desktop Icons?
-      <input type="text" name="desktopicons" id="desktopicons" />
-    </li>
-    <li> Screensaver
-      <input type="text" name="screensaver" id="screensaver" />
-    </li>
-    <li> Screensaver Timeout
-      <input type="text" name="scrtime" id="scrtime" />
-    </li>
-    <li>Screensaver Password?
-    	<input type="text" name="scrPass" id="scrPass" />
-    </li>
-    <li>Screensaver MouseMove?  
-    	<input type="text" name="scrMouse" id="scrMouse" />
-    </li>
-    <li> Login Password
-      <input name="thepassword" type="text" id="thepassword" />
-    </li>
-    <li>Show Login
-      <input name="loginshow" type="text" id="loginshow" />
-    </li>
-    <li>Open PSPTunes in new tab
-      <input name="chkPSPTunesTab" type="text" id="chkPSPTunesTab" />
-    </li>
-    <li>Play Sounds
-      <input name="chkPlaySounds" type="text" id="chkPlaySounds" />
-    </li>
-  	<li>No Auto-Clock 
-  		<input type="text" name="noAutoTime" id="noAutoTime" />
-  	</li>
-  </ul>
+  <input name="settingList" type="text" id="settingList" />
 </form>
 <script language="javascript" type="text/javascript">
 	top.sendCookiesReady();	//when settings have loaded, load the desktop.

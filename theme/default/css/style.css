@@ -557,3 +557,18 @@ a.loginLink {
 	height:22px;
 	margin: 1px;
 }
+
+.textbox{
+	color:#000000;
+	text-decoration:none;
+}
+
+.textbox div{
+	width:120px;
+	height:16px;
+	border-bottom:1px solid #4B7E9A;
+	border-top:1px solid #263E57;
+	border-right:1px solid #406482;
+	border-left:1px solid #305067;
+	background-color:#D0DEDF;
+}

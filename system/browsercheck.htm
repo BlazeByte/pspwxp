@@ -31,6 +31,9 @@ body {
 <div id="Info">Encore is loading, please wait...</div>
 
 <script language="javascript" type="text/javascript">
+// remove before release!
+document.location="desktop.htm";
+
 	if(screen.width!==480){		//If not the PSP, then display a warning for PC users that it will not diplay properly.
 		document.getElementById('Info').innerHTML="<h2>Encore viewing problems on your browser:</h2><h4>Encore has detected you are not running this on a PSP. The interface will be significantly improved on the PSP, and functions will be fully operational. To continue anyway, click Continue.<p/> <center><input onclick='"+'window.open("desktop.htm",null,"height=272,width=480,status=no,toolbar=yes,menubar=yes,location=no,scrollbars=no")'+";' value='Continue >>>' type='button'></center></h4>";
 	}else{

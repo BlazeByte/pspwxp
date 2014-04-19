@@ -1,0 +1,8 @@
+<script>
+if(parent.blnSettingup == true) {
+	parent.blnSettingup = false;
+}else {
+	parent.moveCursor(parent.intCurrX+1);
+}
+history.go(-1);
+</script>

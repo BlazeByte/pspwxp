@@ -24,7 +24,7 @@ function loadApp(strAppTitle,strAppURL,strAppIcon,strAppMax){
 	//find an open slot and set it as intCurrWindow
 	intCurrWindow=0;
 	for (var i = 1;i<=intMaxWindows;i++){
-		if(document.getElementById('Tab'+i).style.visibility!="visible"){
+		if(element('Tab'+i).style.visibility!="visible"){
 			intCurrWindow = i;
 			break;
 		}
@@ -54,16 +54,16 @@ function loadApp(strAppTitle,strAppURL,strAppIcon,strAppMax){
 
 	minWindow("all",0);																// minimize all windows
 
-	document.getElementById('Tab'+intCurrWindow).style.left=(intWindowCount*100)+"px";
+	element('Tab'+intCurrWindow).style.left=(intWindowCount*100)+"px";
 
 	showHideLayer("Tab"+intCurrWindow,"visible");									// show tab
-	document.getElementById("TabTitle"+intCurrWindow).innerHTML=strAppTitle.slice(0,9)+"...";
-	document.getElementById("imgTabIcon"+intCurrWindow).src="../theme"+strThemeDir+"/"+strAppIcon;
+	element("TabTitle"+intCurrWindow).innerHTML=strAppTitle.slice(0,9)+"...";
+	element("imgTabIcon"+intCurrWindow).src="../theme"+strThemeDir+"/"+strAppIcon;
 
-	document.getElementById('Tab'+intCurrWindow).className="TabDown";
+	element('Tab'+intCurrWindow).className="TabDown";
 	
-	document.getElementById('iWindow'+intCurrWindow).style.visibility='visible';	// show iframe
-	document.getElementById('iWindow'+intCurrWindow).style.display='inline';		// structure iframe
+	element('iWindow'+intCurrWindow).style.visibility='visible';	// show iframe
+	element('iWindow'+intCurrWindow).style.display='inline';		// structure iframe
 	
 	intWindowCount++;
 
@@ -76,8 +76,8 @@ function minWindow(intWindow,intContainer){
 		if (intContainer !== 0) showHideLayer('WindowContainer','hidden');
 		
 		for(var i=1;i<=intMaxWindows;i++){
-			document.getElementById('iWindow'+i).style.visibility='hidden';
-			document.getElementById('Tab'+i).className="Tab";		//TODO: find alternetive - class cannot be changed on psp
+			element('iWindow'+i).style.visibility='hidden';
+			element('Tab'+i).className="Tab";		//TODO: find alternetive - class cannot be changed on psp
 			if (intContainer !== 0) intWindowOpen[i] = 0;
 		}
 		
@@ -85,7 +85,7 @@ function minWindow(intWindow,intContainer){
 		showHideLayer('iWindow'+intWindow,'hidden');
 		intWindowOpen[intWindow] = 0;
 		closeWindowContainer(intWindow);
-		document.getElementById('Tab'+intWindow).className="Tab";	
+		element('Tab'+intWindow).className="Tab";	
 	}
 }
 
@@ -100,19 +100,19 @@ function maxWindow(intWindow){
 function closeWindow(intWindow){
 	closeWindowContainer(intWindow);		
 	
-	document.getElementById('iWindow'+intWindow).style.visibility='hidden';
-	document.getElementById("iWindow"+intWindow).location="blank.htm";
-	document.getElementById('Tab'+intWindow).style.visibility="hidden";
-	document.getElementById('Tab'+intWindow).className="Tab";
+	element('iWindow'+intWindow).style.visibility='hidden';
+	element("iWindow"+intWindow).location="blank.htm";
+	element('Tab'+intWindow).style.visibility="hidden";
+	element('Tab'+intWindow).className="Tab";
 	
 	intWindowOpen[intWindow] = 0;
 	
 	intWindowCount--;	
 	
 	for(var i=1;i<=intMaxWindows;i++){
-		var intLeft = document.getElementById("Tab"+i).style.left;
+		var intLeft = element("Tab"+i).style.left;
 		var intX = intLeft.slice(0,intLeft.length-2);
-		if(document.getElementById("Tab"+intWindow).style.left.slice(0,document.getElementById("Tab"+intWindow).style.left.length-2)>intX) document.getElementById("Tab"+i).style.left=(intX-100)+"px";
+		if(element("Tab"+intWindow).style.left.slice(0,element("Tab"+intWindow).style.left.length-2)>intX) element("Tab"+i).style.left=(intX-100)+"px";
 	}
 }
 
@@ -137,8 +137,8 @@ function restoreWindow(intWindow){
 	minWindow("all",0);												// Minimise all the windows except the container
 	showHideLayer('WindowContainer','visible');
 	showWindowDetails(intWindow);									// Show the target window details (title + icon)
-	document.getElementById('iWindow'+intWindow).style.visibility='visible';	// show the iframe
-	document.getElementById('Tab'+intWindow).className="TabDown";				// change the tab appearence
+	element('iWindow'+intWindow).style.visibility='visible';	// show the iframe
+	element('Tab'+intWindow).className="TabDown";				// change the tab appearence
 	intCurrWindow = intWindow;
 	intWindowOpen[intWindow] = 1;								// Set this window to open
 }
@@ -146,8 +146,8 @@ function restoreWindow(intWindow){
 
 
 function showWindowDetails(intWindow){
-	document.getElementById("WindowTitle").innerHTML = strWindowTitle[intWindow];
-	document.getElementById("imgWindowIcon").src = imgWindowIcon[intWindow].src;
+	element("WindowTitle").innerHTML = strWindowTitle[intWindow];
+	element("imgWindowIcon").src = imgWindowIcon[intWindow].src;
 }
 
 function getTheme() { //applications will use this to set the bgcolor to the theme bgcolor.  to use in app, put onload="parent.getTheme();" in body tag.

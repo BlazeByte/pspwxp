@@ -31,7 +31,7 @@ function createLoginScreen () {
                  '<table border="0" cellpadding="0" cellspacing="2">'+
 				   '<tr>'+
 				      '<td><div align="center" class="loginMed">Password:</div></td>'+
-                   	  '<td><input name="txtPassword" type="password" id="txtPassword" style="height:18"></td><td><a href="#a"><img src="../theme/default/images/icons/go.png" alt="" name="btnG" width="20" height="20" border="0" onClick="confirmLogin(document.getElementById('+"'txtPassword'"+').value);"></a></td>'+
+                   	  '<td><input name="txtPassword" type="password" id="txtPassword" style="height:18"></td><td><a href="#a"><img src="../theme/default/images/icons/go.png" alt="" name="btnG" width="20" height="20" border="0" onClick="confirmLogin(element('+"'txtPassword'"+').value);"></a></td>'+
 				   '</tr>'+
 				 '</table>'+
                  '<br>'+

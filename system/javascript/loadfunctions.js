@@ -1,6 +1,6 @@
 function showHideLayer(layerName,showHide){
 	// frames[layerName].style.visibility=showHide;
-	document.getElementById(layerName).style.visibility=showHide;
+	element(layerName).style.visibility=showHide;
 }
 
 function ApplyLoadSettings(){
@@ -16,34 +16,19 @@ function ApplyLoadSettings(){
 	
 	document.write('<script language="javascript" type="text/javascript" src="../theme' + strThemeDir + '/themeinfo.js" /></'+'script>');
 	
-	if (parent==self) { // if desktop doesn't have parent cookies (ie. on computer), load defaults
-		blnShortcuts=true;
-		blnLogin=true;
-		strPassword="";
-		return;
-	}
+	blnBGImage = getSetting('main','usebgimage',true);	// Retrieve cookies
+	strBGImage = getSetting('main','bgimage','default');
+	blnShortcuts = getSetting('main','desktopicons',true);
+	blnLogin = getSetting('main','loginscreen',false);
+	strPassword = getSetting('main','password','');
+	intSound = getSetting('main','sounds',true);
 	
-	blnBGImage = window.top.icookies.document.getElementById('chkbg').value;	// Retrieve cookies
-	strBGImage = window.top.icookies.document.getElementById('bg').value;
-	intFirstUse = window.top.icookies.document.getElementById('firstuse').value;
-	blnShortcuts = window.top.icookies.document.getElementById('desktopicons').value;
-	blnLogin = window.top.icookies.document.getElementById('loginshow').value;
-	strPassword = window.top.icookies.document.getElementById('thepassword').value;
-	
-	if (blnBGImage=='false'){
-		document.getElementById('lyDesktop').style.visibility="hidden";	// no bg
-	} else if(strBGImage!=="") {
+	if (blnBGImage==false){
+		element('lyDesktop').style.visibility="hidden";	// no bg
+	} else if((strBGImage!=="")&&(strBGImage!=='default')) {
 	//	alert("file:"+strBGImage);
-		document.getElementById('lyDesktop').style.backgroundImage="url(file:"+strBGImage+")";		// set bg to what the user selected
+		element('lyDesktop').style.backgroundImage="url(file:"+strBGImage+")";		// set bg to what the user selected
 	}
-	
-	if (blnShortcuts!="0") blnShortcuts = true;
-	
-	if (blnLogin!="0") blnLogin = true;
-	
-	if (intFirstUse!="0") blnFirstUse = true;
-
-	if (window.top.icookies.document.getElementById('chkPlaySounds').value=="0") intSound=0;
 	
 }
 
@@ -92,6 +77,6 @@ function callSound(strPath){
 
 function makeWindows(){
 	for(var i=1;i<=intMaxWindows;i++){
-		document.write('<iframe src="blank.htm" id="iWindow'+i+'" name="iWindow'+i+'" frameborder="0" class="iWindow"></iframe>');
+		document.write('<iframe src="blank.htm" id="iWindow'+i+'" name="iWindow'+i+'" frameborder="0" width="476" height="226" style="position:absolute;width:476px;height:226px;visibility:hidden;display:none;"></iframe>');
 	}
 }

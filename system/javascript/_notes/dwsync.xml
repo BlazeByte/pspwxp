@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="appfunctions.js" local="128199383465781250" remote="128210072400000000" testing="0" />
-<file name="bootfunctions.js" local="128198965448437500" remote="128210072400000000" testing="0" />
-<file name="loadfunctions.js" local="128198988423593750" remote="128210072400000000" testing="0" />
-<file name="menufunctions.js" local="128198469239062500" remote="128210072400000000" testing="0" />
-<file name="portalfunctions.js" local="128199160791406250" remote="128210073000000000" testing="0" />
-<file name="versioninfo.js" local="128144589688125000" remote="128210073000000000" testing="0" />
-<file name="applets.js" local="128198160688906250" remote="128210072400000000" testing="0" />
-<file name="loginfunctions.js" local="128198966117500000" remote="128210072400000000" testing="0" />
+<file name="appfunctions.js" local="128233907113490112" remote="128233906560000000" testing="0" />
+<file name="applets.js" local="128211757402423297" remote="128211757420000000" testing="0" />
+<file name="bootfunctions.js" local="128233864065521362" remote="128233863600000000" testing="0" />
+<file name="loadfunctions.js" local="128233910119583862" remote="128233906560000000" testing="0" />
+<file name="loginfunctions.js" local="128211942086017025" remote="128211942100000000" testing="0" />
+<file name="menufunctions.js" local="128211942086017025" remote="128211942100000000" testing="0" />
+<file name="portalfunctions.js" local="128230082737500000" remote="128230079740000000" testing="0" />
+<file name="settingsfunctions.js" local="128234371453281250" remote="128234370420000000" testing="0" />
+<file name="setupfunctions.js" local="128234735867656250" remote="128234735480000000" testing="0" />
+<file name="versioninfo.js" local="128211757402423297" remote="128211757420000000" testing="0" />
+<file name="inputfunctions.js" local="128234743296875000" remote="128234739780000000" testing="0" />
 </dwsync>

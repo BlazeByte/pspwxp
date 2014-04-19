@@ -1,0 +1,28 @@
+body {
+	background-color:#75A2C6;
+	margin:0px;
+	text-align:center;
+}
+
+.textbox{
+	width:466px;
+	height:20px;
+	border-bottom:1px solid #4B7E9A;
+	border-top:1px solid #263E57;
+	border-right:1px solid #406482;
+	border-left:1px solid #305067;
+	background-color:#D0DEDF;
+	overflow:auto;
+	text-align:left;
+}
+
+.kbCursor {
+	text-decoration:blink;
+	font-weight:bold;
+}
+
+.kbChar {
+	width:35px;
+	height:20px;
+	margin:2px;
+}

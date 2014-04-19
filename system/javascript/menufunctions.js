@@ -97,7 +97,7 @@ function createMenu(strTitle,strID,strIcon){
 		intHeight = intRowHeight * intMaxRows;		// then the height will be the maximum amount of rows * row height
 	}
 
-	var objLyMenu = 'document.getElementById("ly' + strID + '")';	// define as the menu layer
+	var objLyMenu = 'element("ly' + strID + '")';	// define as the menu layer
 
 	eval(objLyMenu + ".style.height=intHeight;");		// set the height of the layer
 
@@ -130,7 +130,7 @@ function makeMainMenu(){ // Make the main 'start' menu
 	makeMainMenuItem('Run Command...','../theme'+strThemeDir+'/images/icons/mainmenu/run.png','lyMMRun','msgBox("The Run command is still in development","Run Command");');
 	makeMainMenuItem('Log Out...','../theme'+strThemeDir+'/images/icons/mainmenu/logout.png','lyMMLogout','showHideLogin("visible");');
 	document.write("</tr></table>");
-	document.getElementById('menu').style.height=(intMainMenuItemCount*20);
+	element('menu').style.height=(intMainMenuItemCount*20);
 
 }
 
@@ -152,25 +152,25 @@ function makeMainMenuHeader(strHeader){
 
 function setSubMenusX(){
 	for(var i = 0;i<strMenu.length;i++){	// for each sub menu item
-		var objLyMenu = 'document.getElementById("ly' + strMenuID[i] + '")';	// set the submenu layer ID, ready for use
-		var intX = document.getElementById('menu').offsetLeft + document.getElementById('menu').offsetWidth;	// define the left value for the submenu
+		var objLyMenu = 'element("ly' + strMenuID[i] + '")';	// set the submenu layer ID, ready for use
+		var intX = element('menu').offsetLeft + element('menu').offsetWidth;	// define the left value for the submenu
 
 		eval(objLyMenu + ".style.left=intX;");	//set left property for each sub menu. This must come now, where the main menu layer has already been loaded.
 		alignSubMenu(i);	// align Y
 	}
 	
 	// get main menu out of way
-	document.getElementById('menu').style.top="0px";	// then make it appear above the panel
+	element('menu').style.top="0px";	// then make it appear above the panel
 	
 }
 
 function alignSubMenu(intSubMenu){
 	var intSubMenuY = 0;
 
-	intSubMenuY = document.getElementById("lyMM"+strMenuID[intSubMenu]).offsetTop+document.getElementById("menu").offsetTop;
-	if(intSubMenuY+document.getElementById("ly"+strMenuID[intSubMenu]).offsetHeight>272){
-		document.getElementById("ly"+strMenuID[intSubMenu]).style.top=(272-document.getElementById("ly"+strMenuID[intSubMenu]).offsetHeight)+"px";
+	intSubMenuY = element("lyMM"+strMenuID[intSubMenu]).offsetTop+element("menu").offsetTop;
+	if(intSubMenuY+element("ly"+strMenuID[intSubMenu]).offsetHeight>272){
+		element("ly"+strMenuID[intSubMenu]).style.top=(272-element("ly"+strMenuID[intSubMenu]).offsetHeight)+"px";
 	}else{
-		document.getElementById("ly"+strMenuID[intSubMenu]).style.top=intSubMenuY;
+		element("ly"+strMenuID[intSubMenu]).style.top=intSubMenuY;
 	}
 }

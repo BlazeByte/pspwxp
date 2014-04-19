@@ -6,6 +6,7 @@ MenuItem("PSP Pixel Repair","../apps/controlpanel/fixpix.htm","images/icons/menu
 MenuItem("Update","../apps/system/update.html","images/icons/menu/apps/update.png");
 MenuItem("TEMP: Theme","../apps/system/theme.html","images/icons/menu/apps/update.png");
 MenuItem("TEMP: Desktop","../apps/settings/desktop.html","images/icons/menu/apps/update.png");
+MenuItem("Setting Editor","../apps/system/settings.html","images/icons/menu/apps/update.png");
 
 // Do not edit below this line
 createMenu("System","MenuSystem","/icons/mainmenu/system.png");
