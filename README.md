@@ -2,6 +2,9 @@
 
 An app for your PlayStation Portable which allows you to create, edit and share documents.
 
+It consists of offline webpage(s) that go onto your PSP's memory card. This allows you to view these webpages without being connected to the internet. The webpages contain applications and games which can be easily opened from within the Internet browser.
+
+
 ##Features##
 
   * Web Browser
@@ -118,6 +121,20 @@ A. First make sure you typed in the address right (file:/pspWxp/index.htm). If t
 __Q. I can't get to the desktop after the loading screen OR the text on the desktop and the start menu look squashed__
 
 A. The display mode must be set to normal. Change it by pressing triangle to bring up the toolbar and scroll to View and press X. Change the Display mode to Normal.
+
+__Q. I do not here the welcome sound.__
+
+A. You must have flash on your PSP. This is included with firmware version 2.7 (or later) and must be enabled through system settings. Please make sure Key Tones in settings are switched on, it's the only way to here sound from flash
+
+
+__Q. The welcome sound seems garbled__
+
+A. Wait for pspWxp to load, the loading screen will automatically disappear
+
+
+__Q. I receive the error "Out of memory".__
+
+A. The PSP has run out of memory and the internet browser must be refreshed
 
 
 Copyright 2005-2014 BlazeByte
