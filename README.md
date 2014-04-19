@@ -1,8 +1,8 @@
-**pspWxp \- Windows XP for your PSP**
+=pspWxp \- PlayStation Portable Portal=
 
 An app for your PlayStation Portable which allows you to create, edit and share documents.
 
-**Features**
+=Features=
 
   * Web Browser
   * File Viewer
@@ -54,7 +54,7 @@ An app for your PlayStation Portable which allows you to create, edit and share 
     * Tower of Hanoi
     * Yahtzee
 
-**Installing pspWxp Manually **
+=Installing pspWxp=
 
   1. Download
   2. Unzip to a folder on your hard drive
@@ -67,7 +67,7 @@ An app for your PlayStation Portable which allows you to create, edit and share 
   9. Press Triangle to hide the browser's toolbars (press triangle again to show it)
   10. You should now be at the Windows XP desktop. If not, go to troubleshooting.
 
-**Setting pspWxp as home page**
+=Setting pspWxp as home page=
 
 This will allow the webpage to be opened immediatly on the browser.
 
@@ -80,23 +80,23 @@ This will allow the webpage to be opened immediatly on the browser.
   7. Select OK and press X
   8. Press Circle and then triangle to return to the desktop
 
-**Opening a program on the desktop**
+=Opening a program on the desktop=
 
   1. Using the analog stick, move the cursor over the program icon
   2. Press X
 
-**Opening the Start menu**
+=Opening the Start menu=
 
   1. Use the analog stick to move the cursor over the Start button
   2. Press X
 
-**Opening a program or submenu in the start menu**
+=Opening a program or submenu in the start menu=
 
   1. Follow the steps above to open the start menue
   2. Move the cursor over the program/submenu name/icon
   3. Press X
 
-**How to change the theme**
+=How to change the theme=
 
   1. Follow the instructions to install pspWxp if you haven't already
   2. Download the theme installer from the downloads section
@@ -109,7 +109,7 @@ This will allow the webpage to be opened immediatly on the browser.
   9. Click OK. It may take a few minutes.
   10. Follow the instructions to get to the desktop. If the desktop does not appear correctly, you may have installed the wrong folder or you may need an updated version of pspWxp. Go to the forums for help on solving a problem.
 
-**Troubleshooter**
+=Troubleshooter=
 
 __Q. I get a message saying "The content connot be displayed"__
 
