@@ -1,8 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>pspWxp Loading...</title>
+<title>PspWxp Loading...</title>
 <style type="text/css">
 <!--
 body,td,th {
@@ -15,23 +13,62 @@ a:link {
 	color: #CCCCCC;
 }
 -->
-</style></head>
+</style>
+</head>
 
 <body>
-Loading pspWxp...<BR />
-
-<div id="Info" name="Info">Please wait while pspWxp loads your interface. </div>
 <iframe src="system/cookies.htm" width="1" height="1" id="icookies" name="icookies" scrolling="yes" frameborder="0" style="visibility:hidden;"></iframe>
+<div id="Info" name="Info" style="position:absolute; left:0px; top:0px; width:480px; height:272px; z-index:23; background-color: #000000; visibility: visible;">
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center" valign="middle"><img alt="" src="images/interface.png"><br> <img alt="" src="theme_vista/progress.gif" border="0" loop="1"><br>
+<div id="interface2"><font color="#CCCCCC">Loading Interface...</font></div>
 <script language="javascript" type="text/javascript">
+setTimeout("interface();",3000);
+function interface(){
 	if(screen.width!==480){
-		document.getElementById('Info').innerHTML="pspWxp has detected you are not running this on a PSP. The interface will be significantly improved on the PSP, and functions will be fully operational. To continue anyway, <a href='system/desktop.htm'>click here.</a>";
+		document.getElementById('Info').innerHTML="pspWxp has detected you are not running this on a PSP. <br>The interface will be significantly improved on the PSP, <br>and functions will be fully operational. <br>To continue anyway, <a href='theme_vista/desktop-w.htm'>click here.</a>";
 	}else{
-		window.location="system/desktop.htm";
+		themeload();
 	}
-	
+}	
+function themeload(){
+	if(icookies.document.getElementById('themeDir').value==''){
+		load1();
+	}else{
+			load2();
+		}
+}
+function load1(){
+	if(icookies.document.getElementById('chkmenu').value==''){
+		window.location="theme_vista/desktop-w.htm";
+		}
+	if(icookies.document.getElementById('chkmenu').value=='true'){
+		window.location="theme_vista/desktop-w.htm";
+		}
+	if(icookies.document.getElementById('chkmenu').value=='false'){
+		window.location="theme_vista/desktop-s.htm";
+		}
+}
+function load2(){
+	if(icookies.document.getElementById('chkmenu').value==''){
+		window.location=icookies.document.getElementById('themeDir').value+"/desktop-w.htm";
+		}
+	if(icookies.document.getElementById('chkmenu').value=='true'){
+		window.location=icookies.document.getElementById('themeDir').value+"/desktop-w.htm";
+		}
+	if(icookies.document.getElementById('chkmenu').value=='false'){
+		window.location=icookies.document.getElementById('themeDir').value+"/desktop-s.htm";
+		}
+}
 </script>
+
+</td>
+</tr>
+</table>
 <noscript>
-	<p/></It appears you have JavaScript disabled. JavaScript is required to run pspWxp. Please enable it in the tools menu of the PSP's browser.
-	></noscript>
+	It appears you have JavaScript disabled. <br>JavaScript is required to run pspWxp. <br>Please enable it.
+</noscript>
+</div>
 </body>
 </html>

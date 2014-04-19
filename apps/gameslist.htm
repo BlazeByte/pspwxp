@@ -7,7 +7,7 @@
 <body bgcolor="#EBE9ED" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <table width="450" height="250" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td valign="top"><a name="a"></a><script language="JavaScript" type="text/javascript" src="../user/gameslist.js"></script>
+    <td valign="top"><a name="a"></a><script language="JavaScript" type="text/javascript" src="../user/menus/gameslist.js"></script>
 <script language="JavaScript" type="text/javascript">
 var intlight = 1;
 var strlight
@@ -24,7 +24,7 @@ if(strGames.length>12){
 	intColumn=strGames.length;
 }
 
-document.write("<table width='115' cellpadding='0.4' cellspacing='0' >");
+document.write("<table width='130' cellpadding='0.4' cellspacing='0' >");
 
 for (i=0;i<strGames.length;i++){
 	if(i==intColumn||i==intColumn*2){
@@ -51,7 +51,11 @@ for (i=0;i<strGames.length;i++){
 	document.write(strGames[i]);
 	document.write("</font></a></td></tr>");
 }
-
+document.write('<tr onClick="' + "location='board-gameslist.htm';" + '"> <td width="20"><img src="../images/icons/menu/games/board.png" width="20" height="20" border="0"></td><td>&nbsp;<a href="#" style="text-decoration:none;"><font size="2" color="#000000">Board Games</font></a></td></tr>');
+document.write('<tr onClick="' + "location='quick-gameslist.htm';" + '"> <td width="20"><img src="../images/icons/menu/games/quick.png" width="20" height="20" border="0"></td><td>&nbsp;<a href="#" style="text-decoration:none;"><font size="2" color="#000000">Quick Games</font></a></td></tr>');
+document.write('<tr onClick="' + "location='puzzle-gameslist.htm';" + '"> <td width="20"><img src="../images/icons/menu/games/puzzle.png" width="20" height="20" border="0"></td><td>&nbsp;<a href="#" style="text-decoration:none;"><font size="2" color="#000000">Puzzle Games</font></a></td></tr>');
+document.write('<tr onClick="' + "location='shooting-gameslist.htm';" + '"> <td width="20"><img src="../images/icons/menu/games/shooting.png" width="20" height="20" border="0"></td><td>&nbsp;<a href="#" style="text-decoration:none;"><font size="2" color="#000000">Shooting Games</font></a></td></tr>');
+document.write('<tr onClick="' + "location='other-gameslist.htm';" + '"> <td width="20"><img src="../images/icons/menu/games/other.png" width="20" height="20" border="0"></td><td>&nbsp;<a href="#" style="text-decoration:none;"><font size="2" color="#000000">Other Games</font></a></td></tr>');
 document.write("</table>");
 </script> </td>
   </tr>

@@ -19,23 +19,37 @@ body {
 }
 -->
 </style>
+<script language="javascript" type="text/javascript">
+setTimeout("system();",3000);	
+function system(){
+	if(icookies.document.getElementById('themeDir').value==''){
+		themeimage.src="../theme_vista/boot.gif";
+	}else{
+			themeimage.src="../"+icookies.document.getElementById('themeDir').value+"/boot.gif";
+		}
+}
+</script>
 </head>
 
 <body>
+<script language="javascript" type="text/javascript" src="../theme_vista/script.js"></script>
+<iframe src="../system/cookies.htm" width="1" height="1" id="icookies" name="icookies" scrolling="yes" frameborder="0" style="visibility:hidden;"></iframe>
+<div id="systemt" name="systemt" style="position:absolute; left:0px; top:0px; width:100%; height:100%; z-index:23; visibility: visible;">
 <table width="100%" height="100%" border="0" cellpadding="1" cellspacing="1" bgcolor="#000000">
   <tr>
-    <td colspan="2"><strong><span class="style2">pspWxp</span></strong></td>
+    <td colspan="2"><strong><span class="style2">PspWxp</span></strong></td>
   </tr>
   <tr>
     <td valign="top"><span class="style1"><strong>Theme:</strong></span></td>
-    <td rowspan="2" valign="top"><p class="style1"><strong>pspWxp</strong><br />
-      Version: 3.6</p>
+    <td rowspan="2" valign="top"><p class="style1"><strong>PspWxp</strong><br />
+      Version: <script language="JavaScript">document.write(intVersion);</script></p>
     <p class="style1">Copyright BlazeByte 2006. The name &quot;Windows&quot;, &quot;XP&quot; and &quot;Vista&quot; are copyright to Microsoft. </p>
     <p class="style1">Site: pspWxp.co.nr</p></td>
   </tr>
   <tr>
-    <td valign="top"><img src="../images/boot.gif" width="242" height="144" alt="pspWxp" /></td>
+    <td valign="top"><img id="themeimage" name="themeimage" width="242" height="144" alt="pspWxp" /></td>
   </tr>
 </table>
+</div>
 </body>
 </html>

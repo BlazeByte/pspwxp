@@ -3,15 +3,51 @@
 <head>
 <title>Untitled Document</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="javascript" type="text/javascript">
+setTimeout("ihelpimage1();",3000);	
+function ihelpimage1(){
+	if(icookies.document.getElementById('themeDir').value==''){
+		thememax.src="../theme_vista/window/max.gif";
+	}else{
+			thememax.src="../"+icookies.document.getElementById('themeDir').value+"/window/max.gif";
+		}
+}
+setTimeout("ihelpimage2();",3000);	
+function ihelpimage2(){
+	if(icookies.document.getElementById('themeDir').value==''){
+		thememin.src="../theme_vista/window/min.gif";
+	}else{
+			thememin.src="../"+icookies.document.getElementById('themeDir').value+"/window/min.gif";
+		}
+}
+setTimeout("ihelpimage3();",3000);	
+function ihelpimage3(){
+	if(icookies.document.getElementById('themeDir').value==''){
+		themetab.src="../theme_vista/window/tab.gif";
+	}else{
+			themetab.src="../"+icookies.document.getElementById('themeDir').value+"/window/tab.gif";
+		}
+}
+setTimeout("ihelpimage4();",3000);	
+function ihelpimage4(){
+	if(icookies.document.getElementById('themeDir').value==''){
+		themeexit.src="../theme_vista/window/exit.gif";
+	}else{
+			themeexit.src="../"+icookies.document.getElementById('themeDir').value+"/window/exit.gif";
+		}
+}
+</script>
 </head>
 
 <body bgcolor="#335EA8" text="#FFFFFF" link="#FFFFCC" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<iframe src="../system/cookies.htm" width="1" height="1" id="icookies" name="icookies" scrolling="yes" frameborder="0" style="visibility:hidden;"></iframe>
+<div id="ihelpt" name="ihelpt" style="position:absolute; left:0px; top:0px; width:100%; z-index:23; visibility: visible;">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td><strong><font size="5">Welcome to pspWxp V3.00</font></strong></td>
     <td><strong><font color="#CCCCCC">Help Center</font></strong></td>
   </tr>
-</table>
+</table></div>
 <p><font size="2">Please use the contents list on the right to browse the help
   center. Square + Analog stick can be used to browse. Visit the pspWxp Website:
   <a href="http://pspwxp.co.nr">pspwxp.co.nr</a></font> <font size="2">to get
@@ -139,7 +175,7 @@
 <p>
 <p>
 <p><font size="2"><strong><a name="maximize" id="maximize"></a>Maximizing a window</strong></font></p>
-<p><font size="2"> The maximize button (<img alt="" src="../images/window/max.gif">) can
+<p><font size="2"> The maximize button (<img alt="" name="thememax" id="thememax">) can
   be pressed so the current game takes up the entire screen, instead of being
   in a window. To return move the cursor to the very bottom of the screen and
   press X to return to the desktop. If the program started maximized, doing this
@@ -154,8 +190,8 @@
 <p>
 <p>
 <p><font size="2"><strong><a name="minimize" id="minimize"></a>Minimizing a window</strong></font>
-<p><font size="2">The minimize button (<img alt="" src="../images/window/min.gif">) allows
-  you to hide the window. It can be opened again by clicking on the tab (<img alt="" src="../images/window/tab.gif">)
+<p><font size="2">The minimize button (<img alt="" name="thememin" id="thememin">) allows
+  you to hide the window. It can be opened again by clicking on the tab (<img alt="" name="themetab" id="themetab">)
   in the taskbar. If the window is maximized, move the cursor to the very bottom
   of the screen and press X to return to the desktop. If the program started maximized,
   doing this will close the program. If you just maximized a window, this will
@@ -169,7 +205,7 @@
 <p>
 <p>
 <p><font size="2"><strong><a name="close" id="close"></a>Closing an application/game</strong></font></p>
-<p><font size="2"> Press <img alt="" src="../images/window/exit.gif"> in the top-right corner
+<p><font size="2"> Press <img alt="" name="themeexit" id="themeexit"> in the top-right corner
   to close an application or game. If the window is maximized, move the cursor
   to the very bottom of the screen and press X to return to the desktop. If the
   program started maximized, doing this will close the program. If you just maximized

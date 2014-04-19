@@ -30,7 +30,13 @@ function ChangeSettings(){
 	top.icookies.document.settings.submit();
 	top.ApplySettings();
 }
-
+function themebgload(){
+	if(top.document.icookies.document.getElementById('themeDir').value==''){
+		File.value='../theme_vista/desktop.jpg';imgPreview.src=File.value;
+	}else{
+			File.value='../'+top.document.icookies.document.getElementById('themeDir').value+'/desktop.jpg';imgPreview.src=File.value;
+		}
+}
 </script>
 </head>
 
@@ -74,7 +80,7 @@ function ChangeSettings(){
               <br>
               </font>
               <input name="File" type="file" id="File" onChange="imgPreview.src=File.value;chkBGImage.checked=true;">
-              <input name="Default" type="submit" id="Default" value="Default" onClick="File.value='../images/desktop.jpg';imgPreview.src=File.value;">
+              <input name="Default" type="submit" id="Default" value="Default" onClick="themebgload()">
           </p></td>
           <td valign="top"><font size="2">&nbsp; </font> <table height="42" border="1" cellpadding="0" cellspacing="0" bordercolor="#D6D3CE">
               <tr>
@@ -87,9 +93,14 @@ function ChangeSettings(){
             </table></td>
         </tr>
         <tr>
-        	<td width="300" valign="top"><input name="OK" type="button" id="OK2" onClick="ChangeSettings();history.go(-1);" value="OK" style="width:60">
-				<input name="Cancel" type="button" id="Cancel3" onClick="history.go(-1);" value="Cancel" style="width:60">
+        	<td width="300" valign="top"><input name="OK" type="button" id="OK2" onClick="ChangeSettings();location='index.htm';" value="OK" style="width:60">
+				<input name="Cancel" type="button" id="Cancel3" onClick="location='index.htm';" value="Cancel" style="width:60">
 				<input name="Cancel2" type="button" id="Cancel22" onClick="ChangeSettings();" value="Apply" style="width:60">
+          </td><td valign="top"><font size="2">
+            <label>
+            <input name="chkIcons" type="checkbox" id="chkIcons" value="1">
+            Do not show desktop icons</label>
+            </font></td>
 				<script language="javascript" type="text/javascript">
 	txtcolor.value=top.document.icookies.document.getElementById('bgcolor').value;
 	document.getElementById('activecolor').style.background=txtcolor.value;
@@ -100,18 +111,12 @@ function ChangeSettings(){
 	}
 	File.value=top.document.icookies.document.getElementById('bg').value;
 	imgPreview.src=File.value;
-	
 	if(top.document.icookies.document.getElementById('desktopicons').value=="true"){
 		chkIcons.checked=true;
 	}else{
 		chkIcons.checked=false;
 	}
-				</script></td>
-          <td valign="top"><font size="2">
-            <label>
-            <input name="chkIcons" type="checkbox" id="chkIcons" value="1">
-            Do not show desktop icons</label>
-            </font></td>
+				</script>
         </tr>
       </table></td>
   </tr>

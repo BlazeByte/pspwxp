@@ -26,7 +26,6 @@ function showpreview(){
 		frames['scrpreview'].location.href="../apps/screensavers/" + screensaver.value;
 	}
 }
-
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <style type="text/css">
@@ -79,7 +78,7 @@ function showpreview(){
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td> <select name="screensaver" id="screensaver" onChange="showpreview();">
-              <option value="none">(none)</option>
+              <option value="none">(None)</option>
               <option value="blank.htm">Blank Screen</option>
               <option value="color.htm">Color Shift</option>
               <option value="default.htm">Default</option>
@@ -88,7 +87,7 @@ function showpreview(){
           <td><table width="13%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="25" rowspan="2">Wait: </td>
-                <td width="15" rowspan="2"><input name="txtWait" type="text" id="txtWait" value="2" size="2" maxlength="2"></td>
+                <td width="15" rowspan="2"><input name="txtWait" type="text" id="txtWait" size="2" maxlength="2"></td>
                 <td align="center"><font size="1"><a href="#a" onClick="if(txtWait.value<60){txtWait.value++}">_+_</a></font></td>
                 <td rowspan="2">mins</td>
               </tr>
@@ -111,8 +110,8 @@ function showpreview(){
       </table></td>
   </tr>
   <tr>
-    <td><input name="OK" type="button" id="OK2" onClick="ChangeSettings();history.go(-1);" value="OK" style="width:60">
-      <input name="Cancel" type="button" id="Cancel3" onClick="history.go(-1);" value="Cancel" style="width:60">
+    <td><input name="OK" type="button" id="OK2" onClick="ChangeSettings();location='index.htm';" value="OK" style="width:60">
+      <input name="Cancel" type="button" id="Cancel3" onClick="location='index.htm';" value="Cancel" style="width:60">
       <input name="Cancel2" type="button" id="Cancel22" onClick="ChangeSettings();" value="Apply" style="width:60"></td>
   </tr>
 </table>

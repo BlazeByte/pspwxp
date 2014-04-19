@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<style type="text/css">
+INPUT {height:18px; font-family:Times New Roman; font-size:10px }
+.charkey {width:30px;}
+</style>
+</head>
+
+<body bgcolor="black">
+<p align="center">
+  <script>
+var caps="0";
+var shifton="0";
+function GO( ){
+	window.location=theurl.value;
+}
+
+function SetCaps(){
+	if(caps=='1'){
+		caps='0';
+		cmdcaps.style.background="gray"
+	}else{
+		caps='1';
+		cmdcaps.style.background="green"
+	}
+}
+
+function SetShift(func){
+	if(func=="on"){
+		shifton='1';
+		shift1.style.background="green";
+		shift2.style.background="green";
+	}else{
+		if(func=="off"){
+			shifton='0';
+			shift1.style.background="gray";
+			shift2.style.background="gray";
+		}else{
+			if(shifton=='1'){
+				shifton='0';
+				shift1.style.background="gray";
+				shift2.style.background="gray";
+			}else{
+				shifton='1';
+				shift1.style.background="green";
+				shift2.style.background="green";
+			}
+		}
+	}
+}
+
+function presskey(strkey){
+	if(caps=="1"){
+		if(shifton=="1"){
+			theurl.value=theurl.value+strkey.toLowerCase();
+		}else{
+			theurl.value=theurl.value+strkey.toUpperCase();
+		}
+	}else{
+		if(shifton=="1"){
+			theurl.value=theurl.value+strkey.toUpperCase();
+		}else{
+			theurl.value=theurl.value+strkey.toLowerCase();
+		}
+	}
+	SetShift('off');
+}
+
+    </script>
+  <input id="theurl"  style="width:400px"/>
+</p>
+<div align="center">
+  <table border="0" cellspacing="0" cellpadding="2">
+    <tr>
+      <td colspan="2"><input name="button" class="charkey" type="button" onclick="presskey('0')" value="0" />
+        <input name="button" class="charkey" type="button" onclick="presskey('1')" value="1" />
+        <input name="button" class="charkey" type="button" onclick="presskey('2')" value="2" />
+        <input name="button" class="charkey" type="button" onclick="presskey('3')" value="3" />
+        <input name="button" class="charkey" type="button" onclick="presskey('4')" value="4" />
+        <input name="button" class="charkey" type="button" onclick="presskey('5')" value="5" />
+        <input name="button" class="charkey" type="button" onclick="presskey('6')" value="6" />
+        <input name="button" class="charkey" type="button" onclick="presskey('7')" value="7" />
+        <input name="button" class="charkey" type="button" onclick="presskey('8')" value="8" />
+        <input name="button" class="charkey" type="button" onclick="presskey('9')" value="9" />
+        <input name="button" type="button" onclick="theurl.value=theurl.value.slice(0,-1)" value="&lt;-" style="width:66px" />      </td>
+      </tr>
+    <tr>
+      <td width="370"><input name="button3" class="charkey" type="button" onclick="presskey('q')" value="q" />
+        <input name="button3" class="charkey" type="button" onclick="presskey('w')" value="w" />
+        <input name="button3" class="charkey" type="button" onclick="presskey('e')" value="e" />
+        <input name="button3" class="charkey" type="button" onclick="presskey('r')" value="r" />
+        <input name="button3" class="charkey" type="button" onclick="presskey('t')" value="t" />
+        <input name="button3" class="charkey" type="button" onclick="presskey('y')" value="y" />
+        <input name="button3" class="charkey" type="button" onclick="presskey('u')" value="u" />
+        <input name="button3" class="charkey" type="button" onclick="presskey('i')" value="i" />
+        <input name="button3" class="charkey" type="button" onclick="presskey('o')" value="o" />
+        <input name="button3" class="charkey" type="button" onclick="presskey('p')" value="p" />
+        <input name="button53" class="charkey" type="button" onclick="presskey(':')" value=":" /></td>
+      <td width="30" rowspan="2"><input type="submit" name="Submit" value="_|"  style="width:30px;height:44px" onclick="window.location=theurl.value" /></td>
+      </tr>
+    <tr>
+      <td><input id="cmdcaps" type="button" value="Caps Lock" style="width:64px;background:gray" onclick="SetCaps()" />
+        <input name="button2" class="charkey" type="button" onclick="presskey('a')" value="a" />
+        <input name="button2" class="charkey" type="button" onclick="presskey('s')" value="s" />
+        <input name="button2" class="charkey" type="button" onclick="presskey('d')" value="d" />
+        <input name="button2" class="charkey" type="button" onclick="presskey('f')" value="f" />
+        <input name="button2" class="charkey" type="button" onclick="presskey('g')" value="g" />
+        <input name="button2" class="charkey" type="button" onclick="presskey('h')" value="h" />
+        <input name="button2" class="charkey" type="button" onclick="presskey('j')" value="j" />
+        <input name="button2" class="charkey" type="button" onclick="presskey('k')" value="k" />
+        <input name="button2" class="charkey" type="button" onclick="presskey('l')" value="l" />      </td>
+      </tr>
+    <tr>
+      <td colspan="2"><input id="shift1" type="button" onclick="SetShift('');" value="^ Shift" style="width:40px;background:gray" />
+        <input name="button4" class="charkey" type="button" onclick="presskey('z')" value="z" />
+        <input name="button4" class="charkey" type="button" onclick="presskey('x')" value="x" />
+        <input name="button4" class="charkey" type="button" onclick="presskey('c')" value="c" />
+        <input name="button4" class="charkey" type="button" onclick="presskey('v')" value="v" />
+        <input name="button4" class="charkey" type="button" onclick="presskey('b')" value="b" />
+        <input name="button4" class="charkey" type="button" onclick="presskey('n')" value="n" />
+        <input name="button4" class="charkey" type="button" onclick="presskey('m')" value="m" />
+        <input name="button522" class="charkey" type="button" onclick="presskey(',')" value="," />
+        <input name="button52" class="charkey" type="button" onclick="presskey('.')" value="." />
+        <input id="shift2" type="button" onclick="SetShift('');" value="^ Shift" style="width:56px;background:gray" />      </td>
+      </tr>
+    <tr>
+      <td colspan="2"><input type="button" value="http://" name="http2" onclick="presskey('http://')" />
+        <input type="button" value=".com" name="http2" onclick="presskey('.com')" />
+        <input type="button" value=".net" name="http22" onclick="presskey('.net')" />
+        <input type="button" value=".org" name="http23" onclick="presskey('.org')" />
+        <input name="http3" type="button" onclick="presskey(' ')" value=" " style="width:180px" />
+        <input name="button5" class="charkey" type="button" onclick="presskey('/')" value="/" />
+        <input name="button7" type="button" onclick="theurl.value=''" value="Clear"  style="width:29px" />
+      <input name="button6" type="button" onclick="window.location=theurl.value" value="GO!" /></td>
+      </tr>
+  </table>
+</div>
+</html>

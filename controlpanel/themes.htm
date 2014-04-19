@@ -8,6 +8,15 @@ function ChangeSettings(){
 	top.icookies.document.settings.themeDir.value=document.getElementById('themeDir').value;
 	top.icookies.document.settings.submit();
 	top.ApplySettings();
+	alert('pspWxp will need to be restarted for changes to take effect.');
+}
+setTimeout("preview();",3000);	
+function preview(){
+	if(icookies.document.getElementById('themeDir').value==''){
+		imgPreview.src="../theme_vista/boot.gif";
+	}else{
+			imgPreview.src="../"+icookies.document.getElementById('themeDir').value+"/boot.gif";
+		}
 }
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -27,7 +36,9 @@ function ChangeSettings(){
 </style>
 </head>
 
-<body bgcolor="#EBE9ED" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="File.value=imgDesktop.src;imgPreview.src=imgDesktop.src;">
+<body bgcolor="#EBE9ED" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<iframe src="../system/cookies.htm" width="1" height="1" id="icookies" name="icookies" scrolling="yes" frameborder="0" style="visibility:hidden;"></iframe>
+<div id="Prev" name="Prev" style="position:absolute; left:0px; top:0px; width:100%; height:100%; z-index:23; visibility: visible;">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 		<td align="center"><div align="left"></div>
@@ -39,7 +50,7 @@ function ChangeSettings(){
 					</tr>
 					<tr>
 						<td height="70"></td>
-						<td width="140" height="70"><img alt="" name="imgPreview" width="140" height="70" id="imgPreview"></td>
+						<td width="140" height="70"><img alt="" width="141" height="71" name="imgPreview" id="imgPreview"></td>
 						<td height="70"></td>
 					</tr>
 					<tr>
@@ -52,18 +63,14 @@ function ChangeSettings(){
 </table>
 <p>Select a theme:
 	<select name="themeDir" id="themeDir">
-		<option value="images.vista">Vista</option>
-		<option value="images.luna">XP Luna</option>
-		<option value="images.kde">KDE Linux</option>
-		<option value="images.matrix">Matrix</option>
-		<option value="images.silver">Silver</option>
-		<option value="images.crystal">Crystal</option>
+<script language="javascript" type="text/javascript" src="../user/themes.js"></script>
 		</select>
 	<input type="submit" name="Submit" value="Info" onClick="alert('This theme can be found under the folder named '+themeDir.value+'.');">
+  <input name="Preview1" type="button" id="Preview2" onClick="imgPreview.src='../'+themeDir.value+'/boot.gif'" value="Preview">
 </p>
 <p>
-  <input name="OK" type="button" id="OK2" onClick="ChangeSettings();history.go(-1);" value="OK" style="width:60">
-  <input name="Cancel" type="button" id="Cancel3" onClick="history.go(-1);" value="Cancel" style="width:60">
+  <input name="OK" type="button" id="OK2" onClick="ChangeSettings();location='index.htm';" value="OK" style="width:60">
+  <input name="Cancel" type="button" id="Cancel3" onClick="location='index.htm';" value="Cancel" style="width:60">
   <input name="Cancel2" type="button" id="Cancel22" onClick="ChangeSettings();" value="Apply" style="width:60">
 </p>
 <script language="javascript" type="text/javascript">

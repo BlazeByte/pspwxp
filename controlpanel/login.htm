@@ -27,7 +27,7 @@ function ChangeSettings(){
 	                top.icookies.document.settings.chkul.value=document.getElementById('chkULImage').checked;
 	                top.icookies.document.settings.ul.value=document.getElementById('File').value;
 			top.icookies.document.settings.submit();
-			history.go(-1);
+	alert('pspWxp will need to be restarted for changes to take effect.');
 		}else{
 			alert("The new passwords do not match.");
 		}
@@ -39,6 +39,13 @@ function ChangeSettings(){
 		document.getElementById('chkShow').checked=top.icookies.document.getElementById('loginshow').value;
 	}
 }
+function themeulload(){
+	if(top.document.icookies.document.getElementById('themeDir').value==''){
+		File.value='../theme_vista/userlogin.png';imgPreview.src=File.value;
+	}else{
+			File.value='../'+top.document.icookies.document.getElementById('themeDir').value+'/userlogin.png';imgPreview.src=File.value;
+		}
+}	
 </script>
 </head>
 
@@ -62,7 +69,7 @@ function ChangeSettings(){
  </td>
 <td>&nbsp;</td>
  <td>
-   <input name="Default" type="submit" id="Default" value="Default" onClick="File.value='../images/userlogin.gif';imgPreview.src=File.value;">
+   <input name="Default" type="submit" id="Default" value="Default" onClick="themeulload()">
   </td>
       </tr>
     </table>
@@ -101,8 +108,22 @@ function ChangeSettings(){
       </table>
   </div>
   <p align="center">
-    <input name="OK" type="button" id="OK2" onClick="ChangeSettings();history.go(-1);" value="OK" style="width:60">
-    <input name="Cancel" type="button" id="Cancel3" onClick="history.go(-1)" value="Cancel" style="width:60">
+    <input name="OK" type="button" id="OK2" onClick="ChangeSettings();location='index.htm';" value="OK" style="width:60">
+    <input name="Cancel" type="button" id="Cancel3" onClick="location='index.htm';" value="Cancel" style="width:60">
 </p>
+<script language="javascript" type="text/javascript">
+	if(top.document.icookies.document.getElementById('chkul').value=="true"){
+		chkULImage.checked=true;
+	}else{
+		chkULImage.checked=false;
+	}
+	File.value=top.document.icookies.document.getElementById('ul').value;
+	imgPreview.src=File.value;
+	if(top.document.icookies.document.getElementById('loginshow').value=="true"){
+		chkShow.checked=true;
+	}else{
+		chkShow.checked=false;
+	}
+				</script>
 </body>
 </html>

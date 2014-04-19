@@ -1,0 +1,16 @@
+a:link,a:active,a:visited { background-color:transparent; text-decoration:none;}
+a:hover		{ background-color:transparent; text-decoration: underline; color : #0abaec; }
+a.astart_dark	{color: #000000;}
+a.astart_light	{color: #000000;}
+a.aistart_light	{color: #000000;}
+a.aistart_dark	{color: #000000;}
+.start_dark { background-color:#FFFFFF;color:#000000;font-size: 10px;}
+.start_light { background-color:#FFFFFF;color:#000000;font-size: 10px;}
+.istart_dark { background-color:#FFFFFF;font-size: 10px;}
+.istart_light { background-color:#FFFFFF;font-size: 10px;}
+.time_text {color:#0abaec;}
+.shutdown_text {color:#0abaec;}
+.login_small {color:#0abaec; font-size:10px;}
+.login_med {color:#0abaec; font-size:12px;}
+.login_title {color:#0abaec;font-size: 24px;font-weight: bold;}
+.login_shutdown_text {color:#0abaec;}

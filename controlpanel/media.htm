@@ -18,18 +18,34 @@
 }
 -->
 </style>
+<script language="JavaScript" type="text/javascript">
+function ChangeSettings(){
+	top.icookies.document.settings.chkPSPTunesTab.value=document.getElementById('chkTunes').checked;
+	top.icookies.document.settings.submit();
+	top.ApplySettings();
+	alert('pspWxp will need to be restarted for changes to take effect.');
+}
+
+</script>
 </head>
 
-<body bgcolor="#EBE9ED" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="File.value=imgDesktop.src;imgPreview.src=imgDesktop.src;">
+<body bgcolor="#EBE9ED" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <center>
 <p>
-    <label><input type="checkbox" name="checkbox" value="checkbox">Open PSPTunes in separate tab (memory saving)
+    <label><input name="chkTunes" type="checkbox" id="chkTunes" value="1" checked>Open PSPTunes in separate tab (memory saving)
     </label>
 </p>
 <p>
-    <input name="OK" type="button" id="OK" onClick="top.document.icookies.document.settings.chkPSPTunesTab.value=document.getElementById('chkPSPTunesTab').checked;history.go(-1);" value="OK" style="width:60">
-    <input name="Cancel" type="button" id="Cancel" onClick="history.go(-1);" value="Cancel" style="width:60">
+    <input name="OK" type="button" id="OK2" onClick="ChangeSettings();location='index.htm';" value="OK" style="width:60">
+    <input name="Cancel2" type="button" id="Cancel22" onClick="location='index.htm';" value="Cancel" style="width:60">
 </p>
 </center>
+<script language="javascript" type="text/javascript">
+	if(top.document.icookies.document.getElementById('chkPSPTunesTab').value=="false"){
+		chkTunes.checked=false;
+	}else{
+		chkTunes.checked=true;
+	}
+				</script>
 </body>
 </html>
