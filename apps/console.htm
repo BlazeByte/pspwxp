@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	color: #CCCCCC;
+}
+body {
+	background-color: #000000;
+}
+-->
+</style></head>
+<script language="javascript" type="text/javascript">
+function doCmd(){
+	document.getElementById('consoleHistory').innerHTML=document.getElementById('consoleHistory').innerHTML+'&#10; &#13;'+textfield.value;
+	try {
+		eval('top.' + textfield.value,100);
+	}
+	
+	catch (e) {
+		document.getElementById('consoleHistory').innerHTML=document.getElementById('consoleHistory').innerHTML+'&#10; &#13;'+e.message;
+	}
+}
+</script>
+<body>
+<div id="consoleHistory">Javascript Console V.1.0 <br />
+=================</p>
+<p>Enter a javascript command below and press &quot;Run<em>&quot;. </em>eg: alert(&quot;Hello World&quot;)  </p></div>
+<p><a name="cmd" id="cmd"></a>&gt;
+  	<input name="textfield" type="text" style="width:400px;background-color:#000000; color:#CCCCCC; border:none; font-size:12px"/>
+	<a style="color:#FFFFFF; font-size:12px; border-color:#FFFFFF; border-width:1px;" href="#cmd" onclick="doCmd();">Run</a></p>
+<p>&nbsp;</p>
+</body>
+</html>

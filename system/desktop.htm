@@ -1,0 +1,102 @@
+<HTML>
+<head>
+<title>Encore Portal</title>
+<link href="../theme/default/css/style.css" rel="stylesheet" type="text/css">	<!-- Link the style sheer !-->
+</head>
+<body>
+
+	<iframe src="cookies.htm" width="1" height="1" id="icookies" name="icookies" scrolling="no" frameborder="0" style="visibility:hidden;position:absolute;top:0;left:0;"></iframe>	<!-- Load the cookies file to refer from later !-->
+
+	<div id="lyBoot">
+		<div id="lyLoadIcon1"></div>
+		<div id="lyLoadIcon2"></div>
+		<div id="lyLoadIcon3"></div>
+		<div id="lyLoadIcon4"></div>
+		<div id="lyLoadIcon5"></div>
+		<div id="lyLoadIcon6"></div>
+		<div id="loadingStatus">Preparing for boot...</div>
+</div>
+
+	<script language="javascript" type="text/javascript" src="javascript/bootfunctions.js">	</script>
+
+	<div id="lyTaskbar" onClick="hideMenu();"><img src="../theme/default/images/menu.gif" onClick="showAppMenu();" id="mainMenuIcon">	</div>
+	<div id="ClockContainer"><span id="tP">00:00</span></div><div id="taskbarMinMax" onClick="minMaxTaskbar();"><div id="taskbarMinMaxImg"></div></div>
+
+	<script language="javascript" type="text/javascript" src="javascript/loadfunctions.js">
+	</script>
+
+	<script language="javascript" type="text/javascript" src="javascript/menufunctions.js">	</script>
+		<script language="javascript" type="text/javascript" src="javascript/appfunctions.js">	</script>
+
+	<div id="lyDesktop" onClick="hideMenu();">
+		<script language="javascript" type="text/javascript" src="../user/shortcuts.js"></script>
+	</div>
+
+	<script language="javascript" type="text/javascript" src="../user/menus/submenus.js"></script>
+
+	<div id="systemSound"><iframe width="1" height="1" id="iSound" src="blank.htm" name="iSound"></iframe></div>
+
+	<script language="javascript" type="text/javascript" src="javascript/portalfunctions.js">	</script>
+
+	<div id="menu">
+		<script language="javascript" type="text/javascript" >
+			makeMainMenu();		//add all
+			// Line up menus
+			alignSubMenus();
+		</script>
+	</div>
+
+	<script language="javascript" type="text/javascript">
+		setSubMenusX(); //set left property for each sub menu. This must come now, where the main menu layer has already been loaded.
+	</script>
+
+	<div id="msgDlg">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="windowTopLeft"></td>
+          <td class="windowTopTitle"><div id="msgDlgTitle" class="WindowTitle">Title</div></td>
+          <td class="windowTopRight"></td>
+        </tr>
+        <tr>
+          <td class="windowLeft"></td>
+          <td class="windowContent"><div id="msgDlgMsg">
+            Content</div>
+            <br/>
+              <input type="button" value="OK" class="msgBoxOK" onClick="showHideLayer('msgDlg','hidden');"/>
+
+          </td>
+          <td class="windowRight"></td>
+        </tr>
+        <tr>
+          <td class="windowBottomLeft"></td>
+          <td class="windowBottom"></td>
+          <td class="windowBottomRight"></td>
+        </tr>
+      </table>
+	</div>
+
+	<div id="Window1" class="Window">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="windowTopLeft"></td>
+          <td class="windowTopTitle"><img id="imgWindowIcon1" class="WindowIcon"><div id="WindowTitle1" class="WindowTitle"></div><div id="windowControlBox1" class="WindowControlBox"><div id="windowMin1" class="WindowMin" onClick="minWindow(1);"></div><div id="windowMax1" class="WindowMax" onClick="maxWindow(1);"></div><div id="windowClose1" class="WindowClose" onClick="closeWindow(1);"></div></div></td>
+          <td class="windowTopRight"></td>
+        </tr>
+        <tr>
+          <td class="windowLeft"></td>
+          <td class="windowContent">
+              <iframe src="blank.htm" id="iWindow1" frameborder="0" class="iWindow"></iframe>
+
+          </td>
+          <td class="windowRight"></td>
+        </tr>
+        <tr>
+          <td class="windowBottomLeft"></td>
+          <td class="windowBottom"></td>
+          <td class="windowBottomRight"></td>
+        </tr>
+      </table>
+	</div>
+</body>
+
+</HTML>

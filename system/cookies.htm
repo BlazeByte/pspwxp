@@ -1,20 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Cookies Page</title>
 </head>
 
 <body>
 <form action="" method="post" name="settings" id="settings">
   <ul>
-    <li>ULImage
-      <input type="text" name="ul" id="ul" />
-    </li>
-    <li>ULImage? Yes No
-      <input type="text" name="chkul" id="chkul" />
-    </li>
+    <li>Theme
+      <input name="theme" type="text" id="theme" value="/default" />
+</li>
     <li>BGImage
       <input type="text" name="bg" id="bg" />
     </li>
@@ -51,34 +45,13 @@
     <li>Play Sounds
       <input name="chkPlaySounds" type="text" id="chkPlaySounds" />
     </li>
-    <li>Clock Hide Image
-      <input type="text" name="iHideClock" id="iHideClock" />
-    </li>
-    <li>Clock Hide
-      <input type="text" name="ichkHideClock" id="ichkHideClock" />
-    </li>
   	<li>No Auto-Clock 
   		<input type="text" name="noAutoTime" id="noAutoTime" />
   	</li>
-  	<li>Theme  
-  		<input name="themeDir" type="text" id="themeDir" />
-  	</li>
-  	<li>Show tabs on taskbar? Yes No  
-  		<input name="chktabs" type="text" id="chktabs" />
-  	</li>
-  	<li>Auto-Hide taskbar? Yes No  
-  		<input name="chkautohide" type="text" id="chkautohide" />
-  	</li>
-  	<li>Allow multiple windows? Yes No  
-  		<input name="chkmultiplewindows" type="text" id="chkmultiplewindows" />
-  	</li>
-  	<li>Start menu always on top? Yes No  
-  		<input name="chkstartmenu" type="text" id="chkstartmenu" />
-  	</li>
-  	<li>Use wide menu? Yes No  
-  		<input name="chkmenu" type="text" id="chkmenu" />
-  	</li>
   </ul>
 </form>
+<script language="javascript" type="text/javascript">
+	top.sendCookiesReady();
+</script>
 </body>
 </html>

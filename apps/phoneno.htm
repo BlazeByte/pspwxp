@@ -1,0 +1,90 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>Phone Number Converter</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+Body {margin-top: 10; margin-left: 0; margin-right: 0; padding: 0px; font-family: arial, helvetica, tahoma, sans-serif;}
+h2 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 12pt; font-weight: bold; color: #000000;}
+div {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+div.d2 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+td {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+td.td2 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+a {font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; text-decoration: underline;}
+:link {color: black;}
+:visited {color: black;}
+:hover {color: black;}
+a.a2 {font-family: arial, helvetica, tahoma, sans-serif; font-size: 8pt; text-decoration: underline;}
+:link.a2 {color: blue;}
+:visited.a2 {color: blue;}
+:hover.a2 {color: green;}
+input.i1 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+:link.i1 {color: #000000;}
+:visited.i1 {color: #000000;}
+:hover.i1 {color: #000000;}
+-->
+</style>
+<script language="JavaScript" type="text/javascript">
+<!-- This script and many more are available free online at -->
+<!-- The JavaScript Source!! http://javascript.internet.com -->
+<!-- Begin
+function convert(input) {
+var inputlength = input.length;
+input = input.toLowerCase();
+var phonenumber = "";
+for (i = 0; i < inputlength; i++) {
+var character = input.charAt(i);
+
+switch(character) {
+case '0': phonenumber+="0";break;
+case '1': phonenumber+="1";break;
+case '2': phonenumber+="2";break;
+case '3': phonenumber+="3";break;
+case '4': phonenumber+="4";break;
+case '5': phonenumber+="5";break;
+case '6': phonenumber+="6";break;
+case '7': phonenumber+="7";break;
+case '8': phonenumber+="8";break;
+case '9': phonenumber+="9";break;
+case '-': phonenumber+="-";break;
+case  'a': case 'b': case 'c': phonenumber+="2";break;
+case  'd': case 'e': case 'f': phonenumber+="3";break;
+case  'g': case 'h': case 'i': phonenumber+="4";break;
+case  'j': case 'k': case 'l': phonenumber+="5";break;
+case  'm': case 'n': case 'o': phonenumber+="6";break;
+case  'p': case 'q': case 'r': case 's': phonenumber+="7";break;
+case  't': case 'u': case 'v': phonenumber+="8";break;
+case  'w': case 'x': case 'y': case 'z': phonenumber+="9";break;
+   }
+}
+document.myform.number.value = phonenumber;
+return true;
+}
+//  End -->
+</script>
+</head>
+
+<body bgcolor="#EBE9ED">
+<h2>Alphanumeric Phone Number Converter</h2>
+<form name="myform" action="open">
+<table border="2" bordercolor="#225AD5" cellspacing="2" cellpadding="0" align="center">
+<tr>
+<td width="40%">Alphanumeric # :</td>
+<td width="60%"><input class="i1" type=text size=20 maxlength=20 name=alphabet value="1-800-Flowers"></td>
+</tr>
+<tr>
+<td width="40%">Converted # :</td>
+<td width="60%"><input class="i1" type="text" size=20 maxlength=20 name="number" readonly="readonly"></td>
+</tr>
+<tr>
+<td class="td2"><input class="i1" type="button" onclick="window.location.href='../apps/phoneno.htm'"  value="Clear" name="button1"></td>
+<td class="td2"><input class="i1" type=button value="Convert" onClick="return convert(document.myform.alphabet.value)"></td>
+</tr>
+</table>
+</form>
+<div class="d2">Replace example with your number...</div>
+<div class="d2">then press convert</div>
+<div align="center"></div>
+</body>
+</html>
