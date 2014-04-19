@@ -14,7 +14,7 @@ function Portal(strPortalName,strPortalURL){
 }
 
 //BEGIN LIST
-Portal("Browse...","apps/runsearch.htm");
+Portal("Browse...","../apps/runsearch.htm");
 Portal("Portal A","file:/portala.htm");
 Portal("Portal B","file:/portalb.htm");
 //END LIST

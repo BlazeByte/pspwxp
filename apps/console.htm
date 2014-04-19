@@ -14,14 +14,25 @@ body {
 }
 -->
 </style></head>
-
+<script language="javascript" type="text/javascript">
+function doCmd(){
+	document.getElementById('consoleHistory').innerHTML=document.getElementById('consoleHistory').innerHTML+'&#10; &#13;'+textfield.value;
+	try {
+		eval('top.' + textfield.value,100);
+	}
+	
+	catch (e) {
+		document.getElementById('consoleHistory').innerHTML=document.getElementById('consoleHistory').innerHTML+'&#10; &#13;'+e.message;
+	}
+}
+</script>
 <body>
 <div id="consoleHistory">Javascript Console V.1.0 <br />
 =================</p>
 <p>Enter a javascript command below and press &quot;Run<em>&quot;. </em>eg: alert(&quot;Hello World&quot;)  </p></div>
-<p>
-  <input name="textfield" type="text" style="width:400px;background-color:#000000; color:#CCCCCC; border:none; font-size:12px"/>
-  <input type="submit" name="Submit" value="Run" style="width:40px;color:#FFFFFF; font-size:12px; background-color:#000000; border-color:#FFFFFF;" onclick="document.getElementById('consoleHistory').innerHTML=document.getElementById('consoleHistory').innerHTML+'<p/>> '+textfield.value;setTimeout('top.' + textfield.value,100);" />
-</p>
+<p><a name="cmd" id="cmd"></a>&gt;
+  	<input name="textfield" type="text" style="width:400px;background-color:#000000; color:#CCCCCC; border:none; font-size:12px"/>
+	<a style="color:#FFFFFF; font-size:12px; border-color:#FFFFFF; border-width:1px;" href="#cmd" onclick="doCmd();">Run</a></p>
+<p>&nbsp;</p>
 </body>
 </html>

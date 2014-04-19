@@ -7,6 +7,8 @@ function playSound(strURL){
 function CheckPass(){
 	if(txtPassword.value==icookies.document.getElementById('thepassword').value){
 		showHideLayer('login','hidden');
+		showHideLayer('txtPassword','hidden');
+		showHideLayer('portalmenu','hidden');
 		if(loaded==1){
 			playSound('startsound.htm');
 		}else{
@@ -44,13 +46,12 @@ function ApplySettings(){
 		document.getElementById('imgDesktop').src=icookies.document.getElementById('bg').value;
 	}else{
 		if(icookies.document.getElementById('chkbg').value=='false'){
-			document.getElementById('imgDesktop').src="images/space.gif";
+			document.getElementById('imgDesktop').src="../images/space.gif";
 		}else{
-			if(icookies.document.getElementById('chkbg').value==''){
-				document.getElementById('imgDesktop').src="images/desktop.jpg";
-			}
+			document.getElementById('imgDesktop').src="../images/desktop.jpg";
 		}
 	}
+	
 	playSounds=icookies.document.getElementById('chkPlaySounds').value;
 }
 
@@ -73,13 +74,12 @@ function winMessage(MessageTitle,MessageIcon,MessageHTML){
 
 function openInBrowser(Iurl){
 	openedLink=Iurl;
-	setTitle("1","Internet","apps/internet/index.htm","images/icons/menu/apps/ie.png",0);
+	setTitle("1","Internet","../apps/internet/index.htm","../images/icons/menu/apps/ie.png",0);
 }
 
 function sendSearchForm(){
-	setTitle("1","Internet","apps/internet/index.htm","images/icons/menu/apps/ie.png",0);
+	setTitle("1","Internet","../apps/internet/index.htm","../images/icons/menu/apps/ie.png",0);
 	var searchWindow="progman"+activewindow;
 	document.getElementById('searchForm').target=searchWindow;
 	document.getElementById('searchForm').submit();
 }
-

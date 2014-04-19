@@ -22,16 +22,16 @@ var playSounds;
 var screensaver;
 var screensaverTime;
 var loaded = 0;
-var scrActive = "false"
+var scrActive = "false";
 
 function showHideLayer(layerName,showHide){
 	frames[layerName].style.visibility=showHide;
 }
 
 function shutdownFade() {
-	setTimeout("imgFade.src='images/shade1.png'",500);
-	setTimeout("imgFade.src='images/shade2.png'",1000);
-	setTimeout("imgFade.src='images/shade3.png'",1500);
+	setTimeout("imgFade.src='../images/shade1.png'",500);
+	setTimeout("imgFade.src='../images/shade2.png'",1000);
+	setTimeout("imgFade.src='../images/shade3.png'",1500);
 }
 
 function deScr() {
@@ -42,9 +42,9 @@ function ScrTimeout(){
 	if(document.getElementById('boot').style.visibility=='hidden'&&document.getElementById('login').style.visibility=='hidden'&&document.getElementById('progwin').style.visibility=='hidden'&&document.getElementById('progwin2').style.visibility=='hidden'&&document.getElementById('progwin3').style.visibility=='hidden'&&document.getElementById('progMax').style.visibility=='hidden'){
 		screensaverTime--;
 		if(screensaverTime==0){
-			setTitle(1,"Screen Saver","apps/screensavers/" + icookies.document.getElementById('screensaver').value,"",11);
+			setTitle(1,"Screen Saver","../apps/screensavers/" + icookies.document.getElementById('screensaver').value,"",11);
 			deScr();
-			scrActive="true"
+			scrActive="true";
 		}
 	}else{
 		deScr();
@@ -54,7 +54,7 @@ function ScrTimeout(){
 
 function setTitle(blncontrol,ProgramTitle,ProgramLocation,ProgramIcon,StartMax){
 	hideMenu();
-	if(ProgramTitle=="PSPTunes"&&!(icookies.settings.chkPSPTunesTab.value=="false")){
+	if(ProgramTitle=="PSPTunes"&&!(icookies.document.getElementById('chkPSPTunesTab').value=="false")){
 		window.open(ProgramLocation);
 		return;
 	}
@@ -125,7 +125,7 @@ function setTitle(blncontrol,ProgramTitle,ProgramLocation,ProgramIcon,StartMax){
 			document.getElementById('mI').src=document.getElementById('tI').src;
 			document.getElementById('mI2').src=document.getElementById('tI2').src;
 			document.getElementById('mI3').src=document.getElementById('tI3').src;
-			winMessage("No more windows","images/icons/menu/run.png","");
+			winMessage("No more windows","../images/icons/menu/run.png","");
 			mProgramLocation=ProgramLocation;
 			mProgramIcon=ProgramIcon;
 			mblncontrol=blncontrol;
@@ -145,7 +145,7 @@ function showWindow(windowNo,ProgramLocation,ProgramIcon,blncontrol,ProgramTitle
 		document.getElementById('tT'+windowNo).innerHTML=ProgramTitle.slice(0,14);
 		document.getElementById('winicon'+windowNo).src=ProgramIcon;
 		document.getElementById('tI'+windowNo).src=ProgramIcon;
-		document.getElementById('imgTab'+windowNo).src='images/window/tab_down.gif';
+		document.getElementById('imgTab'+windowNo).src='../images/window/tab_down.gif';
 		activewindow=windowNo;
 		if(!(windowNo=="")){windowMin("");}
 		if(!(windowNo==2)){windowMin(2);}
@@ -198,7 +198,7 @@ function hideMenu(){showHideLayer('menu','hidden');showHideLayer('muser','hidden
 
 function openTab(windowNo){
 	 showHideLayer('menu','hidden'); showHideLayer('mapps','hidden'); showHideLayer('progwin'+windowNo,'visible'); showHideLayer('winexit'+windowNo,'visible'); showHideLayer('programs'+windowNo,'visible'); showHideLayer('winmax'+windowNo,'visible'); showHideLayer('winmin'+windowNo,'visible');
-	document.getElementById('imgTab'+windowNo).src='images/window/tab_down.gif';
+	document.getElementById('imgTab'+windowNo).src='../images/window/tab_down.gif';
 	if(!(windowNo=="")){windowMin("");}
 	if(!(windowNo==2)){windowMin(2);}
 	if(!(windowNo==3)){windowMin(3);}
@@ -252,7 +252,7 @@ function closeWindow(windowNo){
 
 function windowMin(windowNo){
 	 showHideLayer('progwin'+windowNo,'hidden'); showHideLayer('winexit'+windowNo,'hidden'); showHideLayer('programs'+windowNo,'hidden'); showHideLayer('winmax'+windowNo,'hidden'); showHideLayer('winmin'+windowNo,'hidden');
-	 document.getElementById('imgTab'+windowNo).src='images/window/tab.gif';
+	 document.getElementById('imgTab'+windowNo).src='../images/window/tab.gif';
 }
 
 function windowMax(windowNo){
@@ -276,10 +276,10 @@ function restoreWindow() {
 			showHideLayer('lyShutdowndlg','hidden');
 			showHideLayer('login','visible');
 		}
-		scrActive="false"
+		scrActive="false";
 	}
 	if(frames['progMax'].style.visibility=="visible"){
 		showHideLayer('progMax','hidden');
-		frames['iprogMax'].location.href="apps/appsmax.htm";
+		frames['iprogMax'].location.href="../apps/appsmax.htm";
 	}
 }
