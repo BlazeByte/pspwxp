@@ -1,0 +1,107 @@
+<!--
+Accent JavaScript Browser Version 1.0
+Copyright 2001 by www.CodeLifter.com
+Free for all users; but please leave in this header.
+//-->
+
+<html>
+
+<head>
+
+<script language="JavaScript">
+
+var bV  = parseInt(navigator.appVersion);
+var bNS = navigator.appName=="Netscape";
+var bIE = navigator.appName=="Microsoft Internet Explorer";
+var msg = "Please use the navigation controls at the top of the browser.";
+function nrc(e){if (bNS && e.which > 1){
+alert(msg);
+return false;
+}else if (bIE && (event.button >1)){
+alert(msg);return false;
+}
+}
+document.onmousedown = nrc;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN|Event.MOUSEUP);
+if (bNS && bV<5) window.onmousedown = nrc;
+
+var Now = document.location.search;
+function doNow(){
+if (Now != "") {
+Now=Now.substring(1);
+document.Address.Entry.value = Now;
+}else{
+document.Address.Entry.value = 'http://';
+}
+}
+
+var whereTo;
+var parsing;
+function goThere(){
+whereTo = '';
+whereTo = document.Address.Entry.value;
+parsing = whereTo.substring(0,7);
+parsing = parsing.toLowerCase();
+if (parsing != 'http://') whereTo="http://"+whereTo;
+if (whereTo.length>12){
+    parent.Content.location.href = whereTo;
+    document.Address.Entry.value = whereTo;
+    document.Address.action = 'navigation.html'+'?'+whereTo;    
+}
+}
+
+function doClear(){
+document.Address.Entry.value = "http://";
+}
+
+function doNada(){
+parent.Content.focus();
+}
+
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></head>
+
+<body>
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#F5F6F7">
+  <tr bordercolor="#F5F6F7"> 
+    <form name="Address" method="post" onSubmit="javascript:return false">
+      <td width="47%" align="left" valign="middle"> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="5">&nbsp;</td>
+            <td width="25"><font size="2">URL:</font></td>
+            <td width="60"><input name="Entry" type="text" class="navBox" size="25"></td>
+            <td width="5">&nbsp;</td>
+            <td width="45"><table width="96%" border="0" cellspacing="0" cellpadding="0" onClick="javascript:goThere();doNada()">
+                <tr> 
+                  <td width="22"><input name="goGet" type="image" class="navButton" value="Go" src="../../images/icons/internet/go.gif"></td>
+                  <td><font size="2">Go</font></td>
+                </tr>
+              </table></td>
+            <td>&nbsp;</td>
+          </tr>
+        </table> 
+        
+      </td>
+      <td align="left" valign="middle"><table width="200" border="1" align="right" cellpadding="0" cellspacing="0" bordercolor="#333333">
+          <tr bordercolor="#999999"> 
+            <td width="50" onClick="javascript:history.go(-1);doNada()"><div align="center"><img src="../../images/icons/internet/back.gif" width="23" height="23"></div></td>
+            <td width="50" onClick="javascript:history.go(1);doNada()"><div align="center"><img src="../../images/icons/internet/foward.gif" width="23" height="23"></div></td>
+            <td width="50" onClick="javascript:parent.Content.location='halted.html';doNada()"><div align="center"><img src="../../images/icons/internet/stop.gif" width="19" height="23"></div></td>
+            <td width="50" onClick="javascript:parent.Content.location='home.html';doNada()"><div align="center"><img src="../../images/icons/internet/home.gif" width="23" height="23"></div></td>
+          </tr>
+        </table></td>
+      <td width="1%" align="right" valign="middle">&nbsp;</td>
+    </form>
+    <script language="JavaScript">
+    doNow();
+    </script>
+  </tr>
+  <tr bordercolor="#F5F6F7" bgcolor="#666666"> 
+    <td height="1" colspan="3" align="left" valign="middle"></td>
+  </tr>
+</table>
+</body>
+
+</html>

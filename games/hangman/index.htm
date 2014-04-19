@@ -1,0 +1,186 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>Hangman created by Chris Fortey</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css">
+<!--
+a {font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; text-decoration: underline;}
+:link {color: blue;}
+:visited {color: blue;}
+:hover {color: green;}
+input.i1 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+:link.i1 {color: #000000;}
+:visited.i1 {color: #000000;}
+:hover.i1 {color: #000000;} 
+BODY { margin-top: 0; margin-bottem: 0; margin-left: 0; margin-right: 0; }
+img { border: 0px; font-weight:bold; }
+-->
+</style>
+
+<script type="text/javascript">
+<!--
+// HangMan II script- By Chris Fortey (http://www.c-g-f.net/)
+// For this and over 400+ free scripts, visit JavaScript Kit- http://www.javascriptkit.com/
+// Please keep notice intact
+
+var can_play = true;
+var words = new Array("CAT", "DOG", "MOUSE", "RABBIT", "HORSE", "MISSISSIPPI", "TIGER", "ZEBRA", "MONKEY", "ACRIMONIOUS","ALLEGIANCE","AMELIORATE","ANNIHIALATE","ANTISEPTIC","ARTICULATE","AUTHORITATIVE","BENEFACTOR","BOISTEROUS","BREAKTHROUGH","CARCINOGENIC","CENSORIOUS","CHIVALROUS","COLLARBONE","COMMENDABLE","COMPENDIUM","COMPREHENSIVE","CONCLUSIVE","CONSIENTIOUS","CONSIDERATE","DEFERENTIAL","DENOUEMENT","DETERMINATE","DIFFIDENCE","DISRUPTION","EARTHENWARE","ELLIPTICAL","ENTANGLEMENT","ESCUTCHEON","EXTINGUISH","EXTRADITION","FASTIDIOUS","FLAMBOYANT","FORETHOUGHT","FORTHRIGHT","GREGARIOUS","HANDMAIDEN","HONEYSUCKLE","HYPOCRITICAL","ILLUSTRIOUS","INFALLIBLE","LUMBERJACK","MISCHIEVOUS","MOLLYCODDLE","NIMBLENESS","NONPLUSSED","OBLITERATE","OBSEQUIOUS","OBSTREPEROUS","OPALESCENT","OSTENSIBLE","PANDEMONIUM","PARAPHERNALIA","PAWNBROKER","pedestrian","peremptory","PERFUNCTORY","PERNICIOUS","PERPATRATE","PERSONABLE","PICKPOCKET","POLTERGEIST","PRECIPITOUS","PREDICAMENT","PREPOSTEROUS","PRESUMPTUOUS","PREVARICATE","PROPENSITY","PROVISIONAL","PUGNACIOUS","RAMSHACKLE","RATTLESNAKE","RECIPROCATE","RECRIMINATION","REDOUBTABLE","RELINQUISH","REMONSTRATE","REPOSITORY","REPREHENSIBLE","RESOLUTION","RESPLENDENT","RESTITUTION","RETALIATION","RETRIBUTION","SACCHARINE","SALUBRIOUS","SKULDUGGERY","SKYSCRAPER","SOOTHSAYER","TEARJERKER","TRANSCRIBE","TURPENTINE","UNASSUMING","UNDERSCOREe","UNDERTAKER","UNDERWRITE","UNOBSTRUSIVE","VERNACULAR","WATERFRONT","WATERTIGHT");
+
+var to_guess = "";
+var display_word = "";
+var used_letters = "";
+var wrong_guesses = 0;
+
+
+function selectLetter(l)
+{
+if (can_play == false)
+{
+return;
+}
+
+if (used_letters.indexOf(l) != -1)
+{
+return;
+}
+
+used_letters += l;
+document.game.usedLetters.value = used_letters;
+
+if (to_guess.indexOf(l) != -1)
+{
+ // correct letter guess
+pos = 0;
+temp_mask = display_word;
+
+
+while (to_guess.indexOf(l, pos) != -1)
+{
+pos = to_guess.indexOf(l, pos);
+end = pos + 1;
+
+start_text = temp_mask.substring(0, pos);
+end_text = temp_mask.substring(end, temp_mask.length);
+
+temp_mask = start_text + l + end_text;
+pos = end;
+}
+
+display_word = temp_mask;
+document.game.displayWord.value = display_word;
+
+if (display_word.indexOf("#") == -1)
+{
+// won
+alert("Well done, you have won!");
+can_play = false;
+}
+}
+else
+{
+// incorrect letter guess
+wrong_guesses += 1;
+eval("document.hm.src=\"hm" + wrong_guesses + ".png\"");
+
+if (wrong_guesses == 10)
+{
+// lost
+alert("Sorry, you have lost!");
+can_play = false;
+}
+}
+}
+
+function reset()
+{
+selectWord();
+document.game.usedLetters.value = "";
+used_letters = "";
+wrong_guesses = 0;
+document.hm.src="hmstart.png";
+}
+
+function selectWord()
+{
+can_play = true;
+random_number = Math.round(Math.random() * (words.length - 1));
+to_guess = words[random_number];
+//document.game.theWord.value = to_guess;
+
+// display masked word
+masked_word = createMask(to_guess);
+document.game.displayWord.value = masked_word;
+display_word = masked_word;
+}
+
+function createMask(m)
+{
+mask = "";
+word_lenght = m.length;
+
+
+for (i = 0; i < word_lenght; i ++)
+{
+mask += "#";
+}
+return mask;
+}
+// -->
+</script>
+
+</head>
+
+<body bgcolor="#66cc99" onLoad="reset()">
+<table border="2" bordercolor="#225AD5" width="460" height="232" cellpadding="2" cellspacing="0">
+<tr>
+<td align="center" colspan="2">
+<img src="hangman.png" alt="">
+</td>
+</tr>
+<tr>
+<td align="center" width="200">
+<img src="hmstart.png" alt="" name="hm" />
+</td>
+<td align="right" valign="middle">
+<form name="game" action="open">
+Display Word: <input disabled type="text" class="i1" name="displayWord" /><br>
+Used Letters: <input disabled type="text" class="i1" name="usedLetters" /><br><br>
+<div align="center"><a href="javascript:reset()"><img src="newgame.png" alt=""></a></div>
+</form>
+</td>
+</tr>
+<tr>
+<td align="center" height="66" colspan="2">
+<a href="javascript:selectLetter('A');"><img src="a.png" alt=""></a>
+<a href="javascript:selectLetter('B');"><img src="b.png" alt=""></a>
+<a href="javascript:selectLetter('C');"><img src="c.png" alt=""></a>
+<a href="javascript:selectLetter('D');"><img src="d.png" alt=""></a>
+<a href="javascript:selectLetter('E');"><img src="e.png" alt=""></a>
+<a href="javascript:selectLetter('F');"><img src="f.png" alt=""></a>
+<a href="javascript:selectLetter('G');"><img src="g.png" alt=""></a>
+<a href="javascript:selectLetter('H');"><img src="h.png" alt=""></a>
+<a href="javascript:selectLetter('I');"><img src="i.png" alt=""></a>
+<a href="javascript:selectLetter('J');"><img src="j.png" alt=""></a>
+<a href="javascript:selectLetter('K');"><img src="k.png" alt=""></a>
+<a href="javascript:selectLetter('L');"><img src="l.png" alt=""></a>
+<a href="javascript:selectLetter('M');"><img src="m.png" alt=""></a><br>
+<a href="javascript:selectLetter('N');"><img src="n.png" alt=""></a>
+<a href="javascript:selectLetter('O');"><img src="o.png" alt=""></a>
+<a href="javascript:selectLetter('P');"><img src="p.png" alt=""></a>
+<a href="javascript:selectLetter('Q');"><img src="q.png" alt=""></a>
+<a href="javascript:selectLetter('R');"><img src="r.png" alt=""></a>
+<a href="javascript:selectLetter('S');"><img src="s.png" alt=""></a>
+<a href="javascript:selectLetter('T');"><img src="t.png" alt=""></a>
+<a href="javascript:selectLetter('U');"><img src="u.png" alt=""></a>
+<a href="javascript:selectLetter('V');"><img src="v.png" alt=""></a>
+<a href="javascript:selectLetter('W');"><img src="w.png" alt=""></a>
+<a href="javascript:selectLetter('X');"><img src="x.png" alt=""></a>
+<a href="javascript:selectLetter('Y');"><img src="y.png" alt=""></a>
+<a href="javascript:selectLetter('Z');"><img src="z.png" alt=""></a>
+</td>
+</tr>
+</table>
+</body>
+</html>

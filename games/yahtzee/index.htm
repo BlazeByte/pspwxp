@@ -1,0 +1,426 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>JavaScript Yahtzee</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css">
+<!--
+Body {margin-top: 0; margin-left: 0; margin-right: 0; padding: 0px;}
+a {font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; text-decoration: underline;}
+:link {color: black;}
+:visited {color: black;}
+:hover {color: blue;}
+input.i1 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+:link.i1 {color: #000000;}
+:visited.i1 {color: #000000;}
+:hover.i1 {color: #000000;}
+-->
+</style>
+<SCRIPT language=JavaScript type="text/javascript">
+<!-- By:  Ken Showers (showers@eaznet.com) -->
+<!-- Web Site:  http://www.eaznet.com/~showers -->
+<!-- Modified for use on the PSP by NeilR -->
+<!-- Begin
+//KML - 17Feb2006 - Commented out roll=0; as it enables cheatin (Aprox row 68)
+
+var gameover;
+score1=0;
+score2=0;
+bxck=0;
+var bon = 0;
+var hits = new Array(6);
+var chdi = new Array();
+var Dice = new Array();
+roll=0;
+hs=0;
+function Init() {
+for (ckl = 0; ckl < 5; ckl++)
+{document.form.ckbox[ckl].checked = false;
+}
+gameover = 0;
+document.getElementById('rollNum').innerHTML = " ";
+sc=0;
+roll=0;
+document.diceroll.roll.value="Roll ";
+document.images['dice1-pic'].src = "dice0.gif";
+document.images['dice2-pic'].src = "dice0.gif";
+document.images['dice3-pic'].src = "dice0.gif";
+document.images['dice4-pic'].src = "dice0.gif";
+document.images['dice5-pic'].src = "dice0.gif";
+for (z=0; z<6 ;z++) {
+document.form.cl1[z].value = "";
+document.form.cl2[z].value = "";
+} bon=0;
+score1=0;
+score2=0;
+document.form.cl2[6].value="";
+document.form.bonus.value="";
+document.form.total.value="";
+document.form.score.value="";
+bxck=0;
+}
+function Play() {
+if (gameover==0) {
+if (hs==0) {
+document.form.high.value=""; }
+else
+document.form.high.value=hs;
+roll++;
+if (roll>3) {
+alert ("Third roll, make a selection!");
+//roll=0;
+return;
+}
+document.getElementById('rollNum').innerHTML = "Roll #" + roll;
+var dicePic = new Array(6);
+dicePic[0]="dice1";
+dicePic[1]="dice2";
+dicePic[2]="dice3";
+dicePic[3]="dice4";
+dicePic[4]="dice5";
+dicePic[5]="dice6";
+for (var i = 0; i < 6; i++) {
+eval('pic' + i + ' = new Image();');
+eval('pic' + i + '.src = dicePic[i];');
+}
+
+for (ch = 0; ch < 5; ch++) {
+v= (eval("document.form.ckbox[" + ch + "].checked"));
+if (v == true) { chdi[ch] = 1; }
+else {
+chdi[ch] = 0;
+}
+}
+for (d = 1; d < 6; d++) {
+if (chdi[d-1] == 0) {
+x = Math.round(Math.random() * 6) % 6 + 1;
+Dice[d] = x;
+document.images['dice' + d + '-pic'].src = dicePic[x-1]+".gif";}
+}
+}
+}
+function col1(n) {
+if( gameover == 0 ) {
+var dtot=0;
+document.getElementById('rollNum').innerHTML = " ";
+if ((n > 0) && (n < 7)) {
+ck= (document.form.cl1[n-1].value);
+if (ck == ""){
+bxck++;
+var sc=0;
+for (z=1; z<6; z++) {
+if (Dice[z] == n) {
+sc = sc + n;
+}
+}
+bon = bon + sc;
+if (bon > 62) {
+score1=score1+35;
+document.form.bonus.value=35;
+score2=score2+35;
+bon=0;
+}
+score1 = score1 + sc;
+score2 = score2 + sc;
+document.form.cl1[n-1].value=sc;
+document.form.total.value=score1;
+document.form.score.value=score2;
+sc=0;
+roll=0;
+}
+}
+if (n > 6) {
+ck= (document.form.cl2[n-7].value);
+if (ck == ""){
+bxck++;
+var sc=0;
+if ((n==7) || (n==8)) {
+for (z=1; z<7; z++) {
+hits[z]=0;
+}
+h3=0;
+h4=0;
+for (z = 1; z < 6; z++) {
+v=Dice[z];
+dtot=dtot+v;
+hits[v]++;
+}
+for (z =1; z<7 ;z++) {
+if ((n==7) && (hits[z] >= 3))   {
+h3=1;
+sc=dtot;
+document.form.cl2[n-7].value=sc;
+score2=score2+sc;
+document.form.score.value=score2;
+}
+else if ((n==8) && (hits[z] >= 4)) {
+h4=1;
+sc=dtot;
+document.form.cl2[n-7].value=sc;
+score2=score2+sc;
+document.form.score.value=score2;
+}
+}
+if ((n==7) && (h3==0)) {
+document.form.cl2[n-7].value="0";
+}
+if ((n==8) && (h4==0)) {
+document.form.cl2[n-7].value="0";
+}
+}
+
+if (n==9) {
+h1=0;
+h2=0;
+for (h=1; h<7; h++) {
+hits[h]=0;
+}
+for (z = 1; z < 6; z++) {
+v=Dice[z];
+hits[v]++;
+}
+for (x=1; x<7; x++) {
+if (hits[x]==2) {
+h1=1; }
+if (hits[x]==3) {
+h2=1; }
+}
+if ((h1==1) && (h2==1)) {
+sc=25;
+document.form.cl2[n-7].value=sc;
+score2=score2+sc;
+document.form.score.value=score2;
+roll=0;
+}
+if ((h1 !==1) || (h2 !==1)) {
+sc=0;
+document.form.cl2[n-7].value="0";
+score2=score2+sc;
+document.form.score.value=score2;
+}
+}
+
+if ((n==10) || (n==11)) {
+var strt = new Array(7);
+straight=new String("");
+for (x=1; x<7; x++) {
+strt[x]="";
+}
+for (z=1; z<6; z++) {
+v=Dice[z];
+strt[v]=v;
+}
+for (y=1; y<7; y++) {
+if (strt[y] !== ""){
+straight=straight+strt[y];
+}
+}
+if (n==10) {
+if (straight=="13456") {
+straight = "3456";
+}
+if ((straight.slice(0,4)=="1234") || (straight.slice(0,4)=="2345")  || (straight.slice(0,4)=="3456")) {
+sc=30;
+document.form.cl2[n-7].value=sc;
+score2=score2+sc;
+document.form.score.value=score2;
+roll=0;
+}
+if ((straight.slice(0,4) !=="1234") && (straight.slice(0,4) !=="2345") && (straight.slice(0,4) !=="3456") && (n==10)) {
+sc=0;
+document.form.cl2[n-7].value="0";
+score2=score2+sc;
+document.form.score.value=score2;
+roll=0;
+}
+}
+if (n==11) {
+if ((straight == "12345") || (straight =="23456")) {
+sc=40;
+document.form.cl2[n-7].value=sc;
+score2=score2+sc;
+document.form.score.value=score2;
+roll=0;
+}
+if ((straight !== "12345") && (straight !== "23456") && (n==11)) {
+sc=0;
+document.form.cl2[n-7].value="0";
+score2=score2+sc;
+document.form.score.value=score2;
+roll=0;
+}
+}
+}
+
+if (n==12) {
+for (z=1; z<6; z++) {
+sc=sc+Dice[z];
+}
+document.form.cl2[n-7].value=sc;
+score2=score2+sc;
+document.form.score.value=score2;
+sc=0;
+roll=0;
+}
+if (n==13) {
+y=0;
+for (h=1; h<7; h++) {
+hits[h]=0;
+}
+for (z = 1; z < 6; z++) {
+v=Dice[z];
+hits[v]++;
+}
+for (x=1; x<7; x++) {
+if (hits[x]==5) {
+y=1; }
+}
+if (y==1) {
+sc=50;
+document.form.cl2[n-7].value=sc;
+score2=score2+sc;
+document.form.score.value=score2;
+roll=0;
+sc=0;
+}
+if (y !==1) {
+sc=0;
+document.form.cl2[n-7].value=sc;
+roll=0;
+sc=0;
+}
+}
+}
+}
+for (ckl = 0; ckl < 5; ckl++)
+{document.form.ckbox[ckl].checked = false;
+}
+sc=0;
+roll=0;
+document.diceroll.roll.value="Roll ";
+document.images['dice1-pic'].src = "dice0.gif";
+document.images['dice2-pic'].src = "dice0.gif";
+document.images['dice3-pic'].src = "dice0.gif";
+document.images['dice4-pic'].src = "dice0.gif";
+document.images['dice5-pic'].src = "dice0.gif";
+if (bxck==13) {
+alert ("Game Over. Your score is " + score2 + ".");
+gameover= 1;
+if (score2>hs){
+hs=score2;
+document.form.high.value=hs;
+}
+bon=0;
+score1=0;
+score2=0;
+document.form.cl2[6].value="";
+document.form.bonus.value="";
+document.form.total.value="";
+document.form.score.value="";
+bxck=0;
+}
+}
+}
+
+//-->
+</SCRIPT>
+</head>
+
+<body onload="Init();" style="background-color:#005400; width:472px; height:268px; margin:0px; padding:2px;">
+<div align="center">
+<form name="diceroll" action="open">
+<table align="center">
+<tr>
+<td align="center" width=50 height=30><INPUT style="width:40px;" class="i1" onclick='Play()' type=button value=Roll name=roll /></td>
+<td align="center"><img height=30 width=30 src="dice0.gif" alt="" border="1" name="dice1-pic" /></td>
+<td align="center"><img height=30 width=30 src="dice0.gif" alt="" border="1" name="dice2-pic" /></td>
+<td align="center"><img height=30 width=30 src="dice0.gif" alt="" border="1" name="dice3-pic" /></td>
+<td align="center"><img height=30 width=30 src="dice0.gif" alt="" border="1" name="dice4-pic" /></td>
+<td align="center"><img height=30 width=30 src="dice0.gif" alt="" border="1" name="dice5-pic" /></td>
+<td align="center" width=50 height=30><span style="color:#eeeecc; font-weight:bold;" id="rollNum">&nbsp;</span></td>
+</tr>
+</table>
+</form>
+<form name="form" action="open"><input type="hidden" class="i1" size="5"><input type="hidden" class="i1" size="5" />
+<table align="center">
+<tr>
+<td align="center" width=50 height=20><font color="#ffffcc"><b>Keep:</b></font></td>
+<td align="center" width=30 height=20><input type="checkbox" value="ON" name="ckbox" /></td>
+<td align="center" width=30 height=20><input type="checkbox" value="ON" name="ckbox" /></td>
+<td align="center" width=30 height=20><input type="checkbox" value="ON" name="ckbox" /></td>
+<td align="center" width=30 height=20><input type="checkbox" value="ON" name="ckbox" /></td>
+<td align="center" width=30 height=20><input type="checkbox" value="ON" name="ckbox" /></td>
+<td align="center" width=50 height=30><span style="color:#eeeecc; font-weight:bold;">&nbsp;</span></td>
+</tr>
+</table>
+<table align="center" width="311">
+<tr>
+<td align="center" width=24></td>
+<td style="cursor:pointer;" onclick="col1(1);" align="center" width=92 bgColor=#eeeecc><a href="javascript:col1(1);">1's </a></td>
+<td width=49><input disabled="disabled" class="i1" size="5" name="cl1" /></td>
+<td style="cursor:pointer;" onclick="col1(7);" width=103 bgColor=#ccccee><a href="javascript:col1(7);">3 of a kind </a></td>
+<td width=47><input disabled="disabled" class="i1" size="5" name="cl2" /></td>
+</tr>
+<tr>
+<td align="center" width=24></td>
+<td style="cursor:pointer;" onclick='col1(2)' align="center" width=92 bgColor=#eeeecc><a href="javascript:col1(2);">2's </a></td>
+<td width=49><input disabled="disabled" class="i1" size=5 name=cl1></td>
+<td style="cursor:pointer;" onclick='col1(8)' width=103 bgColor=#ccccee><a href="javascript:col1(8);">4 of a kind </a></td>
+<td width=47><input disabled="disabled" class="i1" size=5 name=cl2></td>
+</tr>
+<tr>
+<td align="center" width=24></td>
+<td style="cursor:pointer;" onclick='col1(3)' align="center" width=92 bgColor=#eeeecc><a href="javascript:col1(3);">3's </a></td>
+<td width=49><input disabled="disabled" class="i1" size=5 name=cl1> </td>
+<td style="cursor:pointer;" onclick='col1(9)' width=103 bgColor=#ccccee><a href="javascript:col1(9);">Full House </a></td>
+<TD width=47><input disabled="disabled" class="i1" size=5 name=cl2></td>
+</tr>
+<tr>
+<td align="center" width=24></td>
+<td style="cursor:pointer;" onclick='col1(4)' align="center" width=92 bgColor=#eeeecc><a href="javascript:col1(4);">4's </a></td>
+<td width=49><input disabled="disabled" class="i1" size=5 name=cl1></td>
+<td style="cursor:pointer;" onclick='col1(10)' width=103 bgColor=#ccccee><a href="javascript:col1(10);">Sm. Straight </a></td>
+<td width=47><input disabled="disabled" class="i1" size=5 name=cl2></td>
+</tr>
+<tr>
+<td align="center" width=24></td>
+<td style="cursor:pointer;" onclick='col1(5)' align="center" width=92 bgColor=#eeeecc><a href="javascript:col1(5);">5's </a></td>
+<td width=49><input disabled="disabled" class="i1" size=5 name=cl1></td>
+<td style="cursor:pointer;" onclick='col1(11)' width=103 bgColor=#ccccee><a href="javascript:col1(11);">Lg. Straight </a></td>
+<td width=47><input disabled="disabled" class="i1" size=5 name=cl2></td>
+</tr>
+<tr>
+<td align="center" width=24></td>
+<td style="cursor:pointer;" onclick='col1(6)' align="center" width=92 bgColor=#eeeecc><a href="javascript:col1(6);">6's </a></td>
+<td width=49><input disabled="disabled" class="i1" size=5 name=cl1></td>
+<td style="cursor:pointer;" onclick='col1(12)' width=103 bgColor=#ccccee><a href="javascript:col1(12);">Anything</a></td>
+<td width=47><input disabled="disabled" class="i1" size=5 name=cl2></td>
+</tr>
+<tr>
+<td align="center" width=24></td>
+<td align="center" width=92 bgColor=#eeeecc><B><FONT color=#ff0000>Bonus</FONT></B></td>
+<td width=49><input disabled="disabled" class="i1" size=5 name=bonus></td>
+<td style="cursor:pointer;" onclick='col1(13)' width=103 bgColor=#ccccee><a href="javascript:col1(13);">Yahtzee</a></td>
+<td width=47><input disabled="disabled" class="i1" size=5 name=cl2></td>
+</tr>
+<tr>
+<td align="center" width=24></td>
+<td align="center" width=92 bgColor=#eeaaaa><B>Total </B></td>
+<td width=49><input disabled="disabled" class="i1" size=5 name=total></td>
+<td width=103><B><FONT color=#ffff00>Total Score </FONT></B></td>
+<td width=47><input disabled="disabled" class="i1" size=5 name=score></td>
+</tr>
+<tr>
+<td align="center" width=24></td>
+<td align="center" width=92><FONT color=#ffa851><B>High Score</B></FONT></td>
+<td width=49><input disabled="disabled" size=5 class="i1" name=high></td>
+<td width=103><input onclick="Init();" type="button" class="i1" value="New Game" /></td>
+<td width=47>&nbsp;</td>
+</tr>
+</table>
+</form>
+  <div align="center"></div>
+</div>
+</body>
+</html>

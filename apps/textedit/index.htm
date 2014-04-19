@@ -1,0 +1,50 @@
+<script type="text/javascript">
+	function cookieSave(name, text) {
+		document.cookie = name + "=" + escape(text);
+	}
+
+	function cookieLoad(name) {
+		var search = name + "=";
+		if (document.cookie.length > 0) {
+			offset = document.cookie.indexOf(search);
+			if (offset != -1) {
+				offset += search.length;
+				end = document.cookie.indexOf(";", offset);
+				if (end == -1) {
+					end = document.cookie.length;
+				}
+				return unescape(document.cookie.substring(offset, end));
+			}
+		}
+	}
+</script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_popupMsg(msg) { //v1.0
+  alert(msg);
+}
+//-->
+</script><body bgcolor="#EBE9ED">
+
+
+
+
+<form id="editForm">
+  <div align="center">
+    <input name="Load" type="submit" id="Load" onClick="MM_popupMsg('Currently unavailable.')" value="Load">
+    <input name="Save" type="submit" id="Save" onClick="MM_popupMsg('Currently unavailable.')" value="Save">
+    <br>
+    <textarea id="editArea" style="width:100%;height:140px;border:1px solid #999;" onChange="cookieSave('editArea',this.value)"></textarea>
+  </div>
+  </form>
+
+<p>
+  <script type="text/javascript">
+	document.getElementById('editArea').value=cookieLoad('editArea');
+	if (document.getElementById('editArea').value="undefined" ){
+		document.getElementById('editArea').value=""
+	}
+</script>
+</p>
+<p>The text editor is currently in development, so there is no save/load function. 
+</p>

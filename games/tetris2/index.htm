@@ -1,0 +1,555 @@
+<HTML>
+
+<!-- PSPTetris v1.00 - Cristian Gadea - webtopsp@gmail.com - http://www.webtopsp.com/ - Apr 2005
+Uses code from free sources (originally javascript.sk, no longer online)
+You may modify and rehost this script as long as webtopsp.com is credited, preferably on the game screen -->
+
+<HEAD>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var acti=0
+var timerID = null
+var timerINT = 500                             
+var scrn = new Array(220)                      
+var icons = new Array(8)                          
+icons[0]=new Image();icons[0].src="bl0.gif"
+icons[1]=new Image();icons[1].src="bl1.gif"
+icons[2]=new Image();icons[2].src="bl2.gif"
+icons[3]=new Image();icons[3].src="bl3.gif"
+icons[4]=new Image();icons[4].src="bl4.gif"
+icons[5]=new Image();icons[5].src="bl5.gif"
+icons[6]=new Image();icons[6].src="bl6.gif"
+icons[7]=new Image();icons[7].src="bl7.gif"
+icons[8]=new Image();icons[8].src="bl8.gif"
+var styl = new Array(280)                       
+var tmps = new Array(10)                        
+var lv = 1                                      
+var rst = 1                                     
+
+var bb1 = 0                                     
+var bb2 = 0
+var bb3 = 0
+var bb4 = 0
+var bbo = 0
+
+var hcp = 0                                     
+var hcr = 0
+var hcx = 0
+var hcy = 0
+var hcf = 0
+
+var nowp = 5
+var nowr = 0
+var nowx = 3
+var nowy = 0
+var movf = 0                                    
+var chkf = 0
+
+var total = 0
+var score = 0                                   
+var lvltotal = 0
+
+function interval1(){
+  clearTimeout(timerID)
+  DownCheck()
+  timerID = setTimeout("interval1()",timerINT)
+}
+
+function start(){
+
+ systm=""
+ ver=navigator.appVersion
+ Nv=ver.charAt(0)
+ len=ver.length
+ for(iln=0;iln<len;iln++) if(ver.charAt(iln)=="(") break
+ systm = ver.charAt(iln+1).toUpperCase()
+
+for (ia=0; ia<220; ia++){
+scrn[ia]=0
+}
+bb1 = 0
+bb2 = 0
+bb3 = 0
+bb4 = 0
+bbo = 0
+nowp = 5
+nowr = 0
+nowx = 3
+nowy = 0
+total = 0
+score = 0
+lvltotal=0
+if (rst == 1){
+    document.TetriScript.LINE.value = "0"
+    document.TetriScript.PTS.value = "0"
+	document.TetriScript.LVL.value = lv
+}else{
+    document.TetriScript.LINE.value = "0"
+    if (systm != "C"){if (Nv >= 4){
+                              document.TetriScript.PTS.value = "0"
+                                   }else{
+                              document.TetriScript.PTS.value = "0"
+                                   }
+    }else{
+                              document.TetriScript.PTS.value = "0"
+    }
+}
+
+
+for (ia=0; ia<22; ia++){
+for (ib=0; ib<10; ib++){
+iaa=ia*10+ib+16
+SetIcon(0,iaa)
+}
+}
+ if (rst == 1){
+  WriNxt()
+  nowp = patn
+  nowr = rotat
+  WriScr()
+  WriNxt()
+  acti=1
+  rst =0
+    timerID = setTimeout("interval1()",10)
+
+
+ }else{
+  lv=1
+  document.TetriScript.LVL.value = lv
+  for (iaa=0; iaa<16; iaa++){
+  SetIcon (0,iaa)
+  rst=1
+  acti=0
+    clearTimeout(timerID)
+  }
+ }
+}
+
+function SetIcon(flag, position){
+document.images[position].src=icons[flag].src
+}
+
+
+function WriNxt(){
+
+  with (Math) {
+    patn = floor(random()*7)+1
+    rotat = floor(random()*4)
+  }
+
+  for (iaa=0; iaa<16; iaa++){
+  SetIcon (0,iaa)
+  }
+
+  offset=patn*40 + rotat*10 - 40
+
+     outpos=styl[offset]*4+styl[offset+1]-5
+     SetIcon (patn,outpos)
+
+     outpos=styl[offset+2]*4+styl[offset+3]-5
+     SetIcon (patn,outpos)
+
+     outpos=styl[offset+4]*4+styl[offset+5]-5
+     SetIcon (patn,outpos)
+
+     outpos=styl[offset+6]*4+styl[offset+7]-5
+     SetIcon (patn,outpos)
+}
+
+
+function WriScr(){
+
+  if (movf == 0){
+  SetIcon (0,bb1)
+  SetIcon (0,bb2)
+  SetIcon (0,bb3)
+  SetIcon (0,bb4)
+  }
+  movf=0
+  offset=nowp*40+nowr*10-40
+  bbo = offset
+
+     outpos=(styl[offset]+nowy)*10+styl[offset+1]+nowx+5
+     SetIcon (nowp,outpos)
+     bb1=outpos
+
+     outpos=(styl[offset+2]+nowy)*10+styl[offset+3]+nowx+5
+     SetIcon (nowp,outpos)
+     bb2=outpos
+
+     outpos=(styl[offset+4]+nowy)*10+styl[offset+5]+nowx+5
+     SetIcon (nowp,outpos)
+     bb3=outpos
+
+     outpos=(styl[offset+6]+nowy)*10+styl[offset+7]+nowx+5
+     SetIcon (nowp,outpos)
+     bb4=outpos
+
+}
+
+
+function LeftClick(){
+if (acti == 1){
+  iab=styl[bbo+1]+nowx
+  if (iab >= 2){
+    iab=styl[bbo+3]+nowx
+    if (iab >= 2){
+      iab=styl[bbo+5]+nowx
+      if (iab >= 2){
+        iab=styl[bbo+7]+nowx
+        if (iab >= 2){
+          hcp=nowp
+          hcr=nowr
+          hcx=nowx-1
+          hcy=nowy
+          HitChk(hcp,hcr,hcx,hcy)
+          if (hcf == 0){
+            nowx=nowx-1
+            WriScr()
+          }
+        }
+      }
+    }
+  }
+}
+}
+
+function RightClick(){
+if (acti == 1){
+  iab=styl[bbo+1]+nowx
+  if (iab <= 9){
+    iab=styl[bbo+3]+nowx
+    if (iab <= 9){
+      iab=styl[bbo+5]+nowx
+      if (iab <= 9){
+        iab=styl[bbo+7]+nowx
+        if (iab <= 9){
+          hcp=nowp
+          hcr=nowr
+          hcx=nowx+1
+          hcy=nowy
+          HitChk(hcp,hcr,hcx,hcy)
+          if (hcf == 0){
+            nowx=nowx+1
+            WriScr()
+          }
+        }
+      }
+    }
+  }
+}
+}
+
+function RotateClick(){
+if (acti == 1){
+          hcp=nowp
+          hcr=nowr+1
+          if (hcr == 4){hcr=0}
+          hcx=nowx
+          hcy=nowy
+  iaoff=hcp*40 + hcr*10 - 40
+  iab=styl[iaoff+1]+hcx
+  if (iab <= 10){
+  if (iab >= 1 ){
+  iab=styl[iaoff+0]+hcy
+  if (iab <= 22){
+  if (iab >= 1 ){
+    iab=styl[iaoff+3]+hcx
+    if (iab <= 10){
+    if (iab >= 1 ){
+    iab=styl[iaoff+2]+hcy
+    if (iab <= 22){
+    if (iab >= 1 ){
+      iab=styl[iaoff+5]+hcx
+      if (iab <= 10){
+      if (iab >= 1 ){
+      iab=styl[iaoff+4]+hcy
+      if (iab <= 22){
+      if (iab >= 1 ){
+        iab=styl[iaoff+7]+hcx
+        if (iab <= 10){
+        if (iab >= 1 ){
+        iab=styl[iaoff+6]+hcy
+        if (iab <= 22){
+        if (iab >= 1 ){
+          HitChk(hcp,hcr,hcx,hcy)
+          if (hcf == 0){
+            nowr=hcr
+            WriScr()
+          }
+        }
+        }
+        }
+        }
+      }
+      }
+      }
+      }
+    }
+    }
+    }
+    }
+  }
+  }
+  }
+  }
+}
+}
+
+function ChangeLVL(){
+
+	if (acti == 0){
+		if (rst == 1){
+		if (lv == 1) {lv==0}
+		lv=lv+1
+		 if (lv == 5){lv=1}
+		 timerINT = 600-(lv * 100)
+			document.TetriScript.LVL.value = lv
+		}
+	}
+
+}
+function DownCheck(){
+if (acti == 1){
+  chkf=0
+  iab=styl[bbo+0]+nowy
+  if (iab <= 21){
+    iab=styl[bbo+2]+nowy
+    if (iab <= 21){
+      iab=styl[bbo+4]+nowy
+      if (iab <= 21){
+        iab=styl[bbo+6]+nowy
+        if (iab <= 21){
+
+          hcp=nowp
+          hcr=nowr
+          hcx=nowx
+          hcy=nowy+1
+          HitChk(hcp,hcr,hcx,hcy)
+          if (hcf == 0){
+            nowy=nowy+1
+            WriScr()
+            chkf=1
+          }
+        }
+      }
+    }
+  }
+
+  if (chkf == 0){
+    tmps[0]=(styl[bbo+0]+nowy-1)*10
+    iab=tmps[0]+styl[bbo+1]+nowx-1
+    scrn[iab]=nowp
+    tmps[1]=(styl[bbo+2]+nowy-1)*10
+    iab=tmps[1]+styl[bbo+3]+nowx-1
+    scrn[iab]=nowp
+    tmps[2]=(styl[bbo+4]+nowy-1)*10
+    iab=tmps[2]+styl[bbo+5]+nowx-1
+    scrn[iab]=nowp
+    tmps[3]=(styl[bbo+6]+nowy-1)*10
+    iab=tmps[3]+styl[bbo+7]+nowx-1
+    scrn[iab]=nowp
+    tmps[4]=-1
+    tmps[5]=-1
+    tmps[6]=-1
+    tmps[7]=-1
+    tmps[8]=0
+  for (iae=0; iae<4; iae++){
+   iag=tmps[iae]
+   iah=1
+   if (tmps[4] == iag){iah=0}
+   if (tmps[5] == iag){iah=0}
+   if (tmps[6] == iag){iah=0}
+   if (tmps[7] == iag){iah=0}
+   for (iaf=0; iaf<10; iaf++){
+    if (scrn[iag+iaf] == 0){iah=0}
+   }
+    if (iah == 1){
+      tmps[8]=tmps[8]+1             
+      total=total+1
+	  lvltotal=lvltotal+1
+      tmps[iae+4]=iag               
+      for (iaf=0; iaf<10; iaf++){
+       SetIcon(8,iag+iaf+16)
+      }
+    }
+  }
+  if (tmps[8] == 1){score=score+(lv*40+40)}
+  if (tmps[8] == 2){score=score+(lv*100+100) }
+  if (tmps[8] == 3){score=score+(lv*300+300)}
+  if (tmps[8] == 4){score=score+(lv*1200+1200)}
+    document.TetriScript.LINE.value = total
+    document.TetriScript.PTS.value = score
+    if (lvltotal >= 10){
+		lvltotal=0
+		lv=lv+1
+		if (lv >= 4){lv=4}
+		timerINT = 600-(lv * 100)
+		document.TetriScript.LVL.value = lv
+    }
+
+    if (tmps[4] >= tmps[5]){
+       tmps[9]=tmps[4]
+       tmps[4]=tmps[5]
+       tmps[5]=tmps[9]
+    }
+    if (tmps[4] >= tmps[6]){
+       tmps[9]=tmps[4]
+       tmps[4]=tmps[6]
+       tmps[6]=tmps[9]
+    }
+    if (tmps[4] >= tmps[7]){
+       tmps[9]=tmps[4]
+       tmps[4]=tmps[7]
+       tmps[7]=tmps[9]
+    }
+    if (tmps[5] >= tmps[6]){
+       tmps[9]=tmps[5]
+       tmps[5]=tmps[6]
+       tmps[6]=tmps[9]
+    }
+    if (tmps[5] >= tmps[7]){
+       tmps[9]=tmps[5]
+       tmps[5]=tmps[7]
+       tmps[7]=tmps[9]
+    }
+    if (tmps[6] >= tmps[7]){
+       tmps[9]=tmps[6]
+       tmps[6]=tmps[7]
+       tmps[7]=tmps[9]
+    }
+    
+    for (ial=0; ial<4; ial++){
+      if (tmps[4+ial] != -1){
+          for (iam=0; iam<(tmps[4+ial]-10); iam++){
+            ian=tmps[4+ial]-1-iam
+            scrn[ian+10]=scrn[ian]
+          }
+          for (iam=0; iam<10; iam++){scrn[iam]=0}
+      }
+    }
+    for (iam=0; iam<220; iam++){SetIcon(scrn[iam],iam+16)}
+
+    nowx=3
+    nowy=0
+    nowp=patn
+    nowr=rotat
+    movf=1
+    WriScr()
+      hcp=nowp
+      hcr=nowr
+      hcx=nowx
+      hcy=nowy
+      HitChk(hcp,hcr,hcx,hcy)
+       if (hcf == 1){acti=0
+					 alert('Final Score: ' + score)
+                     clearTimeout(timerID)
+                    }
+    WriNxt()
+  }
+}
+}
+
+function HitChk(hcp,hcr,hcx,hcy){
+hcf=0                                      
+  iaoff=hcp*40 + hcr*10 - 40
+    iad=(styl[iaoff+0]+hcy)*10+styl[iaoff+1]+hcx-11
+    if (scrn[iad] >= 1){hcf=1}
+    iad=(styl[iaoff+2]+hcy)*10+styl[iaoff+3]+hcx-11
+    if (scrn[iad] >= 1){hcf=1}
+    iad=(styl[iaoff+4]+hcy)*10+styl[iaoff+5]+hcx-11
+    if (scrn[iad] >= 1){hcf=1}
+    iad=(styl[iaoff+6]+hcy)*10+styl[iaoff+7]+hcx-11
+    if (scrn[iad] >= 1){hcf=1}
+}
+
+function keyDown(DnEvents){
+  k=DnEvents.which
+  if (k == 50){DownCheck()}                    
+  if (k == 53){RotateClick()}                  
+  if (k == 76){RotateClick()}                  
+  if (k == 108){RotateClick()}                 
+  if (k == 54){RightClick()}                   
+  if (k == 52){LeftClick()}                    
+  if (k == 83){start()}                        
+  if (k == 115){start()}                       
+
+}
+
+ systm=""
+ ver=navigator.appVersion
+ Nv=ver.charAt(0)
+ len=ver.length
+ for(iln=0;iln<len;iln++) if(ver.charAt(iln)=="(") break
+ systm = ver.charAt(iln+1).toUpperCase()
+ 
+ if (systm != "C"){if (Nv >= 4){
+  document.onkeydown = keyDown
+  document.captureEvents(Event.KEYDOWN)
+ }}
+
+
+//-->
+</SCRIPT>
+</HEAD>
+
+<BODY TEXT="#000000" VLINK="#FF0000" bgcolor="#333333" onload="window.scrollTo(0,999);document.TetriScript.N1.focus();">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+document.write("<table border=0 width=480 id=table1 cellspacing=0 cellpadding=0><tr><td valign=top width=33%><center><table border=1 id=table2 cellspacing=0 cellpadding=0 style=\"border-collapse: collapse\" bordercolor=#000000><tr><td>")
+
+for (ia=0; ia<220; ia++){
+scrn[ia]=0
+}
+
+for (ia=0; ia<4; ia++){
+document.write("<IMG BORDER=0 WIDTH=12 HEIGHT=12 SRC='bl0.gif'><IMG BORDER=0 WIDTH=12 HEIGHT=12 SRC='bl0.gif'><IMG BORDER=0 WIDTH=12 HEIGHT=12 SRC='bl0.gif'><IMG BORDER=0 WIDTH=12 HEIGHT=12 SRC='bl0.gif'><BR>")
+}
+document.write("</td></tr></table></center></td><td width=33%><table border=1 id=table2 cellspacing=0 cellpadding=0 style=\"border-collapse: collapse\" bordercolor=#000000><tr><td valign=top>")
+
+for (ia=0; ia<22; ia++){
+document.write("<CENTER><IMG BORDER=0 WIDTH=12 HEIGHT=12 SRC='bl0.gif'><IMG BORDER=0 WIDTH=12 HEIGHT=12 SRC='bl0.gif'><IMG BORDER=0 WIDTH=12 HEIGHT=12 SRC='bl0.gif'><IMG BORDER=0 WIDTH=12 HEIGHT=12 SRC='bl0.gif'><IMG BORDER=0 WIDTH=12 HEIGHT=12 SRC='bl0.gif'><IMG BORDER=0 WIDTH=12 HEIGHT=12 SRC='bl0.gif'><IMG BORDER=0 WIDTH=12 HEIGHT=12 SRC='bl0.gif'><IMG BORDER=0 WIDTH=12 HEIGHT=12 SRC='bl0.gif'><IMG BORDER=0 WIDTH=12 HEIGHT=12 SRC='bl0.gif'><IMG BORDER=0 WIDTH=12 HEIGHT=12 SRC='bl0.gif'></CENTER>")
+}
+document.write("</td></tr></table></td><td valign=top width=33%>")
+
+tmps[1]="22233233--22233233--22233233--22233233--"
+tmps[2]="12212223--12212232--21222332--12222332--"
+tmps[3]="13222332--21223233--13222332--21223233--"
+tmps[4]="12222333--22233132--12222333--22233132--"
+tmps[5]="12223233--23313233--22233343--22232432--"
+tmps[6]="13233233--21222333--22233242--22323334--"
+tmps[7]="13233343--21222324--13233343--21222324--"
+
+for (ib=1; ib<8; ib++){
+for (ia=0; ia<40; ia++){
+ ic = tmps[ib].charAt(ia)
+ iz = ib * 40 + ia - 40
+ styl[iz] = 4
+   if (ic == "1"){styl[iz] = 1}
+   if (ic == "2"){styl[iz] = 2}
+   if (ic == "3"){styl[iz] = 3}
+   if (ic == "4"){styl[iz] = 4}
+
+
+}
+}
+ systm=""
+ ver=navigator.appVersion
+ Nv=ver.charAt(0)
+ len=ver.length
+ for(iln=0;iln<len;iln++) if(ver.charAt(iln)=="(") break
+ systm = ver.charAt(iln+1).toUpperCase()
+ 
+ if (systm != "C"){
+document.write('<form name="TetriScript"><table><tr><td colspan=2>&nbsp;<img src=logo.gif height=50 width=150 border=0></td></tr><tr><td valign=bottom><p><CENTER><A HREF="#" onfocus="if (acti == 1){LeftClick();document.TetriScript.B2.focus();}else{document.TetriScript.N1.focus();}"><img src="1x1.gif" height=1 width=1 border=0 name="B4" ></A><input type="button" name="B2" onclick="RotateClick();" style="background-color: #333333; cursor: default; border: none; color: black; cursor: default; text-align: right"><A HREF="#" onfocus="if (acti == 1){RightClick();document.TetriScript.B2.focus();}else{document.TetriScript.N1.focus();}"><img src="1x1.gif" height=1 width=1 border=0 name="B3"></A> <br><A HREF="#" onfocus="if (acti == 1){DownCheck();document.TetriScript.B2.focus();}else{document.TetriScript.N1.focus();}"><img src="1x1.gif" height=1 width=1 border=0 name="B5" ></A></CENTER></td><td><input type="button" value="START/RESET" name="N1" onclick="start();document.TetriScript.B2.focus();window.scrollTo(0,9999);"><br><input type="button" value=" SET LEVEL " name="L1" onclick="ChangeLVL();"><br><br><font color="#999999">Score:</font><BR><input type="text" name="PTS" size="10" value="0"><br><font color="#999999">Level:</font><BR><input type="text" name="LVL" size="10" value="1"><br><font color="#999999">Lines:</font><BR><input type="text" name="LINE" size="10" value="0"></p></td></tr></table></form>')
+}else{
+ document.write('<FONT color="#FFFFFF">Internet Explorer not supported :(</FONT>')
+}
+
+document.write("</td></tr></table>")
+//-->
+</SCRIPT>
+
+</BODY>
+</HTML>

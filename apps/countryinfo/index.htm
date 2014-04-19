@@ -1,0 +1,438 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>European Country Information</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+Body {margin-top: 3; margin-left: 0; margin-right: 0; padding: 0px; font-family: arial, helvetica, tahoma, sans-serif;}
+div {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+div.d1 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 12pt; font-weight: bold; color: green; text-decoration: underline;}
+div.d2 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+div.d3 {text-align: right; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+div.d4 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+div.d5 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 8pt; font-weight: normal; color: #000000;}
+td.td1 {text-align: left; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+input {text-align: left; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;  width: 240;}
+input.i2 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000; width: 70;}
+input.i3 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000; width: 95;}
+select {text-align: left; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+a {font-family: arial, helvetica, tahoma, sans-serif; font-size: 8pt; text-decoration: underline;}
+:link {color: blue;}
+:visited {color: blue;}
+:hover {color: green;}
+a.a2 {text-align: left; text-decoration: none; font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; text-decoration: none;}
+:link.a2 {color: #000000;}
+:visited.a2 {color: #000000;}
+:hover.a2 {color: #000000;}
+-->
+</style>
+<script language="javascript" type="text/javascript">
+<!-- Original:  Jim (smokin19@idt.net) -->
+<!-- This script and many more are available free online at -->
+<!-- The JavaScript Source!! http://javascript.internet.com -->
+<!-- Begin
+/* KML - 21 thru 28 Feb 2006 - Copied from state info - Added European Countries to the list
+*/
+var country = new Array(50);
+var capital = new Array(50);
+var money = new Array(50);
+var language = new Array(50);
+var IDD = new Array(50);
+
+//Countries
+country[0] = "Albania";
+capital[0] = "Tirana";
+money[0] = "Lek (ALL)";
+language[0] = "Albanian (Tosk)";
+IDD[0] = "355";
+
+country[1] = "Andorra";
+capital[1] = "Andorra la Vella";
+money[1] = "€ - Euro";
+language[1] = "Catalan";
+IDD[1] = "376";
+
+country[2] = "Austria";
+capital[2] = "Vienna";
+money[2] = "Euro (EUR)";
+language[2] = "German + Others";
+IDD[2] = "43";
+
+country[3] = "Belarus";
+capital[3] = "Minsk";
+money[3] = "B'rus Ruble";
+language[3] = "Bealarusian";
+IDD[3] = "375";
+
+country[4] = "Belgium";
+capital[4] = "Brussels";
+money[4] = "€ - Euro";
+language[4] = "Dutch & French";
+IDD[4] = "32";
+
+country[5] = "Bosnia";
+capital[5] = "Sarajevo";
+money[5] = "marka (BAM)";
+language[5] = "Bosnian";
+IDD[5] = "387";
+
+country[6] = "Bulgaria";
+capital[6] = "Sofia";
+money[6] = "lev (BGL)";
+language[6] = "Bulgarian";
+IDD[6] = "359";
+
+country[7] = "Croatia";
+capital[7] = "Zagreb";
+money[7] = "kuna (HRK)";
+language[7] = "Croatain";
+IDD[7] = "385";
+
+country[8] = "Cyprus";
+capital[8] = "Nicosia";
+money[8] = "Cyp't £(CYP) + T'ish Lira(TRL)";
+language[8] = "Greek + Turkish + English";
+IDD[8] = "357";
+
+country[9] = "Czech Republic";
+capital[9] = "Prague";
+money[9] = "Czech koruna (CZK)";
+language[9] = "Czech";
+IDD[9] = "42";
+
+country[10] = "Denmark";
+capital[10] = "Copenhagen";
+money[10] = "Danish krone (DKK)";
+language[10] = "Danish";
+IDD[10] = "45";
+
+country[11] = "England";
+capital[11] = "London";
+money[11] = "Pound sterling (GBP)";
+language[11] = "English";
+IDD[11] = "44";
+
+country[12] = "Estonia";
+capital[12] = "Tallin";
+money[12] = "Estonian kroon (EEK)";
+language[12] = "Estonia + Russian";
+IDD[12] = "372";
+
+country[13] = "Finland";
+capital[13] = "Helsinki";
+money[13] = "Euro (EUR)";
+language[13] = "Finnish";
+IDD[13] = "358";
+
+country[14] = "France";
+capital[14] = "Paris";
+money[14] = "Euro (EUR) was Franc";
+language[14] = "French";
+IDD[14] = "33";
+
+country[15] = "Germany";
+capital[15] = "Berlin";
+money[15] = "Euro (EUR) was mark";
+language[15] = "German";
+IDD[15] = "49";
+
+country[16] = "Greece";
+capital[16] = "Athens";
+money[16] = "Euro (EUR)";
+language[16] = "Greek";
+IDD[16] = "30";
+
+country[17] = "Hungary";
+capital[17] = "Budapest";
+money[17] = "forint (HUF)";
+language[17] = "Hungarian";
+IDD[17] = "36";
+
+country[18] = "Iceland";
+capital[18] = "Reykjavik";
+money[18] = "Icelandic krona (ISK)";
+language[18] = "Icelandic";
+IDD[18] = "354";
+
+country[19] = "Ireland";
+capital[19] = "Dublin";
+money[19] = "Euro (EUR) - Punt";
+language[19] = "English & Irish (Gaelic)";
+IDD[19] = "353";
+
+country[20] = "Italy";
+capital[20] = "Rome";
+money[20] = "Euro (EUR) - Lira";
+language[20] = "Italien";
+IDD[20] = "39";
+
+country[21] = "Latvia";
+capital[21] = "Riga";
+money[21] = "Latvian lat (LVL)";
+language[21] = "Latvian";
+IDD[21] = "371";
+
+country[22] = "Liectenstein";
+capital[22] = "Vaduz";
+money[22] = "Swiss franc (CHF)";
+language[22] = "German";
+IDD[22] = "423";
+
+country[23] = "Lithuania";
+capital[23] = "Vilinus";
+money[23] = "litas (LTL)";
+language[23] = "Lithuanian";
+IDD[23] = "370";
+
+country[24] = "Luxenboug";
+capital[24] = "Luxenboug";
+money[24] = "Euro (EUR)";
+language[24] = "Luxembougish Ger&Fr";
+IDD[24] = "352";
+
+country[25] = "Macedonia";
+capital[25] = "Skopje";
+money[25] = "Macedonian denar (MKD)";
+language[25] = "Macedonian";
+IDD[25] = "389";
+
+country[26] = "Malta";
+capital[26] = "Valletta";
+money[26] = "Maltese lira (MTL)";
+language[26] = "Maltese & English";
+IDD[26] = "356";
+
+country[27] = "Moldova";
+capital[27] = "Chisinau";
+money[27] = "Moldovan leu (MDL)";
+language[27] = "Moldovan (Romainian)";
+IDD[27] = "373";
+
+country[28] = "Monaco";
+capital[28] = "Monaco";
+money[28] = "Euro (EUR)";
+language[28] = "French";
+IDD[28] = "377";
+
+country[29] = "N.Ireland (UK)";
+capital[29] = "Belfast";
+money[29] = "Pound (GBP)?";
+language[29] = "English & Irish (Gaelic)";
+IDD[29] = "44";
+
+country[30] = "Netherlands";
+capital[30] = "Amsterdam";
+money[30] = "Euro (EUR)";
+language[30] = "Dutch & Frisian";
+IDD[30] = "31";
+
+country[31] = "Norway";
+capital[31] = "Oslo";
+money[31] = "Norwegian krone (NOK)";
+language[31] = "Norwegian";
+IDD[31] = "47";
+
+country[32] = "Poland";
+capital[32] = "Warsaw";
+money[32] = "zloty (PLN)";
+language[32] = "Polish";
+IDD[32] = "48";
+
+country[33] = "Portugal";
+capital[33] = "Lisbon";
+money[33] = "Euro (EUR)";
+language[33] = "Portugeese & English";
+IDD[33] = "351";
+
+country[34] = "Romania";
+capital[34] = "Bucharest";
+money[34] = "Leu (RON)";
+language[34] = "Romanian";
+IDD[34] = "40";
+
+country[35] = "Russia";
+capital[35] = "Moscow";
+money[35] = "Ruble (RUB)";
+language[35] = "Russian";
+IDD[35] = "7";
+
+country[36] = "San Marino";
+capital[36] = "San Marino";
+money[36] = "Euro (EUR)";
+language[36] = "Italian";
+IDD[36] = "378";
+
+country[37] = "Scotland";
+capital[37] = "Glasgow";
+money[37] = "Pound sterling (GBP)";
+language[37] = "English & Scotish";
+IDD[37] = "44";
+
+country[38] = "Serbia & Montenegro";
+capital[38] = "Belgrade";
+money[38] = "Serbian Dinar (CSD) & Euro (EUR)";
+language[38] = "Serbian";
+IDD[38] = "381";
+
+country[39] = "Slovakia";
+capital[39] = "Bratislava";
+money[39] = "Slovak crown (koruna)";
+language[39] = "Slovak";
+IDD[39] = "421";
+
+country[40] = "Slovenia";
+capital[40] = "Ljubljana";
+money[40] = "Slovenski tolar (SIT)";
+language[40] = "Slovenian, Italian & Hungarian";
+IDD[40] = "386";
+
+country[41] = "Spain";
+capital[41] = "Madrid";
+money[41] = "Euro (EUR)";
+language[41] = "Spanish";
+IDD[41] = "34";
+
+country[42] = "Sweden";
+capital[42] = "Stockholm";
+money[42] = "Swedish korona";
+language[42] = "Swedish (Non official!!)";
+IDD[42] = "46";
+
+country[43] = "Switzerland";
+capital[43] = "Bern";
+money[43] = "Swiss franc (CHF)";
+language[43] = "German, French, Italian & Romanash";
+IDD[43] = "41";
+
+country[44] = "Turkey";
+capital[44] = "Ankara";
+money[44] = "New Turkish Lira (TRY)";
+language[44] = "Turkish";
+IDD[44] = "90";
+
+country[45] = "Ukraine";
+capital[45] = "Kiev";
+money[45] = "Hryvnia (UAH)";
+language[45] = "Ukrainian";
+IDD[45] = "380";
+
+country[46] = "Wales";
+capital[46] = "Cardiff";
+money[46] = "Pound sterling (GBP)";
+language[46] = "English, Welsh";
+IDD[46] = "44";
+
+country[47] = "";
+capital[47] = "";
+money[47] = "";
+language[47] = "";
+IDD[47] = "";
+
+country[48] = "";
+capital[48] = "";
+money[48] = "";
+language[48] = "";
+IDD[48] = "";
+
+country[49] = "";
+capital[49] = "";
+money[49] = "";
+language[49] = "";
+IDD[49] = "";
+
+function showInfo() {
+var page = document.triviaform;
+var choice = page.countrysList;
+
+for (var i = 0; i <= country.length; i++) {
+if (choice.options[choice.selectedIndex].value  == country[i]) {
+page.capital.value = capital[i];
+page.money.value = money[i];
+page.language.value = language[i];
+page.IDD.value = IDD[i];
+break;
+}
+else {
+page.capital.value = "";
+page.money.value = "";
+page.language.value = "";
+page.IDD.value = "";
+      }
+   }
+}
+//  End -->
+</script>
+</head>
+
+<body bgcolor="#EBE9ED">
+<div align="center">
+<form name="triviaform" action="open">
+<table align="center" width="350" border="2" bordercolor="#225AD5" cellspacing="2" cellpadding="3">
+<tr>
+<td class="td1" valign="middle">
+<div class="d1">European Information</div><br>
+<div class="d2">Select Country: <select name="countrysList" class="a2" size="1" onChange="showInfo()">
+<option value="">Select from list:
+<option value="Albania">Albania
+<option value="Andorra">Andorra
+<option value="Austria">Austria
+<option value="Belarus">Belarus
+<option value="Belgium">Belgium
+<option value="Bosnia">Bosnia
+<option value="Bulgaria">Bulgaria
+<option value="Croatia">Croatia
+<option value="Cyprus">Cyprus
+<option value="Czech Republic">Czech Republic
+<option value="Denmark">Denmark
+<option value="England">England
+<option value="Estonia">Estonia
+<option value="Finland">Finland
+<option value="France">France
+<option value="Germany">Germany
+<option value="Greece">Greece
+<option value="Hungary">Hungary
+<option value="Iceland">Iceland
+<option value="Ireland">Ireland
+<option value="Italy">Italy
+<option value="Latvia">Latvia
+<option value="Liectenstein">Liectenstein
+<option value="Lithuania">Lithuania
+<option value="Luxenboug">Luxenboug
+<option value="Macedonia">Macedonia
+<option value="Malta">Malta
+<option value="Moldova">Moldova
+<option value="Monaco">Monaco
+<option value="N.Ireland (UK)">N.Ireland (UK)
+<option value="Netherlands">Netherlands
+<option value="Norway">Norway
+<option value="Poland">Poland
+<option value="Portugal">Portugal
+<option value="Romania">Romania
+<option value="Russia">Russia
+<option value="San Marino">San Marino
+<option value="Scotland">Scotland
+<option value="Serbia & Montenegro">Serbia &amp; Montenegro
+<option value="Slovakia">Slovakia
+<option value="Slovenia">Slovenia
+<option value="Spain">Spain
+<option value="Sweden">Sweden
+<option value="Switzerland">Switzerland
+<option value="Turkey">Turkey
+<option value="Ukraine">Ukraine
+<option value="Wales">Wales
+</select></div>
+<div class="d3">
+Capital: <input type=text class="a2" size=34 name=capital><br>
+Currency: <input type=text class="a2" size=34 name=money><br>
+Language: <input type=text class="a2" size=34 name=language><br>
+IDD: <input type=text class="a2"  size=34 name=IDD></div><div class="d5">IDD = International Dialing Code</div>
+<div class="d4"><input name="button1" class="i2" type="button" onclick="window.location.href='../countryinfo/europeaninfo.html'" value="Clear"></div></td>
+</tr>
+</table>
+</form>
+</div>
+<br>
+<div align="center"><a href="../browserinfo/browserinfo.html"></div> 
+</body>
+</html>

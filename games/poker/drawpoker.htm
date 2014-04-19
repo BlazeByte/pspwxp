@@ -1,0 +1,309 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>Draw Poker</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style type="text/css">
+<!--
+Body {background-color: #ffffff; margin-top: 2; margin-left: 0; margin-right: 0; padding: 0px; font-family: arial, helvetica, tahoma, sans-serif;}
+div.div1 {text-align: center; font-family: arial, helvetica, tahoma, sans-serif; font-size: 8pt; font-weight: normal; color: white; text-decoration: none;}
+div.div2 {text-align: center; font-family: arial, helvetica, tahoma, sans-serif; font-size: 12pt; font-weight: bold; color: white; text-decoration: none;}
+a {font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; text-decoration: underline;}
+:link {color: blue;}
+:visited {color: blue;}
+:hover {color: green;}
+input.i1 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+:link.i1 {color: #000000;}
+:visited.i1 {color: #000000;}
+:hover.i1 {color: #000000;}
+-->
+</style>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<!-- This Draw Poker card game was designed by Kien Caoxuan -->
+<!-- http://users.bigpond.net.au/drkien/request.html -->
+<!-- http://users.bigpond.net.au/drkien/cards/index.html -->
+<!-- Modified for Sony PSP portal usage by TimW February 2006 -->
+<!-- Further modified for Sony PSP portal usage by KML (arnie) February 2006, and new play features added -->
+
+<script type="text/javascript">
+theBank=100000
+Sum=10000
+HandNo=1
+Deck=new Array()
+Pairs=new Array()
+CardNames=new Array()
+Suites=new Array("s","h","c","d")
+Count=new Array()
+Player=new Array()
+Dealer=new Array()
+Causes=new Array(
+"Four of a kind","Flush","Straight","Full House",
+"Three of a kind","More pairs","Higher pair",
+"Higher cards","Higher cards","Higher cards","Higher cards","Higher cards"
+)
+//KML - 17Feb2006 - Changed Text on two buttons, Quit --> Fold & The Lot to All In
+//KML - 17Feb2006 - Added variable HandNo
+//KML - 17Feb2006 - Altered endgame messages to include # of hands played.
+//KML - 17Feb2006 - Incremented Hand on pressing 'Next'
+//KML - 22Feb2006 - Added 'theBank' variable for variable timed games
+//KML - 22Feb2006 - Added min theBank value
+//KML - 28Feb2006 - (Pancake day) Added maple syrup to pancake, no wait added 3 buttons on page to select bank size!
+
+function bankSize(a)
+{
+theBank=a
+document.Form.Button.value="Select the Bank size"
+Deal();
+}
+
+function Init(){
+Done=0
+Bet=0
+c=1
+i=0
+for(s=0;s<4;s++){
+for(x=7;x<15;x++){
+Pairs[x]=0
+CardNames[i]=Suites[s]+x
+Deck[i]=0
+i++
+}
+}
+for(x=0;x<5;x++){
+document["Deal"+x].src="blnk.gif"
+document["Card"+x].src="blnk.gif"
+}
+InDeck=28
+document.Form.PlayerHand.value="Click bet amount below to start round\nMoney : $"+Sum+"\nThe Bank today is: $"+theBank
+document.Form.Button.value="Fold"
+}
+
+function Pick(){
+InDeck--
+if(InDeck<1){
+alert("No more cards!")
+return
+}
+ran=Math.floor(Math.random()*28)
+while(Deck[ran]==1){
+ran=Math.floor(Math.random()*28)
+}
+Deck[ran]=1
+return ran
+}
+
+function Deal(){
+Init()
+for(x=0;x<5;x++){
+Player[x]=CardNames[Pick()]
+document["Card"+x].src=(x<2)?Player[x]+".gif":"done.gif"
+Dealer[x]=CardNames[Pick()]
+document["Deal"+x].src=(x==1)?Dealer[x]+".gif":"done.gif"
+}
+}
+
+function NextDraw(Amt){
+if(Done==1)return
+Sum=Sum-parseInt(Amt)
+Bet+=parseInt(Amt)
+
+c++
+if(c>4) Finalise()
+else{
+document["Card"+c].src=Player[c]+".gif"
+document["Deal"+c].src=Dealer[c]+".gif"
+document.Form.PlayerHand.value="Bet : $"+Bet
+document.Form.PlayerHand.value+=(c<4)?"\nSelect bet amount below to draw next card":"\nSelect bet amount below for the show down"
+document.Form.PlayerHand.value+="\nMoney: $"+Sum
+}
+}
+
+function Finalise(){
+Done=1
+for(x=0;x<5;x++){
+document["Deal"+x].src=Dealer[x]+".gif"
+}
+DealScore=SortHand(Dealer)
+PlayScore=SortHand(Player)
+sc=0
+while(PlayScore[sc]==DealScore[sc])sc++
+if(PlayScore[sc]>DealScore[sc]){
+Final="You won $"+Bet+"!( You have "
+Sum=Sum+Bet*2
+
+}
+else{
+Final="You lost $"+Bet+"! ( Dealer has "
+}
+document.Form.PlayerHand.value=Final+Causes[sc]+" )\nMoney : $"+Sum+"\nClick NEXT to play another round"
+if(Sum<100||Sum>theBank) GameOver()
+document.Form.Button.value="NEXT"
+}
+
+function Quit(comt){
+Done=1
+if(comt=="Fold"){
+Sum=Sum-Bet
+if(Sum<100) GameOver()
+document.Form.PlayerHand.value="No worry! You lost $"+Bet+"\nMoney : $"+Sum+"\nClick NEXT to play another round"
+document.Form.Button.value="NEXT"
+}
+if(comt=="NEXT"){
+HandNo=HandNo+1
+Deal()
+}
+}
+
+function Order(num1,num2){
+if(parseInt(num1)<parseInt(num2)) return 1
+if(parseInt(num1)>parseInt(num2)) return -1
+if(parseInt(num1)==parseInt(num2)) return 0
+}
+
+Hand=new Array("Player","Dealer")
+h=0
+function SortHand(Arr){
+h=(h==1)?0:1
+
+Flush=0
+CntF=0
+for(x=1;x<5;x++){
+if(Arr[0].charAt(0)==Arr[x].charAt(0))CntF++
+}
+if(CntF>3){
+Flush=parseInt(Arr[4].substring(1,Arr[4].length))
+}
+
+A=Arr
+for(x=0;x<5;x++){
+A[x]=parseInt(Arr[x].substring(1,Arr[x].length))
+}
+A=A.sort(Order)
+
+for(y=0;y<52;y++){
+Count[y]=0
+for(x=0;x<5;x++){
+if(A[x]==y) Count[y]++
+}
+}
+
+Pair=0
+Tripl=0
+FullHouse=0
+Quad=0
+HavePair=0
+Straight=0
+TopPair=0
+
+for(y=0;y<52;y++){
+if(Count[y]==2){
+Pair++
+TopPair=y
+HavePair=1
+
+}
+if(Count[y]==3){
+Tripl=y
+HavePair=1
+
+if(Pair>0) FullHouse=Tripl
+}
+if(Count[y]==4){
+Quad=y
+HavePair=1
+
+}
+}
+
+if(HavePair==0){
+Gap=A[0]-A[4]
+if(Gap==4){
+Straight=A[0]
+
+}
+}
+
+Score=new Array()
+Score[0]=Quad
+Score[1]=Flush
+Score[2]=Straight
+Score[3]=FullHouse
+Score[4]=Tripl
+Score[5]=Pair
+Score[6]=TopPair
+Score[7]=Arr[0]
+Score[8]=Arr[1]
+Score[9]=Arr[2]
+Score[10]=Arr[3]
+Score[11]=Arr[4]
+return Score
+}
+
+function GameOver(){
+Saying=(Sum<100)?"You lost all your money in "+HandNo+" hand(s)!\nHave you learned your lesson ?\nPlay again?":"You bust the bank in "+HandNo+" hand(s)!\nYou must be a master of poker!\nPlay again?"
+location=confirm(Saying)?"drawpoker.html":"../face/face.html"
+}
+
+</script>
+</head>
+
+<body onload="Deal()">
+<div align="center"> 
+  <table align="center" width="470" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td valign="middle">
+<form name="Form" action="open">
+<table width="460" border="0" CELLPADDING="1" cellspacing="0" bgcolor="green">
+<tr>
+<td bgcolor=navy></td>
+<th colspan=5 bgcolor=navy></th>
+<td bgcolor=navy>
+</td>
+</tr>
+<tr>
+<td rowspan=3 bgcolor=navy valign=top><font face=Tahoma color=LIME size=2>D<BR>E<BR>A<BR>L<BR>E<BR>R</font></TD>
+<td align=center valign=top><img src=done.gif alt="" name=Deal0 width=70 height=48></td>
+<td align=center valign=top><img src=done.gif alt="" name=Deal1 width=70 height=48></td>
+<td align=center valign=top><img src=done.gif alt="" name=Deal2 width=70 height=48></td>
+<td align=center valign=top><img src=done.gif alt="" name=Deal3 width=70 height=48></td>
+<td align=center valign=top><img src=done.gif alt="" name=Deal4 width=70 height=48></td>
+<td rowspan=3 bgcolor=navy VALIGN=bottom><font face=Tahoma color=CYAN size=2>P<BR>L<BR>A<BR>Y<BR>E<BR>R</font></TD>
+</tr>
+<tr>
+<td colspan=5 align=center>
+<div class="div2">Draw Poker</div>
+<div class="div1">Note - You can select the amount below that the Bank contains.<br>This can be changed anytime during play.</div>
+<input type=button class="i1" style="width:80" value="0.1 Million" onclick="bankSize(100000)">
+<input type=button class="i1" style="width:80" value="0.5 Million" onclick="bankSize(500000)">
+<input type=button class="i1" style="width:80" value="1 Million" onclick="bankSize(1000000)">
+<br>
+<div class="div1">Goal - Win all of the money that is in the bank! Select bet amount to begin.</div>
+<textarea class="i1" cols=43 rows=4 name=PlayerHand wrap="soft" datafld="Click DEAL to play new round\nMoney : $10000">
+</textarea>
+</td>
+</tr>
+<tr>
+<td align=center valign=bottom><img src=done.gif alt="" name=Card0 width=70 height=48></td>
+<td align=center valign=bottom><img src=done.gif alt="" name=Card1 width=70 height=48></td>
+<td align=center valign=bottom><img src=done.gif alt="" name=Card2 width=70 height=48></td>
+<td align=center valign=bottom><img src=done.gif alt="" name=Card3 width=70 height=48></td>
+<td align=center valign=bottom><img src=done.gif alt="" name=Card4 width=70 height=48></td>
+</tr>
+<tr bgcolor=navy>
+<td></td>
+<td align=center colspan="5">
+<input type=button class="i1" style="width:60" value="$100" onclick="NextDraw(200)">
+<input type=button class="i1" style="width:60" value="$500" onclick="NextDraw(500)">
+<input type=button class="i1" style="width:60" value="$1000" onclick="NextDraw(1000)">
+<input type=button class="i1" style="width:60" value="All In" onclick="NextDraw(Sum)">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=button class="i1" style="width:95" name=Button value="FOLD | NEXT" onclick="Quit(this.value)"></td>
+<td></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

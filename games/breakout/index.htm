@@ -1,0 +1,331 @@
+
+<html>
+<HEAD>
+
+
+<title>Breakout created by Nick Young</title>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Original:  Nick Young (ywing9787@aol.com) -->
+<!-- Web Site:  http://www.angelfire.com/biz6/ywing9787 -->
+
+<!-- Modified for PSP by NeilR -->
+
+<!-- Begin
+var timerID = null;
+var INT = 10;
+var loadFLG = 0;
+var gameFLG = 0;
+var missFLG = 0;
+var tim = 0;
+var blcol = new Array(5); // block color
+var blsta = new Array(40); // block status
+var blNO = new Array(40); // block No
+var blclr = 0; // clear block
+var ballX = 0; // ball data
+var ballY = 0;
+var ballN = 5;
+var ballDX = 0;
+var ballDY = 0;
+var tmpRL = 158;
+var X = 0;
+blcol[0] = "#FFFF00";
+blcol[1] = "#FFCF00";
+blcol[2] = "#FF7F00";
+blcol[3] = "#FF3F00";
+blcol[4] = "#FF0000";
+blcol[5] = "#000000";
+
+function mainF() {
+clearTimeout(timerID);
+tim = tim + 1;
+with (Math){ tmptim = floor(tim / 10)};
+document.forms[0].TM.value = tmptim;
+ballX = ballX + ballDX;
+ballY = ballY + ballDY;
+outCHK();
+blkCHK();
+document.getElementById("ball").style.top = ballY;
+document.getElementById("ball").style.left = ballX;
+document.getElementById("racket").style.left = tmpRL;
+if (gameFLG == 01){
+timerID = setTimeout("mainF()", INT);
+   }
+}
+function initG() {
+if (blclr >= 40) {
+blclr = 0;
+tim = 0;
+ballN = 3;
+with (Math) {
+tmptim = floor(tim / 10);
+}
+document.forms[0].TM.value = tmptim;
+document.getElementById("clrmes").style.top = -1000;
+document.getElementById("clrmes").style.left = -1000;
+document.getElementById("ovrmes").style.top = -1000;
+document.getElementById("ovrmes").style.left = -1000;
+for (ib = 0; ib < 5; ib++){ for (ia = 0; ia < 8; ia++) {
+chc(ib * 8 + ia +1, ib);
+blsta[ib * 8 + ia] = ib;
+      }
+   }
+}
+document.forms[0].BL.value = ballN;
+document.getElementById("starter").style.top = -1000;
+document.getElementById("starter").style.left = -1000;
+gameFLG = 1;
+loadFLG = 1;
+ballX = 170;
+ballY = 200;
+ballDX =- 6;
+ballDY =- 6;
+tmpRL = 158;
+missFLG = 0;
+timerID = setTimeout("mainF()", INT);
+}
+function SUP() {
+INT = 10;
+}
+function SDN() {
+INT = 100;
+}
+function MouseMv(e) {
+e = (e)?e:event;
+if (loadFLG == 1) {
+X = e.clientX;
+tmpRL = X - 15;
+if (tmpRL < 16) { tmpRL = 16; }
+if (tmpRL > 296) { tmpRL = 296; }
+document.getElementById("racket").style.left = tmpRL + "px";
+
+   }
+}
+function outCHK() {
+if (ballX < 16){ ballX = 32 - ballX; ballDX = -ballDX; }
+if (ballX > 315){ ballX = 630 - ballX; ballDX = -ballDX; }
+if (ballY < 16){ ballY = 32 - ballY; ballDY = -ballDY; }
+if (ballY >= 198) {
+if (missFLG == 0) {
+tmpX = (ballDX / ballDY) * (198 - ballY) + ballX;
+if (tmpX >= tmpRL - 12) {
+if (tmpX <= tmpRL + 42) {
+ballY = 198; ballDY = -ballDY;
+ballX = tmpX;
+ballRD = tmpX - tmpRL;
+with (Math){ ballDX = 6 * abs(ballDX) / ballDX; }
+if (ballRD < -4){ ballDX = -15; }
+if (ballRD > 36){ ballDX = 15; }
+if (ballRD >= 14){ if (ballRD <= 16) { ballDX = -2; } }
+if (ballRD >= 17){ if (ballRD <= 20) { ballDX = 2; } }
+if (ballRD >= 0){ if (ballRD <= 4) { ballDX = -4; } }
+if (ballRD >= 28){ if (ballRD <= 32) { ballDX = 4; } }
+if (ballRD >= -4){ if (ballRD <= -1) { ballDX = -11; } }
+if (ballRD >= 33){ if (ballRD <= 36) { ballDX = 11; } }
+   }
+}
+if (ballDY > 0){ missFLG = 1; }
+} else {
+if (ballY > 158){ missFLG = 0; ballN = ballN - 1; gameEnd(); }
+      }
+   }
+}
+function blkCHK() {
+tmpY = ballY + 4;
+tmpX = ballX + 4;
+if (tmpY >= 40) { 
+if (tmpY <= 119) {
+if (tmpX >= 29) {
+if (tmpX <= 312) {
+with (Math) {
+ia = floor((tmpX - 29) / 36);
+ib = floor((tmpY - 40) / 16);
+ic = ib * 8 + ia;
+}
+if (blsta[ic] <= 4) {
+tmpbc = blsta[ic] + 1;
+blsta[ic] = tmpbc;
+chc(ic + 1, tmpbc);
+if (tmpbc == 5){ blclr = blclr + 1; }
+if (blclr >= 40){ gameEnd(); }
+if (ballDX > 0) {
+iy=(ballDY / ballDX) * (29 + 36 * ia - tmpX) + tmpY;
+if (iy > 40 + 16 * ib + 14) {
+tmpY1 = 40 + 16 * ib + 14;
+tmpX1 = (ballDX / ballDY) * (40 + 16 * ib + 14 - tmpY) + tmpX;
+ballX = tmpX1 - 3;
+ballY = tmpY1 - 3;
+ballDY = -ballDY;
+} else {
+if (iy < 34 + 16 * ib) {
+tmpY1 = 40 + 16 * ib;
+tmpX1 = (ballDX / ballDY) * (40 + 16 * ib - tmpY) + tmpX;
+ballX = tmpX1 - 3;
+ballY = tmpY1 - 3;
+ballDY = -ballDY;
+} else {
+tmpX1 = 29 + 36 * ia;
+tmpY1 = (ballDY / ballDX) * (29 + 36 * ia - tmpX) + tmpY;
+ballX = tmpX1 - 3;
+ballY = tmpY1 - 3;
+ballDX = -ballDX;
+      }
+   }
+} else {
+iy = (ballDY / ballDX) * (29+36 * ia + 34 - tmpX) + tmpY;
+if (iy > 40 + 16 * ib + 14) {
+tmpY1 = 40 + 16 * ib + 14;
+tmpX1 = (ballDX / ballDY) * (40 + 16 * ib + 14 - tmpY) + tmpX;
+ballX = tmpX1 - 3;
+ballY = tmpY1 - 3;
+ballDY = -ballDY;
+} else {
+if (iy < 34 + 16 * ib) {
+tmpY1 = 40 + 16 * ib;
+tmpX1 = (ballDX / ballDY) * (40 + 16 * ib - tmpY) + tmpX;
+ballX = tmpX1 - 3;
+ballY = tmpY1 - 3;
+ballDY = -ballDY;
+} else {
+tmpX1 = 29+36 * ia + 34;
+tmpY1 = (ballDY / ballDX) * (29 + 36 * ia + 34 - tmpX) + tmpY;
+ballX = tmpX1 - 3;
+ballY = tmpY1 - 3;
+ballDX = -ballDX;
+      }
+   }
+}
+      }
+   }
+}
+      }
+   }
+}
+function gameEnd() {
+document.forms[0].BL.value = ballN;
+gameFLG = 0;
+loadFLG = 0;
+document.getElementById("starter").style.top  =  153;
+document.getElementById("starter").style.left  = 148;
+if (blclr >= 40) {
+document.getElementById("clrmes").style.top = 120;
+document.getElementById("clrmes").style.left = 106;
+}
+if (ballN <= 0) {
+document.getElementById("ovrmes").style.top = 120;
+document.getElementById("ovrmes").style.left = 106;
+blclr = 40;
+   }
+}
+function onLD() {
+document.getElementById("bgIE").style.top = 16;
+document.getElementById("bgIE").style.left = 16;
+document.getElementById("ball").style.top = 200;
+document.getElementById("ball").style.left = 170;
+document.getElementById("racket").style.top = 206;
+document.getElementById("racket").style.left = 158;
+document.getElementById("info").style.top = 16;
+document.getElementById("info").style.left = 350;
+document.getElementById("starter").style.top = 153;
+document.getElementById("starter").style.left = 142;
+document.getElementById("clrmes").style.top = -1000;
+document.getElementById("clrmes").style.left = -1000;
+document.getElementById("ovrmes").style.top = -1000;
+document.getElementById("ovrmes").style.left = -1000;
+
+for (ib = 0; ib < 5; ib++) {
+for (ia = 0; ia < 8; ia++) {
+blsta[ib * 8 + ia] = ib;
+   }
+}
+document.onmousemove = MouseMv;
+}
+function chc(bno,bcl) {
+tmpbno = "b" + (bno-1);
+document.getElementById(tmpbno).style.backgroundColor = blcol[bcl];
+}
+//  End -->
+</script>
+</HEAD>
+
+<body onLoad="onLD();" bgcolor="lightgrey">
+
+<span id=info style='position:absolute; top:16px; left:350px;'>
+<pre>
+<font style="font-size:24px" color="#000044"><i><b>BREAK OUT</b></i></font>
+<div style="width:60px;">
+Ball:
+Time:
+<div id="UP" style="position:absolute; top:170px;"><a href="javascript:SUP()">SPEED UP</a></div>
+<div id="DN" style="position:absolute; top:190px;"><a href="javascript:SDN()">SPEED DOWN</a></div>
+</div>
+</pre>
+</span>
+<form>
+ <input style='position:absolute; top:51px; left:400px;' type="text" name="BL" size="5" value="5" disabled="disabled" />
+ <input style='position:absolute; top:71px; left:400px;' type="text" name="TM" size="5" value="0" disabled="disabled" />
+</form>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--  block image write
+with (document) {
+write("<table id='bgIE' width='310' height='220' bgcolor='#000000' style='position:absolute;'><td></td></table>");
+
+write("<table id='b0' width='32' height='12' bgcolor='#FFFF00' style='position:absolute; top:40; left:29'><td></td></table>");
+write("<table id='b1' width='32' height='12' bgcolor='#FFFF00' style='position:absolute; top:40; left:65'><td></td></table>");
+write("<table id='b2' width='32' height='12' bgcolor='#FFFF00' style='position:absolute; top:40; left:101'><td></td></table>");
+write("<table id='b3' width='32' height='12' bgcolor='#FFFF00' style='position:absolute; top:40; left:137'><td></td></table>");
+write("<table id='b4' width='32' height='12' bgcolor='#FFFF00' style='position:absolute; top:40; left:173'><td></td></table>");
+write("<table id='b5' width='32' height='12' bgcolor='#FFFF00' style='position:absolute; top:40; left:209'><td></td></table>");
+write("<table id='b6' width='32' height='12' bgcolor='#FFFF00' style='position:absolute; top:40; left:245'><td></td></table>");
+write("<table id='b7' width='32' height='12' bgcolor='#FFFF00' style='position:absolute; top:40; left:281'><td></td></table>");
+
+write("<table id='b8' width='32' height='12' bgcolor='#FFCF00' style='position:absolute; top:56; left:29'><td></td></table>");
+write("<table id='b9' width='32' height='12' bgcolor='#FFCF00' style='position:absolute; top:56; left:65'><td></td></table>");
+write("<table id='b10' width='32' height='12' bgcolor='#FFCF00' style='position:absolute; top:56; left:101'><td></td></table>");
+write("<table id='b11' width='32' height='12' bgcolor='#FFCF00' style='position:absolute; top:56; left:137'><td></td></table>");
+write("<table id='b12' width='32' height='12' bgcolor='#FFCF00' style='position:absolute; top:56; left:173'><td></td></table>");
+write("<table id='b13' width='32' height='12' bgcolor='#FFCF00' style='position:absolute; top:56; left:209'><td></td></table>");
+write("<table id='b14' width='32' height='12' bgcolor='#FFCF00' style='position:absolute; top:56; left:245'><td></td></table>");
+write("<table id='b15' width='32' height='12' bgcolor='#FFCF00' style='position:absolute; top:56; left:281'><td></td></table>");
+
+write("<table id='b16' width='32' height='12' bgcolor='#FF7F00' style='position:absolute; top:72; left:29'><td></td></table>");
+write("<table id='b17' width='32' height='12' bgcolor='#FF7F00' style='position:absolute; top:72; left:65'><td></td></table>");
+write("<table id='b18' width='32' height='12' bgcolor='#FF7F00' style='position:absolute; top:72; left:101'><td></td></table>");
+write("<table id='b19' width='32' height='12' bgcolor='#FF7F00' style='position:absolute; top:72; left:137'><td></td></table>");
+write("<table id='b20' width='32' height='12' bgcolor='#FF7F00' style='position:absolute; top:72; left:173'><td></td></table>");
+write("<table id='b21' width='32' height='12' bgcolor='#FF7F00' style='position:absolute; top:72; left:209'><td></td></table>");
+write("<table id='b22' width='32' height='12' bgcolor='#FF7F00' style='position:absolute; top:72; left:245'><td></td></table>");
+write("<table id='b23' width='32' height='12' bgcolor='#FF7F00' style='position:absolute; top:72; left:281'><td></td></table>");
+
+write("<table id='b24' width='32' height='12' bgcolor='#FF3F00' style='position:absolute; top:88; left:29'><td></td></table>");
+write("<table id='b25' width='32' height='12' bgcolor='#FF3F00' style='position:absolute; top:88; left:65'><td></td></table>");
+write("<table id='b26' width='32' height='12' bgcolor='#FF3F00' style='position:absolute; top:88; left:101'><td></td></table>");
+write("<table id='b27' width='32' height='12' bgcolor='#FF3F00' style='position:absolute; top:88; left:137'><td></td></table>");
+write("<table id='b28' width='32' height='12' bgcolor='#FF3F00' style='position:absolute; top:88; left:173'><td></td></table>");
+write("<table id='b29' width='32' height='12' bgcolor='#FF3F00' style='position:absolute; top:88; left:209'><td></td></table>");
+write("<table id='b30' width='32' height='12' bgcolor='#FF3F00' style='position:absolute; top:88; left:245'><td></td></table>");
+write("<table id='b31' width='32' height='12' bgcolor='#FF3F00' style='position:absolute; top:88; left:281'><td></td></table>");
+
+write("<table id='b32' width='32' height='12' bgcolor='#FF0000' style='position:absolute; top:104; left:29'><td></td></table>");
+write("<table id='b33' width='32' height='12' bgcolor='#FF0000' style='position:absolute; top:104; left:65'><td></td></table>");
+write("<table id='b34' width='32' height='12' bgcolor='#FF0000' style='position:absolute; top:104; left:101'><td></td></table>");
+write("<table id='b35' width='32' height='12' bgcolor='#FF0000' style='position:absolute; top:104; left:137'><td></td></table>");
+write("<table id='b36' width='32' height='12' bgcolor='#FF0000' style='position:absolute; top:104; left:173'><td></td></table>");
+write("<table id='b37' width='32' height='12' bgcolor='#FF0000' style='position:absolute; top:104; left:209'><td></td></table>");
+write("<table id='b38' width='32' height='12' bgcolor='#FF0000' style='position:absolute; top:104; left:245'><td></td></table>");
+write("<table id='b39' width='32' height='12' bgcolor='#FF0000' style='position:absolute; top:104; left:281'><td></td></table>");
+
+write("<div id='ball' style='position:absolute; width:6px;height:6px;clip: rect(0px 6px 6px 0px);background-color:#F0F0F0;'>");
+write("</div>");
+write("<table id='racket' width='30' height='3' bgcolor='#B0B0FF' style='position:absolute;'><td></td></table>");
+write("<div id='starter' style='position:absolute;'><form><input type='button' value='START' ONCLICK='initG();blur()'></form></div>");
+write("<div id='clrmes'  style='position:absolute;'><font style='font-size:24px' color='#44CC44'>ALL CLEAR!</font></div>");
+write("<div id='ovrmes' style='position:absolute;'><font style='font-size:24px' color='#CC4444'>GAME OVER!</font></div>");
+}
+// End -->
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>Born Which Day</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+Body {margin-top: 20; margin-left: 0; margin-right: 0; padding: 0px; font-family: arial, helvetica, tahoma, sans-serif;}
+div {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+td {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: bold; color: #000000;}
+input {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+a {font-family: arial, helvetica, tahoma, sans-serif; font-size: 8pt; text-decoration: underline;}
+:link {color: blue;}
+:visited {color: blue;}
+:hover {color: green;}
+input.i1 {font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; text-decoration: none;}
+:link.i1 {color: #000000;}
+:visited.i1 {color: #000000;}
+:hover.i1 {color: #000000;}
+-->
+</style>
+<script language="javascript" type="text/javascript">
+<!-- This script and many more are available free online at -->
+<!-- The JavaScript Source!! http://javascript.internet.com -->
+<!-- Begin
+function calculate() {
+month = document.form.month.selectedIndex;
+month = document.form.month.options[month].value;
+day = document.form.day.selectedIndex;
+day = document.form.day.options[day].value;
+year = document.form.year.value;
+
+var oyear=year
+
+var dob = " "+ year +", "+month + ",  "+day;
+var thenx = new Date(dob);
+
+var year=thenx.getYear();
+if (year<100) year="19" + thenx.getYear();
+else year=thenx.getYear();
+
+if (year > 1969) wyear=year;
+else {
+if (oyear<1900) {
+if (oyear>1800) {
+wrelyear= (eval(oyear)-1801)%(28);
+wyear = wrelyear+1981;
+}
+else wyear = 1970 
+}
+else
+if (oyear>1900) {wrelyear= (eval(oyear)-1901)%(28); 
+wyear= wrelyear+1985
+}
+else 
+if (oyear==1900) {wyear= 1990;
+   }              
+}
+var dob = " "+ wyear +", "+month + ",  "+day;
+var thenx = new Date(dob);
+
+var theday = thenx.getDay()+1;
+var date=thenx.getDate();
+
+var weekday = new Array(6);
+weekday[1]="Sunday";
+weekday[2]="Monday";
+weekday[3]="Tuesday";
+weekday[4]="Wednesday";
+weekday[5]="Thursday";
+weekday[6]="Friday";
+weekday[7]="Saturday";
+if (day != date) alert("Sorry!  That appears to be an invalid date!"+day+" ..."+date+"::"+oyear+"..."+year+" "+dob+"=="+wyear+".-.-"+thenx+" "+day+" "+month);
+else {
+dayborn = weekday[theday];
+dob = dayborn + ", " + month + " " + date + ", " + oyear + ".";
+alert("You were born on " + dob);
+   }
+}
+// End -->
+</script>
+</head>
+
+<body bgcolor="#EBE9ED">
+<div align="center">
+<form name="form" action="open">
+<h4>Find which day of the week you were born on:</h4>
+<table width="250" align="center" border="2" bordercolor="#225AD5" cellspacing="2" cellpadding="3">
+<tr><td colspan="3" align="center" valign="middle">When were you born?</td></tr>
+<tr><td align="center">
+<select name="month" class="i1">
+<option value="" selected>Month
+<option value="January">Jan
+<option value="February">Feb
+<option value="March">Mar
+<option value="April">Apr
+<option value="May">May
+<option value="June">Jun
+<option value="July">Jul
+<option value="August">Aug
+<option value="September">Sep
+<option value="October">Oct
+<option value="November">Nov
+<option value="December">Dec
+</select>
+</td>
+<td align="center" valign="middle">
+<select name="day"  class="i1">
+<option value="" selected>Day
+<option value="1">01
+<option value="2">02
+<option value="3">03
+<option value="4">04
+<option value="5">05
+<option value="6">06
+<option value="7">07
+<option value="8">08
+<option value="9">09
+<option value="10">10
+<option value="11">11
+<option value="12">12
+<option value="13">13
+<option value="14">14
+<option value="15">15
+<option value="16">16
+<option value="17">17
+<option value="18">18
+<option value="19">19
+<option value="20">20
+<option value="21">21
+<option value="22">22
+<option value="23">23
+<option value="24">24
+<option value="25">25
+<option value="26">26
+<option value="27">27
+<option value="28">28
+<option value="29">29
+<option value="30">30
+<option value="31">31
+</select>
+</td>
+<td align="center">
+<input type="text"  class="i1" name="year" value="19" size="4" maxlength="4">
+</td></tr>
+</table><br>
+<input type="button"  class="i1" value="Calculate" onClick="calculate()">
+</form><br>
+<div align="center"><form name="refresh" action="open">
+<input name="button1" type="button" onclick="window.location.href='../dayborn/dayborn.html'"  value="Clear">
+</form></div>
+</div>
+<br>
+</body>
+</html>

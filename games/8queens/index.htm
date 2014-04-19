@@ -1,0 +1,205 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>Eight Queens</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css">
+<!--
+Body {margin-top:5; margin-left:20; margin-right:20; padding:0px; }
+a {font-family: arial, helvetica, tahoma, sans-serif; font-size: 8pt; text-decoration: underline;}
+:link {color: blue;}
+:visited {color: blue;}
+:hover {color: green;}
+input.i1 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+:link.i1 {color: #000000;}
+:visited.i1 {color: #000000;}
+:hover.i1 {color: #000000;}
+H1 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 18pt; font-weight: bold; color: #000000;}
+H2 {text-align: left; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 14pt; font-weight: bold; color: #000000;}
+H3 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+td {text-align: left; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+p {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+p.p2 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 8pt; font-weight: normal; color: #000000;}
+li, ol {text-align: left; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+-->
+</style>
+</head>
+
+<!-- ONE STEP TO INSTALL EIGHT QUEENS PROBLEM:
+1.  Copy the coding into the BODY of your HTML document  -->
+<!-- STEP ONE: Paste this code into the BODY of your HTML document  -->
+
+<body>
+<!-- This script and many more are available free online at -->
+<!-- The JavaScript Source!! http://javascript.internet.com -->
+<!-- Original:  Ronald Daenzer (daenzerr@ferris.edu) -->
+<!-- Web Site:  http://as400.ferris.edu/daer/EightQueensProb.htm -->
+<form name="myform" action="open">
+  <div align=center>
+<h3>....Place eight queens on chess board without conflict.....</h3>
+<table border=1 bordercolor="#225AD5" cellspacing=0 cellpadding=0 width=300 height=300 style='cursor:hand'>
+<tr><td>
+<script type="text/javascript">
+
+//eight queens problem
+
+//ron daenzer
+
+var closed = new Array(64);
+
+var imgQueen = new Image(32,32);
+
+var imgEmpty = new Image(32,32);
+
+var imgDot = new Image(32,32);
+
+var id=0;
+
+var count=0;
+
+imgQueen.src = "queen.gif";
+
+imgEmpty.src = "empty.gif";
+
+imgDot.src = "dot.gif";
+
+for (var r=0; r<8; r++)    //8 rows
+
+{
+
+document.write('<tr>');
+
+for (var c=0; c<8; c++)  //8 columns
+
+{
+
+id=(r*8)+c;            //calculate cell id
+
+document.write('<td id='+id+' onclick=\"placeq(this);\">');
+
+document.write('<img src="empty.gif"></td>');
+
+}
+
+document.write('</tr>');
+
+}
+
+function placeq (cell)
+
+{
+
+var q = eval(cell.id);
+
+var r = Math.floor(q /8);
+
+var c = q % 8;
+
+var min = Math.min(r,c);
+
+var max = Math.max(r,c);
+
+if ( (document.images[q].src == imgEmpty.src) && (safe(q)) )
+
+{
+
+//document.images[q].src = imgQueen.src;
+
+count++;
+
+for (var h=r*8; h<(r*8)+8; h++)
+
+{ closed[h]=h; document.images[h].src=imgDot.src; }
+
+for (var v=c; v<64; v=v+8)
+
+{ closed[v]=v; document.images[v].src=imgDot.src; }
+
+if (c>r) { var x1=c-r; var x2=q+(9*(8-c)); }
+
+else { var x1=(r-c)*8; var x2=q+(9*(8-r)); }
+
+for (var x=x1; x<x2; x=x+9)
+
+{ closed[x]=x; document.images[x].src=imgDot.src; }
+
+if (r+c>7) { var y1=q-((7-c)*7); var y2=q+(7*(8-r)); }
+
+else { var y1=r+c; var y2=q+(8*c); }
+
+for (var y=y1; y<y2; y=y+7)
+
+{ closed[y]=y; document.images[y].src=imgDot.src; }
+
+document.images[q].src = imgQueen.src;
+
+}
+
+if (count == 8)
+
+alert("Good job, you solved it!");
+
+if (count > 8)
+
+alert("Too many queens");
+
+}
+
+function safe (q)
+
+{ //safe position to place queen on board
+
+if ( closed[q]==q )
+
+return false;
+
+else
+
+return true;
+
+}
+
+function help ()
+
+{ //help print an example of 8 queens
+
+var a = new Array(0,12,23,29,34,46,49,59);
+
+clearBoard();
+
+for (var i=0; i<8; i++)
+
+window.document.images[ a[i] ].src = imgQueen.src;
+
+count=8;
+
+for (var q=0; q<64; q++)
+
+closed[q] = q;
+
+}
+
+function clearBoard ()
+
+{ //clear the image array
+
+for (var i=0; i<64; i++)
+
+window.document.images[i].src = imgEmpty.src;
+
+count=0;
+
+closed = new Array(64);
+
+}
+
+</script>
+</td></tr>
+</table>
+<input type=button class="i1" value=" clear " onclick="clearBoard()">
+<input type=button class="i1" value=" help " onclick="help()">
+</div>
+</form>
+</body>
+</html>
