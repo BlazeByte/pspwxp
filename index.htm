@@ -1,80 +1,39 @@
-<html>
+<HTML>
 <head>
-<title>:: Encore :: The most advanced Portal for the Sony PSP :: Please press Δ to hide the toolbar.</title>
+<title>Encore Loader</title>
+<style type="text/css">
+* {	/* for viewing on computer, set font */
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
 
-<style>
-body{
-	margin:0px;
+h1 {
+	color:#FFFFFF;
+	font-size:24px;
+	text-align:center
+}
+
+h2 {
+	font-size:16px;
+	font-weight:bold;
+}
+
+body {
+	margin:10px 30% 0px 30%;
 }
 </style>
 
-<script>
-var intDone = 0;
-var notPSP = (navigator.userAgent.indexOf('PlayStation Portable') != -1) ? false : true;
-
-// Get encore location
-var urlPart = location.href.split("/");
-var encoreUrl = "";
-
-for (var i = 0 ; i <= urlPart.length - 2 ; i++ ) {
-	encoreUrl += urlPart[i] + "/";
-}
-
-function sendCookiesReady(){	// this is called by the cookie page when it has finished loading
-	if(intDone==0) frames['idesktop'].location.href=encoreUrl+"system/browsercheck.htm";	// load the desktop
-	intDone=1;
-}
-
-function showHideFirefoxKB(){
-	if(frames['idesktop'].intCurrWindow>0){
-		window.stop();
-		var strCurrAppUrl = frames['idesktop'].frames['iWindow'+frames['idesktop'].intCurrWindow].location.href;
-		var strCurrAppUrlParts =strCurrAppUrl.split('/');
-		
-		if(strCurrAppUrlParts[strCurrAppUrlParts.length-2]=="firefox") // Check directory of curr application is firefox
-			document.getElementById('firefoxkb').style.visibility = (document.getElementById('firefoxkb').style.visibility=='hidden') ? 'visible' : 'hidden' ;
-	} else 
-		if((!notPSP)&&(frames['idesktop'].location.href=="system/desktop.htm")) 
-			if (!confirm("Are you sure you wish to quit Encore?")) window.stop();
-}
-
-function showLoadingScreen(strTitle,strInfo){
-	document.getElementById("loadingScreen").style.visibility = "visible";
-	frames['iloadingscreen'].document.open()
-	frames['iloadingscreen'].document.write('<link rel="stylesheet" type"text/css" href="theme/default/css/encore/loading.css" />');
-	frames['iloadingscreen'].document.write('<div id="loadingScreen"><div id="loadingScreenTitle">'+strTitle+'</div>');
-	frames['iloadingscreen'].document.write('<div id="loadingScreenInfo">'+strInfo+'</div></div>');
-	frames['iloadingscreen'].document.close();
-}
-
-function hideLoadingScreen(){
-	document.getElementById("loadingScreen").style.visibility = "hidden";
-}
-</script>
-
 </head>
 
-<body bgcolor="#000000" onbeforeunload='if(frames["idesktop"].location.href=="system/desktop.htm") {showHideFirefoxKB(); return "Doing so will quit Encore.";}' onunload='showHideFirefoxKB();'>
-
-<iframe width="1" height="1" id="isound" name="isound" scrolling="no" frameborder="0" style="visibility:hidden;position:absolute;top:0px;left:0px;"></iframe>	
-
-<iframe src="system/store/settings.html" width="1" height="1" id="isettings" name="isettings" scrolling="no" frameborder="0" style="visibility:hidden;position:absolute;top:0px;left:0px;"></iframe>	
-
-<iframe src="system/store/files.html" width="1" height="1" id="ifiles" name="ifiles" scrolling="no" frameborder="0" style="visibility:hidden;position:absolute;top:0px;left:0px;"></iframe>	
-
-<iframe width="100%" height="272" id="idesktop" name="idesktop" scrolling="no" frameborder="0" style="background-color:#000000;">Encore cannot be used on this browser - Encore requires frames.</iframe>	<!-- Load the cookies file to refer from later -->
-
-<div id="keyboard" style="visibility:hidden;z-index:10; left:0px; top:0px; width:480px; height:272px; position:absolute;">
-	<iframe src="system/utilities/kbgui.html" id="ikeyboard" name="ikeyboard" frameborder="0" width="480" height="272"></iframe>
-</div>
-
-<div id="firefoxkb" style="visibility:hidden;z-index:10; left:0px; top:0px; width:480px; height:272px; position:absolute;">
-	<iframe src="system/utilities/kbgui.html" id="ifirefoxkb" name="ifirefoxkb" frameborder="0" width="480" height="272"></iframe>
-</div>
-
-<div id="loadingScreen" style="visibility:hidden;z-index:10; left:0px; top:0px; width:480px; height:272px; position:absolute; background-color:#000000;">
-	<iframe id="iloadingscreen" name="iloadingscreen" frameborder="0" width="480" height="272"></iframe>
-</div>
-
+<body bgcolor="#000000" text="#CCCCCC">
+<h1>Encore Beta 3 </h1>
+<h2>Important!</h2>
+<h4>This version of Encore is a Beta - it is very buggy. It has been hosted online to test overall browser compatibility. </h4>
+<h4>
+  <p/>    
+  <center>
+    <input onclick='location="encore.htm";' value='Start >>>' type='button'>
+  </center>
+</h4>
 </body>
-</html>
+</HTML>

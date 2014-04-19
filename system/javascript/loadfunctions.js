@@ -1,4 +1,7 @@
-var notPSP = (navigator.userAgent.indexOf('PlayStation Portable') != -1) ? false : true;
+function showHideLayer(layerName,showHide){
+	// frames[layerName].style.visibility=showHide;
+	document.getElementById(layerName).style.visibility=showHide;
+}
 
 function ApplyLoadSettings(){
 
@@ -7,28 +10,43 @@ function ApplyLoadSettings(){
 
 	returnLoadStatus("Applying GUI settings...",2);
 	
-	document.write('<script language="javascript" type="text/javascript" src="../theme/' + strThemeDir + '/themeinfo.js" /></'+'script>');
+	var blnBGImage;
+	var strBGImage;
+	var intFirstUse;
 	
-	var blnBGImage = getSetting('main','usebgimage',true);	// Retrieve cookies
-	var strBGImage = getSetting('main','bgimage','default');
-	blnShortcuts = getSetting('main','desktopicons',true);
-	blnLogin = getSetting('main','loginscreen',false);
-	strPassword = getSetting('main','password','');
+	document.write('<script language="javascript" type="text/javascript" src="../theme' + strThemeDir + '/themeinfo.js" /></'+'script>');
 	
-	
-	if (blnBGImage==false){
-		element('lyDesktop').style.visibility="hidden";	// no bg
-	} else if((strBGImage!=="")&&(strBGImage!=='default')) {
-		element('lyDesktop').style.backgroundImage="url("+((strBGImage.charAt(4)==":")?"":"file:")+strBGImage+")";		// set bg to what the user selected
+	if (parent==self) { // if desktop doesn't have parent cookies (ie. on computer), load defaults
+		blnShortcuts=true;
+		blnLogin=true;
+		strPassword="";
+		return;
 	}
 	
-	// load sounds
-	top.frames['isound'].document.open();
-	top.frames['isound'].document.write('<embed name="beep" id="beep" FlashVars="strURL=file:/encore/theme/default/sounds/beep.mp3" src="system/sound.swf" quality="high"></embed><embed name="error" id="error" FlashVars="strURL=file:/encore/theme/default/sounds/beep.mp3" src="system/sound.swf" quality="high"></embed><embed name="startup" id="startup" FlashVars="strURL=file:/encore/theme/default/sounds/beep.mp3" src="system/sound.swf" quality="high"></embed>');
-	top.frames['isound'].document.close();
+	blnBGImage = window.top.icookies.document.getElementById('chkbg').value;	// Retrieve cookies
+	strBGImage = window.top.icookies.document.getElementById('bg').value;
+	intFirstUse = window.top.icookies.document.getElementById('firstuse').value;
+	blnShortcuts = window.top.icookies.document.getElementById('desktopicons').value;
+	blnLogin = window.top.icookies.document.getElementById('loginshow').value;
+	strPassword = window.top.icookies.document.getElementById('thepassword').value;
+	
+	if (blnBGImage=='false'){
+		document.getElementById('lyDesktop').style.visibility="hidden";	// no bg
+	} else if(strBGImage!=="") {
+	//	alert("file:"+strBGImage);
+		document.getElementById('lyDesktop').style.backgroundImage="url(file:"+strBGImage+")";		// set bg to what the user selected
+	}
+	
+	if (blnShortcuts!="0") blnShortcuts = true;
+	
+	if (blnLogin!="0") blnLogin = true;
+	
+	if (intFirstUse!="0") blnFirstUse = true;
+
+	if (window.top.icookies.document.getElementById('chkPlaySounds').value=="0") intSound=0;
+	
 }
 
-/*
 function createShortcuts(){
 	var intY = 0;
 	var intX = 0;
@@ -51,8 +69,8 @@ function createShortcuts(){
 			intY=(intRow-1)*82;
 			
 			strClickCommand='loadApp("' + strItems[i] + '","' + strItemPath[i] + '","' + strItemIconPath[i] + '",' + '"' + intItemMax[i] + '"' + ');';		// create the onclick command
-
-			document.write("<div onclick="+strClickCommand+" style='left:" + intX + "px;top:" + (parseInt(intY) + 10) + "px;background-image:url(../theme/"+strThemeDir+"/" + strItemIconPath[i] + ")' class='shortcutItem'><div class='shortcutTextShadow'>"+strItems[i]+"</div><div class='shortcutText'>"+strItems[i]+"</div></div>");
+			
+			document.write("<div onclick="+strClickCommand+" style='left:" + intX + "px;top:" + (parseInt(intY) + 10) + "px;background-image:url(../theme"+strThemeDir+"/" + strItemIconPath[i] + ")' class='shortcutItem'><div class='shortcutTextShadow'>"+strItems[i]+"</div><div class='shortcutText'>"+strItems[i]+"</div></div>");
 
 			i++;
 
@@ -66,10 +84,14 @@ function createShortcuts(){
 	intItemMax.splice(0,intItemMax.length);
 
 }
-*/
+
+function callSound(strPath){
+	if(intSound==1) iSound.location.href="../theme"+strThemeDir+strPath;
+}
+
 
 function makeWindows(){
-	for(var intWin=1;intWin<=intMaxWindows;intWin++){
-		document.write('<iframe src="blank.htm" id="iWindow'+intWin+'" name="iWindow'+intWin+'" frameborder="0" width="476" height="226" style="position:absolute;width:476px;height:226px;visibility:hidden;"></iframe>');
+	for(var i=1;i<=intMaxWindows;i++){
+		document.write('<iframe src="blank.htm" id="iWindow'+i+'" name="iWindow'+i+'" frameborder="0" class="iWindow"></iframe>');
 	}
 }

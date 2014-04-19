@@ -7,16 +7,16 @@ var strMins;	//used for clock
 var intJustOpened;	// used to stop the menu from suddenly closing
 
 function showAppMenu(strPanelID){	// called when the application menu (start menu) button is clicked on a panel.
-	if(element('menu').style.visibility=="hidden"){	// if the menu is hidden
+	if(document.getElementById('menu').style.visibility=="hidden"){	// if the menu is hidden
 
 		intJustOpened=1;	// make sure the menu doesn't suddenly close
 
-		if(element(strPanelID).offsetTop+element('menu').offsetHeight+element(strPanelID).offsetHeight>272){	// if it appears off the screen when below the panel
+		if(document.getElementById(strPanelID).offsetTop+document.getElementById('menu').offsetHeight+document.getElementById(strPanelID).offsetHeight>272){	// if it appears off the screen when below the panel
 
-			element('menu').style.top=272-(element('menu').offsetHeight+element(strPanelID).offsetHeight);	// then make it appear above the panel
+			document.getElementById('menu').style.top=272-(document.getElementById('menu').offsetHeight+document.getElementById(strPanelID).offsetHeight);	// then make it appear above the panel
 
 		}else{	// else
-			element('menu').style.top=element(strPanelID).offsetHeight+element(strPanelID).offsetTop;	// then make it appear below the panel
+			document.getElementById('menu').style.top=document.getElementById(strPanelID).offsetHeight+document.getElementById(strPanelID).offsetTop;	// then make it appear below the panel
 		}
 
 		showHideLayer('menu',"visible");	// show the menu
@@ -39,31 +39,18 @@ function hideMenu(blnKeepMenu){
 		}
 	}
 	intJustOpened=0;	// not neccissary, but further code expansions may require this
-	checkClock();
 }
-
-
-function checkClock(){
-	var theDate = new Date;
-	strHours = theDate.getHours();
-	strMins = theDate.getMinutes();
-	if(strHours<10){strHours="0"+strHours;}
-	if(strMins<10){strMins="0"+strMins;}
-	
-	if((element('clock').innerHTML!=strHours+":"+strMins)&&(element('clock').innerHTML!=strHours+":"+(strMins-1))) autoClock();
-}
-
 
 function minMaxPanel(PanelID) {
-	if(!(element(PanelID).style.visibility=="hidden")){	// if the panel is visible
-		element(PanelID).style.visibility="hidden";		// then hide is
+	if(!(document.getElementById(PanelID).style.visibility=="hidden")){	// if the panel is visible
+		document.getElementById(PanelID).style.visibility="hidden";		// then hide is
 		hideMenu();		// and hide the menu
-//		element("ClockContainer").style.visibility="hidden";
-		element(PanelID+"MinMaxImg").style.backgroundImage="url(../theme/"+strThemeDir+"/images/icons/back-arrow.gif)" ;	// switch the min max icon
+//		document.getElementById("ClockContainer").style.visibility="hidden";
+		document.getElementById(PanelID+"MinMaxImg").style.backgroundImage="url(../theme"+strThemeDir+"/images/icons/back-arrow.gif)" ;	// switch the min max icon
 	}else{	// else
-		element(PanelID).style.visibility="visible"; //make the panel visible
-		element(PanelID+"MinMaxImg").style.backgroundImage="url(../theme/"+strThemeDir+"/images/icons/sub-menu-arrow.gif)";	//switch the min max icons
-//		element("ClockContainer").style.visibility="visible";
+		document.getElementById(PanelID).style.visibility="visible"; //make the panel visible
+		document.getElementById(PanelID+"MinMaxImg").style.backgroundImage="url(../theme"+strThemeDir+"/images/icons/sub-menu-arrow.gif)";	//switch the min max icons
+//		document.getElementById("ClockContainer").style.visibility="visible";
 	}
 }
 
@@ -73,7 +60,7 @@ function theClock() {
 	strMins = theDate.getMinutes();
 	if(strHours<10){strHours="0"+strHours;}
 	if(strMins<10){strMins="0"+strMins;}
-	element('clock').innerHTML=strHours+":"+strMins;
+	document.getElementById('clock').innerHTML=strHours+":"+strMins;
 }
 
 function autoClock(){
@@ -81,35 +68,35 @@ function autoClock(){
 }
 
 function msgBox(strMsg,strTitle,intError){
-	hideMenu();
-	element('msgDlgTitle').innerHTML=strTitle;
-	element('msgDlgMsg').innerHTML=strMsg;
-	element("msgDlg").style.top=136-(element("msgDlg").offsetHeight/2);
+	document.getElementById('msgDlgTitle').innerHTML=strTitle;
+	document.getElementById('msgDlgMsg').innerHTML=strMsg;
+	document.getElementById("msgDlg").style.top=136-(document.getElementById("msgDlg").offsetHeight/2);
 	showHideLayer('msgDlg','visible');
 	if(intError==1){
-		callSound("error");
-	}else callSound("beep");
+		callSound("/sounds/error.swf");
+	}else callSound("/sounds/blip.swf");
 }
 
 // load the clock
 returnLoadStatus("Loading clock...");
 
 theClock();
-//if(!(top.document.icookies.element('noAutoTime').value=="true")){
+//if(!(top.document.icookies.document.getElementById('noAutoTime').value=="true")){
 	autoClock();
 //}
 
 returnLoadStatus("Preparing more functions...");
 
 function muteSound() {
-	if(blnSounds==false){
-		blnSounds=true;
-		element("soundApplet").src="../theme/"+strThemeDir+"/images/icons/panel/soundon.png";
+	if(intSound==0){
+		intSound=1;
+		document.getElementById("soundApplet").src="../theme"+strThemeDir+"/images/icons/panel/soundon.png";
 	}else{
-		blnSounds=false;
-		element("soundApplet").src="../theme/"+strThemeDir+"/images/icons/panel/soundoff.png";
+		intSound=0;
+		document.getElementById("soundApplet").src="../theme"+strThemeDir+"/images/icons/panel/soundoff.png";
 	}
-	saveSetting("main", "sounds", blnSounds);
+	window.top.icookies.document.settings.chkPlaySounds.value=intSound;
+	window.top.icookies.document.settings.submit();
 }
 
 
@@ -127,7 +114,4 @@ function getNetComm(){ // connects to blazebyte communication network to give us
 	frames['iNetComm'].location.href="http://blazebyte.byethost18.com/netcomm.htm";
 }
 
-
-function callSound(strSound){
-	if(blnSounds==true) top.frames['isound'].document.getElementById(strSound).Play();
-}
+// if(blnFirstUse) setTimeout("msgBox('Welcome to Encore Beta! Encore is a free product released under the BlazeByte License. Click OK to begin!','Encore Beta',1)",10000);

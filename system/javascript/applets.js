@@ -31,7 +31,7 @@ function makeClockApplet(strPanelID,strCSS){
 }
 
 function makeMenuApplet(strPanelID,strCSS){
-	document.write('<img src="../theme/'+strThemeDir+'/images/menu.gif" onClick="showAppMenu('+"'"+strPanelID+"'"+');" id="mainMenuIcon" style="'+strCSS+'">');
+	document.write('<img src="../theme'+strThemeDir+'/images/menu.gif" onClick="showAppMenu('+"'"+strPanelID+"'"+');" id="mainMenuIcon" style="'+strCSS+'">');
 }
 
 function makeTaskListApplet(strPanelID,strCSS){
@@ -49,7 +49,11 @@ function makeMinMaxApplet(strPanelID,strCSS){
 }
 
 function makeSoundApplet(strPanelID,strCSS){
-	document.write('<img src="../theme/'+strThemeDir+'/images/icons/panel/'+((blnSounds==false) ? "soundoff.png" : strSoundImg="soundon.png" )+'" id="soundApplet" onClick="muteSound()" style="'+strCSS+'">');
+	if (intSound==0){
+		var intSoundImg="soundoff.png";
+	}else var intSoundImg="soundon.png";
+	
+	document.write('<img src="../theme'+strThemeDir+'/images/icons/panel/'+intSoundImg+'" id="soundApplet" onClick="muteSound()" style="'+strCSS+'">');
 }
 
 function makeSpacerApplet(strPanelID,strCSS){
