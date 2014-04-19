@@ -1,0 +1,78 @@
+<HEAD>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Original:  Michael Hensley (yelsneh@geocities.com) -->
+<!-- Web Site:  http://geocities.com/TimesSquare/Castle/6274 -->
+
+<!-- This script and many more are available free online at -->
+<!-- The JavaScript Source!! http://javascript.internet.com -->
+
+<!-- Begin
+var die = 6;
+var dice = 3;
+function dice_roll(die, dice) {
+var roll = 0;
+for (loop=0; loop < dice; loop++) {
+// random number fix by George Johnston (cali_scripter@yahoo.com)
+roll = roll + Math.round(Math.random() * die) % die + 1;
+}
+document.form.text.value = roll;
+}
+// End -->
+</script>
+
+<BODY>
+
+<center>
+<form name=form>
+<table border=2 cellpadding=5>
+<tr>
+<td colspan=2 align=middle>What dice type?</td>
+<td colspan=2 align=middle>How many dice to roll?</td>
+</tr>
+<tr>
+<td valign=top align=middle>
+<p><input type=radio name=sides onclick="die = 3">3 Sided
+<p><input type=radio name=sides onclick="die = 4">4 Sided 
+<p><input type=radio name=sides onclick="die = 5">5 Sided
+<p><input type=radio checked name=sides onclick="die = 6">6 Sided
+<p><input type=radio name=sides onclick="die = 8">8 Sided
+</td>
+<td valign=top align=middle>
+<p><input type=radio name=sides onclick="die = 10">10 Sided
+<p><input type=radio name=sides onclick="die = 12">12 Sided
+<p><input type=radio name=sides onclick="die = 20">20 Sided
+<p><input type=radio name=sides onclick="die = 30">30 Sided
+<p><input type=radio name=sides onclick="die = 100">100 Sided
+</td>
+<td valign=top align=middle>
+<p><input type=radio name=number onclick="dice = 1">1 
+<p><input type=radio name=number onclick="dice = 2">2
+<p><input type=radio checked name=number onclick="dice = 3">3
+<p><input type=radio name=number onclick="dice = 4">4
+<p><input type=radio name=number onclick="dice = 5">5
+</td>
+<td valign=top align=middle>
+<p><input type=radio name=number onclick="dice = 6">6
+<p><input type=radio name=number onclick="dice = 7">7
+<p><input type=radio name=number onclick="dice = 8">8
+<p><input type=radio name=number onclick="dice = 9">9
+<p><input type=radio name=number onclick="dice = 10">10
+</td>
+</tr>
+<tr>
+<td align=middle colspan=4>
+<input type=button value="Roll Dice" name=button onclick="dice_roll(die, dice)">
+<input type=text size=10 name=text>
+</td>
+</tr>
+</table>
+</form>
+</center>
+
+<p><center>
+<font face="arial, helvetica" size="-2">Free JavaScripts provided<br>
+by <a href="http://javascriptsource.com">The JavaScript Source</a></font>
+</center><p>
+
+<!-- Script Size:  2.57 KB  -->

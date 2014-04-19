@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script language="JavaScript">
+var chkIconsstatus="false";
+var chkBGImagestatus="true";
+var chkMenuTopstatus="true";
+var chkTaskbarHidestatus ;
+var settingswindow=window.parent.activewindow
+var showHideLayer = window.parent.showHideLayer;
+var imgDesktop=window.parent.document.imgDesktop;
+
+function ChangeSettings(){
+	if(chkIcons.checked==true){
+		for (i=0;i<strShortcuts.length;i++){
+			showHideLayer('s'+i+'s','hidden');
+		}
+		showHideLayer('lIcons','hidden');
+	}else{
+		for (i=0;i<strShortcuts.length;i++){
+			showHideLayer('s'+i+'s','visible');
+		}
+		showHideLayer('lIcons','visible');
+	}
+	
+	if(chkBGImage.checked==true){
+		if(File.value==""){
+			imgDesktop.src="images/desktop.jpg";
+		} else {
+			imgDesktop.src=File.value;
+		}
+	} else {
+		imgDesktop.src="images/space.gif"
+	}
+	
+	window.parent.windowExit(settingswindow);
+
+}
+
+function screensaver(){
+	window.parent.setTitle(1,"Screen Saver","apps/screensavers/" + screensaver.value,"",1);
+}
+
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+
+<!--
+#lColor {
+	position:absolute;
+	left:313px;
+	top:221px;
+	width:100;
+	height:100;
+	z-index:1;
+	background-color: #FFFFFF;
+	visibility: hidden;
+}
+-->
+
+</style>
+</head>
+
+<body bgcolor="#EBE9ED" onLoad="File.value=window.parent.document.imgDesktop;;imgPreview.src=window.parent.document.imgDesktop;">
+  <div id="lColor">
+    <table width="198" height="144" border="1" cellpadding="0" cellspacing="1" bordercolor="#000000" >
+      <tr>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#000000"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#333333"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#666666"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#888888"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#999999"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#aaaaaa"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#cccccc"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#eeeeee"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ffffff"></td>
+      </tr>
+      <tr>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#000033"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#000066"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#000099"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#0000CC"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#0000FF"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#3333FF"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#6666FF"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#9999ff"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ccccff"></td>
+      </tr>
+      <tr>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#003300"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#006600"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#009900"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#00cc00"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#00ff00"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#33ff33"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#66ff66"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#99ff99"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ccffcc"></td>
+      </tr>
+      <tr>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#330000"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#660000"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#990000"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#cc0000"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ff0000"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ff3333"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ff6666"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ff9999"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ffcccc"></td>
+      </tr>
+      <tr>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#333300"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#666600"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#999900"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#cccc00"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ffff00"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ffff33"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ffff66"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ffff99"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ffffcc"></td>
+      </tr>
+      <tr>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#003333"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#006666"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#009999"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#00cccc"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#00ffff"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#33ffff"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#66ffff"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#99ffff"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ccffff"></td>
+      </tr>
+      <tr>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#330033"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#660066"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#990099"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#cc00cc"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ff00ff"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ff33ff"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ff66ff"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ff99ff"></td>
+        <td width="20" height="20" onClick="activecolor.bgColor=this.bgColor;lColor.style.visibility='hidden'" bgcolor="#ffccff"></td>
+      </tr>
+    </table>
+  </div>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr> 
+	  <td><div align="center"> 
+		  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+			  <td align="center"><div align="left"><font size="4"><strong>Taskbar Settings</strong></font><br>
+			    </div>
+			    <table width="243" height="93" border="0" cellpadding="0" cellspacing="0" background="../../images/controlpanel/preview.jpg">
+				  <tr> 
+					<td width="52" height="8"></td>
+					<td width="140" height="8"></td>
+					<td width="51" height="8"></td>
+				  </tr>
+				  <tr> 
+					<td height="70"></td>
+					<td width="140" height="70"><img src="../../images/desktop.jpg" name="imgPreview" width="140" height="70" id="imgPreview"></td>
+					<td height="70"></td>
+				  </tr>
+				  <tr> 
+					<td width="52"></td>
+					<td width="140" height="15"></td>
+					<td width="51"></td>
+				  </tr>
+			  </table></td>
+		    </tr>
+		  </table>
+		</div></td>
+	</tr>
+	<tr>
+	  <td><fieldset>
+      <legend>Desktop<br>
+      </legend>
+      <table width="100%" border="0" cellspacing="1" cellpadding="1">
+            <tr>
+              <td width="300" rowspan="2" valign="top"><p align="left"><font size="2"><label>
+                  <input name="chkBGImage" type="checkbox" id="chkBGImage" checked>
+                Background image:</label><br>
+                  </font>
+                      <input name="File" type="file" id="File2" onChange="imgPreview.src=File.value" size="20">
+              </p></td>
+              <td valign="top"><font size="2"><label>
+                <input name="chkIcons" type="checkbox" id="chkIcons">
+                Do not show desktop icons</label></font></td>
+            </tr>
+            <tr>
+              <td valign="top"><font size="2">Background color: </font>
+                <table width="20" height="20" border="1" cellpadding="0" cellspacing="0" bgcolor="#000000" id="activecolor">
+                  <tr>
+                    <td onClick="lColor.style.visibility='visible'"></td>
+                  </tr>
+                </table></td>
+            </tr>
+      </table>
+        </fieldset></td>
+    </tr>
+	<tr>
+	  <td><fieldset>
+      <legend>Screen Saver<br>
+      </legend>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td>
+            <select name="screensaver" id="screensaver">
+              <option value="default.htm">Default</option>
+            </select>
+            <input type="button" name="Button" value="Preview" onClick="preview">
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><p>
+            <label>
+              <input type="checkbox" name="checkbox" value="checkbox">
+              Password Protect</label>
+          </p></td>
+          <td><table width="13%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="25" rowspan="2">Wait: </td>
+                <td width="25" rowspan="2"><input name="txtWait" type="text" id="txtWait" value="2" size="4" maxlength="2"></td>
+                <td><input type="button" name="Button" value=" " style="height:12px" onClick="if(txtWait.value<60){txtWait.value++}"></td>
+                <td rowspan="2">mins</td>
+              </tr>
+              <tr>
+                <td><input type="button" name="Button2" value=" " style="height:12px" onClick="if(txtWait.value>1){txtWait.value--}"></td>
+              </tr>
+            </table> 
+          </td>
+        </tr>
+      </table>
+      </fieldset>
+	    <label></label></td>
+    </tr>
+	<tr> 
+	  <td> 
+	    <div align="right">
+	      <input name="OK" type="button" id="OK" onClick="ChangeSettings();" value="OK" style="width:60"> 
+	      <input name="Cancel" type="button" id="Cancel" onClick="window.parent.windowExit(settingswindow)" value="Cancel" style="width:60"> 
+	      <input name="Cancel2" type="button" id="Cancel2" onClick="window.parent.windowExit(settingswindow)" value="Apply" style="width:60">
+        </div></td></tr>
+</table>
+</body>
+</html>

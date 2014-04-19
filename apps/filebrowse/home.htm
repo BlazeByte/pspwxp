@@ -1,27 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<script language="JavaScript" type="text/JavaScript">
+<title>My PSP</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
 <!--
-function MM_goToURL() { //v3.0
-  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
-  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+input.hide {
+	position:absolute;
+	left:-63px;
+  -moz-opacity:0;
+  filter:alpha(opacity: 0);
+	opacity: 0;
+	z-index: 2;
+	top: 40px;
+	height: 42px;
 }
-//-->
-</script>
+input.hide1 {	position:absolute;
+	left:-53px;
+  -moz-opacity:0;
+  filter:alpha(opacity: 0);
+	opacity: 0;
+	z-index: 2;
+	top: 291px;
+	height: 42px;
+}
+-->
+</style>
 </head>
-<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-<center>
-  <p><font size="3">File Viewer </font><p>
-  <img src="../../images/icons/textreader.png" width="48" height="48">
-  <font size="2"><p>
-Click Select to browse for a file. Use the directional 
-  buttons to select a file/folder and click X to open it. Use Circle to go back 
-  a folder or cancel. You will than be taken to that file. If you wish to open 
-  a different file, click the browse button in the toolbar above or click the 
-  '?' button to take you back to this page. <p>
-  <input name="readFile" type="file" id="readFile" onChange="MM_goToURL('parent.frames[\'Content\']',readFile.value)" size="20">
-<p> Some file types that can be read:<br>
-  .jpg, .txt, .htm, .html, .bmp, .gif</font></center> 
-</body>
 
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<img src="../../images/mypsp.gif" width="351" height="345" border="0" usemap="#Map"> 
+    <map name="Map">
+      <area shape="rect" coords="226,127,388,183" href="..\gameslist.htm">
+      <area shape="rect" coords="8,128,170,184" href="..\appslist.htm">
+      <area shape="rect" coords="8,186,170,242" href="..\controlpanel\index.htm">
+    </map>
+</p>
+<input name="file" type="file" class="hide" id="mydocs">
+<input name="file2" type="file" class="hide1" id="mypsp">
+</body>
 </html>
