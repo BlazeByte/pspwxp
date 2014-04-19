@@ -25,7 +25,11 @@ Shortcut("Internet","1","apps/internet/index.htm","images/icons/internet.png",0)
 Shortcut("Text Editor","1","apps/textedit.htm","images/icons/txtedit.png",0);
 Shortcut("Calculator","1","apps/calc.htm","images/icons/calc.png",0);
 Shortcut("Games List","1","apps/gameslist.htm","images/icons/games.png",0);
-Shortcut("PSPTunes","1","apps/psptunes/index.htm","images/icons/psptunes.png",0);
+if(icookies.settings.chkPSPTunesTab.value="false"){
+	Shortcut("PSPTunes","1","apps/psptunes/index.htm","images/icons/psptunes.png",0);
+}else{
+	Shortcut("PSPTunes","10","apps/psptunes/index.htm","images/icons/psptunes.png"),10;
+}
 //END LIST
 
 var i =0;

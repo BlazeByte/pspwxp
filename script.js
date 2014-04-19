@@ -48,6 +48,10 @@ function ScrTimeout(){
 
 function setTitle(blncontrol,ProgramTitle,ProgramLocation,ProgramIcon,StartMax){
 	hideMenu();
+	if(ProgramTitle=="PSPTunes"&&!(icookies.settings.chkPSPTunesTab.value=="false")){
+		window.open(ProgramLocation);
+		return;
+	}
 	if(blncontrol==10){
 		window.open(ProgramLocation);
 	}else{
@@ -161,6 +165,10 @@ function showWindow(windowNo,ProgramLocation,ProgramIcon,blncontrol,ProgramTitle
 		iprogMax.location.href=ProgramLocation;
 		showHideLayer('progMax','visible');
 		blnStartMax="true";
+	}
+	
+	if(StartMax==10){
+		window.open(ProgramLocation);
 	}
 
 	showHideLayer('loading','hidden');

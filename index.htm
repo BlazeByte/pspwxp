@@ -19,7 +19,16 @@
         <td align="center" valign="middle"><img src="images/boot.gif"><br> <img src="images/progress.gif" border="0" loop="0"><br>
         <font color="#CCCCCC">
         <div id="logIn">Please Wait...</div>
-        <script language="JavaScript" type="text/JavaScript">setTimeout("loaded=1;if(boot.style.visibility=='visible'&&login.style.visbility=='hidden'){playSound('startsound.htm');};showHideLayer('boot','hidden');",11000);</script>
+        <script language="JavaScript" type="text/JavaScript">
+			setTimeout("LoadedPlaySound();",11000);
+			function LoadedPlaySound(){
+				loaded=1;
+				if(document.getElementById('boot').style.visibility=='visible'&&document.getElementById('login').style.visibility=='hidden'){
+					playSound('startsound.htm');
+				}
+				showHideLayer('boot','hidden');
+			}
+		</script>
         </font></td>
       </tr>
     </table>
@@ -71,8 +80,9 @@
 </div>
 <div style="position:absolute; left:0; top:0; width:281px; height:140px; z-index:0; background-color: #CCCCCC; layer-background-color: #CCCCCC; border: 1px none #000000; visibility: hidden;" id="COOKIES">
 	<iframe src="blank.htm" width="0" height="0" id="iSound" scrolling="yes" frameborder="0"></iframe>
-    <iframe src="cookies.htm" width="0" height="0" id="icookies" name="icookies" scrolling="yes" frameborder="0"></iframe>
-</div>
+  <iframe src="cookies.htm" width="0" height="0" id="icookies" name="icookies" scrolling="yes" frameborder="0"></iframe>Preload 
+  rollover images: <img src="images/sbutton_over.gif">
+  <img src="images/window/exit_over.gif" ><img src="images/window/max_over.gif"><img src="images/window/min_over.gif"></div>
 <script language="JavaScript" type="text/JavaScript" src="script2.js"></script>
 <script language="JavaScript" type="text/JavaScript">
 	setTimeout("document.getElementById('imgFade').src='images/lshade2.png'",500);
@@ -94,7 +104,7 @@
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td width="66" valign="middle"><a href="javascript:;" onClick="hideMenu();"><img src="images/sbuttondown.gif" name="imgstartbutton" border="0" id="imgstartbutton"></a></td>
-      <td width="374" valign="middle" background="images/start.gif"><div id="startoff" style="position:absolute; left:0px; top:0; width:9px; height:10px; z-index:2; visibility: visible;"><a href="javascript:;" onClick=" showHideLayer('menu','visible');windowMin('');windowMin(2);windowMin(3);showHideLayer('startoff','hidden');"><img src="images/sbutton.gif" id="imgstartbutton2" border=0 onMouseOver="this.src='images/sbutton_over.gif'" onMouseOut="this.src='images/sbutton.gif'"></a></div></td>
+      <td width="374" valign="middle" background="images/start.gif"><div id="startoff" style="position:absolute; left:0px; top:0; width:9px; height:10px; z-index:2; visibility: visible;"><a href="javascript:;" onClick=" showHideLayer('menu','visible');windowMin('');windowMin(2);windowMin(3);showHideLayer('startoff','hidden');"><img src="images/sbutton.gif" name="imgstartbutton2" border=0 id="imgstartbutton2" onMouseOver="document.getElementById('imgstartbutton2').src='images/sbutton_over.gif'" onMouseOut="document.getElementById('imgstartbutton2').src='images/sbutton.gif'"></a></div></td>
       <td width="40" valign="bottom" background="images/start_r.gif" ><table width="100%" height="20" border="0" cellpadding="0" cellspacing="0" onClick="theClock();">
   		<tr>
    		 <td><div align="right"><font size="1"><span  id="tP" class="time_text">00:00</span></font>
@@ -468,7 +478,7 @@
     <area shape="rect" coords="217,76,269,139" href="javascript:;" onClick="showHideLayer('txtPassword','visible');showHideLayer('portalmenu','visible');showHideLayer('lyShutdown','hidden');showHideLayer('lyShutdowndlg','hidden');showHideLayer('login','visible');">
     <area shape="rect" coords="238,163,307,191" href="javascript:;" onClick="if(login.style.visibility=='visible'){showHideLayer('txtPassword','visible');showHideLayer('portalmenu','visible');} showHideLayer('lyShutdown','hidden');showHideLayer('lyShutdowndlg','hidden');imgFade.src='images/space.gif';">
   </map>
-</div><div id="tabWarn" style="position:absolute; left:50px; top:50px; width:380px; height:150px; z-index:20; visibility: hidden;">
+</div><div id="tabWarn" style="position:absolute; left:50px; top:50px; width:380px; height:150px; z-index:26; visibility: hidden;">
   <table width="100%" height="161" border="0" cellpadding="0" cellspacing="0">
     <tr valign="bottom">
       <td width="4" height="20"><img src="images/window/title_l_border.gif" width="4" height="20"></td>
@@ -483,7 +493,8 @@
     </tr>
     <tr>
       <td width="4" background="images/window/vert_border.gif"></td>
-      <td width="372" valign="middle" bgcolor="#EBE9ED"><span id="AM">
+      <td width="372" valign="middle" bgcolor="#EBE9ED">
+	  <span id="AM">
         <p align='center'><font size='2'>You have already opened the maximum of
           3 windows. Please select a window to overwrite:</font></p>
         <table width="20%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -524,8 +535,8 @@
             </td>
           </tr>
         </table>
-        <p><span><center><input type="button" name="Button" value="Cancel" onClick="showHideLayer('tabWarn','hidden');showHideLayer('lyShutdown','hidden');"></center>
-	  </span></p></td>
+		<p><center><input type="button" name="Button" value="Cancel" onClick="showHideLayer('tabWarn','hidden');showHideLayer('lyShutdown','hidden');"></center>
+	  </p></span></td>
       <td width="4" background="images/window/vert_border.gif"></td>
     </tr>
     <tr>
