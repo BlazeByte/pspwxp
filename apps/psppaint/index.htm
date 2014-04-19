@@ -1,1 +1,479 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"><HTML><HEAD>	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">	<META NAME="GENERATOR" Content="Visual Page 2.0 for Windows">	<TITLE>Paint created by Thomas Kahn</TITLE></HEAD><BODY background=paintbg.jpg topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0"><table border="0" width="470" height="262" cellpadding="0" cellspacing="0"><tr><td align="center"><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"><P><SCRIPT Language="JavaScript"><!--<!-- MouseOver Paint --><!-- Written by Thomas Kahn --><!-- --><!-- MouseOver Paint may be used freely as long as this --><!-- comment is not removed and as long as it's not used--><!-- for commercial purposes. Contact me if you have any --><!-- comments, suggestions or questions. --><!-- Email: thomas@roundhouse.se --><!-- Homepage: http://hem.passagen.se/tkahn/ --><!-- CREATE THE IMAGE OBJECTS -->if (document.images){	knapp1=new Image()	knapp2=new Image()	knapp3=new Image()	knapp4=new Image()	knapp5=new Image()	knapp6=new Image()	knapp7=new Image()	knapp8=new Image()	knapp9=new Image()	knapp10=new Image()	knapp11=new Image()	knapp12=new Image()	knapp13=new Image()	knapp14=new Image()	knapp15=new Image()	knapp16=new Image()	knapp17=new Image()	knapp18=new Image()	knapp19=new Image()	knapp20=new Image()	knapp21=new Image()	knapp22=new Image()	knapp23=new Image()	knapp24=new Image()	knapp25=new Image()	knapp26=new Image()	knapp27=new Image()	knapp28=new Image()	knapp29=new Image()	knapp30=new Image()	knapp31=new Image()	knapp32=new Image()	knapp33=new Image()	knapp34=new Image()	knapp35=new Image()	knapp36=new Image()	knapp1.src="01.png"	knapp2.src="02.png"	knapp3.src="03.png"	knapp4.src="04.png"	knapp5.src="05.png"	knapp6.src="06.png"	knapp7.src="07.png"	knapp8.src="08.png"	knapp9.src="09.png"	knapp10.src="10.png"	knapp11.src="11.png"	knapp12.src="12.png"	knapp13.src="13.png"	knapp14.src="14.png"	knapp15.src="15.png"	knapp16.src="16.png"	knapp17.src="17.png"	knapp18.src="18.png"	knapp19.src="19.png"	knapp20.src="20.png"	knapp21.src="21.png"	knapp22.src="22.png"	knapp23.src="23.png"	knapp24.src="24.png"	knapp25.src="25.png"	knapp26.src="26.png"	knapp27.src="27.png"	knapp28.src="28.png"	knapp29.src="29.png"	knapp30.src="30.png"	knapp31.src="31.png"	knapp32.src="32.png"	knapp33.src="33.png"	knapp34.src="34.png"	knapp35.src="35.png"	knapp36.src="36.png"}<!-- INITIALIZE THE VARIABLES -->var i = 0 <!-- inner drawloop -->var j = 0 <!-- outer drawloop -->var k = 0 <!-- image id counter variable -->var colid = 2 <!-- color id variable -->var sudda = 0 <!-- erase counter variable --><!-- DRAW THE PAINT AREA -->document.write("<TABLE BORDER='1'><TR><TD>")while (j < 24) {	while (i < 36) {		document.write("<A HREF='javascript:erase()' onMouseOver='javascript:paint(" + k + ")'><IMG SRC='01.png' WIDTH='10' HEIGHT='10' BORDER='0'></A>")		i++		k++	}document.write("<BR>")j = j + 1i = 0}document.write("</TD></TR></TABLE>")<!-- FUNCTION FOR CHANGING THE IMAGES -->function paint(num) {		document.images[num].src = eval(colid)}<!-- FUNCTION FOR CHANGING COLOR -->function changeColor(col) {	if (col == "01") { colid = "knapp1.src" }	if (col == "02") { colid = "knapp2.src" }	if (col == "03") { colid = "knapp3.src" }	if (col == "04") { colid = "knapp4.src" }	if (col == "05") { colid = "knapp5.src" }	if (col == "06") { colid = "knapp6.src" }	if (col == "07") { colid = "knapp7.src" }	if (col == "08") { colid = "knapp8.src" }	if (col == "09") { colid = "knapp9.src" }	if (col == "10") { colid = "knapp10.src" }	if (col == "11") { colid = "knapp11.src" }	if (col == "12") { colid = "knapp12.src" }	if (col == "13") { colid = "knapp13.src" }	if (col == "14") { colid = "knapp14.src" }	if (col == "15") { colid = "knapp15.src" }	if (col == "16") { colid = "knapp16.src" }	if (col == "17") { colid = "knapp17.src" }	if (col == "18") { colid = "knapp18.src" }	if (col == "19") { colid = "knapp19.src" }	if (col == "20") { colid = "knapp20.src" }	if (col == "21") { colid = "knapp21.src" }	if (col == "22") { colid = "knapp22.src" }	if (col == "23") { colid = "knapp23.src" }	if (col == "24") { colid = "knapp24.src" }	if (col == "25") { colid = "knapp25.src" }	if (col == "26") { colid = "knapp26.src" }	if (col == "27") { colid = "knapp27.src" }	if (col == "28") { colid = "knapp28.src" }	if (col == "29") { colid = "knapp29.src" }	if (col == "30") { colid = "knapp30.src" }	if (col == "31") { colid = "knapp31.src" }	if (col == "32") { colid = "knapp32.src" }	if (col == "33") { colid = "knapp33.src" }	if (col == "34") { colid = "knapp34.src" }	if (col == "35") { colid = "knapp35.src" }	if (col == "36") { colid = "knapp36.src" }}<!-- FUNCTION FOR ERASING -->function erase() {	var sudda = 0 	while (sudda < 225) { 		document.images[sudda].src = knapp1.src		sudda = sudda +1	}	colid = "knapp1.src"}// --></SCRIPT></td><td><a href="javascript:changeColor('01')"><img src="01.png" width="15" height="15" border="0"></a><br><img src="b.png" width="18" height="5" border="0"><br><a href="javascript:changeColor('02')"><img src="02.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('03')"><img src="03.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('04')"><img src="04.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('05')"><img src="05.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('06')"><img src="06.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('07')"><img src="07.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('08')"><img src="08.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('09')"><img src="09.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('10')"><img src="10.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('11')"><img src="11.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('12')"><img src="12.png" width="15" height="15" border="0"></a></td><td><a href="javascript:changeColor('13')"><img src="13.png" width="15" height="15" border="0"></a><br><img src="b.png" width="18" height="5" border="0"><br><a href="javascript:changeColor('14')"><img src="14.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('15')"><img src="15.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('16')"><img src="16.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('17')"><img src="17.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('18')"><img src="18.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('19')"><img src="19.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('20')"><img src="20.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('21')"><img src="21.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('22')"><img src="22.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('23')"><img src="23.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('24')"><img src="24.png" width="15" height="15" border="0"></a></td><td><a href="javascript:changeColor('25')"><img src="25.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('26')"><img src="26.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('27')"><img src="27.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('28')"><img src="28.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('29')"><img src="29.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('30')"><img src="30.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('31')"><img src="31.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('32')"><img src="32.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('33')"><img src="33.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('34')"><img src="34.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('35')"><img src="35.png" width="15" height="15" border="0"></a><br><img src="b.png" width="15" height="5" border="0"><br><a href="javascript:changeColor('36')"><img src="36.png" width="15" height="15" border="0"></a></td></tr></table></BODY></HTML>
+<html><head>
+
+<title>PSPDraw</title><script language="JavaScript">
+<!--Hide
+
+var color="#000000";
+
+//End-->
+</script><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></head><body bgcolor="#EBE9ED" onload="resetAll();">
+
+
+
+<center>
+<table id="table0" cellspacing="0">
+<tbody><tr>
+<td><font size="2">PSPDraw</font></td>
+</tr>
+<tr>
+<td>
+<table border="2">
+<tbody><tr>
+<td>
+<table name="table2" cellpadding="0" cellspacing="0" height="200" width="360">
+<tbody><tr bgcolor="#FFFFFF">
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+<td onmousedown="bgColor=color"><img src="space.gif" border="0">
+</td>
+</tr>
+</tbody></table>
+</td>
+<td>
+<center>
+<table border="2" cellspacing="1" height="184" width="40">
+<tbody><tr>
+<td onmousedown="color='#FFFFFF';" bgcolor="#ffffff"><img src="space.gif" border="0" height="15" width="15">
+</td>
+<td onmousedown="color='#000000';" bgcolor="#000000"><img src="space.gif" border="0" height="15" width="15">
+</td>
+</tr>
+<tr>
+<td onmousedown="color='#FF0000';" bgcolor="#ff0000"><img src="space.gif" border="0" height="15" width="15">
+</td>
+<td onmousedown="color='#00FFFF';" bgcolor="#00ffff"><img src="space.gif" border="0" height="15" width="15">
+</td>
+</tr>
+<tr>
+<td onmousedown="color='#FF00FF';" bgcolor="#ff00ff"><img src="space.gif" border="0" height="15" width="15">
+</td>
+<td onmousedown="color='#0000FF';" bgcolor="#0000ff"><img src="space.gif" border="0" height="15" width="15">
+</td>
+</tr>
+<tr>
+<td onmousedown="color='#FF9933';" bgcolor="#ff9933"><img src="space.gif" border="0" height="15" width="15">
+</td>
+<td onmousedown="color='#000080';" bgcolor="#000080"><img src="space.gif" border="0" height="15" width="15">
+</td>
+</tr>
+<tr>
+<td onmousedown="color='#FFFF00';" bgcolor="#ffff00"><img src="space.gif" border="0" height="15" width="15">
+</td>
+<td onmousedown="color='#800080';" bgcolor="#800080"><img src="space.gif" border="0" height="15" width="15">
+</td>
+</tr>
+<tr>
+<td onmousedown="color='#00FF00';" bgcolor="#00ff00"><img src="space.gif" border="0" height="15" width="15">
+</td>
+<td onmousedown="color='#800000';" bgcolor="#800000"><img src="space.gif" border="0" height="15" width="15">
+</td>
+</tr>
+<tr>
+<td onmousedown="color='#008000';" bgcolor="#008000"><img src="space.gif" border="0" height="15" width="15">
+</td>
+<td onmousedown="color='#663333';" bgcolor="#663333"><img src="space.gif" border="0" height="15" width="15">
+</td>
+</tr>
+<tr>
+<td onmousedown="color='#808000';" bgcolor="#808000"><img src="space.gif" border="0" height="15" width="15">
+</td>
+<td onmousedown="color='#COCOCO';" bgcolor="#c0c0c0"><img src="space.gif" border="0" height="15" width="15">
+</td>
+</tr>
+<tr>
+<td onmousedown="color='#008080';" bgcolor="#008080"><img src="space.gif" border="0" height="15" width="15">
+</td>
+<td onmousedown="color='#808080';" bgcolor="#808080"><img src="space.gif" border="0" height="15" width="15">
+</td>
+</tr>
+</tbody></table>
+</center>
+<form name="form">
+<input onclick="history.go();" value="Reset" type="button">
+</form>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</center>
+
+
+
+
+</body></html>

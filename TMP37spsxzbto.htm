@@ -3,88 +3,11 @@
 <title>pspWxp</title>
 <script language="JavaScript" type="text/JavaScript">
 <!--
-var TaskbarHide ;
-var chkTaskbarHidestatus ;
-var chkIconsstatus ;
-chkIconsstatus="false";
-var chkBGImagestatus;
-chkBGImagestatus="true";
-var chkMenuTopstatus;
-chkMenuTopstatus="true"
-var tabopen;
-
-function TaskbarShow(){
-	MM_showHideLayers('Taskbar','','show','startoff','','show','lDetect','','hide');
-	if(tabopen=="true"){
-		MM_showHideLayers('tab','','show','tabinfo','','show')
-	}
-}
-
-function ChangeSettings(){
-
-if(chkIconsstatus=="true"){
-MM_showHideLayers('lIcons','','hide','internetShadow','','hide','readShadow','','hide','editShadow','','hide','calcShadow','','hide','gamesShadow','','hide','convShadow','','hide');
-}else{
-MM_showHideLayers('lIcons','','show','internetShadow','','show','readShadow','','show','editShadow','','show','calcShadow','','show','gamesShadow','','show','convShadow','','show');
-}
-
-
-MM_showHideLayers('tab','','hide','tabinfo','','hide','startoff','','show','Change','','hide','menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','progwin','','hide','winexit','','hide','programs','','hide','winmax','','hide','winmin','','hide');
-if(chkTaskbarHidestatus=="true"){
-	TaskbarHide = 'true';
-	programs.style.height='248';
-	progwin.style.height='272';
-	tblWindow.style.height='272';
-}else{
-	TaskbarHide = 'false';
-	programs.style.height='228';
-	progwin.style.height='252';
-	tblWindow.style.height='252';
-}
-if(chkMenuTopstatus=="false"){
-	programs.style.height='248';
-	progwin.style.height='272';
-	tblWindow.style.height='272';
-	document.getElementById('Taskbar').style.zIndex = 1;
-	document.getElementById('Tab').style.zIndex = 2;
-
-} else {
-	document.getElementById('Taskbar').style.zIndex = 131;
-	document.getElementById('Tab').style.zIndex = 132;
-	programs.style.height='228';
-	progwin.style.height='222';
-	tblWindow.style.height='222';
-}
-
-
-if(chkBGImagestatus=="true"){
-	if(File.value==""){
-		imgDesktop.src="images/desktop.jpg";
-	} else {
-		imgDesktop.src=File.value;
-	}
-} else {
-	imgDesktop.src="images/space.gif"
-}
-
-}
-
-function hidetaskbar(){
-	if(TaskbarHide=="true"){
-		if(menu.style.visibility=="hidden"){
-			MM_showHideLayers('Taskbar','','hide','startoff','','hide','tab','','hide','tabinfo','','hide','lDetect','','show');
-		}		
-	}
-}
-
 function setTitle(blncontrol,ProgramTitle, ProgramLocation, ProgramIcon){
 	document.getElementById('aT').innerHTML=ProgramTitle;
 	document.getElementById('tT').innerHTML=ProgramTitle.slice(0,14);
-	MM_showHideLayers('tab','','show','tabinfo','','show','menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','progwin','','show','winexit','','show','programs','','show','startoff','','show');
-	tabopen="true";
-	if(TaskbarHide=="true"){
-			MM_showHideLayers('tab','','hide','tabinfo','','hide','startoff','','hide')
-	}
+	MM_showHideLayers('tab','','show','tabinfo','','show','menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','window','','show','winexit','','show','programs','','show','startoff','','show');
+	
 	
 	if(blncontrol>0) {
 	MM_showHideLayers('winmax','','show','winmin','','show','Change','','hide');
@@ -130,24 +53,14 @@ function MM_popupMsg(msg) { //v1.0
 }
 //-->
 </script>
-<script language="JavaScript" type="text/JavaScript">
-<!--
-function MM_reloadPage(init) {  //reloads the window if Nav4 resized
-  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
-    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
-  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
-}
-MM_reloadPage(true);
-//-->
-</script>
 </head>
 <body bgcolor="#000000" style="margin: 0; padding: 0;">
 <div id="boot" style="position:absolute; left:0; top:0; width:480px; height:272; z-index:129; background-color: #000000; layer-background-color: #000000; border: 1px none #000000; visibility: visible;" onclick="MM_showHideLayers('boot','','hide','Clock','','show')"> 
   <div align="center"> 
     <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td align="center" valign="middle"><p><img src="images/boot.gif"></p>
-          <p> <img src="images/progress.gif" border="0" loop="1"><br>
+        <td align="center" valign="middle"><p><img src="images/boot.gif" width="200" height="144"></p>
+          <p> <img src="images/progress.gif" width="133" height="13" border="0" loop="1"><br>
             <font color="#CCCCCC">Press X 
             to Log in</font></p>
   </td>
@@ -155,7 +68,7 @@ MM_reloadPage(true);
     </table>
     </div>
 </div>
-<div id="tab" style="position:absolute; left:84px; top:254px; width:100px; height:18; z-index:2; visibility: hidden;" onClick="MM_showHideLayers('tab','','show','menu','','hide','mapps','','hide','progwin','','show','winexit','','show','programs','','show','winmax','','show','winmin','','show')" onMouseDown="MM_swapImage('imgTab','','images/window/tab_down.gif',1)"><img src="images/window/tab_down.gif" name="imgTab" width="100" height="16" id="imgTab">
+<div id="tab" style="position:absolute; left:84px; top:254px; width:100px; height:18; z-index:11; visibility: hidden;" onClick="MM_showHideLayers('tab','','show','menu','','hide','mapps','','hide','window','','show','winexit','','show','programs','','show','winmax','','show','winmin','','show')" onMouseDown="MM_swapImage('imgTab','','images/window/tab_down.gif',1)"><img src="images/window/tab_down.gif" name="imgTab" width="100" height="16" id="imgTab">
   <div id="tabinfo" style="position:absolute; left:0; top:0; width:100; height:16; z-index:11; visibility: hidden;">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
@@ -165,13 +78,95 @@ MM_reloadPage(true);
     </table>
   </div>
 </div>
-<div id="Taskbar" style="position:absolute; left:0px; top:252px; width:480px; height:20px; z-index:1; visibility: visible;" onMouseOut="hidetaskbar();">
+<img src="images/desktop.jpg" name="imgDesktop" width="480" height="272" id="imgDesktop"> 
+<div id="internetShadow" style="position:absolute; left:17px; top:59px; width:57px; height:21px; z-index:1; visibility: visible;"><font color="#FFFFFF"  size="1"><strong>Internet</strong></font></div>
+<div id="readShadow" style="position:absolute; left:91px; top:59px; width:86px; height:21px; z-index:1; visibility: visible;"><font color="#FFFFFF"  size="1"><strong>File 
+  Viewer </strong></font></div>
+<div id="editShadow" style="position:absolute; left:9px; top:137px; width:77px; height:21px; z-index:1; visibility: visible;"><font color="#FFFFFF"  size="1"><strong>Text 
+  Editor </strong></font></div>
+<div id="calcShadow" style="position:absolute; left:93px; top:137px; width:57px; height:21px; z-index:1; visibility: visible;"><font color="#FFFFFF"  size="1"><strong>Calculator</strong></font></div>
+<div id="gamesShadow" style="position:absolute; left:103px; top:215px; width:57px; height:21px; z-index:1; visibility: visible;"><font color="#FFFFFF"  size="1"><strong>Games</strong></font></div>
+<div id="convShadow" style="position:absolute; left:10px; top:215px; width:57px; height:21px; z-index:1; visibility: visible;"><font color="#FFFFFF"  size="1"><strong>Conversion</strong></font></div>
+<div id="Change" style="position:absolute; left:65px; top:23px; width:350px; height:205px; z-index:100; background-color: #EBE9ED; layer-background-color: #EBE9ED; border: 1px none #000000; visibility: hidden;"> 
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
-	<tr> 
-	  <td width="66" valign="middle"><a href="javascript:;" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','startoff','','show')"><img src="images/sbuttondown.gif" width="66" height="20" border="0"></a> 
-	  <td width="354" valign="middle" background="images/start.gif"><div id="startoff" style="position:absolute; left:0px; top:0; width:9px; height:10px; z-index:131; visibility: visible;"><a href="javascript:;" onClick="MM_showHideLayers('startoff','','hide','menu','','show','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide')"><img src="images/sbutton.gif" width="66" height="20" border="0" onMouseOver="MM_showHideLayers('Taskbar','','show','startoff','','show')"></a></div> 
-	  <td width="60" valign="middle" background="images/start_r.gif"><div align="right"><font color="#000000" size="1"><span class="s2" id="tP">&nbsp;</span> 
-		  <script type="text/javascript">
+    <tr> 
+      <td><div align="center"> 
+          <table width="243" height="93" border="0" cellpadding="0" cellspacing="0" background="images/settings/preview.jpg">
+            <tr> 
+              <td width="52" height="8"></td>
+              <td width="140" height="8"></td>
+              <td width="51" height="8"></td>
+            </tr>
+            <tr> 
+              <td height="70"></td>
+              <td width="140" height="70"><img src="images/desktop.jpg" name="imgPreview" width="140" height="70" id="imgPreview"></td>
+              <td height="70"></td>
+            </tr>
+            <tr> 
+              <td width="52"></td>
+              <td width="140" height="15"></td>
+              <td width="51"></td>
+            </tr>
+          </table>
+        </div></td>
+    </tr>
+    <tr> 
+      <td width="235"><p align="center"><font size="2">Change the background image:</font></p>
+        <p align="center"><font size="2">Click Select to browse: </font> 
+          <input name="File" type="file" id="File" onChange="imgPreview.src=File.value" size="20">
+        </p>
+        <div align="center"> 
+          <table width="150" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr> 
+              <td width="50%"><div align="center"> 
+                  <input name="OK" type="button" id="OK" onClick="MM_showHideLayers('tab','','hide','tabinfo','','hide','Change','','hide','menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','window','','hide','winexit','','hide','programs','','hide','startoff','','show','winmax','','hide','winmin','','hide');imgDesktop.src=File.value" value="Change">
+                </div></td>
+              <td width="50%"><div align="center"> 
+                  <input name="Cancel" type="button" id="Cancel" onClick="MM_showHideLayers('tab','','hide','tabinfo','','hide','Change','','hide','menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','window','','hide','winexit','','hide','programs','','hide','startoff','','show','winmax','','hide','winmin','','hide')" value="Cancel">
+                </div></td>
+            </tr>
+          </table>
+        </div></td>
+    </tr>
+  </table>
+</div>
+<div id="Desktop" style="position:absolute; left:0; top:0; width:480px; height:272px; z-index:0; visibility: visible;"> 
+  <table width="480" height="272" border="0" cellpadding="0" cellspacing="0" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','startoff','','show')" id="desktop">
+    <tr> 
+      <td height="252" colspan="3" valign="top"><table border="0" cellpadding="4" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="34%">
+          <tr> 
+            <td width="50%"> <p align="center"><strong><img src="images/icons/internet.png" width="48" height="48"  onClick="setTitle('1','Internet Explorer','apps/internet/index.htm','images/icons/menu/apps/ie.png')"></strong></td>
+            <td width="50%"> <p align="center"> <strong><img src="images/icons/textreader.png" width="48" height="48" onClick="setTitle('1','File Viewer','apps/filebrowse/index.htm','images/icons/menu/apps/view.png')"></strong></td>
+          </tr>
+          <tr> 
+            <td width="50%"> <p align="center"><strong><font face="Verdana" size="1"> 
+                Internet</font></strong></td>
+            <td width="50%"> <p align="center"> <strong><font face="Verdana" size="1">File 
+                Viewer</font></strong></td>
+          </tr>
+          <tr> 
+            <td width="50%"> <p align="center"><strong><img src="images/icons/word.png" width="48" height="48" onClick="setTitle('1','Text Editor','apps/textedit/index.htm','images/icons/menu/apps/texteditor.png')"></strong></td>
+            <td width="50%"> <p align="center"><strong> <img src="images/icons/calculator.png" width="48" height="48" onClick="setTitle('1','Calculator','apps/calculator/index.htm','images/icons/menu/apps/calc.png')"></strong></td>
+          </tr>
+          <tr> 
+            <td width="50%"> <p align="center"> <strong><font face="Verdana" size="1">Text 
+                Editor</font></strong></td>
+            <td width="50%"> <p align="center"> <strong><font face="Verdana" size="1">Calculator</font></strong></td>
+          </tr>
+          <tr> 
+            <td width="50%"> <p align="center"><strong><img border="0" src="images/icons/conv.png" width="48" height="48" onClick="setTitle('1','Conversion Calculator','apps/convcalc/index.htm','images/icons/menu/apps/conversioncalc.png')"></strong></td>
+            <td width="50%"> <p align="center"><strong> <img src="images/icons/games.png" width="48" height="48" onClick="setTitle('1','Games List','apps/gameslist/index.htm','images/icons/menu/games.png')"></strong></td>
+          </tr>
+          <tr> 
+            <td width="50%"> <p align="center"> <strong><font size="1" face="Verdana">Convertion</font></strong></td>
+            <td width="50%"> <p align="center"> <strong><font face="Verdana" size="1">Games</font></strong></td>
+          </tr>
+        </table>
+    <tr valign="middle"> 
+      <td width="66" height="20"><a href="javascript:;" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','startoff','','show')"><img src="images/sbuttondown.gif" width="66" height="20" border="0"></a> 
+      <td width="354" height="20" background="images/start.gif"> 
+      <td width="60" height="20" background="images/start_r.gif"><div align="right"><font size="1"><span class="s2" id="tP">&nbsp;</span> 
+          <script type="text/javascript">
 function tS(){ x=new Date(); x.setTime(x.getTime()); return x; }
 function lZ(x){ return (x>9)?x:'0'+x; }
 function tH(x){ if(x==0){ x=12; } return (x>12)?x-=12:x; }
@@ -182,120 +177,10 @@ function y4(x){ return (x<500)?x+1900:x; }
 oT="tH(tS().getHours())+':'+lZ(tS().getMinutes())+' '+aP(tS().getHours())";
 if(!document.all){ window.onload=dT; }else{ dT(); }
 </script>
-		  </font></div></tr>
+          </font></div> 
   </table>
 </div>
-<div id="lIcons" style="position:absolute; left:0; top:0; width:160; height:81px; z-index:1; visibility: visible;">
-  <table border="0" cellpadding="4" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%">
-	<tr> 
-	  <td width="50%"> <p align="center"><strong><img src="images/icons/internet.png" width="48" height="48"  onClick="setTitle('1','Internet Explorer','apps/internet/index.htm','images/icons/menu/apps/ie.png')"></strong></td>
-	  <td width="50%"> <p align="center"> <strong><img src="images/icons/textreader.png" width="48" height="48" onClick="setTitle('1','File Viewer','apps/filebrowse/index.htm','images/icons/menu/apps/view.png')"></strong></td>
-	</tr>
-	<tr> 
-	  <td width="50%"> <p align="center"><strong><font face="Verdana" size="1"> 
-		  Internet</font></strong></td>
-	  <td width="50%"> <p align="center"> <strong><font face="Verdana" size="1">File 
-		  Viewer</font></strong></td>
-	</tr>
-	<tr> 
-	  <td width="50%"> <p align="center"><strong><img src="images/icons/word.png" width="48" height="48" onClick="setTitle('1','Text Editor','apps/textedit/index.htm','images/icons/menu/apps/texteditor.png')"></strong></td>
-	  <td width="50%"> <p align="center"><strong> <img src="images/icons/calculator.png" width="48" height="48" onClick="setTitle('1','Calculator','apps/calculator/index.htm','images/icons/menu/apps/calc.png')"></strong></td>
-	</tr>
-	<tr> 
-	  <td width="50%"> <p align="center"> <strong><font face="Verdana" size="1">Text 
-		  Editor</font></strong></td>
-	  <td width="50%"> <p align="center"> <strong><font face="Verdana" size="1">Calculator</font></strong></td>
-	</tr>
-	<tr> 
-	  <td width="50%"> <p align="center"><strong><img border="0" src="images/icons/conv.png" width="48" height="48" onClick="setTitle('1','Conversion Calculator','apps/convcalc/index.htm','images/icons/menu/apps/conversioncalc.png')"></strong></td>
-	  <td width="50%"> <p align="center"><strong> <img src="images/icons/games.png" width="48" height="48" onClick="setTitle('1','Games List','apps/gameslist/index.htm','images/icons/menu/games.png')"></strong></td>
-	</tr>
-	<tr> 
-	  <td width="50%"> <p align="center"> <strong><font size="1" face="Verdana">Convertion</font></strong></td>
-	  <td width="50%"> <p align="center"> <strong><font face="Verdana" size="1">Games</font></strong></td>
-	</tr>
-  </table>
-</div>
-<div id="lDetect" style="position:absolute; left:0; top:268; width:480; height:4; z-index:130; visibility: hidden;"><img src="images/space.gif" width="100%" height="100%" onMouseMove="TaskbarShow()"></div>
-<img src="images/desktop.jpg" name="imgDesktop" width="480" height="272" id="imgDesktop"> 
-<div id="internetShadow" style="position:absolute; left:17px; top:59px; width:57px; height:21px; z-index:1; visibility: visible;"><font color="#FFFFFF"  size="1"><strong>Internet</strong></font></div>
-<div id="readShadow" style="position:absolute; left:89px; top:59px; width:86px; height:21px; z-index:1; visibility: visible;"><font color="#FFFFFF"  size="1"><strong>File 
-  Viewer </strong></font></div>
-<div id="editShadow" style="position:absolute; left:8px; top:137px; width:77px; height:21px; z-index:1; visibility: visible;"><font color="#FFFFFF"  size="1"><strong>Text 
-  Editor </strong></font></div>
-<div id="calcShadow" style="position:absolute; left:91px; top:137px; width:57px; height:21px; z-index:1; visibility: visible;"><font color="#FFFFFF"  size="1"><strong>Calculator</strong></font></div>
-<div id="gamesShadow" style="position:absolute; left:100px; top:215px; width:57px; height:21px; z-index:1; visibility: visible;"><font color="#FFFFFF"  size="1"><strong>Games</strong></font></div>
-<div id="convShadow" style="position:absolute; left:8px; top:215px; width:57px; height:21px; z-index:1; visibility: visible;"><font color="#FFFFFF"  size="1"><strong>Conversion</strong></font></div>
-<div id="Change" style="position:absolute; left:4; top:20; width:472px; height:228; z-index:100; background-color: #EBE9ED; layer-background-color: #EBE9ED; border: 1px none #000000; visibility: hidden;"> 
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-	<tr> 
-	  <td><div align="center"> 
-		  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-			<tr>
-			  <td width="114">&nbsp;</td>
-			  <td width="243"><table width="243" height="93" border="0" cellpadding="0" cellspacing="0" background="images/settings/preview.jpg">
-				  <tr> 
-					<td width="52" height="8"></td>
-					<td width="140" height="8"></td>
-					<td width="51" height="8"></td>
-				  </tr>
-				  <tr> 
-					<td height="70"></td>
-					<td width="140" height="70"><img src="images/desktop.jpg" name="imgPreview" width="140" height="70" id="imgPreview"></td>
-					<td height="70"></td>
-				  </tr>
-				  <tr> 
-					<td width="52"></td>
-					<td width="140" height="15"></td>
-					<td width="51"></td>
-				  </tr>
-				</table></td>
-			  <td width="115" align="center"><input type="submit" name="Submit" value="Update" onClick="setTitle('1','Update','http://blazebyte.atspace.com/pspWxp/updates/101.htm','images/icons/menu/vid.png')"></td>
-			</tr>
-		  </table>
-		</div></td>
-	</tr>
-	<tr> 
-	  <td><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-		  <tr>
-			<td width="50%" valign="top"><p align="left"><font size="2"> 
-				<input name="chkBGImage" type="checkbox" id="chkBGImage" checked onclick="if(chkBGImagestatus=='true'){chkBGImagestatus='false'}else{chkBGImagestatus='true'}">
-				Background image:<br>
-				</font> 
-				<input name="File" type="file" id="File2" onChange="imgPreview.src=File.value" size="20">
-			  </p>
-			  </td>
-			<td width="50%" valign="top"><font size="2"> 
-			  <input name="chkTaskbarHide" type="checkbox" id="chkTaskbarHide" onclick="if(chkTaskbarHidestatus=='true'){chkTaskbarHidestatus='false'}else{chkTaskbarHidestatus='true'}">
-			  Auto-Hide taskbar<br>
-			  <input name="chkIcons" type="checkbox" id="chkIcons" onClick="if(chkIconsstatus=='true'){chkIconsstatus='false';}else{chkIconsstatus='true';}">
-			  Do not show desktop icons<br>
-			  <input name="chkMenuTop" type="checkbox" id="chkMenuTop" checked onclick="if(chkMenuTopstatus=='true'){chkMenuTopstatus='false'}else{chkMenuTopstatus='true'}">
-			  Start menu always on top</font></td>
-		  </tr>
-		</table>
-		<div align="center"> 
-		  <table width="150" height="30" border="0" align="center" cellpadding="0" cellspacing="0">
-			<tr valign="bottom"> 
-			  <td width="50%"><div align="center"> 
-				  <input name="OK" type="button" id="OK" onClick="ChangeSettings();" value="Change">
-				</div></td>
-			  <td width="50%"><div align="center"> 
-				  <input name="Cancel" type="button" id="Cancel" onClick="MM_showHideLayers('tab','','hide','tabinfo','','hide','startoff','','show','Change','','hide','menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','progwin','','hide','winexit','','hide','programs','','hide','winmax','','hide','winmin','','hide')" value="Cancel">
-				</div></td>
-			</tr>
-		  </table>
-		</div></td>
-	</tr>
-  </table>
-</div>
-<div id="Desktop" style="position:absolute; left:0px; top:0px; width:480px; height:272px; z-index:0; visibility: visible;"> 
-  <table width="480" height="272" border="0" cellpadding="0" cellspacing="0" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','startoff','','show')" id="desktop">
-	<tr> 
-	  <td width="480"> 
-  </table>
-</div>
-<div id="menu" style="position:absolute; left:0px; top:75px; width:94px; height:136px; z-index:28; visibility: hidden;"> 
+<div id="menu" style="position:absolute; left:1px; top:75px; width:94px; height:136px; z-index:28; visibility: hidden;"> 
   <table width="123" border="0" cellpadding="0" cellspacing="0">
 	<tr> 
 	  <td height="41" background="images/icons/menu/menu_top.png"><div align="right"></div></td>
@@ -328,7 +213,7 @@ if(!document.all){ window.onload=dT; }else{ dT(); }
 		</table></td>
 	</tr>
 	<tr> 
-	  <td bgcolor="#10377C" ><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C" onClick="">
+	  <td bgcolor="#10377C" ><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C" onClick="setTitle('1','Internet Explorer','','images/icons/menu/apps/ie.png')">
 		  <tr> 
 			<td width="22"><img src="images/icons/menu/music.png" width="20" height="20"></td>
 			<td><font color="#FFFFFF"  size="2">Music</font></td>
@@ -355,7 +240,7 @@ if(!document.all){ window.onload=dT; }else{ dT(); }
 	  <td><table width="100%" border="0" cellpadding="0" cellspacing="0" background="images/icons/menu/menu_base.gif">
 		  <tr onClick="javascript:window.close();"> 
 			<td width="66"></td>
-			<td width="21"><img src="images/icons/menu/off.gif" height="16" border="0"></td>
+			<td width="21"><img src="images/icons/menu/off.gif" width="16" height="16" border="0"></td>
 			<td width="36"><font color="#FFFFFF"  size="2">Exit</font></td>
 		  </tr>
 		</table></td>
@@ -673,8 +558,8 @@ if(!document.all){ window.onload=dT; }else{ dT(); }
     </tr>
   </table>
 </div>
-<div id="progwin" style="position:absolute; left:0px; top:0px; width:245px; height:252px; z-index:20; visibility: hidden;"> 
-  <table width="480" height="252" border="0" cellpadding="0" cellspacing="0" id="tblWindow">
+<div id="window" style="position:absolute; left:0px; top:0px; width:245px; height:249px; z-index:20; visibility: hidden;"> 
+  <table width="480" height="244" border="0" cellpadding="0" cellspacing="0">
     <tr valign="bottom"> 
       <td width="4" height="20"><img src="images/window/title_l_border.gif" width="4" height="20"></td>
       <td height="20" valign="middle" background="images/window/title_border.gif"> 
@@ -687,9 +572,9 @@ if(!document.all){ window.onload=dT; }else{ dT(); }
       <td width="4" height="20"><img src="images/window/title_r_border.gif" width="4" height="20"></td>
     </tr>
     <tr> 
-      <td width="4" background="images/window/vert_l_border.gif">&nbsp;</td>
+      <td width="4" height="83"><img src="images/window/vert_border.gif" width="4" height="228"></td>
       <td width="472" bgcolor="#EBE9ED"></td>
-      <td width="4" background="images/window/vert_r_border.gif">&nbsp;</td>
+      <td width="4" height="83"><img src="images/window/vert_border.gif" width="4" height="228"></td>
     </tr>
     <tr> 
       <td height="4"><img src="images/window/base_l_border.gif" width="4" height="4"></td>
@@ -698,27 +583,28 @@ if(!document.all){ window.onload=dT; }else{ dT(); }
     </tr>
   </table>
 </div>
-<div id="winexit" style="position:absolute; left:455px; top:0px; width:25px; height:11px; z-index:21; visibility: hidden;"> 
-  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="MM_showHideLayers('tab','','hide','tabinfo','','hide','Change','','hide','menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','progwin','','hide','winexit','','hide','programs','','hide','startoff','','show','winmax','','hide','winmin','','hide');MM_swapImage('imgTab','','images/window/tab_none.gif',1);tabopen='false'" onMouseDown="MM_swapImage('imgclose','','images/window/exit_down.gif',1)" onMouseUp="MM_swapImgRestore()" onMouseOver="MM_swapImage('imgclose','','images/window/exit_over.gif',1)" onMouseOut="MM_swapImgRestore()">
+<div id="winexit" style="position:absolute; left:458px; top:0px; width:22px; height:11px; z-index:21; visibility: hidden;"> 
+  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="MM_showHideLayers('tab','','hide','tabinfo','','hide','Change','','hide','menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','window','','hide','winexit','','hide','programs','','hide','startoff','','show','winmax','','hide','winmin','','hide');MM_swapImage('imgTab','','images/window/tab_none.gif',1)" onMouseDown="MM_swapImage('imgclose','','images/window/exit_down.gif',1)" onMouseUp="MM_swapImgRestore()" onMouseOver="MM_swapImage('imgclose','','images/window/exit_over.gif',1)" onMouseOut="MM_swapImgRestore()">
     <tr> 
-      <td valign="bottom"><div align="center"><a href="javascript:;"><img src="images/window/exit.gif" name="imgclose" border="0" id="imgclose"></a></div></td>
+      <td valign="bottom"><a href="javascript:;"><img src="images/window/exit.gif" name="imgclose" width="18" height="18" border="0" id="imgclose"></a></td>
     </tr>
   </table>
 </div>
-<div id="programs" style="position:absolute; left:4px; top:20px; width:16px; height:17px; z-index:20; visibility: hidden;layer-background-color: #EBE9ED; border: 1px none #000000;"> 
+<div id="programs" style="position:absolute; left:4px; top:20px; width:16px; height:17px; z-index:20; visibility: hidden; background-color: #EBE9ED; layer-background-color: #EBE9ED; border: 1px none #000000;"> 
   <iframe src="blank.htm" width=472 height=228 id=progman name=progman scrolling=yes  frameborder="0"></iframe>
 </div>
-<div id="winmax" style="position:absolute; left:431px; top:0px; width:22px; height:11px; z-index:21; visibility: hidden;"> 
+<div id="startoff" style="position:absolute; left:0px; top:252px; width:9px; height:10px; z-index:6; visibility: visible;"><a href="javascript:;" onClick="MM_showHideLayers('menu','','show','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','startoff','','hide')"><img src="images/sbutton.gif" width="66" height="20" border="0"></a></div>
+<div id="winmax" style="position:absolute; left:437px; top:0px; width:21px; height:11px; z-index:21; visibility: hidden;"> 
   <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="location.href=frames['progman'].location.href">
     <tr> 
-      <td valign="bottom"><div align="center"><img src="images/window/max.gif" name="imgMax" border="0" id="imgMax"></div></td>
+      <td valign="bottom"><img src="images/window/max.gif" name="imgMax" width="18" height="18" border="0" id="imgMax"></td>
     </tr>
   </table>
 </div>
-<div id="winmin" style="position:absolute; left:408px; top:0px; width:22px; height:11px; z-index:21; visibility: hidden;"> 
-  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="MM_showHideLayers('bgChange','','hide','menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','progwin','','hide','winexit','','hide','programs','','hide','text','','hide','startoff','','show','winmax','','hide','winmin','','hide');MM_swapImage('imgTab','','images/window/tab.gif',1)">
+<div id="winmin" style="position:absolute; left:417px; top:0px; width:20px; height:11px; z-index:21; visibility: hidden;"> 
+  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="MM_showHideLayers('bgChange','','hide','menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','hide','winexit','','hide','programs','','hide','text','','hide','startoff','','show','winmax','','hide','winmin','','hide');MM_swapImage('imgTab','','images/window/tab.gif',1)">
     <tr> 
-      <td valign="bottom"><div align="center"><img src="images/window/min.gif" name="imgMin" border="0" id="imgMin"></div></td>
+      <td valign="bottom"><img src="images/window/min.gif" name="imgMin" width="18" height="18" border="0" id="imgMin"></td>
     </tr>
   </table>
 </div>

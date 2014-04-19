@@ -29,8 +29,8 @@ input.i1 {text-align: center; text-decoration: none;  font-family: arial, helvet
 <body bgcolor="#EBE9ED" onload="Deal()">
 <div align="center">
 <form name="Form" action="open">
-  <table align="center" width="410" border="1" bordercolor="blue" cellpadding="0" cellspacing="1" bgcolor="blue">
-	<tr>
+<table align="center" width="410" border="1" bordercolor="blue" cellpadding="0" cellspacing="1" bgcolor="blue">
+<tr>
 <td>
 <table border="0" cellpadding="1" cellspacing="0" bgcolor="#c0c0c0">
 <tr>
@@ -44,6 +44,11 @@ input.i1 {text-align: center; text-decoration: none;  font-family: arial, helvet
 <tr>
 <td colspan=5 bgcolor=blue align=center>
 <div class="div2">Five Card Stud</div>
+<div class="div1">Note - You can select the amount below that the Bank contains.<br>This can be changed anytime during play.</div>
+<input type=button class="i1" style="width:80" value="0.1 Million" onclick="bankSize(100000)">
+<input type=button class="i1" style="width:80" value="0.5 Million" onclick="bankSize(500000)">
+<input type=button class="i1" style="width:80" value="1 Million" onclick="bankSize(1000000)">
+<BR>
 <div class="div1">Goal - Win all of the money that is in the bank! Click DEAL to begin.</div>
 <input type=button value="Deal  |  Change  |  OK  |  New Round"  class="i1" name="Button" style="width:250" onclick="Deal(this.value)">
 </td>
@@ -82,14 +87,8 @@ input.i1 {text-align: center; text-decoration: none;  font-family: arial, helvet
 </td>
 </tr>
 </table>
-    
-  <div align="center"> <font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Money 
-	in bank:</font><br>
-	<input name="button" type=button class="i1" style="width:80" onclick="bankSize(100000)" value="0.1 Million">
-	<input name="button" type=button class="i1" style="width:80" onclick="bankSize(500000)" value="0.5 Million">
-	<input name="button" type=button class="i1" style="width:80" onclick="bankSize(1000000)" value="1 Million">
-  </div>
 </form>
+</div>
 
 <script type="text/javascript">
 //KML(Arnie1066) - 28Feb2006 -
@@ -113,6 +112,17 @@ Causes=new Array(
 "Higher cards","Higher cards","Higher cards","Higher cards","Higher cards"
 )
 
+//KML(Arnie1066) - ??Feb2006 - Altered endgame winmessage to show no of hands played (Use of new variable)
+//KML(Arnie1066) - 17Feb2006 - Altered Endgame (loose) message to include hand number
+//KML(Arnie1066) - 17Feb2006 - Chaged text on button from '$1000' to All in
+//KML(Arnie1066) - 17Feb2006 - Chaned it function to do All in (Sum)
+//KML(Arnie1066) - 18Feb2006 - Altered text box output to show in two lines - removes scroll bar when coupled with...
+//KML(Arnie1066) - 18Feb2006 - Widened Textbox to 45 columns.
+//KML(Arnie1066) - 22Feb2006 - Re-Altered Textbox win/loose messages for clarity
+//KML - 22Feb2006 - Added 'theBank' variable for variable timed games
+//KML - 22Feb2006 - Added min theBank value
+//KML - 22Feb2006 - Corrected Grammer on end message
+//KML - 28Feb2006 - (Pancake day) Added maple syrup to pancake, no wait added 3 buttons on page to select bank size!
 
 function bankSize(a)
 {
@@ -325,9 +335,8 @@ return Score
 Init()
 
 function GameOver(){
-alert("woah");
 Saying=(Sum>theBank)?"$"+Sum+" in only "+HandNo+" hands\nYou are a born gambler!\nExcellent!\nSo when are you going to Las Vegas?":"Your bust in "+HandNo+" hand(s)!"
-location=(confirm(Saying+"\nPlay again?"))?"5card.htm"
+location=(confirm(Saying+"\nPlay again?"))?"5cardstud.html":"../hangman/hangman.html"
 }
 </script>
 <div align="center"></div>
