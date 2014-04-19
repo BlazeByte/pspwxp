@@ -136,5 +136,30 @@ __Q. I receive the error "Out of memory".__
 
 A. The PSP has run out of memory and the internet browser must be refreshed
 
+##Legal##
+
+
+This is NOT homebrew - it is a set of webpages. It will not hurt you PSP in any way. By installing pspWxp you are NOT voiding your warrenty. It's just like a website but it is offline, meaning you do not need to be connected to the internet to use it. pspWxp just opens in the intenet browser. It is free and totally LEGAL. 
+
+BlazeByte and any developers of pspWxp take no responsiblity
+for loss of data and/or damage to your PSP/hardware. This 
+software is safe and should not cause any of the above.
+
+
+##Credits##
+
+A very big thank you to:
+
+- Bigbondfan for graphics, development, further coding and distribution. Also for the website and the forums at http://blazebyte.org
+- TombstoneTim for games, applications and some code.
+- ChrisW92 for some games, apps and suggestions (login, shut down etc)
+- Critique and contributions from Ocean19, RBSIS, Hunter Onhika, GameBox 47, gta_boy, littlevish, brin_vg, weirdpeople, King666 and dark_nano
+- The Sheriff - MSN Messenger
+- christek - PSPhone
+- Colt for translating pspWxp to Spanish
+- ASR for great base code and concept. 
+- The winpsportal team
+- Moderators on the pspwxp forum 
+- Anyone who submitted a theme! 
 
 Copyright 2005-2014 BlazeByte
