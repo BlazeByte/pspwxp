@@ -9,6 +9,7 @@ var strItemPath = new Array;
 var strItemIconPath = new Array;
 var intItemMax = new Array;
 var intMainMenuItemCount = 0;
+var strClass;
 
 function initiateMenu(strListURL){
 
@@ -58,14 +59,14 @@ function createMenu(strTitle,strID,strIcon){
 
 	for(var intCol=1;intCol<=intCols;intCol++){		// go through each item and create it on the menu
 
-		strClass=' class="subMenuColContainer"';
-
-
-		document.write('<td' + strClass + '>');	// create a new column
-
 		if((intCol == intCols)&&(intLastColRows>0)){	// If this is the final column
 			intNewMaxRows = intLastColRows;			// make sure it has the correct amount of rows
+			strClass="";
+		}else{
+			strClass=' class="subMenuColContainer"';
 		}
+		
+		document.write('<td' + strClass + '>');	// create a new column
 
 		for(var intRow=1 ; intRow<=intNewMaxRows ; intRow++){	// for each item on the row
 

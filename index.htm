@@ -4,12 +4,13 @@
 </head>
 
 <body bgcolor="#000000" text="#CCCCCC">
-
-Encore is loading, please wait...
+<h1>Encore</h1>
+<p/>
+<div id="Info">Encore is loading, please wait...</div>
 
 <script language="javascript" type="text/javascript">
-	if(screen.width!==480){
-		document.getElementById('Info').innerHTML="Encore has detected you are not running this on a PSP. The interface will be significantly improved on the PSP, and functions will be fully operational. To continue anyway, <a href='system/desktop.htm'>click here.</a>";
+	if(screen.width!==480){		//If not the PSP, then display a warning for PC users that it will not diplay properly.
+		document.getElementById('Info').innerHTML="<h2>Encore viewing problems on your browser:</h2><h4>Encore has detected you are not running this on a PSP. The interface will be significantly improved on the PSP, and functions will be fully operational. To continue anyway, <a href='system/desktop.htm'><font color='#9999FF'>click here.</font></a></h4>";
 	}else{
 		window.location="system/desktop.htm";
 	}	

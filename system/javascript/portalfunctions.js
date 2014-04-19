@@ -1,3 +1,5 @@
+callSound("/sounds/start.swf");		// call the start up sound so it gets time to load.
+
 returnLoadStatus("Preparing portal functions...",6);
 
 var strHours;
@@ -41,10 +43,6 @@ function minMaxTaskbar() {
 	}
 }
 
-function callSound(strPath){
-	iSound.location.href="../theme"+strThemeDir+strPath;
-}
-
 function theClock() {
 	var theDate = new Date;
 	strHours = theDate.getHours();
@@ -68,8 +66,6 @@ function msgBox(strMsg,strTitle,intError){
 	}else callSound("/sounds/blip.swf");
 }
 
-callSound("/sounds/start.swf");
-
 // load the clock
 returnLoadStatus("Loading clock...");
 
@@ -87,6 +83,6 @@ function hideBoot(){
 	showHideLayer("lyBoot",'hidden');	//get rid of the boot screen, all the functions have now loaded	
 }
 
-setTimeout("hideBoot();",8000);
+hideBoot();
 
 setTimeout("msgBox('This is a Beta! That means it is very buggy. Thank you for trying it out! Click OK to continue.','Encore Beta',1)",15000);

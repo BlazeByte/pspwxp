@@ -1,0 +1,32 @@
+body	{
+	margin:0px;
+}
+
+#navBar {
+	position: absolute;
+	visibility: visible;
+	height: 30px;
+	width: 100%;
+	left: 0px;
+	top: 0px;
+	background-color: #F8F8F9;
+}
+#content {
+	position: absolute;
+	visibility: visible;
+	height: 200px;
+	width: 100%;
+	left: 0px;
+	top: 30px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #000000;
+}
+#offline {
+	background-color: #FFFFCC;
+	border: 1px solid #FF0000;
+	height: 200px;
+	width: 400px;
+	text-align: center;
+	vertical-align: middle;
+}

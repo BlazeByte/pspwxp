@@ -1,18 +1,18 @@
-MenuItem("Analog Clock","../apps/cl_an.swf","images/icons/menu/apps/stopwatch.png");
 MenuItem("Calculator","../apps/calc.htm","images/icons/menu/apps/calc.png");
-MenuItem("Calendar","../apps/cal.swf","images/icons/menu/apps/calendar.png");
-MenuItem("Clock","../apps/clock.html","images/icons/menu/apps/stopwatch.png");
-MenuItem("Conversion Calc","../apps/convcalc/index.htm","images/icons/menu/apps/conversioncalc.png");
-MenuItem("Day Organizer","../apps/dayorganizer/index.html","images/icons/menu/apps/run.png");
-MenuItem("Digital Clock","../apps/cl_dig.swf","images/icons/menu/apps/stopwatch.png");
-MenuItem("Distance Calc","../apps/distancecalc.htm","images/icons/menu/apps/distance.png");
-MenuItem("JConsole","../apps/console.htm","images/icons/menu/apps/run.png");
-MenuItem("My PSP","../apps/filebrowse/index.htm","images/icons/menu/cpanel.png");
-MenuItem("Note List","../apps/notelist/list.html","images/icons/menu/apps/texteditor.png");
-MenuItem("Periodic Table","../apps/periodictable.htm","images/icons/menu/apps/peri.png");
-MenuItem("PhoneNo Conv.","../apps/phoneno.htm","images/icons/menu/links/sms.png");
-MenuItem("Romen Num","../apps/romnum.htm","images/icons/menu/apps/view.png");
+MenuItem("Dictionary","../apps/cal.swf","images/icons/menu/apps/dictionary.png");
+MenuItem("Alarm Clock","../apps/clock.html","images/icons/menu/apps/alarm.png");
+MenuItem("Text Editor","../apps/convcalc/index.htm","images/icons/menu/apps/textedit.png");
+MenuItem("File Viewer","../apps/dayorganizer/index.html","images/icons/menu/apps/file_viewer.png");
+MenuItem("Encryption Tool","../apps/cl_dig.swf","images/icons/menu/apps/file_viewer.png");
+MenuItem("Random Number","../apps/distancecalc.htm","images/icons/menu/apps/file_viewer.png");
+MenuItem("Notes","../apps/console.htm","images/icons/menu/apps/notes.png");
+MenuItem("Console","../apps/filebrowse/index.htm","images/icons/menu/apps/console.png");
+MenuItem("Date and Time","../apps/notelist/list.html","images/icons/menu/apps/datetime.png");
+MenuItem("Address Book","../apps/periodictable.htm","images/icons/menu/apps/address.png");
 MenuItem("Stop Watch","../apps/stopwatch.htm","images/icons/menu/apps/stopwatch.png");
+MenuItem("Conversion Calculator","../apps/stopwatch.htm","images/icons/menu/apps/conversion.png");
+MenuItem("Day Planner","../apps/stopwatch.htm","images/icons/menu/apps/day.png");
+MenuItem("Periodic Table","../apps/stopwatch.htm","images/icons/menu/apps/periodictable.png");
 
 // Do not edit below this line
 createMenu("Utilities","MenuUtilities","/icons/mainmenu/utilities.png");

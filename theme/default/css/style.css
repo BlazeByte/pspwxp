@@ -381,7 +381,7 @@ body {
 	background-repeat:no-repeat;
 }
 
-.systemSound{
+#systemSound{
 	position:absolute;
 	left:0px;
 	top:0px;

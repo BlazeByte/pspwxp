@@ -53,3 +53,7 @@ function createShortcuts(){
 	}
 
 }
+
+function callSound(strPath){
+	iSound.location.href="../theme"+strThemeDir+strPath;
+}
