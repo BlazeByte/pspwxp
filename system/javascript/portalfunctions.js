@@ -39,17 +39,30 @@ function hideMenu(blnKeepMenu){
 		}
 	}
 	intJustOpened=0;	// not neccissary, but further code expansions may require this
+	checkClock();
 }
+
+
+function checkClock(){
+	var theDate = new Date;
+	strHours = theDate.getHours();
+	strMins = theDate.getMinutes();
+	if(strHours<10){strHours="0"+strHours;}
+	if(strMins<10){strMins="0"+strMins;}
+	
+	if((element('clock').innerHTML!=strHours+":"+strMins)&&(element('clock').innerHTML!=strHours+":"+(strMins-1))) autoClock();
+}
+
 
 function minMaxPanel(PanelID) {
 	if(!(element(PanelID).style.visibility=="hidden")){	// if the panel is visible
 		element(PanelID).style.visibility="hidden";		// then hide is
 		hideMenu();		// and hide the menu
 //		element("ClockContainer").style.visibility="hidden";
-		element(PanelID+"MinMaxImg").style.backgroundImage="url(../theme"+strThemeDir+"/images/icons/back-arrow.gif)" ;	// switch the min max icon
+		element(PanelID+"MinMaxImg").style.backgroundImage="url(../theme/"+strThemeDir+"/images/icons/back-arrow.gif)" ;	// switch the min max icon
 	}else{	// else
 		element(PanelID).style.visibility="visible"; //make the panel visible
-		element(PanelID+"MinMaxImg").style.backgroundImage="url(../theme"+strThemeDir+"/images/icons/sub-menu-arrow.gif)";	//switch the min max icons
+		element(PanelID+"MinMaxImg").style.backgroundImage="url(../theme/"+strThemeDir+"/images/icons/sub-menu-arrow.gif)";	//switch the min max icons
 //		element("ClockContainer").style.visibility="visible";
 	}
 }
@@ -68,6 +81,7 @@ function autoClock(){
 }
 
 function msgBox(strMsg,strTitle,intError){
+	hideMenu();
 	element('msgDlgTitle').innerHTML=strTitle;
 	element('msgDlgMsg').innerHTML=strMsg;
 	element("msgDlg").style.top=136-(element("msgDlg").offsetHeight/2);
@@ -88,14 +102,14 @@ theClock();
 returnLoadStatus("Preparing more functions...");
 
 function muteSound() {
-	if(intSound==0){
-		intSound=1;
-		element("soundApplet").src="../theme"+strThemeDir+"/images/icons/panel/soundon.png";
+	if(blnSounds==false){
+		blnSounds=true;
+		element("soundApplet").src="../theme/"+strThemeDir+"/images/icons/panel/soundon.png";
 	}else{
-		intSound=0;
-		element("soundApplet").src="../theme"+strThemeDir+"/images/icons/panel/soundoff.png";
+		blnSounds=false;
+		element("soundApplet").src="../theme/"+strThemeDir+"/images/icons/panel/soundoff.png";
 	}
-	saveSetting("main", "PlaySounds", intSound);
+	saveSetting("main", "sounds", blnSounds);
 }
 
 
@@ -113,4 +127,7 @@ function getNetComm(){ // connects to blazebyte communication network to give us
 	frames['iNetComm'].location.href="http://blazebyte.byethost18.com/netcomm.htm";
 }
 
-// if(blnFirstUse) setTimeout("msgBox('Welcome to Encore Beta! Encore is a free product released under the BlazeByte License. Click OK to begin!','Encore Beta',1)",10000);
+
+function callSound(strPath){
+	if(blnSounds==true) iSound.location.href="../theme/"+strThemeDir+strPath;
+}

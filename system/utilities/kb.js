@@ -5,6 +5,22 @@ var strPassword = "";
 var onChange = "";
 var blnCaps = false;
 var blnShift = false;
+var mode = 0;
+var blnSettingup = true;
+var currentText;
+var currentOrigin;
+
+function kbMode(){
+	mode = (mode==2) ? 0 : mode+1 ;
+	switch (mode) {
+		case 0: //normal
+			break;
+		case 1: //address
+			break;
+		case 2: //numeric
+			break;
+	}
+}
 
 function kbCursorBlink(){
 	var strText = document.getElementById('inputbox').innerHTML;
@@ -76,7 +92,7 @@ function kbType(strChar, strCmd){
 			document.getElementById('inputbox').innerHTML = strText.slice(0,intCurrX) + "*" + strText.slice(intCurrX,strText.length);
 		} else {
 			if (strChar=="space") {
-				document.getElementById('inputbox').innerHTML = strText.slice(0,intCurrX) + '	 ' + strText.slice(intCurrX,strText.length);
+				document.getElementById('inputbox').innerHTML = strText.slice(0,intCurrX) + ' ' + strText.slice(intCurrX,strText.length);
 			}else document.getElementById('inputbox').innerHTML = strText.slice(0,intCurrX) + strChar + strText.slice(intCurrX,strText.length);
 		}
 		intCurrX+=document.getElementById('inputbox').innerHTML.length-strText.length;
@@ -89,25 +105,26 @@ function doOk(){
 	
 	var strText = document.getElementById('inputbox').innerHTML;
 	strText = strText.slice(0,intCurrX) + strText.slice(intCurrX+1,strText.length);
-	parent.currentText.innerHTML = strText;
-	if(onChange.length>0) parent.eval(onChange);
+	currentText.innerHTML = strText;
+	currentOrigin.kbOnChange(); 
 }
 
 function doExit(){
-	parent.hideEditor();
+	top.document.getElementById('keyboard').style.visibility = 'hidden';
 }
 
 function capslock(){
+	var kbKeys = document.getElementsByName("key");
 	if (blnCaps == false){
-		for (var i = 0 ; i < document.keyboard.elements.length ; i++ ){
-			if (document.keyboard.elements[i].value.length==1)
-				document.keyboard.elements[i].value = document.keyboard.elements[i].value.toUpperCase();
+		for (var i = 0 ; i < kbKeys.length ; i++ ){
+			if (kbKeys[i].innerHTML.length==1)
+				kbKeys[i].innerHTML = kbKeys[i].innerHTML.toUpperCase();
 		}
 		blnCaps=true;	
 	}else {
-		for (var i = 0 ; i < document.keyboard.elements.length ; i++ ){
-			if (document.keyboard.elements[i].value.length==1)
-				document.keyboard.elements[i].value = document.keyboard.elements[i].value.toLowerCase();
+		for (var i = 0 ; i < kbKeys.length ; i++ ){
+			if (kbKeys[i].innerHTML.length==1)
+				kbKeys[i].innerHTML = kbKeys[i].innerHTML.toLowerCase();
 		}
 		blnCaps=false;
 	}

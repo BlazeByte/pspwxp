@@ -1,9 +1,10 @@
 <html>
 <head>
 <title>Mozilla Firefox</title>
-<link href="../../theme/default/css/firefox.css" rel="stylesheet" type="text/css" />
+<link href="../../../theme/default/css/firefox.css" rel="stylesheet" type="text/css" />
 
 <script>
+	eval(parent.setAppProperties());
 	function navGo(strArgs){
 		switch (strArgs){
 			case "back":
@@ -16,7 +17,8 @@
 			
 				break
 			case "home":
-			
+				parent.saveSetting("firefox","homepage",prompt("Enter the home page of your choice:","http://"));
+				parent.storeSettings();
 				break
 			case "":
 				frames['iContent'].location.href=document.getElementById('address').value;
@@ -31,27 +33,26 @@
 
 <body>
 <div id="navBar">
-  <table width="100%" border="0" cellspacing="0" cellpadding="2
-  ">
+  <table width="100%" border="0" cellspacing="0" cellpadding="2">
     <tr>
-      <td width="30"><div align="center"><a href="javascript:navGo('back');"><img src="../../theme/default/images/firefox/icons/back.png" width="22" height="22" border="0"></a></div></td>
-      <td width="30"><div align="center"><a href="javascript:navGo('forward');"><img src="../../theme/default/images/firefox/icons/forward.png" width="22" height="22" border="0"></a></div></td>
-      <td width="30"><div align="center"><a href="javascript:navGo('reload');"><img src="../../theme/default/images/firefox/icons/reload.png" width="22" height="22" border="0"></a></div></td>
-      <td width="30"><div align="center"><a href="javascript:navGo('home');"><img src="../../theme/default/images/firefox/icons/home.png" width="22" height="22" border="0"></a></div></td>
+      <td width="30"><div align="center"><a href="javascript:navGo('back');"><img src="../../../theme/default/images/firefox/icons/back.png" width="22" height="22" border="0"></a></div></td>
+      <td width="30"><div align="center"><a href="javascript:navGo('forward');"><img src="../../../theme/default/images/firefox/icons/forward.png" width="22" height="22" border="0"></a></div></td>
+      <td width="30"><div align="center"><a href="javascript:navGo('reload');"><img src="../../../theme/default/images/firefox/icons/reload.png" width="22" height="22" border="0"></a></div></td>
+      <td width="30"><div align="center"><a href="javascript:navGo('home');"><img src="../../../theme/default/images/firefox/icons/home.png" width="22" height="22" border="0"></a></div></td>
       <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td><input type="text" id="address" style="height:22px;width:100%;"></td>
-          <td width="30"><a href="javascript:navGo('');"><img src="../../theme/default/images/firefox/icons/go.png" width="26" height="22" border="0"></a></td>
+          <td><script>drawInput("text","address","http://","","height:20px;width:100%;");</script></td>
+          <td width="30"><a href="javascript:navGo('');"><img src="../../../theme/default/images/firefox/icons/go.png" width="26" height="22" border="0"></a></td>
         </tr>
       </table></td>
-      <td width="90">
+      <td width="120">
 	  <form method="get" action="http://google.com/xhtml" id="searchForm" target="iContent">
 	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
 		  <td width="100">
-		  
-		 <input type="text" name="q" maxlength="2048" style="height:22px;width:100%;"></td><input type="hidden" name="hl" value="en"/><input type="hidden" name="lr" value=""/><input type="hidden" name="mrestrict" value="xhtml"/>
-          <td width="30"><a href="javascript:navGo('search');"><img src="../../theme/default/images/firefox/icons/search.png" width="26" height="22" border="0"></a></td>
+		  <script>drawInput("text","search","Click here to set.","document.forms['searchForm'].q.value=document.getElementById('search').text","height:20px;width:100%;");</script>
+		 <input type="hidden" name="q" maxlength="2048" style="height:22px;width:100%;" /></td><input type="hidden" name="hl" value="en"/><input type="hidden" name="lr" value="" /><input type="hidden" name="mrestrict" value="xhtml" />
+          <td width="30"><a href="javascript:navGo('search');"><img src="../../../theme/default/images/firefox/icons/search.png" width="26" height="22" border="0"></a></td>
         </tr>
       </table></form></td>
     </tr>

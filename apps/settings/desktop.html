@@ -3,63 +3,80 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Untitled Document</title>
+<script>eval(parent.getTheme());</script>
+<style>
+* {
+	font-size:12px;
+}
+</style>
 <script>
 function showPreview(strTheme) {
-	document.getElementById("preview").src="../../theme"+strTheme+"/preview.jpg";
+	document.getElementById("preview").src="../../theme/"+strTheme+"/preview.jpg";
 }
 
 function saveSettings() {
-	top.icookies.document.settings.bgcolor.value=document.getElementById('txtcolor').value;
-	top.icookies.document.settings.chkbg.value=document.getElementById('chkBGImage').checked;
-	top.icookies.document.settings.bg.value=document.getElementById('bgUrl').value;
-	top.icookies.document.settings.desktopicons.value=document.getElementById('chkIcons').checked;
-	top.icookies.document.settings.submit();
-	parent.ApplyLoadSettings();
+	parent.saveSetting("main","bgcolor",document.getElementById('txtcolor').value);
+	parent.saveSetting("main","usebgimage",document.getElementById('chkBGImage').checked);
+	parent.saveSetting("main","bgimage",(document.getElementById('currentBg').value=="Default")?"default":document.getElementById('currentBg').value);
+	parent.saveSetting("main","desktopicons",document.getElementById('chkIcons').checked);
+	parent.storeSettings();
+}
+
+function getSettings() {
+	document.getElementById('txtcolor').value=parent.getSetting("main","bgcolor","#000000");
+	document.getElementById('chkBGImage').checked=parent.getSetting("main","usebgimage",true);
+	document.getElementById('currentBg').value=parent.getSetting("main","bgimage","default");
+	document.getElementById('chkIcons').checked=parent.getSetting("main","desktopicons",true);
+	showPreview();
 }
 
 function closeMe() {
-	parent.eval("closeWindow(intCurrWindow);");
+	parent.killApp();
+}
+
+function showPreview() {
+	document.getElementById('imgPreview').src=(document.getElementById('currentBg').value=="Default")?"default":document.getElementById('currentBg').value;
 }
 </script>
 </head>
 
-<body>
-<div align="center"><img alt="" name="imgPreview" width="141" height="71" id="imgPreview" />
+<body onload="getSettings();showPreview();">
+<div align="center" style="height:93px;background-image:url(../../theme/default/images/preview.jpg); background-position:center; background-repeat:no-repeat;"><img name="imgPreview" width="141" height="71" id="imgPreview" src="" style="padding-left:3px; padding-top:8px;" />
 </div>
- Desktop<br />
+ <br />
         <table width="100%" border="0" cellspacing="1" cellpadding="1">
           <tr>
-            <td width="300" valign="top"><p align="left"><font size="2">
+            <td width="300" valign="top"><p align="left">
                 <label>
                 <input name="chkBGImage" type="checkbox" id="chkBGImage" value="1" checked="checked" />
-                  Background image:</label>
-                <br />
-                </font>
-                    <input name="bgUrl" type="file" id="bgUrl" onchange="imgPreview.src=File.value;chkBGImage.checked=true;" />
-                    <input name="default" type="submit" id="default" value="Default" onclick="themebgload()" />
-            </p></td>
-            <td valign="top"><font size="2">&nbsp; </font>
-                <table height="42" border="1" cellpadding="0" cellspacing="0" bordercolor="#D6D3CE">
-                  <tr>
-                    <td><font size="2">Background color:</font></td>
-                    <td width="20" height="20" bordercolor="#000000"><div id="activecolor" style="width:100%;height:100%"><img alt="" src="../images/space.gif" width="100%" height="100%" /></div></td>
-                  </tr>
-                  <tr>
-                    <td height="20" colspan="2"><input name="txtcolor" id="txtcolor" type="text" value="#000000" maxlength="7" onchange="document.getElementById('activecolor').style.background=txtcolor.value" style="width:100%;" /></td>
-                  </tr>
-              </table></td>
-          </tr>
-          <tr>
-            <td width="300" valign="top"><input type="button" name="btnOk" value="OK" style="width:70px;" onclick="saveSettings();closeMe();" />
-              <input type="button" name="btnCancel" value="Cancel" style="width:70px;" onclick="closeMe();"/>
-              <input type="button" name="btnApply" value="Apply" style="width:70px;" onclick="saveSettings();" /></td>
-            <td valign="top">
-              <label>
+                  Background image:</label><br/><input type="text" id="currentBg" style="position:absolute;width:124px;" value='Default' />
+                <input name="bgUrl" type="file" id="bgUrl" onchange="document.getElementById('currentBg').value=this.value;showPreview();document.getElementById('chkBGImage').checked=true;" />
+                <input name="default" type="submit" id="default" value="Default" onclick="document.getElementById('currentBg').value='Default';showPreview();" />
+                </p>              <label>
               <input name="chkIcons" type="checkbox" id="chkIcons" value="1" />
-                Do not show desktop icons</label>
-				</td>
+Show desktop icons</label></td>
+            <td valign="top"><p>Position: 
+                <select name="select">
+                  <option value="center">Center</option>
+                  <option value="tile">Tile</option>
+                  </select>
+            </p>
+              <table border="1" cellpadding="0" cellspacing="0">
+              <tr>
+                <td>Background color:</td>
+                <td width="20" height="20"><div id="activecolor" style="width:100%;height:100%">&nbsp;</div></td>
+              </tr>
+              <tr>
+                <td height="20" colspan="2"><input name="txtcolor" id="txtcolor" type="text" value="#000000" maxlength="7" onchange="document.getElementById('activecolor').style.background=txtcolor.value" style="width:100%;" /></td>
+              </tr>
+                          </table></td>
           </tr>
       </table>
 
+        <p align="right">
+          <input type="button" name="btnOk" value="OK" style="width:70px;" onclick="saveSettings();closeMe();" />
+          <input type="button" name="btnCancel" value="Cancel" style="width:70px;" onclick="closeMe();"/>
+          <input type="button" name="btnApply" value="Apply" style="width:70px;" onclick="saveSettings();" />
+        </p>
 </body>
 </html>

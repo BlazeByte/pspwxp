@@ -1,11 +1,25 @@
 <html>
 <head>
+<script language="javascript" type="text/javascript" src="javascript/settingsfunctions.js">	</script>
+<script language="javascript" type="text/javascript" src="javascript/globalvars.js"></script>
+
+<script language="javascript" type="text/javascript">
+	if( settingExists("main","theme") == false ) location = "setup.html";
+
+	blnSounds = getSetting('main','sounds',true);
+	if (parent!==self) strThemeDir = getSetting('main','theme','default');	// Get the theme cookie
+	
+	document.write('<script language="javascript" type="text/javascript" src="../theme/' + strThemeDir + '/css/encore/sheets.js"></'+'script>');
+
+</script>
 <title>Encore Portal</title>
-<link href="../theme/default/css/style.css" rel="stylesheet" type="text/css">	<!-- Link the style sheet -->
-
 </head>
-<body>
-
+<script>
+	for (var intSheet = 0 ; intSheet < strCSSSheets.length ; intSheet++) {  // Link stylesheets for theme
+		document.write('<link rel="stylesheet" type"text/css" href="../theme/' + strThemeDir + '/css/encore/' + strCSSSheets[intSheet] + '" />');
+	}
+</script>
+<body onLoad="hideBoot();">
 	<div id="lyBoot">	<!-- the boot screen -->
 		<div id="lyLoadIcon1"></div>	<!-- the loading icons. background-image in css for icon -->
 		<div id="lyLoadIcon2"></div>
@@ -16,15 +30,12 @@
 		<div id="loadingStatus">Preparing for boot...</div> <!-- dynamic load status -->
 </div>
 
-	<script language="javascript" type="text/javascript" src="javascript/settingsfunctions.js">	</script>
-	<script language="javascript" type="text/javascript" src="javascript/bootfunctions.js">	</script>
-	<script language="javascript" type="text/javascript" src="javascript/applets.js">	</script>
+<script language="javascript" type="text/javascript" src="javascript/bootfunctions.js"></script>
+<script>returnLoadStatus("Loading Javascript Files...",1);</script>
+	<script language="javascript" type="text/javascript" src="javascript/applets.js"></script>
+	<script language="javascript" type="text/javascript" src="javascript/filefunctions.js">	</script>
 	
 	<script language="javascript" type="text/javascript" src="javascript/loadfunctions.js"></script>
-	
-	<script language="javascript" type="text/javascript">
-		ApplyBootSettings();
-	</script>
 	
 	<script language="javascript" type="text/javascript" src="../theme/default/panels.js">	</script>
 	
@@ -48,6 +59,7 @@
 	<script language="javascript" type="text/javascript" src="../user/menus/submenus.js"></script>
 	<script language="javascript" type="text/javascript" src="javascript/portalfunctions.js">	</script>
 	<script language="javascript" type="text/javascript" src="javascript/versioninfo.js">	</script>
+	<script language="javascript" type="text/javascript" src="javascript/inputfunctions.js">	</script>
 	
 	<div id="menu" style="visibility:hidden;">
 		<script language="javascript" type="text/javascript" >
@@ -66,10 +78,8 @@
           <td class="windowLeft"></td>
           <td class="msgContent"><div id="msgDlgMsg">
             Content</div>
-            <br/>
-              <input type="button" value="OK" class="msgBoxOK" onClick="showHideLayer('msgDlg','hidden');"/>
-
-          </td>
+            <br />
+              <input type="button" value="OK" class="msgBoxOK" onClick="showHideLayer('msgDlg','hidden');"/>          </td>
           <td class="windowRight"></td>
         </tr>
         <tr>
@@ -89,49 +99,34 @@
 	<div id="WindowContainer" class="Window">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
-				<td class="windowTopLeft">
-				</td>
+				<td class="windowTopLeft">				</td>
 				<td class="windowTopTitle">
 					<img id="imgWindowIcon" class="WindowIcon">
-					<div id="WindowTitle" class="WindowTitle">
-						Window Title
-					</div>
+					<a href="javascript:;" onclick="frames['iWindow'+intCurrWindow].location.reload()"><div id="WindowTitle" class="WindowTitle">
+						Window Title					</div></a>
 					<div id="windowControlBox" class="WindowControlBox">
-						<div id="windowMin" class="WindowMin" onClick="minWindow(intCurrWindow);">
-						</div>
-						<div id="windowMax" class="WindowMax" onClick="maxWindow(intCurrWindow);">
-						</div>
-						<div id="windowClose" class="WindowClose" onClick="closeWindow(intCurrWindow);">
-						</div>
-					</div>
-				</td>
-				<td class="windowTopRight">
-				</td>
+						<div id="windowMin" class="WindowMin" onClick="minWindow(intCurrWindow);">						</div>
+						<div id="windowMax" class="WindowMax" onClick="maxWindow(intCurrWindow);">						</div>
+						<div id="windowClose" class="WindowClose" onClick="closeWindow(intCurrWindow);">						</div>
+					</div>				</td>
+				<td class="windowTopRight">				</td>
 			</tr>
 			<tr>
-				<td class="windowLeft">
-				</td>
+				<td class="windowLeft">				</td>
 				<td class="windowContent" align="left" valign="top">
 					<script language="javascript" type="text/javascript">			
 						returnLoadStatus("Generating Windows...");
 						makeWindows();	// make all the windows
-					</script>
-				</td>
-				<td class="windowRight">
-				</td>
+					</script>				</td>
+				<td class="windowRight">				</td>
 			</tr>
 			<tr>
-				<td class="windowBottomLeft">
-				</td>
+				<td class="windowBottomLeft">				</td>
 				<td class="windowBottom"></td><td class="windowBottomRight">
 				</td>
 			</tr>
 		</table>
 	</div>
-			
-	<script language="javascript" type="text/javascript">				
-		hideBoot();
-	</script>
 </body>
 
 </html>

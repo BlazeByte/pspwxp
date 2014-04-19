@@ -1,0 +1,24 @@
+.button {
+	display: block;
+	color:#000000;
+	border-top:2px solid #4B7E9A;
+	border-bottom:2px solid #263E57;
+	border-left:2px solid #406482;
+	border-right:2px solid #305067;
+	background-color:#D0DEDF;
+	text-align:center;
+	font-size:12px;
+	vertical-align:middle;
+}
+
+.button:hover {
+	background-color:#0000FF;
+}
+
+.button:active {
+	border-bottom:2px solid #4B7E9A;
+	border-top:2px solid #263E57;
+	border-right:2px solid #406482;
+	border-left:2px solid #305067;
+	background-color:#0000ff;
+}

@@ -1,54 +1,85 @@
-var textboxes = document.getElementsByName("textbox");
-
-for (var i = 0 ; i<textboxes.length ; i++ ) {
-	textboxes[i].onclick=showEditor;
-}
-
-var textboxes = document.getElementsByName("passbox");
-
-for (var i = 0 ; i<textboxes.length ; i++ ) {
-	textboxes[i].onclick=showPasswordEditor;
-}
-
 var currentText;
+var ikeyboard = top.frames['ikeyboard'];
+var useKB = true;
+var kbOnChangeCode = "";
 
-function doOnChange(strID){
-	if (strID == Array("username"))
-		eval(strID+"_onChange();");
-}
-
-function showPasswordEditor() {
-	currentText = this;
+function drawInput(strType, strID, strValue, onChange, strCSS) {
+	if (!strValue) var strValue = "";
+	if (!strCSS) var strCSS = ""
+	if (!onChange) var onChange = "";
 	
-	ikeyboard.onChange = "doOnChange('"+this.id+"')";
+	onChange = onChange.replace(/\"/g,'\\\'');
+	onChange = onChange.replace(/\'/g,'\\\'');
 	
-	ikeyboard.password = true;
-	ikeyboard.document.getElementById("inputbox").innerHTML = "";
-	ikeyboard.intCurrX = 0;
+	if(strValue=='') strValue = "Click here to set.";
+	
+	switch (strType){
+		case "text":
+			if(!useKB){
+				document.write('<input type="text" name="textbox" id="'+strID+'" style="'+strCSS+'" onchange="document.getElementById(\''+strID+'\').text=document.getElementById(\''+strID+'\').value;" value="'+strValue+'" />');
+				document.getElementById(strID).text=document.getElementById(strID).value;
+			}else{
+				onChange="document.getElementById(\\'"+strID+"\\').text=document.getElementById(\\'"+strID+"\\').innerHTML;"+onChange;
+				document.write('<a href="javascript:;" name="inputbox"> ' 
+								   + '<div class="textbox" name="textbox" id="'+strID+'" style="'+strCSS+'" ' 
+								   +  'onclick="kbOnChangeCode = \''+onChange+'\' ;showEditor(this.id);">' 
+								   +  strValue 
+								   + '</div>' 
+							   + '</a>');
+				document.getElementById(strID).text=document.getElementById(strID).innerHTML;
+			}
+			
+			break;
 		
-	document.getElementById('keyboard').style.visibility='visible';
-	document.getElementById('body').style.visibility='hidden';
-}
-
-function showEditor(){
-	currentText = this;
-	
-	ikeyboard.onChange = "doOnChange('"+this.id+"')";
-	
-	ikeyboard.password = false;
-	
-	if(currentText.innerHTML!=" ") {
-		ikeyboard.document.getElementById("inputbox").innerHTML = currentText.innerHTML;
-		ikeyboard.intCurrX = currentText.innerHTML.length;
-	} else {
-		ikeyboard.document.getElementById("inputbox").innerHTML = "";
-		ikeyboard.intCurrX = 0;
+		case "password":
+			if(!useKB){
+				document.write('<input type="password" name="textbox" id="'+strID+'" style="'+strCSS+'" onchange="document.getElementById(\''+strID+'\').text=ikeyboard.strPassword;" value="'+strValue+'" />');
+				document.getElementById(strID).text=strValue;
+			}else{
+				onChange="document.getElementById(\\'"+strID+"\\').text=ikeyboard.strPassword;"+onChange;
+				var strPassValue = "";
+				for (var intChar = 0 ; intChar < strValue.length ; intChar++) {
+					strPassValue+="*";
+				}
+				
+				document.write('<a href="javascript:;" name="inputbox"> ' 
+								   + '<div class="textbox" name="textbox" id="'+strID+'" style="'+strCSS+'" ' 
+								   +  'onclick="kbOnChangeCode = \''+onChange+'\' ;showEditor(this.id,true);">' 
+								   +  strPassValue 
+								   + '</div>' 
+							   + '</a>');
+				document.getElementById(strID).text=strValue;
+			}
+			
+			break;
+			
+		case "button":
+			break;
+			
 	}
-	document.getElementById('keyboard').style.visibility='visible';
-	document.getElementById('body').style.visibility='hidden';
+	
+	
 }
 
-function hideEditor(){
-	document.getElementById('body').style.visibility='visible';
-	document.getElementById('keyboard').style.visibility='hidden';
+function kbOnChange(){
+	eval(kbOnChangeCode);
+}
+
+
+function showEditor(strID, blnPass){
+	ikeyboard.currentOrigin = self;
+	ikeyboard.currentText = self.document.getElementById(strID);
+		
+	if (!blnPass){
+		ikeyboard.password = false;
+		ikeyboard.document.getElementById("inputbox").innerHTML = (document.getElementById(strID).innerHTML!="Click here to set.") ? document.getElementById(strID).innerHTML : ikeyboard.document.getElementById("inputbox").innerHTML = "";
+	} else { 
+		ikeyboard.password = true;
+		ikeyboard.strPassword = "";
+		ikeyboard.document.getElementById("inputbox").innerHTML = "";
+			
+	}
+	
+	ikeyboard.intCurrX = ikeyboard.document.getElementById("inputbox").innerHTML.length;
+	top.document.getElementById('keyboard').style.visibility='visible';
 }

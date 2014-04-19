@@ -1,3 +1,14 @@
 body {
-	background-color:#CC0000;
+	margin:0px;
+	background-color:#EAEBEE;
+}
+
+.listHead{
+	background-color:#cccccc; 
+	border-top:1px solid #4B7E9A;
+	border-bottom:1px solid #263E57;
+	border-left:1px solid #406482;
+	border-right:1px solid #305067;
+	text-align:left;
+	font-weight:normal;
 }

@@ -1,0 +1,94 @@
+.mainMenuCols{
+	width:100%;
+}
+
+.subMenu {
+	position:absolute;
+	background-color:#CCCCCC;
+	visibility: hidden;
+	z-index:22;
+}	
+
+.subMenuCol {
+	border:1px solid #000000;
+	background-color: #ffffff;
+}
+
+.subMenuColContainer{
+	vertical-align:top;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #0000CC;
+}
+
+#menu {
+	position:absolute;
+	left:0px;
+	top:90px;
+	width:150px;
+	height:158px;
+	z-index:21;
+	background-color: #FFFFFF;
+	visibility: hidden;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #666666;
+	border-bottom-color: #666666;
+}
+
+.mainMenuIcon	{
+	margin-right:2px;
+	float:left;
+	height:20px;
+	width:20px;
+	border:0px;
+}
+
+.MainMenuHeader {
+	height:18px;
+	font-size:12px;
+	color:#666666;
+	background-color:#CCCCCC;
+	font-weight:900;
+	text-align: center;
+	vertical-align: middle;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #666666;
+	border-bottom-color: #666666;
+}
+
+.mainMenuRow {
+	height:20px;
+	display:block;
+	color:#000000;
+	text-decoration:none;
+	font-size:12px;
+}
+
+.mainMenuRow:hover {
+	background-color:#0000FF;
+}
+
+.mainMenuRibbon{
+	background-color:#0066FF;
+	background-image:url(../../images/menu_ribbon.jpg);
+	background-position:bottom;
+	width:16px;
+	background-repeat:no-repeat;
+	border: 1px solid #666666;
+}
+
+.mainMenuExpand {
+	background-image:url(../../images/icons/sub-menu-arrow.gif);
+	background-repeat:no-repeat;
+	background-position:center;
+	position:absolute;
+	right:2px;
+	width:4px;
+	height:20px;
+}

@@ -36,7 +36,7 @@ function loadApp(strAppTitle,strAppURL,strAppIcon,strAppMax){
 	}
 	
 	try {
-		frames["iWindow"+intCurrWindow].location=strAppURL;							// Set the iFrame URL
+		frames["iWindow"+intCurrWindow].location.href=strAppURL;							// Set the iFrame URL
 		strWindowSrc[intCurrWindow]=strAppURL;										// Set the Window URL string for future use
 	}
 	
@@ -48,7 +48,7 @@ function loadApp(strAppTitle,strAppURL,strAppIcon,strAppMax){
 	showHideLayer('WindowContainer','visible');
 	intWindowOpen[intCurrWindow] = 1;
 	strWindowTitle[intCurrWindow] = strAppTitle;									// set title to variable {for switching between windows)
-	imgWindowIcon[intCurrWindow].src = "../theme"+strThemeDir+"/"+strAppIcon;		// set icon to image object (image is cached to increase speed when switching windows)
+	imgWindowIcon[intCurrWindow].src = "../theme/"+strThemeDir+"/"+strAppIcon;		// set icon to image object (image is cached to increase speed when switching windows)
 
 	showWindowDetails(intCurrWindow);												// show icon and title in Window Container
 
@@ -58,13 +58,10 @@ function loadApp(strAppTitle,strAppURL,strAppIcon,strAppMax){
 
 	showHideLayer("Tab"+intCurrWindow,"visible");									// show tab
 	element("TabTitle"+intCurrWindow).innerHTML=strAppTitle.slice(0,9)+"...";
-	element("imgTabIcon"+intCurrWindow).src="../theme"+strThemeDir+"/"+strAppIcon;
-
-	element('Tab'+intCurrWindow).className="TabDown";
+	element("imgTabIcon"+intCurrWindow).src="../theme/"+strThemeDir+"/"+strAppIcon;
 	
 	element('iWindow'+intCurrWindow).style.visibility='visible';	// show iframe
-	element('iWindow'+intCurrWindow).style.display='inline';		// structure iframe
-	
+		
 	intWindowCount++;
 
 }
@@ -77,15 +74,13 @@ function minWindow(intWindow,intContainer){
 		
 		for(var i=1;i<=intMaxWindows;i++){
 			element('iWindow'+i).style.visibility='hidden';
-			element('Tab'+i).className="Tab";		//TODO: find alternetive - class cannot be changed on psp
 			if (intContainer !== 0) intWindowOpen[i] = 0;
 		}
 		
 	}else{
 		showHideLayer('iWindow'+intWindow,'hidden');
 		intWindowOpen[intWindow] = 0;
-		closeWindowContainer(intWindow);
-		element('Tab'+intWindow).className="Tab";	
+		closeWindowContainer(intWindow);	
 	}
 }
 
@@ -96,14 +91,14 @@ function maxWindow(intWindow){
 }
 
 
-
-function closeWindow(intWindow){
+function killApp(intWindow) {
+	if(!intWindow) var intWindow = intCurrWindow;
+	
 	closeWindowContainer(intWindow);		
 	
 	element('iWindow'+intWindow).style.visibility='hidden';
 	element("iWindow"+intWindow).location="blank.htm";
 	element('Tab'+intWindow).style.visibility="hidden";
-	element('Tab'+intWindow).className="Tab";
 	
 	intWindowOpen[intWindow] = 0;
 	
@@ -114,6 +109,15 @@ function closeWindow(intWindow){
 		var intX = intLeft.slice(0,intLeft.length-2);
 		if(element("Tab"+intWindow).style.left.slice(0,element("Tab"+intWindow).style.left.length-2)>intX) element("Tab"+i).style.left=(intX-100)+"px";
 	}
+	
+	frames['iWindow'+intWindow].location = "blank.htm";
+}
+
+
+function closeWindow(intWindow){
+	if(!frames['iWindow'+intWindow].unload) {
+		killApp(intWindow);
+	}else frames['iWindow'+intWindow].unload();
 }
 
 
@@ -138,7 +142,7 @@ function restoreWindow(intWindow){
 	showHideLayer('WindowContainer','visible');
 	showWindowDetails(intWindow);									// Show the target window details (title + icon)
 	element('iWindow'+intWindow).style.visibility='visible';	// show the iframe
-	element('Tab'+intWindow).className="TabDown";				// change the tab appearence
+
 	intCurrWindow = intWindow;
 	intWindowOpen[intWindow] = 1;								// Set this window to open
 }
@@ -150,12 +154,14 @@ function showWindowDetails(intWindow){
 	element("imgWindowIcon").src = imgWindowIcon[intWindow].src;
 }
 
-function getTheme() { //applications will use this to set the bgcolor to the theme bgcolor.  to use in app, put onload="parent.getTheme();" in body tag.
+function setAppProperties() { 
 	var strWrite;
 	
+	strWrite = '<link href="'+top.encoreUrl+'theme/'+strThemeDir+'/css/app.css" rel="stylesheet" type="text/css">';
+	strWrite += '<link href="'+top.encoreUrl+'theme/'+strThemeDir+'/css/encore/textbox.css" rel="stylesheet" type="text/css">';
 	
+	strWrite += '<script src="'+top.encoreUrl+'system/javascript/inputfunctions.js"><'+'/script>';
 	
-	strWrite = '<link href="../theme'+strThemeDir+'/css/app.css" rel="stylesheet" type="text/css">';
+	return "document.write('"+strWrite+"');";
 	
-	return strWrite;
 }

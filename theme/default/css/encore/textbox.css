@@ -1,0 +1,18 @@
+.inputbox{
+	display:block;
+	color:#000000;
+	text-decoration:none;
+}
+
+.textbox{
+	width:120px;
+	height:16px;
+	overflow: auto;	
+    white-space: no-wrap;
+	border-bottom:1px solid #4B7E9A;
+	border-top:1px solid #263E57;
+	border-right:1px solid #406482;
+	border-left:1px solid #305067;
+	background-color:#FFFFFF;
+	color:#000000;
+}

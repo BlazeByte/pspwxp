@@ -1,0 +1,30 @@
+#lyLogin {
+	position:absolute; 
+	left:0px; 
+	top:0px;
+	width:480px; 
+	height:272px; 
+	z-index:100; 
+	background-image:url(../../images/wallpapers/login.jpg);
+	visibility: hidden;
+}
+
+.loginTitle {
+	text-align:center;
+	color:#FFFFFF;
+}
+
+.loginMed {
+	color:#FFFFFF;
+	font-size:12px;
+}
+
+.loginSmall {
+	color:#FFFFFF;
+	font-size:11px;
+}
+
+a.loginLink {
+	color:#FFFFFF;
+	font-size:12px;
+}

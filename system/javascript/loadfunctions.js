@@ -1,7 +1,4 @@
-function showHideLayer(layerName,showHide){
-	// frames[layerName].style.visibility=showHide;
-	element(layerName).style.visibility=showHide;
-}
+var notPSP = (navigator.userAgent.indexOf('PlayStation Portable') != -1) ? false : true;
 
 function ApplyLoadSettings(){
 
@@ -10,23 +7,18 @@ function ApplyLoadSettings(){
 
 	returnLoadStatus("Applying GUI settings...",2);
 	
-	var blnBGImage;
-	var strBGImage;
-	var intFirstUse;
+	document.write('<script language="javascript" type="text/javascript" src="../theme/' + strThemeDir + '/themeinfo.js" /></'+'script>');
 	
-	document.write('<script language="javascript" type="text/javascript" src="../theme' + strThemeDir + '/themeinfo.js" /></'+'script>');
-	
-	blnBGImage = getSetting('main','usebgimage',true);	// Retrieve cookies
-	strBGImage = getSetting('main','bgimage','default');
+	var blnBGImage = getSetting('main','usebgimage',true);	// Retrieve cookies
+	var strBGImage = getSetting('main','bgimage','default');
 	blnShortcuts = getSetting('main','desktopicons',true);
 	blnLogin = getSetting('main','loginscreen',false);
 	strPassword = getSetting('main','password','');
-	intSound = getSetting('main','sounds',true);
+	
 	
 	if (blnBGImage==false){
 		element('lyDesktop').style.visibility="hidden";	// no bg
 	} else if((strBGImage!=="")&&(strBGImage!=='default')) {
-	//	alert("file:"+strBGImage);
 		element('lyDesktop').style.backgroundImage="url(file:"+strBGImage+")";		// set bg to what the user selected
 	}
 	
@@ -54,8 +46,8 @@ function createShortcuts(){
 			intY=(intRow-1)*82;
 			
 			strClickCommand='loadApp("' + strItems[i] + '","' + strItemPath[i] + '","' + strItemIconPath[i] + '",' + '"' + intItemMax[i] + '"' + ');';		// create the onclick command
-			
-			document.write("<div onclick="+strClickCommand+" style='left:" + intX + "px;top:" + (parseInt(intY) + 10) + "px;background-image:url(../theme"+strThemeDir+"/" + strItemIconPath[i] + ")' class='shortcutItem'><div class='shortcutTextShadow'>"+strItems[i]+"</div><div class='shortcutText'>"+strItems[i]+"</div></div>");
+
+			document.write("<div onclick="+strClickCommand+" style='left:" + intX + "px;top:" + (parseInt(intY) + 10) + "px;background-image:url(../theme/"+strThemeDir+"/" + strItemIconPath[i] + ")' class='shortcutItem'><div class='shortcutTextShadow'>"+strItems[i]+"</div><div class='shortcutText'>"+strItems[i]+"</div></div>");
 
 			i++;
 
@@ -70,13 +62,9 @@ function createShortcuts(){
 
 }
 
-function callSound(strPath){
-	if(intSound==1) iSound.location.href="../theme"+strThemeDir+strPath;
-}
-
 
 function makeWindows(){
-	for(var i=1;i<=intMaxWindows;i++){
-		document.write('<iframe src="blank.htm" id="iWindow'+i+'" name="iWindow'+i+'" frameborder="0" width="476" height="226" style="position:absolute;width:476px;height:226px;visibility:hidden;display:none;"></iframe>');
+	for(var intWin=1;intWin<=intMaxWindows;intWin++){
+		document.write('<iframe src="blank.htm" id="iWindow'+intWin+'" name="iWindow'+intWin+'" frameborder="0" width="476" height="226" style="position:absolute;width:476px;height:226px;visibility:hidden;"></iframe>');
 	}
 }

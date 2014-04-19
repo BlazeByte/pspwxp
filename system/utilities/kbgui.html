@@ -1,12 +1,7 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-"http://www.w3.org/TR/html4/strict.dtd">
-<html lang="en">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<meta name="Content-Script-Type" content="text/javascript">
-<meta name="Content-Style-Type" content="text/css">
 <link href="../../theme/default/css/kb.css" rel="stylesheet" type="text/css">
-<link href="../../theme/default/css/button.css" rel="stylesheet" type="text/css">
+<link href="../../theme/default/css/encore/button.css" rel="stylesheet" type="text/css">
 <script src="kb.js"></script>
 <title>Example</title>
 </head>
@@ -16,16 +11,18 @@
 		<td colspan="2">&nbsp;</td>
 	</tr>
 	<tr>
-		<td colspan="2"><pre><div id="inputbox" class="textbox">|</div></pre></td>
+	  <td colspan="2" align="center"><pre><div id="inputbox" class="textbox">|</div></pre></td>
 	</tr>
   	<tr>
 		<td colspan="2"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td><a href="javascript:;" class="kbChar button"><div name="button9" onClick="kbType(0,'clear');" style="width:90px;">Clear</div></a></td>
-            <td align="right"><div name="button" onClick="moveCursor(intCurrX-1);" class="kbChar button">&lt;-</div>
-                <div name="button" onClick="moveCursor(intCurrX+1);" class="kbChar button">-&gt;</div></td>
-            <td width="240" align="right"><div name="button92" onClick="doExit();" class="kbChar button" style="width:90px;">Cancel</div>
-                <div name="button9" onClick="doOk();" class="kbChar button" style="width:90px;">OK</div></td>
+            <td><a class="kbChar button" href="javascript:;" style="width:90px;" onClick="kbType(0,'clear');">Clear</a></td>
+            <td align="right"><table cellpadding="0" cellspacing="1"><tr><td>
+				<a class="kbChar button" href="javascript:;" onClick="moveCursor(intCurrX-1);">&lt;-</a></td><td>
+                <a class="kbChar button" href="javascript:;" onClick="moveCursor(intCurrX+1);">-&gt;</a></td></tr></table></td>
+            <td width="240" align="right"><table cellpadding="0" cellspacing="1"><tr><td>
+				<a class="kbChar button" href="javascript:;" style="width:90px;" onClick="doExit();">Cancel</a></td><td>
+                <a class="kbChar button" href="javascript:;" style="width:90px;" onClick="doOk();">OK</a></td></tr></table></td>
           </tr>
 	    </table></td>
 	</tr>
@@ -36,53 +33,53 @@
 	
     <tr>
       <td colspan="2">
-	  	<table width="468" border="0" cellpadding="0" cellspacing="0">
+	  	<table width="470" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="39"><div class="kbChar button" onclick="kbType(this.innerHTML);">1</div><!--input name="button52" class="kbChar button" onclick="kbType(this.innerHTML);">1"--></td>
-            <td width="39"><div name="button5" class="kbChar button" onclick="kbType(this.innerHTML);">2</div></td>
-            <td width="39"><div name="button510" class="kbChar button" onclick="kbType(this.innerHTML);">3</div></td>
-            <td width="39"><div name="button59" class="kbChar button" onclick="kbType(this.innerHTML);">4</div></td>
-            <td width="39"><div name="button58" class="kbChar button" onclick="kbType(this.innerHTML);">5</div></td>
-            <td width="39"><div name="button57" class="kbChar button" onclick="kbType(this.innerHTML);">6</div></td>
-            <td width="39"><div name="button56" class="kbChar button" onclick="kbType(this.innerHTML);">7</div></td>
-            <td width="39"><div name="button55" class="kbChar button" onclick="kbType(this.innerHTML);">8</div></td>
-            <td width="39"><div name="button54" class="kbChar button" onclick="kbType(this.innerHTML);">9</div></td>
-            <td width="39"><div name="button53" class="kbChar button" onclick="kbType(this.innerHTML);">0</div></td>
-            <td width="103"><div name="button8" onClick="kbType(0,'bkspace');" class="kbChar button" style="width:74px;">&lt;-----</div></td>
+            <td width="39"><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">1</a></td>
+            <td width="39"><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">2</a></td>
+            <td width="39"><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">3</a></td>
+            <td width="39"><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">4</a></td>
+            <td width="39"><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">5</a></td>
+            <td width="39"><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">6</a></td>
+            <td width="39"><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">7</a></td>
+            <td width="39"><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">8</a></td>
+            <td width="39"><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">9</a></td>
+            <td width="39"><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">0</a></td>
+            <td width="103"><a class="kbChar button" href="javascript:;" onClick="kbType(0,'bkspace');" style="width:74px;">&lt;-----</a></td>
           </tr>
       </table></td>
     </tr>
     <tr>
-      <td><table width="429" border="0" cellpadding="0" cellspacing="0">
+      <td><table width="431" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td><div name="button8223" onClick="kbType('&'+'#09;');" class="button kbChar" >Tab</div></td>
-            <td><div name="button103" class="kbChar button" onclick="kbType(this.innerHTML);">q</div></td>
-            <td><div name="button102" class="kbChar button" onclick="kbType(this.innerHTML);">w</div></td>
-            <td><div name="button104" class="kbChar button" onclick="kbType(this.innerHTML);">e</div></td>
-            <td><div name="button10" class="kbChar button" onclick="kbType(this.innerHTML);">r</div></td>
-            <td><div name="button1010" class="kbChar button" onclick="kbType(this.innerHTML);">t</div></td>
-            <td><div name="button109" class="kbChar button" onclick="kbType(this.innerHTML);">y</div></td>
-            <td><div name="button108" class="kbChar button" onclick="kbType(this.innerHTML);">u</div></td>
-            <td><div name="button107" class="kbChar button" onclick="kbType(this.innerHTML);">i</div></td>
-            <td><div name="button106" class="kbChar button" onclick="kbType(this.innerHTML);">o</div></td>
-            <td><div name="button105" class="kbChar button" onclick="kbType(this.innerHTML);">p</div></td>
+            <td><a class="kbChar button" href="javascript:;" onClick="kbType('&'+'#09;');" style="width:36px;">Tab</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">q</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">w</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">e</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">r</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">t</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">y</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">u</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">i</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">o</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">p</a></td>
           </tr>
       </table></td>
-      <td rowspan="2"><div name="button82232" onClick="kbType('&'+'#10;');" class="kbChar button" style="height:44px;">Enter</div></td>
+      <td rowspan="2"><a onClick="kbType('&'+'#10;');" class="kbChar button" style="height:44px;">Enter</a></td>
     </tr>
     <tr>
       <td><table width="429" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td><div name="button822" onClick="capslock();" class="button kbChar" style="width:59px;">Caps</div></td>
-            <td><div name="button112" class="kbChar button" onclick="kbType(this.innerHTML);">a</div></td>
-            <td><div name="button113" class="kbChar button" onclick="kbType(this.innerHTML);">s</div></td>
-            <td><div name="button114" class="kbChar button" onclick="kbType(this.innerHTML);">d</div></td>
-            <td><div name="button115" class="kbChar button" onclick="kbType(this.innerHTML);">f</div></td>
-            <td><div name="button116" class="kbChar button" onclick="kbType(this.innerHTML);">g</div></td>
-            <td><div name="button117" class="kbChar button" onclick="kbType(this.innerHTML);">h</div></td>
-            <td><div name="button118" class="kbChar button" onclick="kbType(this.innerHTML);">j</div></td>
-            <td><div name="button119" class="kbChar button" onclick="kbType(this.innerHTML);">k</div></td>
-            <td><div name="button11" class="kbChar button" onclick="kbType(this.innerHTML);">l</div></td>
+            <td><a class="kbChar button" href="javascript:;" onClick="capslock();" style="width:59px;">Caps</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">a</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">s</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">d</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">f</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">g</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">h</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">j</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">k</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">l</a></td>
             <td>&nbsp;</td>
           </tr>
       </table></td>
@@ -90,29 +87,27 @@
     <tr>
       <td colspan="2"><table width="468" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td><div name="shift" onClick="doShift();" class="button kbChar" style="width:80px;">Shift</div></td>
-            <td><div name="button122" class="kbChar button" onclick="kbType(this.innerHTML);">z</div></td>
-            <td><div name="button123" class="kbChar button" onclick="kbType(this.innerHTML);">x</div></td>
-            <td><div name="button124" class="kbChar button" onclick="kbType(this.innerHTML);">c</div></td>
-            <td><div name="button125" class="kbChar button" onclick="kbType(this.innerHTML);">v</div></td>
-            <td><div name="button126" class="kbChar button" onclick="kbType(this.innerHTML);">b</div></td>
-            <td><div name="button127" class="kbChar button" onclick="kbType(this.innerHTML);">n</div></td>
-            <td><div name="button12" class="kbChar button" onclick="kbType(this.innerHTML);">m</div></td>
-            <td><div name="shift" onClick="doShift();" class="button kbChar" style="width:107px;">Shift</div></td>
+            <td><a class="kbChar button" href="javascript:;" name="shift" onClick="doShift();" style="width:80px;">Shift</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">z</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">x</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">c</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">v</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">b</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">n</a></td>
+            <td><a name="key" class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">m</a></td>
+            <td><a class="kbChar button" href="javascript:;" name="shift" onClick="doShift();" style="width:106px;">Shift</a></td>
           </tr>
       </table></td>
     </tr>
     <tr>
-      <td colspan="2"><table width="439" border="0" cellpadding="0" cellspacing="0">
+      <td colspan="2"><table width="470" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td><div onClick="kbType(this.innerHTML);" class="button kbChar" style="width:50px;">http://</div></td>
-            <td><div value="" name="http2" onClick="kbType(this.value);" class="button kbChar" style="width:50px;">www.</div></td>
-            <td><div name="button82222" class="button kbChar" style="width:152px;" onClick="kbType('space');">&nbsp;</div></td>
-            <td><div name="button132" class="kbChar button" onclick="kbType(this.innerHTML);">.</div></td>
-            <td><div name="button133" class="kbChar button" onclick="kbType(this.innerHTML);">/</div></td>
-            <td><div name="button13" class="kbChar button" onclick="kbType(this.innerHTML);" style="width:38px;">.com</div></td>
-            <td><div name="button134" class="kbChar button" onclick="kbType(this.innerHTML);" style="width:38px;">.net </div></td>
-            <td><div name="button135" class="kbChar button" onclick="kbType(this.innerHTML);" style="width:38px;">.org</div></td>
+            <td><a class="kbChar button" href="javascript:;" style="width:48px;" onClick="kbType(this.innerHTML);">http://</a></td>
+            <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.value);" style="width:48px;">www.</a></td>
+            <td><a class="kbChar button" href="javascript:;" style="width:152px;" onClick="kbType('space');">&nbsp;</a></td>
+            <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">.</a></td>
+            <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">/</a></td>
+            <td colspan="3"><a class="kbChar button" href="javascript:;" onClick="kbMode();" style="width:121px;">Mode</a></td>
           </tr>
       </table></td>
 	  
@@ -122,51 +117,52 @@
 	</tr>
 	<tr>
 		<td colspan="2">
-			<div style="height:46px; overflow:auto; width:100%;">
+		<div style="height:46px; overflow:scroll; width:100%;">
 		  <table width="468" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td><div name="button74" class="kbChar button" onclick="kbType(this.innerHTML);">?</div></td>
-          <td><div name="button22" class="kbChar button" onclick="kbType(this.innerHTML);">!</div></td>
-          <td><div name="button223" class="kbChar button" onclick="kbType(this.innerHTML);">&quot;</div></td>
-          <td><div name="button32" class="kbChar button" onclick="kbType(this.innerHTML);">&pound;</div></td>
-          <td><div name="button42" class="kbChar button" onclick="kbType(this.innerHTML);">$</div></td>
-          <td><div name="button423" class="kbChar button" onclick="kbType(this.innerHTML);">&euro;</div></td>
-          <td><div name="button4232" class="kbChar button" onclick="kbType(this.innerHTML);">&yen;</div></td>
-          <td><div name="button652" class="kbChar button" onclick="kbType(this.innerHTML);">,</div></td>
-          <td><div name="button73" class="kbChar button" onclick="kbType(this.innerHTML);">.</div></td>
-          <td><div name="button23" class="kbChar button" onclick="kbType(this.innerHTML);">%</div></td>
-          <td><div name="button222" class="kbChar button" onclick="kbType(this.innerHTML);">&amp;</div></td>
-          <td><div name="button622" class="kbChar button" onclick="kbType(this.innerHTML);">@</div></td>
-        </tr>
-        <tr>
-          <td><div name="button322" class="kbChar button" onclick="kbType(this.innerHTML);">(</div></td>
-          <td><div name="button422" class="kbChar button" onclick="kbType(this.innerHTML);">)</div></td>
-          <td><div name="button662" class="kbChar button" onclick="kbType(this.innerHTML);">&lt;</div></td>
-          <td><div name="button66" class="kbChar button" onclick="kbType(this.innerHTML);">&gt;</div></td>
-          <td><div name="button6" class="kbChar button" onclick="kbType(this.innerHTML);">[</div></td>
-          <td><div name="button67" class="kbChar button" onclick="kbType(this.innerHTML);">]</div></td>
-          <td><div name="button7" class="kbChar button" onclick="kbType(this.innerHTML);">{</div></td>
-          <td><div name="button62" class="kbChar button" onclick="kbType(this.innerHTML);">}</div></td>
-          <td><div name="button65" class="kbChar button" onclick="kbType(this.innerHTML);">\</div></td>
-          <td><div name="button623" class="kbChar button" onclick="kbType(this.innerHTML);">/</div></td>
-          <td><div name="button632" class="kbChar button" onclick="kbType(this.innerHTML);">;</div></td>
-          <td><div name="button63" class="kbChar button" onclick="kbType(this.innerHTML);">:</div></td>
-        </tr>
-        <tr>
-          <td><div name="button3" class="kbChar button" onclick="kbType(this.innerHTML);">+</div></td>
-          <td><div name="button33" class="kbChar button" onclick="kbType(this.innerHTML);">-</div></td>
-          <td><div name="button2222" class="kbChar button" onclick="kbType(this.innerHTML);">*</div></td>
-          <td><div name="button4" class="kbChar button" onclick="kbType(this.innerHTML);">=</div></td>
-          <td><div name="button43" class="kbChar button" onclick="kbType(this.innerHTML);">_</div></td>
-          <td><div name="button2" class="kbChar button" onclick="kbType(this.innerHTML);">^</div></td>
-          <td><div name="button642" class="kbChar button" onclick="kbType(this.innerHTML);">~</div></td>
-          <td><div name="button72" class="kbChar button" onclick="kbType(this.innerHTML);">'</div></td>
-          <td><div name="button64" class="kbChar button" onclick="kbType(this.innerHTML);">#</div></td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-      </table></div></td>
+        	<tr>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">?</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">!</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">&quot;</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">&pound;</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">$</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">&euro;</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">&yen;</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">,</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">.</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">%</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">&amp;</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">@</a></td>
+			</tr>
+			<tr>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">(</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">)</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">&lt;</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">&gt;</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">[</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">]</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">{</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">}</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">\</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">/</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">;</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">:</a></td>
+			</tr>
+			<tr>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">+</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">-</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">*</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">=</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">_</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">^</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">~</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">'</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">#</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">.com</a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">.net </a></td>
+			  <td><a class="kbChar button" href="javascript:;" onClick="kbType(this.innerHTML);">.org</a></td>
+			</tr>
+		  </table>
+		  </div></td>
 	</tr>
   </table>
     <script>
@@ -175,7 +171,6 @@ var blnSettingup = true;
 pauseKbCursorBlink();
     </script>
 
-    <!--iframe src="kbback.html"></iframe>-->
-</p>
+    <iframe src="kbback.html" style="visibility:hidden; height:0px;"></iframe>
 </body>
 </html>

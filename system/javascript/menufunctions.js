@@ -53,9 +53,9 @@ function createMenu(strTitle,strID,strIcon){
 	strMenu[strMenu.length]=strTitle;		// store the menu title in memory as the strMenu array (strMenu.length makes it a new array)
 	strMenuID[strMenuID.length]=strID;		// as above except with the menu ID... add ly at the beginning of the string for the layer etc
 	
-	strIconURL[strIconURL.length]="../theme"+strThemeDir+"/images"+strIcon;		// as above except with the icons url. it also adds ../images for easier reference at later use.
+	strIconURL[strIconURL.length]="../theme/"+strThemeDir+"/images"+strIcon;		// as above except with the icons url. it also adds ../images for easier reference at later use.
 
-	document.write('<div id="ly' + strID + '" class="subMenu"><table class="subMenuCol"><tr>');	// create the layer for the menu with the ID supplied. Add ly at the beginning to give the layer a sensible name (ie, lyGamesMenu instead of just GamesMenu. This also creates the table which will contain the items.
+	document.write('<div id="ly' + strID + '" class="subMenu"><table class="subMenuCol" cellpadding="0" cellspacing="0"><tr>');	// create the layer for the menu with the ID supplied. Add ly at the beginning to give the layer a sensible name (ie, lyGamesMenu instead of just GamesMenu. This also creates the table which will contain the items.
 
 	var intNewMaxRows = intMaxRows;
 
@@ -74,7 +74,7 @@ function createMenu(strTitle,strID,strIcon){
 
 			strClickCommand='loadApp("' + strItems[i] + '","' + strItemPath[i] + '","' + strItemIconPath[i] + '",' + '"' + intItemMax[i] + '"' + ');';		// create the onclick command
 
-			document.write("<div onclick='" + strClickCommand + "' class='subMenuRow'><table cellpadding='0' cellspacing='0'><tr><td class='itemIconContainer'><img src='../theme"+strThemeDir+"/" + strItemIconPath[i] + "' class='itemIcon'></td><td class='itemTitleContainer'><a href='javascript:;'>" + strItems[i] + "</a></td></tr></table></div>");		// create the item for that row
+			document.write("<a onclick='" + strClickCommand + "' href='javascript:;' class='mainMenuRow'><img src='../theme/"+strThemeDir+"/" + strItemIconPath[i] + "' class='mainMenuIcon'>" + strItems[i] + "</a>");		// create the item for that row
 			
 			i++;
 
@@ -126,20 +126,21 @@ function makeMainMenu(){ // Make the main 'start' menu
 	}	// loop for next menu item
 
 	makeMainMenuHeader("Actions");
-	makeMainMenuItem('Settings','../theme'+strThemeDir+'/images/icons/mainmenu/settings.png','lyMMSettings','msgBox("The Settings are still in development","Settings");');
-	makeMainMenuItem('Run Command...','../theme'+strThemeDir+'/images/icons/mainmenu/run.png','lyMMRun','msgBox("The Run command is still in development","Run Command");');
-	makeMainMenuItem('Log Out...','../theme'+strThemeDir+'/images/icons/mainmenu/logout.png','lyMMLogout','showHideLogin("visible");');
+	makeMainMenuItem('Settings','../theme/'+strThemeDir+'/images/icons/mainmenu/settings.png','lyMMSettings','msgBox("The Settings are still in development","Settings");');
+	makeMainMenuItem('Run Command...','../theme/'+strThemeDir+'/images/icons/mainmenu/run.png','lyMMRun','msgBox("The Run command is still in development","Run Command");');
+	makeMainMenuItem('Log Out...','../theme/'+strThemeDir+'/images/icons/mainmenu/logout.png','lyMMLogout','showHideLogin("visible");');
 	document.write("</tr></table>");
 	element('menu').style.height=(intMainMenuItemCount*20);
 
 }
 
 function makeMainMenuItem(strMenuTitle,strMenuIcon,strID,strCmd,blnSubMenu){
-	document.write("<div class='mainMenuRow' onclick='"+strCmd+"' id='"+strID+"'><table border='0' cellpadding='0' cellspacing='0'><tr><td><img src='"+strMenuIcon+"' class='mainMenuIcon'></td><td><a href='javascript:;'>"+strMenuTitle+"</a>");
+	var strHTML = "<a class='mainMenuRow' href='javascript:;' onclick='"+strCmd+"' id='"+strID+"'><img src='"+strMenuIcon+"' class='mainMenuIcon'>"+strMenuTitle;
 
-	if(blnSubMenu==1) document.write("<div class='mainMenuExpand'></div>");	// if it's a submenu then put an arrow at the end
+	if(blnSubMenu==1) strHTML += "<div class='mainMenuExpand'></div>";	// if it's a submenu then put an arrow at the end
 
-	document.write("</td></tr></table></div>");		// make the item so the onclick opens the correct submenu
+	strHTML+="</a>";		// make the item so the onclick opens the correct submenu
+	document.write(strHTML);
 
 	intMainMenuItemCount++;
 }

@@ -1,0 +1,145 @@
+.windowTopLeft	{
+	background-image:url(../../images/window/title_left_edge.gif);
+	background-position:bottom;
+	background-repeat:no-repeat;
+	width:2px;
+	height:20px;
+}
+
+.windowTopTitle	{
+	background-image:url(../../images/window/title_texture.gif);
+	height:20px;
+}
+
+.windowTopRight	{
+	background-image:url(../../images/window/title_right_edge.gif);
+	background-position:bottom;
+	background-repeat:no-repeat;
+	width:2px;
+	height:20px;
+}
+
+.windowLeft	{
+	background-image:url(../../images/window/left_edge.gif);
+	width:2px;
+	margin-top:1px;
+}
+
+
+.windowContent	{
+	background-color:#EFEFEF;
+	height:226px;
+	text-align:left;
+}
+
+.msgContent	{
+	background-color:#EFEFEF;
+	height:100px;
+	text-align:center;
+}
+
+.windowRight	{
+	background-image:url(../../images/window/right_edge.gif);
+}
+
+.windowBottomLeft	{
+	background-image:url(../../images/window/bottom_left_edge.gif);
+	width:2px;
+	height:2px;
+}
+
+.windowBottom {
+	background-image:url(../../images/window/bottom_edge.gif);
+	height:2px;
+}
+
+.windowBottomRight	{
+	background-image:url(../../images/window/bottom_right_edge.gif);
+	width:2px;
+	height:2px;
+}
+
+#msgDlg {
+	position:absolute;
+	left:120px;
+	top:19px;
+	width:276px;
+	height:133px;
+	z-index:20;
+	text-align:center;
+	visibility: hidden;
+}
+
+.Window {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:480px;
+	height:244px;
+	z-index:5;
+	visibility: hidden;
+}
+
+.iWindow{
+	position:absolute;
+	width:476px;
+	height:226px;
+	visibility:hidden;
+	display:none;
+	background-color:#CCCCCC;
+	z-index:0;
+}
+
+.WindowMin{
+	position:absolute;
+	width:20px;
+	height:20px;
+	top:1px;
+	left:418px;
+	background-image:url(../../images/window/control_box/min.gif);
+	background-position:top;
+	background-repeat:no-repeat;
+}
+
+.WindowMax{
+	position:absolute;
+	width:18px;
+	height:18px;
+	top:1px;
+	left:438px;
+	background-image:url(../../images/window/control_box/max.gif);
+	background-position:top;
+	background-repeat:no-repeat;
+}
+
+.WindowClose{
+	position:absolute;
+	width:18px;
+	height:18px;
+	padding-top:1px;
+	padding-right:1px;
+	top:0px;
+	left:461px;
+	background-image:url(../../images/window/control_box/close.gif);
+	background-position:bottom;
+	background-repeat:no-repeat;
+}
+
+.WindowTitle{
+	color:#FFFFFF;
+	font-weight:bolder;
+}
+
+.WindowControlBox{
+
+}
+
+.WindowIcon {
+	width:18px;
+	height:18px;
+	float:left;
+}
+
+.msgBoxOK {
+	width:45px;
+}

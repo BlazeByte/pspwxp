@@ -2,34 +2,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link href="../theme/default/css/style.css" rel="stylesheet" type="text/css">
-<link href="../theme/default/css/setup.css" rel="stylesheet" type="text/css">
+<link href="../theme/default/css/encore/window.css" rel="stylesheet" type="text/css" />
+<link href="../theme/default/css/encore/textbox.css" rel="stylesheet" type="text/css" />
+<link href="../theme/default/css/setup.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript" src="javascript/setupfunctions.js"></script>
 <script language="javascript" type="text/javascript" src="javascript/settingsfunctions.js"></script>
+<script language="javascript" type="text/javascript" src="javascript/inputfunctions.js"></script>
 <title>Encore Setup Wizard</title>
 </head>
 
 <body onload="nav(0);">
-<div id="body" style="z-index:1; position:absolute; left:0; top:0x; width:480px; height:272px;">
+<div id="body" style="z-index:1; position:absolute; left:0px; top:0px; width:480px; height:272px;">
 <div id="WindowContainer" class="setupWindow">
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		<tr>
-			<td class="windowTopLeft">
-			</td>
+			<td class="windowTopLeft">			</td>
 			<td class="windowTopTitle">
-				<img src="../theme/default/images/icons/menu/apps/update.png" name="imgWindowIcon" width="20" height="20" class="WindowIcon" id="imgWindowIcon">
+				<img src="../theme/default/images/icons/menu/apps/update.png" name="imgWindowIcon" width="20" height="20" class="WindowIcon" id="imgWindowIcon" />
 				Encore Setup wizard
 				<div id="windowControlBox" class="WindowControlBox">
-					<div id="windowClose" class="WindowClose" onClick="closeWindow(intCurrWindow);">
-					</div>
-				</div>
-		  	</td>
-			<td class="windowTopRight">
-			</td>
+					<div id="windowClose" class="WindowClose" onclick="closeWindow(intCurrWindow);">					</div>
+				</div>		  	</td>
+			<td class="windowTopRight">			</td>
 		</tr>
 		<tr>
-			<td class="windowLeft">
-			</td>
+			<td class="windowLeft">			</td>
 			<td align="left" valign="top" class="windowContent">
 			
 			
@@ -42,6 +39,7 @@
 <div class="screencontent">
   Congratulations! Encore has been successfully installed. Before using Encore, some information is required. 
   <p>&nbsp;</p>
+  <p>Encore is a free product released under the BlazeByte General License. Click next to view this license and continue the setup.</p>
 <p>To begin, click Next. </p></div>
 </div>
 <div id='terms' class='screen'>
@@ -49,7 +47,7 @@
   <p>Please read the license terms before continuing</p>
 </div>
 <div class="screencontent">
-  <iframe src="license.html" width="100%" height="120"></iframe>
+  <iframe src="license.html" width="100%" height="130"></iframe>
 <br/>
   <label>
   <input id="chkLicense" name="chkLicense" type="checkbox" onclick="licenseAgree(this.checked);"/>
@@ -60,14 +58,15 @@
 <div id='user' class='screen'>
 <div class="screentitle"><div class="title">User Settings </div><p>What is your name?</p></div>
 <div class="screencontent">Please enter your name (this can be just a first name, or nickname)<p>
-  <table border="0"><tr><td>Name: </td><td class="textbox"><!--a href="javascript:;" class="textbox"--><div id="username" name="textbox">&nbsp;</div><!--/a--></td></tr></table>
-  <!-- <input name="username" type="text" id="username" value="" onchange="checkName(this.value);"/> -->
+  <table border="0"><tr><td>Name: </td><td>
+  <script>drawInput('text','username','',"document.getElementById('next').disabled = ((document.getElementById('username').text.length<2)||(document.getElementById('username').text=='Click here to set.')) ? true : false;",'width:100px;');</script>
+  </td></tr></table>
 </p>
 <p><fieldset id="flMember"><legend><input id="chkMember" name="chkMember" type="checkbox" onclick="bbMember(this.checked);"/>I am BlazeByte.net member</legend>
 <table border="0"><tr><td>
-Username: </td><td class="textbox"><!--a href="javascript:;" class="textbox"--><div id="bbusername" name="textbox">&nbsp;</div><!--/a-->
+Username: </td><td><script>drawInput('text','bbusername','NOT YET AVAILABLE','','width:100px;');</script>
 </td></tr><tr><td>
-Password: </td><td class="textbox"><!--a href="javascript:;" class="textbox"--><div id="bbpassword" name="passbox">&nbsp;</div><!--/a-->
+Password: </td><td><script>drawInput('password','bbpassword','NOT YET AVAILABLE','','width:100px;');</script>
 </td></tr></table>
 <a href="javascript: alert('You can become a member by registering at the forum at forum.blazebyte.net.');">How do I become a BlazeByte.net member?</a>
 </fieldset></p></div>
@@ -76,11 +75,9 @@ Password: </td><td class="textbox"><!--a href="javascript:;" class="textbox"--><
 <div id='security' class='screen'>
 	<div class="screentitle">
 		<div class="title">
-			Security
-		</div>
+			Security		</div>
 		<p>
-			Do you want a password?
-		</p>
+			Do you want a password?		</p>
 	</div>
 	<div class="screencontent">
 		Supplying a password will prevent unauthorised access to your documents that you create in Encore. You will need to enter the password everytime you start up Encore. 
@@ -88,31 +85,24 @@ Password: </td><td class="textbox"><!--a href="javascript:;" class="textbox"--><
 		Do you wish to password protect Encore? 
 		<br/>
 		<label>
-		  <input name="password" type="radio" id="password" value="false" checked="checked" /> 
-		  No
-		</label>
+		  <input name="password" type="radio" id="password" value="false" checked="checked" onclick="checkPass();" /> 
+		  No		</label>
 		<br/>
 		<label>
-		  <input name="password" type="radio" id="password" value="true" />
-		  Yes
-		</label>
+		  <input name="password" type="radio" id="passwordtrue" value="true" onclick="checkPass();" />
+		  Yes		</label>
 		<table border="0"><tr>
 			<td>
-				Password
-			</td>
+				Password			</td>
 			<td>
-				<input type="text" name="txtPassword1" id="txtPassword1" />
-			</td>
+				<script>drawInput('password','txtPassword1','','checkPass();','width:100px;');</script>			</td>
 		</tr><tr>
 			<td>
-				Confirm password
-			</td>
+				Confirm password			</td>
 			<td>
-				<input type="text" name="txtPassword2" id="txtPassword2" />
-			</td>
+				<script>drawInput('password','txtPassword2','','checkPass();','width:100px;');</script>			</td>
 		</tr></table>
 		</p>
-		
 	</div>
 </div>
 
@@ -121,7 +111,7 @@ Password: </td><td class="textbox"><!--a href="javascript:;" class="textbox"--><
 <div class="screencontent">  Encore includes various sounds for events (such as startup sound). Unfortunalty, enabling these sounds on firmware 3 or later will cause security messages to appear every time a sound tries to play. If you are on firmeare 3 or later, we recommend you do not have sounds turned on. 
 <p>Use system sounds? <br />
   <label>
-  <input name="sounds" type="radio" id="sounds" value="true" />
+  <input name="sounds" type="radio" id="soundstrue" value="true" />
 Yes</label>
 <br />
   <input name="sounds" type="radio" id="sounds" value="false" checked="checked"/>
@@ -137,29 +127,26 @@ No</p>
 
 <div id="setupNav" align="center">
 	<table cellpadding="0" cellspacing="0" border="0" width="98%">
-	  <tr><td align="left"><input type="button" value="Exit" onclick="exit();" /></td><td align="right"><input name="prev" type="button" id="prev" onclick="nav(-1);" value="Previous" />
-	<input name="next" type="button" id="next" onclick="nav(1);" value="Next" />
-	<input name="finish" type="button" id="fin" onclick="doFinish();" value="Finish" /></td></tr></table>
+	  <tr><td width="150" align="left"><input type="button" value="Exit" onclick="exit();" />
+	    <input name="button" type="button" onclick="clearSettings();" value="Clear" /></td><td align="center">(c) BlazeByte 2003-2007
+</td>
+	    <td width="150" align="right"><input name="prev" type="button" id="prev" onclick="nav(-1);" value="Previous" />
+          <input name="next" type="button" id="next" onclick="nav(1);" value="Next" />
+          <input name="finish" type="button" id="fin" onclick="doFinish();" value="Finish" /></td>
+	  </tr></table>
 	<br />
-(c) BlazeByte 2003-2007 </div>
-
-		  </td>
-			<td class="windowRight">
-			</td>
+</div>		  </td>
+			<td class="windowRight">			</td>
 		</tr>
 		<tr>
-			<td class="windowBottomLeft">
-			</td>
+			<td class="windowBottomLeft">			</td>
 			<td class="windowBottom"></td><td class="windowBottomRight">
 			</td>
 		</tr>
 	</table>
-	</div>
+  </div>
 </div>
-<div id="keyboard" style="visibility:hidden;z-index:10; left:0; top:0x; width:480px; height:272px; position:absolute;">
-	<iframe src="utilities/kbgui.html" id="ikeyboard" name="ikeyboard" allowtransparency="0" frameborder="0" width="480" height="272"></iframe>
-</div>
-<script language="javascript" type="text/javascript" src="javascript/inputfunctions.js"></script>
+
 </body>
 
 </html>

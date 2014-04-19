@@ -3,8 +3,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Untitled Document</title>
+<script>
+	parent.saveSetting('fileExt','doc','Writer^Document^../apps/office/writer/index.htm^images/icons/menu/apps/writer.png')
+	
+	eval(parent.setAppProperties());
+	
+	function saveFile(){
+		parent.saveFile("testfolder",prompt("Enter file name:")+".doc",document.getElementById('main').text);
+		parent.storeFiles();
+	}
+	
+	strLocationParts=location.href.split("?");
+	if (strLocationParts.length>1) {
+		var strVars = strLocationParts[1].split("&");
+		for (var i = 0 ; i < strVars.length ; i++ ) {
+			strVarParts = strVars[i].split("=");
+			eval("var " + strVarParts[0] + " = \"" + strVarParts[1] + "\";");
+		}
+	}
+
+</script>
 </head>
 
 <body>
+<table width="100%" cellspacing="0"><tr><td colspan="3" height="20">New | Open | <a href="javascript:;" onclick="saveFile();">Save</a> | Save As | B | I | U </td></tr>
+<tr><td width="15%">&nbsp;</td><td width="70%"><script>drawInput("text","main",((typeof file == "undefined")?"":parent.getFile(folder,file,'ERROR: File not found.')),"","height:200px;width:100%;");</script></td>&nbsp;<td width="15%"></td></tr>
+</table>
 </body>
 </html>
