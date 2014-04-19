@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script language="JavaScript">
+var chkIconsstatus="false";
+var chkBGImagestatus="true";
+var settingswindow=window.parent.activewindow
+function ChangeSettings(){
+	var MM_showHideLayers = window.parent.MM_showHideLayers;
+	var imgDesktop=window.parent.document.imgDesktop;
+	
+	if(chkIconsstatus=="true"){
+		MM_showHideLayers('lIcons','','hide','internetShadow','','hide','readShadow','','hide','editShadow','','hide','calcShadow','','hide','gamesShadow','','hide','convShadow','','hide');
+	}else{
+		MM_showHideLayers('lIcons','','show','internetShadow','','show','readShadow','','show','editShadow','','show','calcShadow','','show','gamesShadow','','show','convShadow','','show');
+	}
+	
+	if(chkBGImagestatus=="true"){
+		if(File.value==""){
+			imgDesktop.src="images/desktop.jpg";
+		} else {
+			imgDesktop.src=File.value;
+		}
+	} else {
+		imgDesktop.src="images/space.gif"
+	}
+	window.parent.windowExit(settingswindow);
+
+}
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#EBE9ED">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr> 
+	  <td><div align="center"> 
+		  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+			  <td width="114"><div align="center">
+				  <input type="submit" name="Submit2" value="About" onClick="window.parent.setTitle('1','About','apps/about.htm','images/icons/menu/help.png')">
+				</div></td>
+			  <td width="243"><table width="243" height="93" border="0" cellpadding="0" cellspacing="0" background="../../images/settings/preview.jpg">
+				  <tr> 
+					<td width="52" height="8"></td>
+					<td width="140" height="8"></td>
+					<td width="51" height="8"></td>
+				  </tr>
+				  <tr> 
+					<td height="70"></td>
+					<td width="140" height="70"><img src="../../images/desktop.jpg" name="imgPreview" width="140" height="70" id="imgPreview"></td>
+					<td height="70"></td>
+				  </tr>
+				  <tr> 
+					<td width="52"></td>
+					<td width="140" height="15"></td>
+					<td width="51"></td>
+				  </tr>
+				</table></td>
+			  <td width="115" align="center"><input type="submit" name="Submit" value="Update" onClick="window.parent.setTitle('1','Update','http://pspwxp.atspace.com/updates/200.htm','images/icons/menu/vid.png')"></td>
+			</tr>
+		  </table>
+		</div></td>
+	</tr>
+	<tr> 
+	  <td><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+		  <tr>
+			<td width="50%" valign="top"><p align="left"><font size="2"> 
+				<input name="chkBGImage" type="checkbox" id="chkBGImage" checked onClick="if(chkBGImagestatus=='true'){chkBGImagestatus='false'}else{chkBGImagestatus='true'}">
+				Background image:<br>
+				</font> 
+				<input name="File" type="file" id="File2" onChange="imgPreview.src=File.value" size="20">
+			  </p>
+		    </td>
+			
+          <td width="50%" valign="top"><font size="2"> <br>
+			  <input name="chkIcons" type="checkbox" id="chkIcons" onClick="if(chkIconsstatus=='true'){chkIconsstatus='false';}else{chkIconsstatus='true';}">
+			  Do not show desktop icons<br>
+            </font></td>
+		  </tr>
+		</table>
+		<div align="center"> 
+		  <table width="150" height="30" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr valign="bottom"> 
+			  <td width="50%"><div align="center"> 
+				  <input name="OK" type="button" id="OK" onClick="ChangeSettings();" value="Change">
+				</div></td>
+			  <td width="50%"><div align="center"> 
+				  <input name="Cancel" type="button" id="Cancel" onClick="window.parent.windowExit(settingswindow)" value="Cancel">
+				</div></td>
+			</tr>
+		  </table>
+		</div></td>
+	</tr>
+  </table>
+</body>
+</html>
