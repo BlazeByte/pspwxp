@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Untitled Document</title>
 <script>
-	parent.saveSetting('fileExt','doc','Writer^Document^../apps/office/writer/index.htm^images/icons/menu/apps/writer.png')
+	top.frames['idesktop'].saveFileExt("Writer", "Document", "../apps/office/writer/index.htm", "images/icons/menu/apps/writer.png", "doc");
 	
 	eval(parent.setAppProperties());
 	
@@ -12,6 +12,18 @@
 		parent.saveFile("testfolder",prompt("Enter file name:")+".doc",document.getElementById('main').text);
 		parent.storeFiles();
 	}
+	function newFile() {
+	document.getElementById('main').innerHTML = "";
+	}
+	function openFile() {
+	var file = prompt("Enter file to open:");
+	if(parent.fileExists("testfolder",file+".doc") == true) {
+		document.getElementById('main').innerHTML = parent.getFile("testfolder",file+".doc");
+		}
+		else {
+		alert("file does not exist");
+		}
+		}
 	
 	strLocationParts=location.href.split("?");
 	if (strLocationParts.length>1) {
@@ -26,7 +38,7 @@
 </head>
 
 <body>
-<table width="100%" cellspacing="0"><tr><td colspan="3" height="20">New | Open | <a href="javascript:;" onclick="saveFile();">Save</a> | Save As | B | I | U </td></tr>
+<table width="100%" cellspacing="0"><tr><td colspan="3" height="20"><a href="javascript:;" onclick="newFile();">New</a> | <a href="javascript:;" onclick="openFile();">Open</a> | <a href="javascript:;" onclick="saveFile();">Save</a> | <a href="javascript:;" onclick="saveFile();">Save As</a> | B | I | U </td></tr>
 <tr><td width="15%">&nbsp;</td><td width="70%"><script>drawInput("text","main",((typeof file == "undefined")?"":parent.getFile(folder,file,'ERROR: File not found.')),"","height:200px;width:100%;");</script></td>&nbsp;<td width="15%"></td></tr>
 </table>
 </body>

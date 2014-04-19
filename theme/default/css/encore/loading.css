@@ -1,0 +1,13 @@
+body{
+	margin:2px;
+	background-color:#000000;
+	color:#CCCCCC;
+}
+
+#loadingScreenTitle {
+	font-size:14px;
+}
+
+#loadingScreenInfo{
+	font-size:12px;
+}

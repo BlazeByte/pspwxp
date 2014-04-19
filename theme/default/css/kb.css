@@ -12,7 +12,8 @@ body {
 	border-right:1px solid #406482;
 	border-left:1px solid #305067;
 	background-color:#D0DEDF;
-	overflow:auto;
+	overflow:scroll;
+	white-space:nowrap;
 	text-align:left;
 }
 

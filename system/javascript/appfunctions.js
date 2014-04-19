@@ -20,7 +20,8 @@ returnLoadStatus("Preparing application framework...",3);
 function loadApp(strAppTitle,strAppURL,strAppIcon,strAppMax){
 
 	hideMenu();																		// hide the main menu and all sub menus
-
+	minWindow("all",0);																// minimize all windows
+	
 	//find an open slot and set it as intCurrWindow
 	intCurrWindow=0;
 	for (var i = 1;i<=intMaxWindows;i++){
@@ -52,8 +53,6 @@ function loadApp(strAppTitle,strAppURL,strAppIcon,strAppMax){
 
 	showWindowDetails(intCurrWindow);												// show icon and title in Window Container
 
-	minWindow("all",0);																// minimize all windows
-
 	element('Tab'+intCurrWindow).style.left=(intWindowCount*100)+"px";
 
 	showHideLayer("Tab"+intCurrWindow,"visible");									// show tab
@@ -76,10 +75,12 @@ function minWindow(intWindow,intContainer){
 			element('iWindow'+i).style.visibility='hidden';
 			if (intContainer !== 0) intWindowOpen[i] = 0;
 		}
+		intCurrWindow=0;
 		
 	}else{
 		showHideLayer('iWindow'+intWindow,'hidden');
 		intWindowOpen[intWindow] = 0;
+		intCurrWindow = 0;
 		closeWindowContainer(intWindow);	
 	}
 }

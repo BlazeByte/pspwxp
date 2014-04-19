@@ -1,110 +1,98 @@
 var intMaxRows = 12;	// the maximum amount of rows that can fit into a submenu
 var intHeight = 0;		// the Height for the menu layers
 var intRowHeight = 19;	// define the height of thw menu item rows
-var strMenu = new Array;
-var strMenuID = new Array;
-var strIconURL = new Array;
-var strItems = new Array;
-var strItemPath = new Array;
-var strItemIconPath = new Array;
-var intItemMax = new Array;
+
 var intMainMenuItemCount = 0;
 var strClass;
 
-function initiateMenu(strListURL){
+var strMenu = new Array;
+var strMenuID = new Array;
+var strMenuIconURL = new Array;
 
+var strItem = new Array;
+var strItemMenu = new Array;
+var strItemURL = new Array;
+var strItemIconURL = new Array;
+var intItemMax = new Array;
+
+
+
+function createMenus(){
 	returnLoadStatus("Initiating menu lists...",4);
-
-	// First, load the list for the menu:
-	document.write("<script language='javascript' type='text/javascript' src='../user/menus" + strListURL + "'></script>");	// load the list script for the menu
-
-	// The menu list will than define all the items and call the MenuItem function for each
-	// then call the createMenu function, with it's desired Title and ID
+	
+	getMenus();			// Get the list of menus
+	makeMainMenu();		// Make the main menu
+	
+	getMenuItems()
+	makeMenus()
 }
 
 
 
-function MenuItem(itemName,itemPath,itemIconPath,itemMax){   // Function for adding games. This is used by /user/games.js to make a list of the games.
-	intItem++;	// keep a count of the menu items
+
+function getMenus() {  // Get menus from settings
+	var strSettings;
 	
-	// arrays for each item
-	strItems[intItem]=itemName;
-	strItemPath[intItem]=itemPath;
-	strItemIconPath[intItem]=itemIconPath;
-	intItemMax[intItem]=itemMax;
-}
-
-
-
-function createMenu(strTitle,strID,strIcon){
-
-	returnLoadStatus("Creating "+ strTitle + " menu...",5);
-
-	// Draw the table with items
-	var intRows = strItems.length-1;		// The amount of items in the submenu
-	var intCols1 = intRows/intMaxRows;		// work out how many columns will be required
-	var intCols = Math.ceil(intCols1);		// round this value up (eg, there cannot be 3.2 cols, so it is rounded to 4)
-	var intLastColRows = Math.ceil((intCols1 - Math.floor(intCols1))*intMaxRows);		// work out the amount of rows in the final column
-	var strClickCommand = "";		// define the variable that will store the command used by the item
-	var i = 1;		// i is used within the for loop
-
-	intItem = 0;	//reset the Item counter
-
-	strMenu[strMenu.length]=strTitle;		// store the menu title in memory as the strMenu array (strMenu.length makes it a new array)
-	strMenuID[strMenuID.length]=strID;		// as above except with the menu ID... add ly at the beginning of the string for the layer etc
-	
-	strIconURL[strIconURL.length]="../theme/"+strThemeDir+"/images"+strIcon;		// as above except with the icons url. it also adds ../images for easier reference at later use.
-
-	document.write('<div id="ly' + strID + '" class="subMenu"><table class="subMenuCol" cellpadding="0" cellspacing="0"><tr>');	// create the layer for the menu with the ID supplied. Add ly at the beginning to give the layer a sensible name (ie, lyGamesMenu instead of just GamesMenu. This also creates the table which will contain the items.
-
-	var intNewMaxRows = intMaxRows;
-
-	for(var intCol=1;intCol<=intCols;intCol++){		// go through each item and create it on the menu
-
-		if((intCol == intCols)&&(intLastColRows>0)){	// If this is the final column
-			intNewMaxRows = intLastColRows;			// make sure it has the correct amount of rows
-			strClass="";
-		}else{
-			strClass=' class="subMenuColContainer"';
-		}
-		
-		document.write('<td' + strClass + ' valign="top">');	// create a new column
-
-		for(var intRow=1 ; intRow<=intNewMaxRows ; intRow++){	// for each item on the row
-
-			strClickCommand='loadApp("' + strItems[i] + '","' + strItemPath[i] + '","' + strItemIconPath[i] + '",' + '"' + intItemMax[i] + '"' + ');';		// create the onclick command
-
-			document.write("<a onclick='" + strClickCommand + "' href='javascript:;' class='mainMenuRow'><img src='../theme/"+strThemeDir+"/" + strItemIconPath[i] + "' class='mainMenuIcon'>" + strItems[i] + "</a>");		// create the item for that row
-			
-			i++;
-
-		}		// loop again until end of column
-
-		document.write("</td>");	// finish that row and table
-	}		// loop again until end of list
-
-	document.write("</tr></table></div>");	// finish the table
-
-	// delete previous sub menu arrays, or the menu will display items from it
-	strItemPath.splice(0,strItemPath.length);
-	strItems.splice(0,strItems.length);
-	strItemIconPath.splice(0,strItemIconPath.length);
-	intItemMax.splice(0,intItemMax.length);
-
-	if(intCols==1){		// if there is only 1 row
-		intHeight = intRowHeight * intLastColRows;	// then the height will be the amount of rows * row height
-	}else{				// if there is more than 1 column
-		intHeight = intRowHeight * intMaxRows;		// then the height will be the maximum amount of rows * row height
+	if (parent!==self){
+		if (notPSP){
+			var cookiedata = unescape(window.document.cookie);
+			var cookiecontents = cookiedata.split("=");
+			if(cookiecontents[0] == "cookiedata") {
+				strSettings = cookiecontents[1].split("»");
+			}else strSettings = "";
+		}else
+			strSettings = window.top.isettings.document.getElementById("settingList").value.split("»");	// Split up the settings
 	}
-
-	var objLyMenu = 'element("ly' + strID + '")';	// define as the menu layer
-
-	eval(objLyMenu + ".style.height=intHeight;");		// set the height of the layer
-
+	
+	for ( var i = 0 ; i < strSettings.length ; i++ ) {
+		var strApps = strSettings[i].split("¿");
+		if(strApps[0]=='mainmenu'){
+			var strSettingParts = strApps[1].split("º");
+			var strMenuParts = strSettingParts[1].split("^");
+			
+			strMenuID[strMenu.length] = strMenuParts[0];
+			strMenuIconURL[strMenu.length] = strMenuParts[1];
+			strMenu[strMenu.length] = strSettingParts[0];
+		}
+	}		
 }
+
+
+
+
+function getMenuItems() {  // Get menus from settings
+	var strSettings;
+	
+	if (parent!==self){
+		if (notPSP){
+			var cookiedata = unescape(window.document.cookie);
+			var cookiecontents = cookiedata.split("=");
+			if(cookiecontents[0] == "cookiedata") {
+				strSettings = cookiecontents[1].split("»");
+			}else strSettings = "";
+		}else
+			strSettings = window.top.isettings.document.getElementById("settingList").value.split("»");	// Split up the settings
+	}
+	
+	for ( var i = 0 ; i < strSettings.length ; i++ ) {
+		var strApps = strSettings[i].split("¿");
+		if(strApps[0]=='mainmenuitems'){
+			var strSettingParts = strApps[1].split("º");
+			var strMenuParts = strSettingParts[1].split("^");
+			
+			strItemMenu[strItem.length] = strMenuParts[0];
+			strItemURL[strItem.length] =  strMenuParts[1];
+			strItemIconURL[strItem.length] =  strMenuParts[2];
+			intItemMax[strItem.length] =  strMenuParts[3];
+			strItem[strItem.length] = strSettingParts[0];
+		}
+	}		
+}
+
+
+
 
 function makeMainMenu(){ // Make the main 'start' menu
-
 	returnLoadStatus("Creating main menu...");
 
 	var strClickCommand ;
@@ -114,16 +102,11 @@ function makeMainMenu(){ // Make the main 'start' menu
 
 	makeMainMenuHeader("All Applications");
 
-	for(var i = 0;i<strMenu.length;i++){	// create each sub menu item
-
+	for( var i = 0 ; i < strMenu.length ; i++ ){	// create each sub menu item
 		strID = "lyMM"+strMenuID[i];
-
 		strClickCommand = "hideMenu(1);alignSubMenu("+i+");showHideLayer(" + '"ly' + strMenuID[i] + '"' +","+'"visible"' +");";	// make the onclick command
-		
-		makeMainMenuItem(strMenu[i],strIconURL[i],strID,strClickCommand,1);
-
-
-	}	// loop for next menu item
+		makeMainMenuItem(strMenu[i],'../theme/'+strThemeDir+strMenuIconURL[i],strID,strClickCommand,1);
+	}
 
 	makeMainMenuHeader("Actions");
 	makeMainMenuItem('Settings','../theme/'+strThemeDir+'/images/icons/mainmenu/settings.png','lyMMSettings','msgBox("The Settings are still in development","Settings");');
@@ -133,6 +116,66 @@ function makeMainMenu(){ // Make the main 'start' menu
 	element('menu').style.height=(intMainMenuItemCount*20);
 
 }
+
+
+
+function makeMenus(){
+	var intMenuItemCount = new Array;
+	
+	// count how many items there are in each menu
+	for( var i = 0 ; i < strMenu.length ; i++ ){
+		for( var i2 = 0 ; i2 < strItem.length ; i2++ ){
+			if ( strItemMenu[i2] == strMenu[i] ) {
+				intMenuItemCount[i]++
+			}
+		}
+	}
+	
+				
+	for( var i = 0 ; i < strMenu.length ; i++ ){
+		startMenu(strMenu[i],strMenuID[i])
+		
+		var intSubMenuItem = 0;
+		
+		
+		for( var i2 = 0 ; i2 < strItem.length ; i2++ ){
+			if ( strItemMenu[i2] == strMenu[i] ) {
+				
+				intSubMenuItem ++;
+				
+				if ((intSubMenuItem!=0)&&(intSubMenuItem!=intMenuItemCount[i])&&( intSubMenuItem % intMaxRows ==0 )) {
+					document.write("</table></td><td valign='top'><table>");
+				}
+				
+				writeMenuItem(strItem[i2], strItemURL[i2], strItemIconURL[i2], intItemMax[i2]);
+			}
+
+		}
+		finishMenu()
+	}
+}
+
+
+
+function startMenu(strTitle,strID){
+	returnLoadStatus("Creating "+ strTitle + " menu...",5);
+	document.write('<div id="ly' + strID + '" class="subMenu"><table class="subMenuCol" cellpadding="0" cellspacing="0"><tr><td><table>');	// create the layer for the menu with the ID supplied. Add ly at the beginning to give the layer a sensible name (ie, lyGamesMenu instead of just GamesMenu. This also creates the table which will contain the items.
+}
+
+
+
+function writeMenuItem(strItem, strItemPath, strItemIconPath, intItemMax ) {
+	strClickCommand='loadApp("' + strItem + '","' + strItemPath + '","' + strItemIconPath + '",' + '"' + intItemMax + '"' + ');';		// create the onclick command
+	document.write("<tr><td><a onclick='" + strClickCommand + "' href='javascript:;' class='mainMenuRow'><img src='../theme/"+strThemeDir+"/" + strItemIconPath + "' class='mainMenuIcon'>" + strItem + "</a></td></tr>");		// create the item for that row
+}
+
+
+
+function finishMenu(){
+	document.write("</table></td></tr></table></div>");	// finish the table
+}
+
+
 
 function makeMainMenuItem(strMenuTitle,strMenuIcon,strID,strCmd,blnSubMenu){
 	var strHTML = "<a class='mainMenuRow' href='javascript:;' onclick='"+strCmd+"' id='"+strID+"'><img src='"+strMenuIcon+"' class='mainMenuIcon'>"+strMenuTitle;
@@ -145,11 +188,19 @@ function makeMainMenuItem(strMenuTitle,strMenuIcon,strID,strCmd,blnSubMenu){
 	intMainMenuItemCount++;
 }
 
+
+
+
+
 function makeMainMenuHeader(strHeader){
 	document.write("<div class='MainMenuHeader'>"+strHeader+"</div>");
 
 	intMainMenuItemCount++;
 }
+
+
+
+
 
 function setSubMenusX(){
 	for(var i = 0;i<strMenu.length;i++){	// for each sub menu item
@@ -165,6 +216,8 @@ function setSubMenusX(){
 	
 }
 
+
+
 function alignSubMenu(intSubMenu){
 	var intSubMenuY = 0;
 
@@ -175,3 +228,4 @@ function alignSubMenu(intSubMenu){
 		element("ly"+strMenuID[intSubMenu]).style.top=intSubMenuY;
 	}
 }
+

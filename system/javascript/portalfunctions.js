@@ -87,8 +87,8 @@ function msgBox(strMsg,strTitle,intError){
 	element("msgDlg").style.top=136-(element("msgDlg").offsetHeight/2);
 	showHideLayer('msgDlg','visible');
 	if(intError==1){
-		callSound("/sounds/error.swf");
-	}else callSound("/sounds/blip.swf");
+		callSound("error");
+	}else callSound("beep");
 }
 
 // load the clock
@@ -128,6 +128,6 @@ function getNetComm(){ // connects to blazebyte communication network to give us
 }
 
 
-function callSound(strPath){
-	if(blnSounds==true) iSound.location.href="../theme/"+strThemeDir+strPath;
+function callSound(strSound){
+	if(blnSounds==true) top.frames['isound'].document.getElementById(strSound).Play();
 }

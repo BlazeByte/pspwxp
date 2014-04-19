@@ -19,6 +19,8 @@
 		document.write('<link rel="stylesheet" type"text/css" href="../theme/' + strThemeDir + '/css/encore/' + strCSSSheets[intSheet] + '" />');
 	}
 </script>
+
+
 <body onLoad="hideBoot();">
 	<div id="lyBoot">	<!-- the boot screen -->
 		<div id="lyLoadIcon1"></div>	<!-- the loading icons. background-image in css for icon -->
@@ -48,22 +50,24 @@
 		<script language="javascript" type="text/javascript" src="javascript/appfunctions.js">	</script>
 
 <div id="lyDesktop" onClick="hideMenu();">
-		<script language="javascript" type="text/javascript" src="../user/shortcuts.js"></script>
+		<!--script language="javascript" type="text/javascript" src="../user/shortcuts.js"></script>-->
+		Not yet
 </div>
 	
 	<script language="javascript" type="text/javascript">
 		ApplyLoadSettings();
-		if(blnShortcuts==true) createShortcuts();
+		//if(blnShortcuts==true) createShortcuts();
 		if(blnLogin==true) document.write('<script language="javascript" type="text/javascript" src="javascript/loginfunctions.js">	</'+'script>')
 	</script>
-	<script language="javascript" type="text/javascript" src="../user/menus/submenus.js"></script>
+	<!--script language="javascript" type="text/javascript" src="../user/menus/submenus.js"></script-->
 	<script language="javascript" type="text/javascript" src="javascript/portalfunctions.js">	</script>
 	<script language="javascript" type="text/javascript" src="javascript/versioninfo.js">	</script>
 	<script language="javascript" type="text/javascript" src="javascript/inputfunctions.js">	</script>
 	
 	<div id="menu" style="visibility:hidden;">
 		<script language="javascript" type="text/javascript" >
-			makeMainMenu();		//add all
+			createMenus();
+			//makeMainMenu();		//add all
 		</script>
 	</div>
 	
@@ -102,7 +106,7 @@
 				<td class="windowTopLeft">				</td>
 				<td class="windowTopTitle">
 					<img id="imgWindowIcon" class="WindowIcon">
-					<a href="javascript:;" onclick="frames['iWindow'+intCurrWindow].location.reload()"><div id="WindowTitle" class="WindowTitle">
+					<a href="javascript:;" onClick="frames['iWindow'+intCurrWindow].location.reload()"><div id="WindowTitle" class="WindowTitle">
 						Window Title					</div></a>
 					<div id="windowControlBox" class="WindowControlBox">
 						<div id="windowMin" class="WindowMin" onClick="minWindow(intCurrWindow);">						</div>

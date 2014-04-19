@@ -19,11 +19,16 @@ function ApplyLoadSettings(){
 	if (blnBGImage==false){
 		element('lyDesktop').style.visibility="hidden";	// no bg
 	} else if((strBGImage!=="")&&(strBGImage!=='default')) {
-		element('lyDesktop').style.backgroundImage="url(file:"+strBGImage+")";		// set bg to what the user selected
+		element('lyDesktop').style.backgroundImage="url("+((strBGImage.charAt(4)==":")?"":"file:")+strBGImage+")";		// set bg to what the user selected
 	}
 	
+	// load sounds
+	top.frames['isound'].document.open();
+	top.frames['isound'].document.write('<embed name="beep" id="beep" FlashVars="strURL=file:/encore/theme/default/sounds/beep.mp3" src="system/sound.swf" quality="high"></embed><embed name="error" id="error" FlashVars="strURL=file:/encore/theme/default/sounds/beep.mp3" src="system/sound.swf" quality="high"></embed><embed name="startup" id="startup" FlashVars="strURL=file:/encore/theme/default/sounds/beep.mp3" src="system/sound.swf" quality="high"></embed>');
+	top.frames['isound'].document.close();
 }
 
+/*
 function createShortcuts(){
 	var intY = 0;
 	var intX = 0;
@@ -61,7 +66,7 @@ function createShortcuts(){
 	intItemMax.splice(0,intItemMax.length);
 
 }
-
+*/
 
 function makeWindows(){
 	for(var intWin=1;intWin<=intMaxWindows;intWin++){

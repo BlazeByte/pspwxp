@@ -68,9 +68,9 @@ function saveSetting(strApp, strKey, strValue, intSave){
 }
 
 function storeSettings() {
-	if (!notPSP)
+	if (!notPSP){
 		window.top.isettings.document.settings.submit();
-	alert("saved");
+	alert("saved");}
 }
 
 function getSetting(strApp, strKey, strDefault){

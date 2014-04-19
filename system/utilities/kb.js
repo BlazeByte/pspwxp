@@ -97,7 +97,7 @@ function kbType(strChar, strCmd){
 		}
 		intCurrX+=document.getElementById('inputbox').innerHTML.length-strText.length;
 	}
-	if (blnShift==true) {doShift();}
+	if (blnShift==true) doShift();
 }
 
 function doOk(){
@@ -116,16 +116,10 @@ function doExit(){
 function capslock(){
 	var kbKeys = document.getElementsByName("key");
 	if (blnCaps == false){
-		for (var i = 0 ; i < kbKeys.length ; i++ ){
-			if (kbKeys[i].innerHTML.length==1)
-				kbKeys[i].innerHTML = kbKeys[i].innerHTML.toUpperCase();
-		}
+		document.getElementById('caseAffectedKeys').innerHTML.toUpperCase();
 		blnCaps=true;	
 	}else {
-		for (var i = 0 ; i < kbKeys.length ; i++ ){
-			if (kbKeys[i].innerHTML.length==1)
-				kbKeys[i].innerHTML = kbKeys[i].innerHTML.toLowerCase();
-		}
+		document.getElementById('caseAffectedKeys').innerHTML.toLowerCase();
 		blnCaps=false;
 	}
 }

@@ -15,10 +15,10 @@
 	background-color:#0000FF;
 }
 
-.button:active {
+/*.button:active {			// Removed as it causes "sticky" buttons
 	border-bottom:2px solid #4B7E9A;
 	border-top:2px solid #263E57;
 	border-right:2px solid #406482;
 	border-left:2px solid #305067;
 	background-color:#0000ff;
-}
+}*/

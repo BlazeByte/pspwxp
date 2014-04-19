@@ -6,6 +6,7 @@
 	position:absolute;
 	background-color:#CCCCCC;
 	visibility: hidden;
+	white-space:nowrap;
 	z-index:22;
 }	
 
