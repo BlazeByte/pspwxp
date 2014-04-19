@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>PSPTunes</title>
+<script language="JavaScript" type="text/javascript">
+var blnrepeat = 'false';
+var blnshuffle = 'false';
+function stopSong(){
+  iplaylist.songTitle = "";
+  iplaylist.songArtist = "";
+  iplaylist.songPath = "";
+  parent.parent.frame1.location.reload();
+}
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="stopSong();iplaylist.updateCurrentSong();">
+<div id="Layer1" style="position:absolute; left:138px; top:109px; width:88px; height:30px; z-index:1; visibility: hidden;">&nbsp; 
+  <input type="checkbox" id="repeat" name="Repeat">
+</div>
+<table width="460" height="100%" border="0" align="center" cellpadding="0" cellspacing="0" id="tbPlaylist">
+  <tr class="top"> 
+    <td height="17" colspan="3"><a href="././list.htm" target="iplaylist"><img src="././images/headers.gif" name="imgHeader" width="480" height="17" border="0" id="imgHeader" onclick="imgHeader.src='images/headers.gif'"></a></td>
+  </tr>
+  <tr class="top"> 
+    <td width="2" background="././images/lborder.gif" bgcolor="#FFFFFF">&nbsp;</td>
+    <td width="476" height="157" valign="top" bgcolor="#FFFFFF"><iframe id="iplaylist" name="iplaylist" src="list.htm" width="472px" frameborder="0"></iframe></td>
+    <td width="2" background="././images/rborder.gif" bgcolor="#FFFFFF">&nbsp;</td>
+  </tr>
+  <tr class="top" background="././images/base.jpg"> 
+    <td height="46" colspan="3" valign="bottom">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td width="5">&nbsp; </td>
+          <td width="475" height="20" valign="top"><a href="#"><img src="././images/repeat.gif" name="imgRepeat" width="27" height="19" border="0" id="imgRepeat" onClick="if(this.src.slice(-22)=='images/repeat_down.gif'){this.src='images/repeat.gif';blnrepeat='false';}else{this.src='images/repeat_down.gif';blnrepeat='true';}"></a> 
+            <a href="#"><img src="././images/shuffle.gif" name="imgShuffle" width="27" height="19" border="0" id="imgShuffle" onClick="if(this.src.slice(-23)=='images/shuffle_down.gif'){this.src='images/shuffle.gif';blnshuffle='false';}else{this.src='images/shuffle_down.gif';blnshuffle='true';}"></a> 
+            <a href="#"><img src="././images/stop.gif" width="27" height="19" border="0" onClick="stopSong();"></a> 
+          </td>
+        </tr>
+        <tr> 
+          <td colspan="2" align="right" valign="bottom"><div align="right"><img src="././images/base_links.jpg" width="192" height="19" border="0" usemap="#Map"> 
+              <map name="Map">
+                <area shape="rect" coords="112,0,191,18" href="http://pspwxp.jetpage.biz/itunes/updates/2.htm" target="iplaylist" onclick="imgHeader.src='images/back.gif'">
+                <area shape="rect" coords="55,0,101,18" href="http://psptunes.co.nr" target="iplaylist" onclick="imgHeader.src='images/back.gif'">
+                <area shape="rect" coords="2,0,41,18" href="././credits.htm" target="iplaylist" onclick="imgHeader.src='images/back.gif'">
+              </map>
+            </div></td>
+        </tr>
+      </table> </td>
+  </tr>
+</table>
+</body>
+</html>

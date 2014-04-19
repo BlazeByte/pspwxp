@@ -15,6 +15,10 @@ function ChangeSettings(){
 	}else{
 		alert("Incorrect Password.");
 	}
+	
+	function GetSettings(){
+		document.getElementById('chkShow').checked=top.icookies.document.getElementById('loginshow').value;
+	}
 }
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -34,7 +38,7 @@ function ChangeSettings(){
 </style>
 </head>
 
-<body bgcolor="#EBE9ED" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<body bgcolor="#EBE9ED" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="GetSettings();>
   <div align="center">
     <table width="327" border="0" cellspacing="0" cellpadding="0">
       <tr>

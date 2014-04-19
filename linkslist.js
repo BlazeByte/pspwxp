@@ -27,3 +27,5 @@ Link("Music","http://www.pspdd.com/index.php?subcat=1","images/icons/menu/psptun
 Link("Videos","http://www.pspdd.com/index.php?subcat=2","images/icons/menu/vid.png",0);
 Link("Free Texting","http://www.cbfsms.com/","images/icons/menu/links/sms.png",0);
 Link("PSPTunes","http://pspwxp.jetpage.biz/itunes/","images/icons/menu/psptunes.png",0);
+Link("PSP Portals","http://www.pspportals.uni.cc/","images/icons/menu/links/playstation.png",0);
+Link("PSP EasyURL","http://pspwxp.jetpage.biz/psp/","images/icons/menu/links/pspwxp.png",0);

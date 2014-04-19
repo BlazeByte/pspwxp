@@ -43,15 +43,16 @@ App("Note List",1,"apps/notelist/list.html","images/icons/menu/apps/texteditor.p
 App("Periodic Table",1,"apps/periodictable.htm","images/icons/menu/apps/peri.png");
 App("Pixel Fixer",1,"apps/controlpanel/fixpix.htm","images/icons/menu/apps/pixfix.png");
 App("PSPaint",1,"apps/paint.swf","images/icons/menu/apps/paint.png");
+App("PSPhone",1,"apps/psphone.htm","images/icons/menu/links/sms.png");
 App("Romen Num",1,"apps/romnum.htm","images/icons/menu/apps/view.png");
 App("State Info",1,"apps/stateinfo.htm","images/icons/menu/apps/states.png");
 App("Stop Watch",1,"apps/stopwatch.htm","images/icons/menu/apps/stopwatch.png");
 App("System Info",1,"apps/controlpanel/system.htm","images/icons/menu/cpanel.png");
 App("Text Editor",1,"apps/textedit.htm","images/icons/menu/apps/texteditor.png");
 if(icookies.settings.chkPSPTunesTab.value="true"){
-	App("PSPTunes",10,"apps/psptunes.htm","images/icons/menu/psptunes.png");
+	App("PSPTunes",10,"apps/psptunes/index.htm","images/icons/menu/psptunes.png");
 }else{
-	App("PSPTunes",1,"apps/psptunes.htm","images/icons/menu/psptunes.png");
+	App("PSPTunes",1,"apps/psptunes/index.htm","images/icons/menu/psptunes.png");
 }
 App("Update",1,"http://pspwxp.atspace.com/updates/"+intVersion+".htm","images/icons/menu/apps/update.png");
 //END LIST (add new apps above here)

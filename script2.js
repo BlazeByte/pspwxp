@@ -1,8 +1,16 @@
+function playSound(strURL){
+	if(!(playSounds=='false')){
+		frames['iSound'].location.href=strURL;
+	}
+}
+
 function CheckPass(){
 	if(txtPassword.value==icookies.document.getElementById('thepassword').value){
-		login.style.visibility='hidden';
-		if(document.getElementById('login').style.visibility=='hidden'){
-			frames['istartSound'].location.href='startsound.htm';
+		showHideLayer('login','hidden');
+		if(loaded==1){
+			playSound('startsound.htm');
+		}else{
+			showHideLayer('boot','hidden');
 		}
 	}else{
 		alert("Incorrect Password");
@@ -11,14 +19,14 @@ function CheckPass(){
 
 function ApplySettings(){
 	if(icookies.document.getElementById('scrtime').value==""){
-		var screensaverTime="10";
+		screensaverTime="10";
 	}else{
-		var screensaverTime=icookies.document.getElementById('scrtime').value;
+		screensaverTime=icookies.document.getElementById('scrtime').value;
 	}
 	if(icookies.document.getElementById('screensaver').value==""){
-		var screensaver="none";
+		screensaver="none";
 	}else{
-		var screensaver=icookies.document.getElementById('screensaver').value;
+		screensaver=icookies.document.getElementById('screensaver').value;
 	}
 	if(icookies.document.getElementById('desktopicons').value=="false"){
 		for (i=0;i<strShortcuts.length;i++){
@@ -32,8 +40,13 @@ function ApplySettings(){
 	}else{
 		if(icookies.document.getElementById('chkbg').value=='false'){
 			document.getElementById('imgDesktop').src="images/space.gif";
+		}else{
+			if(icookies.document.getElementById('chkbg').value==''){
+				document.getElementById('imgDesktop').src="images/desktop.jpg";
+			}
 		}
 	}
+	playSounds=icookies.document.getElementById('chkPlaySounds').value;
 }
 
 function windowMaxNow(MaxURL){

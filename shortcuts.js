@@ -25,7 +25,7 @@ Shortcut("Internet","1","apps/internet/index.htm","images/icons/internet.png",0)
 Shortcut("Text Editor","1","apps/textedit.htm","images/icons/txtedit.png",0);
 Shortcut("Calculator","1","apps/calc.htm","images/icons/calc.png",0);
 Shortcut("Games List","1","apps/gameslist.htm","images/icons/games.png",0);
-Shortcut("PSPTunes","1","apps/psptunes.htm","images/icons/psptunes.png",0);
+Shortcut("PSPTunes","1","apps/psptunes/index.htm","images/icons/psptunes.png",0);
 //END LIST
 
 var i =0;
@@ -33,7 +33,7 @@ var i =0;
 for (i=0;i<strShortcuts.length;i++){
 	if(i==0||i==1){intSSTop=59;}else{if(i==2||i==3){intSSTop=135;}else{intSSTop=211;}}
 	if(i==0||i==2||i==4){intSSLeft=-1;}else{intSSLeft=79;}
-	si[i]='<td width="50%"><img src="'+strShortcutsIconPath[i]+'" width="48" height="48" onClick="setTitle('+intShortcutsMinMax[i]+','+"'"+strShortcuts[i]+"'"+','+"'"+intShortcutsPath[i]+"'"+','+"'"+strShortcutsIconPath[i]+"'"+')"><font color="#FFFFFF"  size="1"><strong><div id="s'+i+'s" style="position:absolute; left:'+intSSLeft+'; top:'+intSSTop+'; width:80; z-index:2; visibility: visible;">'+strShortcuts[i]+'</div></strong></font></td>';
+	si[i]='<td width="50%"><a href="#"><img src="'+strShortcutsIconPath[i]+'" width="48" height="48" border="0" onClick="setTitle('+intShortcutsMinMax[i]+','+"'"+strShortcuts[i]+"'"+','+"'"+intShortcutsPath[i]+"'"+','+"'"+strShortcutsIconPath[i]+"'"+')"></a><font color="#FFFFFF"  size="1"><strong><div id="s'+i+'s" style="position:absolute; left:'+intSSLeft+'; top:'+intSSTop+'; width:80; z-index:2; visibility: visible;">'+strShortcuts[i]+'</div></strong></font></td>';
 }
 
 document.write('<table border="0" cellpadding="4" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%"><tr align="center"> ');

@@ -17,6 +17,11 @@ var mStartMax;
 var tableft=0;
 var tab2left=0;
 var tab3left=0;
+var alreadymaxed=0
+var playSounds;
+var screensaver;
+var screensaverTime;
+var loaded = 0;
 
 function showHideLayer(layerName,showHide){
 	frames[layerName].style.visibility=showHide;
@@ -101,9 +106,9 @@ function setTitle(blncontrol,ProgramTitle,ProgramLocation,ProgramIcon,StartMax){
 				if(tabspace1=='true'){frames['tab'+emptytab].style.left='84px';}
 				if(tabspace2=='true'){frames['tab'+emptytab].style.left='197px';}
 				if(tabspace3=='true'){frames['tab'+emptytab].style.left='310px';}
-				showWindow(emptytab,ProgramLocation,ProgramIcon,blncontrol,ProgramTitle,StartMax);
 			}
-		}else{
+			showWindow(emptytab,ProgramLocation,ProgramIcon,blncontrol,ProgramTitle,StartMax);
+		}else{//Show 'Out of windows' dlg
 			document.getElementById('mT').innerHTML=document.getElementById('tT').innerHTML;
 			document.getElementById('mT2').innerHTML=document.getElementById('tT2').innerHTML;
 			document.getElementById('mT3').innerHTML=document.getElementById('tT3').innerHTML;
@@ -143,7 +148,8 @@ function showWindow(windowNo,ProgramLocation,ProgramIcon,blncontrol,ProgramTitle
 	if(StartMax==1){
 		if(SkipMaxMsg==0){
 			mProgramLocation=ProgramLocation;
-			setTimeout("iprogMax.location.href=mProgramLocation;",2500);
+			alreadymaxed=0;
+			setTimeout("if(alreadymaxed=0){iprogMax.location.href=mProgramLocation;}",2500);
 		}else{
 			iprogMax.location.href=mProgramLocation;
 		}
@@ -172,7 +178,7 @@ function theClock() {
 	document.getElementById('tP').innerHTML=strHours+":"+strMins;
 }
 
-function hideMenu(){showHideLayer('menu','hidden'); showHideLayer('mlinks','hidden'); showHideLayer('mpspwxp','hidden'); showHideLayer('mgames','hidden'); showHideLayer('mapps','hidden'); showHideLayer('startoff','visible');deScr();
+function hideMenu(){showHideLayer('menu','hidden'); showHideLayer('mlinks','hidden'); showHideLayer('mpspwxp','hidden');showHideLayer('mportals','hidden'); showHideLayer('mgames','hidden'); showHideLayer('mapps','hidden'); showHideLayer('startoff','visible');deScr();
 }
 
 function openTab(windowNo){

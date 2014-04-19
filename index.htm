@@ -2,97 +2,99 @@
 <title>pspWxp Portal</title>
 <style type="text/css">
 @import url(images/style.css);
-.style1 {
-	font-size: 24px;
-	font-weight: bold;
-}
-.style2 {font-size: 12px}
 </style>
 <script language="JavaScript" type="text/JavaScript" src="script.js"></script>
 </head>
 <body bgcolor="#ffffff" style="margin: 0; padding: 0;">
-<div id="lyShutdown" style="position:absolute; left:0; top:0; width:480; height:272; z-index:24; visibility: hidden;">
+<div id="lyShutdown" style="position:absolute; left:0px; top:0px; width:480px; height:272px; z-index:25; visibility: hidden;">
   <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
     <tr>
       <td align="center" valign="middle"><img src="images/lshade1.png" name="imgFade" width="480" height="272" id="imgFade"></td>
     </tr>
   </table>
 </div>
-<div id="login" style="position:absolute; left:0px; top:0px; width:480px; height:272; z-index:23; background-color: #0066FF; visibility: visible;" onClick="showHideLayer('boot','hidden');frames['istartSound'].location.href='startsound.htm';">
-  <table width="100%%" border="1" cellpadding="0" cellspacing="0" bordercolor="#000033" class="start_dark">
+<div id="boot" style="position:absolute; left:0px; top:0px; width:480px; height:272px; z-index:23; background-color: #000000; visibility: visible;">
+    <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td align="center" valign="middle"><img src="images/boot.gif"><br> <img src="images/progress.gif" border="0" loop="0"><br>
+        <font color="#CCCCCC">
+        <div id="logIn">Please Wait...</div>
+        <script language="JavaScript" type="text/JavaScript">setTimeout("loaded=1;if(boot.style.visibility=='visible'&&login.style.visbility=='hidden'){playSound('startsound.htm');};showHideLayer('boot','hidden');",11000);</script>
+        </font></td>
+      </tr>
+    </table>
+</div>
+<div id="login" style="position:absolute; left:0px; top:0px; width:480px; height:272px; z-index:24; background-color: #0066FF; visibility: hidden;">
+  <table width="100%%" height="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="#000033" background="images/login.jpg">
     <tr>
-      <td height="50"><span class="style1">pspWxp Login</span></td>
+      <td height="50"><span class="login_title">pspWxp Login</span></td>
     </tr>
     <tr>
-      <td height="172"><table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" class="start_light">
-        <tr>
-          <td height="132" align="center" valign="middle"><table width="51%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="29%" class="start_light style2">Password: </td>
-              <td width="62%"><input name="txtPassword" type="password" id="txtPassword" style="height:18"></td>
-              <td width="9%"> <a href="#"><img src="images/icons/internet/go.gif"  name="btnG" border="0" onClick="CheckPass();"></a></td>
-            </tr>
-
-          </table>
-            </td>
-        </tr>
-        <tr>
-          <td height="40" align="center" valign="middle"><table width="100%%" height="100%" border="0" cellpadding="0" cellspacing="0">
-            <tr>
-              <td class="start_light"><p class="style2">Start a different portal:
-                <select name="portalmenu">
-                  <option>--------------</option>
-                  <option value="apps/filebrowse/index.htm">Browse...</option>
-                      </select>
-                      <a href="#"><img src="images/icons/internet/go.gif"  name="cmdPassGo" border="0" onClick="document.location.href=portalmenu.value;"></a></p></td>
-              <td class="start_light"><a href="apps/internet/index.htm" class="style2"><font color="#FFFFFF">Browse the internet</font></a></td>
-            </tr>
-          </table></td>
-        </tr>
-      </table></td>
+      <td height="172">
+	  	<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+        	<tr>
+          		<td height="132" align="center" valign="middle" colspan="2">
+					<table width="51%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+						  <td width="29%" class="login_med">Password: </td>
+						  <td width="62%"><input name="txtPassword" type="password" id="txtPassword" style="height:18"></td>
+						  <td width="9%"> <a href="#"><img src="images/icons/internet/go.gif"  name="btnG" border="0" onClick="CheckPass();"></a></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+			  <td height="40"><p class="login_small">Start a different portal:
+				<select name="portalmenu">
+				  <script language="JavaScript" type="text/javascript" src="portallist.js"></script>
+                </select>
+				<a href="#"><img src="images/icons/internet/go.gif"  name="cmdPassGo" border="0" onClick="document.location.href=portalmenu.value;"></a>
+			  </td>
+			  
+            <td><a href="apps/internet/index.htm" class="login_small"><img src="images/icons/menu/apps/ie.png" width="15" height="15" border="0">Browse 
+              the internet</a> </td>
+			</tr>
+		  </table>
+	  </td>
     </tr>
     <tr>
-      <td height="50"><table width="150" border="0" cellpadding="0" cellspacing="0">
+      <td height="50"><table width="133" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td width="22"><img src="images/icons/menu/off.gif" height="16" border="0" onClick="showHideLayer('lyShutdown','visible');showHideLayer('lyShutdowndlg','visible');shutdownFade();"></td>
-          <td width="105"><font size="2" class="start_exit">
-            <div class="shutdown_text"><a href="#" onClick="showHideLayer('lyShutdown','visible');showHideLayer('lyShutdowndlg','visible');shutdownFade();"><font color="#FFFFFF">Shut down </font></a></div>
+          <td width="28" align="center"><img src="images/icons/menu/off.gif" height="16" border="0" onClick="showHideLayer('txtPassword','hidden');showHideLayer('portalmenu','hidden');showHideLayer('lyShutdown','visible');showHideLayer('lyShutdowndlg','visible');shutdownFade();"></td>
+          <td><font size="2" class="start_exit">
+            <div class="login_shutdown_text"><a href="#" onClick="showHideLayer('txtPassword','hidden');showHideLayer('portalmenu','hidden');showHideLayer('lyShutdown','visible');showHideLayer('lyShutdowndlg','visible');shutdownFade();"><font color="#FFFFFF">Shut down </font></a></div>
           </font></td>
         </tr>
       </table></td>
     </tr>
   </table>
 </div>
-<div style="position:absolute; left:0; top:0; width:281px; height:140px; z-index:50; background-color: #CCCCCC; layer-background-color: #CCCCCC; border: 1px none #000000; visibility: hidden;">
-	<iframe src="blank.htm" width="0" height="0" id="istartSound" scrolling="yes" frameborder="0"></iframe>
+<div style="position:absolute; left:0; top:0; width:281px; height:140px; z-index:0; background-color: #CCCCCC; layer-background-color: #CCCCCC; border: 1px none #000000; visibility: hidden;" id="COOKIES">
+	<iframe src="blank.htm" width="0" height="0" id="iSound" scrolling="yes" frameborder="0"></iframe>
     <iframe src="cookies.htm" width="0" height="0" id="icookies" name="icookies" scrolling="yes" frameborder="0"></iframe>
 </div>
 <script language="JavaScript" type="text/JavaScript" src="script2.js"></script>
 <script language="JavaScript" type="text/JavaScript">
 	setTimeout("document.getElementById('imgFade').src='images/lshade2.png'",500);
 	setTimeout("document.getElementById('imgFade').src='images/lshade3.png'",1000);
-	setTimeout("document.getElementById('lyShutdown').style.visibility='hidden';document.getElementById('lyShutdown').style.zIndex=19;document.getElementById('imgFade').src='images/shade1.png';",1500);
+	setTimeout("document.getElementById('lyShutdown').style.visibility='hidden';document.getElementById('imgFade').src='images/shade1.png';",1500);
 </script>
-<div id="boot" style="position:absolute; left:0px; top:0px; width:480px; height:272; z-index:22; background-color: #000000; visibility: visible;" onClick="showHideLayer('boot','hidden');frames['istartSound'].location.href='startsound.htm';">
-    <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td align="center" valign="middle"><img src="images/boot.gif"><br> <img src="images/progress.gif" border="0" loop="0"><br>
-        <font color="#CCCCCC">
-        <div id="logIn">Please Wait...</div>
-        <script language="JavaScript" type="text/JavaScript">setTimeout("if(document.getElementById('boot').style.visibility=='visible'&&frames['login'].style.visbility=='hidden'){frames['istartSound'].location.href='startsound.htm'};showHideLayer('boot','hidden');",11000);</script>
-        </font></td>
-      </tr>
-    </table>
-</div>
 <div id="lIcons" style="position:absolute; left:0px; top:0px; width:160; height:81px; z-index:1; visibility: visible;">
   <script language="JavaScript" type="text/JavaScript" src="shortcuts.js"></script>
 </div>
 <img width="480" height="272" id="imgDesktop">
+<script language="javascript" type="text/javascript">
+	ApplySettings();
+	if(!(icookies.document.getElementById('thepassword').value=="")||icookies.document.getElementById('loginshow').value=="true"){
+		setTimeout("boot.style.visibility='hidden';",3000)
+		setTimeout("login.style.visibility='visible'",3000)
+	}
+</script>
 <div id="Taskbar" style="position:absolute; left:0px; top:252px; width:480px; height:20px; z-index:21; visibility: visible;">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <td width="66" valign="middle"><a href="javascript:;" onClick="hideMenu();"><img src="images/sbuttondown.gif" name="imgstartbutton" border="0" id="imgstartbutton"></a>
-      <td width="374" valign="middle" background="images/start.gif"><div id="startoff" style="position:absolute; left:0px; top:0; width:9px; height:10px; z-index:2; visibility: visible;"><a href="javascript:;" onClick=" showHideLayer('menu','visible');windowMin('');windowMin(2);windowMin(3);showHideLayer('startoff','hidden');"><img src="images/sbutton.gif" id="imgstartbutton2" border=0 onMouseOver="this.src='images/sbutton_over.gif'" onMouseOut="this.src='images/sbutton.gif'">
+      <td width="66" valign="middle"><a href="javascript:;" onClick="hideMenu();"><img src="images/sbuttondown.gif" name="imgstartbutton" border="0" id="imgstartbutton"></a></td>
+      <td width="374" valign="middle" background="images/start.gif"><div id="startoff" style="position:absolute; left:0px; top:0; width:9px; height:10px; z-index:2; visibility: visible;"><a href="javascript:;" onClick=" showHideLayer('menu','visible');windowMin('');windowMin(2);windowMin(3);showHideLayer('startoff','hidden');"><img src="images/sbutton.gif" id="imgstartbutton2" border=0 onMouseOver="this.src='images/sbutton_over.gif'" onMouseOut="this.src='images/sbutton.gif'"></a></div></td>
       <td width="40" valign="bottom" background="images/start_r.gif" ><table width="100%" height="20" border="0" cellpadding="0" cellspacing="0" onClick="theClock();">
   		<tr>
    		 <td><div align="right"><font size="1"><span  id="tP" class="time_text">00:00</span></font>
@@ -102,10 +104,11 @@
 		  	function autoClock(){
 				setTimeout('theClock();ScrTimeout();',60000);
 			}
-			</script>
+		</script>
         </div></td>
 	  </tr>
 	</table>
+  </tr>
 </table>
 </div>
 <div id="Desktop" style="position:absolute; left:0px; top:0px; width:480px; height:272px; z-index:0; visibility: visible;">
@@ -114,6 +117,7 @@
 	  <td width="480">
   </table>
 </div>
+<script language="JavaScript" type="text/JavaScript" src="images/themejs.js"></script>
 <SCRIPT LANGUAGE="javascript" type="text/JavaScript" src="appslist.js"> </SCRIPT>
 <SCRIPT LANGUAGE="javascript" type="text/JavaScript" src="gameslist.js"> </SCRIPT>
 <SCRIPT LANGUAGE="javascript" type="text/JavaScript" src="linkslist.js"> </SCRIPT>
@@ -123,28 +127,28 @@
       <td height="41" background="images/icons/menu/menu_top.png"></td>
     </tr>
     <tr>
-      <td><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#000066" onClick="showHideLayer('mlinks','visible');showHideLayer('mgames','hidden');showHideLayer('mapps','hidden');showHideLayer('mpspwxp','hidden');">
+      <td><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#000066" onClick="showHideLayer('mlinks','visible');showHideLayer('mgames','hidden');showHideLayer('mapps','hidden');showHideLayer('mpspwxp','hidden');showHideLayer('mportals','hidden');">
           <tr class="start_dark">
             <td width="22"><img src="images/icons/menu/links.png" width="20" height="20"></td>
-            <td><font size="2">Links</font></td>
+            <td><a href="#" class="astart_dark">Links</a></td>
             <td width="20"><img src="images/arrow.gif" width="10" height="18"></td>
           </tr>
         </table></td>
     </tr>
     <tr>
-      <td ><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C" onClick="showHideLayer('mgames','visible');showHideLayer('mlinks','hidden');showHideLayer('mapps','hidden');showHideLayer('mpspwxp','hidden');">
+      <td ><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C" onClick="showHideLayer('mgames','visible');showHideLayer('mlinks','hidden');showHideLayer('mapps','hidden');showHideLayer('mpspwxp','hidden');showHideLayer('mportals','hidden');">
           <tr class="start_light">
             <td width="22"><img src="images/icons/menu/games.png" width="20" height="20"></td>
-            <td><font size="2">Games</font></td>
+            <td><a href="#" class="astart_light">Games</a></td>
             <td width="20"><img src="images/arrow.gif" width="10" height="18"></td>
           </tr>
         </table></td>
     </tr>
     <tr>
-      <td ><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#000066" onClick="showHideLayer('mapps','visible');showHideLayer('mlinks','hidden'); showHideLayer('mgames','hidden'); showHideLayer('mpspwxp','hidden');">
+      <td ><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#000066" onClick="showHideLayer('mapps','visible');showHideLayer('mlinks','hidden'); showHideLayer('mgames','hidden'); showHideLayer('mpspwxp','hidden');showHideLayer('mportals','hidden');">
           <tr class="start_dark">
             <td width="22"><img src="images/icons/menu/apps.png" width="20" height="20"></td>
-            <td><font size="2">Applications</font></td>
+            <td><a href="#" class="astart_dark">Applications</a></td>
             <td width="20"><img src="images/arrow.gif" width="10" height="18"></td>
           </tr>
         </table></td>
@@ -153,15 +157,15 @@
       <td><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C" onClick="setTitle('1','Videos','apps/videos.htm','images/icons/menu/vid.png');">
           <tr class="start_light" >
             <td width="22"><img src="images/icons/menu/vid.png" width="20" height="20"></td>
-            <td><font size="2">Videos</font></td>
+            <td><a href="#" class="astart_light">Videos</a></td>
           </tr>
         </table></td>
     </tr>
     <tr>
-      <td><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C" onClick="setTitle('1','PSPTunes','apps/psptunes.htm','images/icons/menu/music.png');">
+      <td><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C" onClick="setTitle('1','PSPTunes','apps/psptunes/index.htm','images/icons/menu/music.png');">
           <tr class="start_dark">
             <td width="22"><img src="images/icons/menu/psptunes.png" width="20" height="20"></td>
-            <td><font size="2">PSPTunes</font></td>
+            <td><a href="#" class="astart_dark">PSPTunes</a></td>
           </tr>
         </table></td>
     </tr>
@@ -169,13 +173,13 @@
       <td ><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#000066" onClick="setTitle('0','Settings','apps/controlpanel/index.htm','images/icons/menu/apps/browsinfo.png');">
           <tr class="start_light">
             <td width="22"><font size="2" ><img src="images/icons/menu/apps/browsinfo.png" width="20" height="20"></font></td>
-            <td><font size="2">Control Panel </font></td>
+            <td><a href="#" class="astart_light">Control Panel</a> </font></td>
           </tr>
         </table>
         <table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C" onClick="setTitle('1','Run / Search','apps/runsearch.htm','images/icons/menu/run.png');">
           <tr class="start_dark">
             <td width="22" align="left" valign="middle"><font size="2" ><img src="images/icons/menu/run.png" width="20" height="20"></font></td>
-            <td><font size="2">Run / Search</font></td>
+            <td><a href="#" class="astart_dark">Run / Search</a></td>
           </tr>
         </table></td>
     </tr>
@@ -183,7 +187,7 @@
       <td><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C" onClick="setTitle('1','Help','help.htm','images/icons/menu/help.png');">
           <tr class="start_light">
             <td width="22"><img src="images/icons/menu/help.png" width="20" height="20"></td>
-            <td><font size="2">Help Center</font></td>
+            <td><a href="#" class="astart_light">Help Center</a></td>
           </tr>
         </table>
         <table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C">
@@ -198,66 +202,66 @@
           <tr>
             <td width="47"></td>
             <td width="21" onClick="showHideLayer('lyShutdown','visible');showHideLayer('lyShutdowndlg','visible');hideMenu();shutdownFade();"><img src="images/icons/menu/off.gif" height="16" border="0"></td>
-            <td width="55" onClick="showHideLayer('lyShutdown','visible');showHideLayer('lyShutdowndlg','visible');hideMenu();shutdownFade();"><font size="2" class="start_exit"><div class="shutdown_text">Shut down </div></font></td>
+            <td width="55" onClick="showHideLayer('lyShutdown','visible');showHideLayer('lyShutdowndlg','visible');hideMenu();shutdownFade();"><font size="2" class="start_exit"><a href="#"><div class="shutdown_text">Shut down </div></a></font></td>
           </tr>
         </table></td>
     </tr>
   </table>
 </div>
-<div id="mlinks" style="position:absolute; left:119px; top:95px; width:119px; height:45px; z-index:18; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000; visibility: hidden;">
+<div id="mlinks" style="position:absolute; left:119px; top:95px; width:119px; height:45px; z-index:24; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000; visibility: hidden;">
   <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#0000FF" bgcolor="#FFFFFF" >
     <tr>
       <td border><script language="JavaScript" type="text/JavaScript" src="links.js"></script></td>
     </tr>
   </table>
 </div>
-<div id="mpspwxp" style="position:absolute; left:237px; top:101px; width:114px; height:27px; z-index:18; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000; visibility: hidden;">
+<div id="mpspwxp" style="position:absolute; left:237px; top:101px; width:114px; height:27px; z-index:25; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000; visibility: hidden;">
   <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#0000FF">
     <tr>
       <td border><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr class="istart_light" onClick="openInBrowser('http://www.pspwxp.co.nr');">
             <td width="20"><img src="images/icons/menu/links/pspwxp.png" width="20" height="20" border="0"></td>
-            <td><font size="2">pspWxp website</font></td>
+            <td><a href="#" class="aistart_dark">pspWxp website</a></td>
           </tr>
           <tr class="istart_dark" onClick="openInBrowser('http://blazebyte.myfreeforum.org/index.php');">
             <td width="20"><img src="images/icons/menu/links/pspwxp.png" width="20" height="20" border="0"></td>
-            <td><font size="2">pspWxp forum</font></td>
+            <td><a href="#" class="aistart_dark">pspWxp forum</a></td>
           </tr>
-          <tr class="istart_light"  onClick="openInBrowser('http://pspwxp.atspace.com/help.htm');">
+          <tr class="istart_light"  onClick="openInBrowser('http://pspwxp.jetpage.biz/help.htm');">
             <td><img src="images/icons/menu/links/pspwxp.png" width="20" height="20" border="0"></td>
-            <td><font size="2">Help/instructions</font></td>
+            <td><a href="#" class="aistart_dark">Help/instructions</a></td>
           </tr>
-          <tr class="istart_dark"  onClick="openInBrowser('http://pspwxp.atspace.com/downloads.htm');">
+          <tr class="istart_dark"  onClick="openInBrowser('http://pspwxp.jetpage.biz/downloads.htm');">
             <td><img src="images/icons/menu/links/pspwxp.png" width="20" height="20" border="0"></td>
-            <td><font size="2">Downloads</font></td>
+            <td><a href="#" class="aistart_dark">Downloads</a></td>
           </tr>
-          <tr class="istart_light"  onClick="openInBrowser('http://pspwxp.atspace.com/features.htm');">
+          <tr class="istart_light"  onClick="openInBrowser('http://pspwxp.jetpage.biz/features.htm');">
             <td><img src="images/icons/menu/links/pspwxp.png" width="20" height="20" border="0"></td>
-            <td><font size="2">Features</font></td>
+            <td><a href="#" class="aistart_dark">Features</a></td>
           </tr>
           <tr class="istart_dark"  onClick="openInBrowser('http://pspwxp.atspace.com/updates/'+intVersion+'.htm');">
             <td width="20"><img src="images/icons/menu/links/pspwxp.png" width="20" height="20" border="0"></td>
-            <td><font size="2">Check4Update</font></td>
+            <td><a href="#" class="aistart_dark">Check4Update</a></td>
           </tr>
         </table></td>
     </tr>
   </table>
 </div>
-<div id="mgames" style="position:absolute; left:119px; top:116px; width:115px; height:20px; z-index:18; visibility: hidden;">
+<div id="mgames" style="position:absolute; left:119px; top:116px; width:115px; height:20px; z-index:24; visibility: hidden;">
   <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#0000FF" class="istart_light">
     <tr>
       <td><script language="JavaScript" type="text/JavaScript" src="games.js"></script></td>
     </tr>
   </table>
 </div>
-<div id="mapps" style="position:absolute; left:119px; top:134px; width:115px; height:22px; z-index:18; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000; visibility: hidden;">
+<div id="mapps" style="position:absolute; left:119px; top:134px; width:115px; height:22px; z-index:24; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000; visibility: hidden;">
   <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#0000FF" bgcolor="#FFFFFF">
     <tr>
       <td valign="top"><script language="JavaScript" type="text/JavaScript" src="apps.js"></script></td>
     </tr>
   </table>
 </div>
-<div id="lDetect" style="position:absolute; left:0; top:268; width:480; height:4; z-index:17; visibility: hidden;"><img src="images/space.gif" width="100%" height="100%"></div>
+<div id="lDetect" style="position:absolute; left:0; top:268px; width:480; height:4px; z-index:17; visibility: hidden;"><img src="images/space.gif" width="100%" height="100%"></div>
 <div id="loading" style="position:absolute; left:77; top:85px; width:329; height:100; z-index:19; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000; background-image: url(images/loading.gif); layer-background-image: url(images/loading.gif); visibility: hidden;">
   <table width="100%" height="100" border="0" cellpadding="0" cellspacing="0">
     <tr>
@@ -453,23 +457,18 @@
     </table>
   </div>
 </div>
-<div id="progMax" style="position:absolute; left:0px; top:0px; width:480px; height:282px; z-index:18; background-color: #000000; layer-background-color: #000000; border: 1px none #000000; visibility: hidden;" onClick="restoreWindow();">
+<div id="progMax" style="position:absolute; left:0px; top:0px; width:480px; height:272px; z-index:22; background-color: #000000; layer-background-color: #000000; border: 1px none #000000; visibility: hidden;" onClick="restoreWindow();">
   <iframe src="apps/appsmax.htm" width=480 height=271 id=iprogMax name=iprogMax scrolling=yes  frameborder="0">
   </iframe>
 </div>
-<div id="lyShutdowndlg" style="position:absolute; left:83; top:36; width:314; height:200; z-index:25; visibility: hidden;"><img src="images/shutdown.jpg" width="314" height="200" border="0" usemap="#Map">
+<div id="lyShutdowndlg" style="position:absolute; left:83; top:36; width:314; height:200; z-index:26; visibility: hidden;"><img src="images/shutdown.jpg" width="314" height="200" border="0" usemap="#Map">
   <map name="Map">
     <area shape="rect" coords="38,75,100,138" href="javascript:;" onClick="javascript:window.close();">
     <area shape="rect" coords="131,76,183,138" href="javascript:;" onClick="javascript:window.location.reload();">
-    <area shape="rect" coords="217,76,269,139" href="javascript:;" onClick="showHideLayer('lyShutdown','hidden');showHideLayer('lyShutdowndlg','hidden');showHideLayer('login','visible');">
-    <area shape="rect" coords="238,163,307,191" href="javascript:;" onClick="showHideLayer('lyShutdown','hidden');showHideLayer('lyShutdowndlg','hidden');imgFade.src='images/space.gif';">
+    <area shape="rect" coords="217,76,269,139" href="javascript:;" onClick="showHideLayer('txtPassword','visible');showHideLayer('portalmenu','visible');showHideLayer('lyShutdown','hidden');showHideLayer('lyShutdowndlg','hidden');showHideLayer('login','visible');">
+    <area shape="rect" coords="238,163,307,191" href="javascript:;" onClick="if(login.style.visibility=='visible'){showHideLayer('txtPassword','visible');showHideLayer('portalmenu','visible');} showHideLayer('lyShutdown','hidden');showHideLayer('lyShutdowndlg','hidden');imgFade.src='images/space.gif';">
   </map>
-</div>
-<script language="JavaScript" type="text/JavaScript" src="images/themejs.js"></script>
-<script language="JavaScript" type="text/JavaScript">
-	frames['mpspwxp'].style.top=linksTop;
-</script>
-    <div id="tabWarn" style="position:absolute; left:50px; top:50px; width:380px; height:150px; z-index:20; visibility: hidden;">
+</div><div id="tabWarn" style="position:absolute; left:50px; top:50px; width:380px; height:150px; z-index:20; visibility: hidden;">
   <table width="100%" height="161" border="0" cellpadding="0" cellspacing="0">
     <tr valign="bottom">
       <td width="4" height="20"><img src="images/window/title_l_border.gif" width="4" height="20"></td>
@@ -536,8 +535,57 @@
     </tr>
   </table>
 </div>
-<script language="javascript" type="text/javascript">
-	ApplySettings();
+<div name="mportals" id="mportals" style="position:absolute; left:237px; top:134px; width:115px; height:22px; z-index:25; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000; visibility: hidden;"> 
+  <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#0000FF" bgcolor="#FFFFFF">
+    <tr> 
+      <td valign="top"><script language="JavaScript" type="text/JavaScript">
+	  		if(portalName.length>13){
+				if(portalName.length>26){
+					intColumn=Math.ceil(portalName.length/3);
+				}else{
+					intColumn=Math.ceil(portalName.length/2);
+				}
+			}else{
+				intColumn=portalName.length;
+			}
+			
+			if (intColumn > 7){
+				frames['mgames'].style.top=116-((intColumn-7)*19);
+			}
+			
+			document.write("<table width='115' cellpadding='0.4' cellspacing='0' >");
+			
+			for (i=0;i<portalName.length;i++){
+				if(i==intColumn||i==intColumn*2){
+					document.write("</table></td><td valign='top'><table width='115' cellpadding='0.4' cellspacing='0' >");
+					intlight=1;
+				}
+			
+				if(intlight==1){
+					intlight=0;
+					strlight="istart_light";
+				}else{
+					intlight=1;
+					strlight= "istart_dark";
+				}
+			
+				document.write("<tr class='"+strlight+"'><td width='22'><img src='images/icons/menu/links/pspwxp.png' width='20' height='20'></td><td><a href='"+portalURL[i]+"' class='a"+strlight+"'>");
+				document.write(portalName[i]);
+				document.write("</a></td></tr>");
+			}
+			
+			document.write("</table>");
+		</script></td>
+    </tr>
+  </table>
+</div>
+<script language="JavaScript" type="text/JavaScript">
+	frames['mapps'].style.top=136-(frames['mapps'].style.height.slice(0,-2)/2)
+	frames['mgames'].style.top=136-(frames['mgames'].style.height.slice(0,-2)/2)
+	frames['mlinks'].style.top=136-(frames['mlinks'].style.height.slice(0,-2)/2)
+	frames['mpspwxp'].style.top=frames['mlinks'].style.top;
+	frames['mportals'].style.top=frames['mapps'].style.top;
 </script>
+<script language="JavaScript" type="text/JavaScript" src="images/themejs.js"></script>
 </body>
 </html>

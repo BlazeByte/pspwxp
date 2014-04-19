@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="songs.js"></script>
+<style>
+ a {
+ 	color:#000000;
+ }
+ table {
+  border-width: 1px;
+  border-color: #cccccc;
+  border-collapse: collapse;
+ }
+ tr {
+  background-color: #EDF3FE;
+  font-size: 13px;
+ }
+ tr.swap {
+  background-color: #FFF;
+ }
+ tr:hover {
+  background-color: #000000;
+  color: #0000FF;
+ }
+</style>
+
+<script type="text/javascript">
+
+ var curIndex = 0;
+ var songTitle;
+ var songArtist;
+ var songPath;
+ var swapColor = 1;
+
+function setIndex(x) {
+	switch(x){
+		case 'next': 
+			curIndex++;
+			if (curIndex == songList.length) { curIndex = 0; }
+			updateCurrentSong();
+			return;
+			break
+			
+		case 'end':
+			if (parent.blnrepeat=='false') {
+				if (parent.blnshuffle=='true') {
+					curIndex = Math.floor(Math.random()*songList.length);
+				}else{
+					curIndex++;
+					if (curIndex == songList.length) { curIndex = 0; }
+				}
+			}
+			updateCurrentSong();
+			return;
+			break
+			
+		case 'prev':
+			if (curIndex == 0) {
+				curIndex = songList.length - 1;
+			} else {
+				curIndex-- 
+			}
+			updateCurrentSong();
+			return;
+					
+	}
+
+  if (x) {
+    curIndex = parseInt(x - 1);
+    updateCurrentSong();
+    return;
+  }
+
+ }
+   
+ function updateCurrentSong() {
+  var songInfo = songList[curIndex].split("||");
+  songTitle = songInfo[0];
+  songArtist = songInfo[1];
+  songPath = songInfo[2];
+  parent.parent.frame1.location.reload();
+ }
+
+ function drawTable() {
+  for(i=1;i<=songList.length;i++) {
+  var songInfo = songList[i-1].split("||");
+  songTitle = songInfo[0];
+  songArtist = songInfo[1];
+  songPath = songInfo[2];
+
+  swapColor=(swapColor==0)? 1 : 0;
+  var trData=(swapColor==1)? 'class="swap"' : '';
+
+  document.write(
+   "<tr "+trData+" onClick=\"setIndex("+ i +");\">"
+   + "<td width='20'><b>"+ i +"</b></td>"
+   + "<td align=left width='223'><a href='#'>"+ songTitle +"</a></td>"
+   + "<td bgcolor='#cccccc' width='1'></td>"
+   + "<td align=left>"+ songArtist +"</td>"
+   + "</tr>"
+  );
+  }
+ }
+
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <script>drawTable();</script>
+  </tr>
+</table>
+</body>
+</html>
