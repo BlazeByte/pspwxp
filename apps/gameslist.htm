@@ -39,7 +39,7 @@ for (i=0;i<strGames.length;i++){
 		strlight= "'istart_dark'"
 	}
 	
-	strFunction='window.parent.setTitle("' + intGamesMinMax[i] + '","' + strGames[i] + '","' + intGamesPath[i] + '","../' + strGamesIconPath[i] + '",' + '"' + intStartMax[i] + '"' + ')';
+	strFunction='top.setTitle("' + intGamesMinMax[i] + '","' + strGames[i] + '","' + intGamesPath[i] + '","'+ strGamesIconPath[i] + '",' + '"' + intStartMax[i] + '"' + ')';
 	document.write("<tr class=");
 	document.write(strlight);
 	document.write("' onClick='");

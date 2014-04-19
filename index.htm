@@ -2,53 +2,105 @@
 <title>pspWxp Portal</title>
 <style type="text/css">
 @import url(images/style.css);
+.style1 {
+	font-size: 24px;
+	font-weight: bold;
+}
+.style2 {font-size: 12px}
 </style>
-<script language="JavaScript" type="text/JavaScript">
-	pic1= new Image(10,10); 
-	pic2= new Image(10,10); 
-	pic3= new Image(10,10); 
-	pic4= new Image(10,10); 
-	pic5= new Image(10,10); 
-	pic1.src="images/sbutton_over.gif"
-	pic2.src="images/sbutton_down.gif"
-	pic3.src="images/exit_over.gif"
-	pic4.src="images/max_over.gif"
-	pic5.src="images/min_over.gif"
-</script>
+<script language="JavaScript" type="text/JavaScript" src="script.js"></script>
 </head>
-<body bgcolor="#000000" style="margin: 0; padding: 0;">
-<div id="boot" style="position:absolute; left:0px; top:0px; width:480px; height:272; z-index:20; background-color: #000000; visibility: visible;" onClick="showHideLayer('boot','hidden');frames['istartSound'].location.href='startsound.htm';"> 
+<body bgcolor="#ffffff" style="margin: 0; padding: 0;">
+<div id="lyShutdown" style="position:absolute; left:0; top:0; width:480; height:272; z-index:24; visibility: hidden;">
+  <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="center" valign="middle"><img src="images/lshade1.png" name="imgFade" width="480" height="272" id="imgFade"></td>
+    </tr>
+  </table>
+</div>
+<div id="login" style="position:absolute; left:0px; top:0px; width:480px; height:272; z-index:23; background-color: #0066FF; visibility: visible;" onClick="showHideLayer('boot','hidden');frames['istartSound'].location.href='startsound.htm';">
+  <table width="100%%" border="1" cellpadding="0" cellspacing="0" bordercolor="#000033" class="start_dark">
+    <tr>
+      <td height="50"><span class="style1">pspWxp Login</span></td>
+    </tr>
+    <tr>
+      <td height="172"><table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" class="start_light">
+        <tr>
+          <td height="132" align="center" valign="middle"><table width="51%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="29%" class="start_light style2">Password: </td>
+              <td width="62%"><input name="txtPassword" type="password" id="txtPassword" style="height:18"></td>
+              <td width="9%"> <a href="#"><img src="images/icons/internet/go.gif"  name="btnG" border="0" onClick="CheckPass();"></a></td>
+            </tr>
+
+          </table>
+            </td>
+        </tr>
+        <tr>
+          <td height="40" align="center" valign="middle"><table width="100%%" height="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="start_light"><p class="style2">Start a different portal:
+                <select name="portalmenu">
+                  <option>--------------</option>
+                  <option value="apps/filebrowse/index.htm">Browse...</option>
+                      </select>
+                      <a href="#"><img src="images/icons/internet/go.gif"  name="cmdPassGo" border="0" onClick="document.location.href=portalmenu.value;"></a></p></td>
+              <td class="start_light"><a href="apps/internet/index.htm" class="style2"><font color="#FFFFFF">Browse the internet</font></a></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td height="50"><table width="150" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="22"><img src="images/icons/menu/off.gif" height="16" border="0" onClick="showHideLayer('lyShutdown','visible');showHideLayer('lyShutdowndlg','visible');shutdownFade();"></td>
+          <td width="105"><font size="2" class="start_exit">
+            <div class="shutdown_text"><a href="#" onClick="showHideLayer('lyShutdown','visible');showHideLayer('lyShutdowndlg','visible');shutdownFade();"><font color="#FFFFFF">Shut down </font></a></div>
+          </font></td>
+        </tr>
+      </table></td>
+    </tr>
+  </table>
+</div>
+<div style="position:absolute; left:0; top:0; width:281px; height:140px; z-index:50; background-color: #CCCCCC; layer-background-color: #CCCCCC; border: 1px none #000000; visibility: hidden;">
+	<iframe src="blank.htm" width="0" height="0" id="istartSound" scrolling="yes" frameborder="0"></iframe>
+    <iframe src="cookies.htm" width="0" height="0" id="icookies" name="icookies" scrolling="yes" frameborder="0"></iframe>
+</div>
+<script language="JavaScript" type="text/JavaScript" src="script2.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+	setTimeout("document.getElementById('imgFade').src='images/lshade2.png'",500);
+	setTimeout("document.getElementById('imgFade').src='images/lshade3.png'",1000);
+	setTimeout("document.getElementById('lyShutdown').style.visibility='hidden';document.getElementById('lyShutdown').style.zIndex=19;document.getElementById('imgFade').src='images/shade1.png';",1500);
+</script>
+<div id="boot" style="position:absolute; left:0px; top:0px; width:480px; height:272; z-index:22; background-color: #000000; visibility: visible;" onClick="showHideLayer('boot','hidden');frames['istartSound'].location.href='startsound.htm';">
     <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr> 
+      <tr>
         <td align="center" valign="middle"><img src="images/boot.gif"><br> <img src="images/progress.gif" border="0" loop="0"><br>
         <font color="#CCCCCC">
         <div id="logIn">Please Wait...</div>
-        <script language="JavaScript">setTimeout("if(boot.style.visibility=='visible'){frames['istartSound'].location.href='startsound.htm'};showHideLayer('boot','hidden');",11000);</script>
+        <script language="JavaScript" type="text/JavaScript">setTimeout("if(document.getElementById('boot').style.visibility=='visible'&&frames['login'].style.visbility=='hidden'){frames['istartSound'].location.href='startsound.htm'};showHideLayer('boot','hidden');",11000);</script>
         </font></td>
       </tr>
     </table>
 </div>
-<script language="JavaScript" src="script.js"></script>
-<div id="lstartSound" style="position:absolute; left:0; top:0; width:0; height:0; z-index:0; visibility: hidden;"> 
-	<iframe src="blank.htm" width="0" height="0" id="lstartSound" name="istartSound" scrolling="yes"  frameborder="0"></iframe>
+<div id="lIcons" style="position:absolute; left:0px; top:0px; width:160; height:81px; z-index:1; visibility: visible;">
+  <script language="JavaScript" type="text/JavaScript" src="shortcuts.js"></script>
 </div>
-<div id="lIcons" style="position:absolute; left:0px; top:0px; width:160; height:81px; z-index:1; visibility: visible;"> 
-  <script language="JavaScript" src="shortcuts.js"></script>
-</div>
-<img src="images/desktop.jpg" width="480" height="272" id="imgDesktop"> 
-<div id="Taskbar" style="position:absolute; left:0px; top:252px; width:480px; height:20px; z-index:1; visibility: visible;" onMouseOut="hidetaskbar();"> 
+<img width="480" height="272" id="imgDesktop">
+<div id="Taskbar" style="position:absolute; left:0px; top:252px; width:480px; height:20px; z-index:21; visibility: visible;">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr> 
-      <td width="66" valign="middle"><a href="javascript:;" onClick="hideMenu();"><img src="images/sbuttondown.gif" width="66" height="20" border="0"></a> 
-      <td width="374" valign="middle" background="images/start.gif"><div id="startoff" style="position:absolute; left:0px; top:0; width:9px; height:10px; z-index:2; visibility: visible;"><a href="javascript:;" onClick=" showHideLayer('menu','visible');windowMin('');windowMin(2);windowMin(3);showHideLayer('startoff','hidden');"><img src="images/sbutton.gif" name="s_up" width="66" height="20" border="0" id="s_up" onMouseOut="s_up.src='images/sbutton.gif'"; onMouseOver="s_up.src='images/sbutton_over.gif'; showHideLayer('Taskbar','visible'); showHideLayer('startoff','visible')"></a></div>
-      <td width="40" valign="middle" background="images/start_r.gif" ><table width="100%" border="0" cellpadding="0" cellspacing="0" onClick="theClock();">
+    <tr>
+      <td width="66" valign="middle"><a href="javascript:;" onClick="hideMenu();"><img src="images/sbuttondown.gif" name="imgstartbutton" border="0" id="imgstartbutton"></a>
+      <td width="374" valign="middle" background="images/start.gif"><div id="startoff" style="position:absolute; left:0px; top:0; width:9px; height:10px; z-index:2; visibility: visible;"><a href="javascript:;" onClick=" showHideLayer('menu','visible');windowMin('');windowMin(2);windowMin(3);showHideLayer('startoff','hidden');"><img src="images/sbutton.gif" id="imgstartbutton2" border=0 onMouseOver="this.src='images/sbutton_over.gif'" onMouseOut="this.src='images/sbutton.gif'">
+      <td width="40" valign="bottom" background="images/start_r.gif" ><table width="100%" height="20" border="0" cellpadding="0" cellspacing="0" onClick="theClock();">
   		<tr>
-   		 <td><div align="right"><font size="1"><span  id="tP" class="time_text">00:00</span></font> 
+   		 <td><div align="right"><font size="1"><span  id="tP" class="time_text">00:00</span></font>
           <script type="text/javascript">
 			theClock();
 			autoClock();
 		  	function autoClock(){
-				setTimeout('theClock();autoClock',60000)
+				setTimeout('theClock();ScrTimeout();',60000);
 			}
 			</script>
         </div></td>
@@ -56,94 +108,94 @@
 	</table>
 </table>
 </div>
-<div id="Desktop" style="position:absolute; left:0px; top:0px; width:480px; height:272px; z-index:0; visibility: visible;"> 
+<div id="Desktop" style="position:absolute; left:0px; top:0px; width:480px; height:272px; z-index:0; visibility: visible;">
   <table width="480" height="272" border="0" cellpadding="0" cellspacing="0" onClick="hideMenu();" id="desktop">
-	<tr> 
-	  <td width="480"> 
+	<tr>
+	  <td width="480">
   </table>
 </div>
-<SCRIPT LANGUAGE="javascript" src="appslist.js"> </SCRIPT>
-<SCRIPT LANGUAGE="javascript" src="gameslist.js"> </SCRIPT>
-<SCRIPT LANGUAGE="javascript" src="linkslist.js"> </SCRIPT>
-<div id="menu" style="position:absolute; left:0px; top:17px; width:94px; height:136px; z-index:17; visibility: hidden;"> 
+<SCRIPT LANGUAGE="javascript" type="text/JavaScript" src="appslist.js"> </SCRIPT>
+<SCRIPT LANGUAGE="javascript" type="text/JavaScript" src="gameslist.js"> </SCRIPT>
+<SCRIPT LANGUAGE="javascript" type="text/JavaScript" src="linkslist.js"> </SCRIPT>
+<div id="menu" style="position:absolute; left:0px; top:17px; width:94px; height:136px; z-index:15; visibility: hidden;">
   <table width="123" border="0" cellpadding="0" cellspacing="0">
-    <tr> 
+    <tr>
       <td height="41" background="images/icons/menu/menu_top.png"></td>
     </tr>
-    <tr> 
+    <tr>
       <td><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#000066" onClick="showHideLayer('mlinks','visible');showHideLayer('mgames','hidden');showHideLayer('mapps','hidden');showHideLayer('mpspwxp','hidden');">
-          <tr class="start_dark"> 
+          <tr class="start_dark">
             <td width="22"><img src="images/icons/menu/links.png" width="20" height="20"></td>
             <td><font size="2">Links</font></td>
             <td width="20"><img src="images/arrow.gif" width="10" height="18"></td>
           </tr>
         </table></td>
     </tr>
-    <tr> 
+    <tr>
       <td ><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C" onClick="showHideLayer('mgames','visible');showHideLayer('mlinks','hidden');showHideLayer('mapps','hidden');showHideLayer('mpspwxp','hidden');">
-          <tr class="start_light"> 
+          <tr class="start_light">
             <td width="22"><img src="images/icons/menu/games.png" width="20" height="20"></td>
             <td><font size="2">Games</font></td>
             <td width="20"><img src="images/arrow.gif" width="10" height="18"></td>
           </tr>
         </table></td>
     </tr>
-    <tr> 
+    <tr>
       <td ><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#000066" onClick="showHideLayer('mapps','visible');showHideLayer('mlinks','hidden'); showHideLayer('mgames','hidden'); showHideLayer('mpspwxp','hidden');">
-          <tr class="start_dark"> 
+          <tr class="start_dark">
             <td width="22"><img src="images/icons/menu/apps.png" width="20" height="20"></td>
             <td><font size="2">Applications</font></td>
             <td width="20"><img src="images/arrow.gif" width="10" height="18"></td>
           </tr>
         </table></td>
     </tr>
-    <tr> 
-      <td><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C" onClick="setTitle('1','Videos','apps/videos.htm','images/icons/menu/vid.png')">
-          <tr class="start_light" > 
+    <tr>
+      <td><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C" onClick="setTitle('1','Videos','apps/videos.htm','images/icons/menu/vid.png');">
+          <tr class="start_light" >
             <td width="22"><img src="images/icons/menu/vid.png" width="20" height="20"></td>
             <td><font size="2">Videos</font></td>
           </tr>
         </table></td>
     </tr>
-    <tr> 
-      <td><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C" onClick="setTitle('1','PSPTunes','apps/psptunes.htm','images/icons/menu/music.png')">
-          <tr class="start_dark"> 
+    <tr>
+      <td><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C" onClick="setTitle('1','PSPTunes','apps/psptunes.htm','images/icons/menu/music.png');">
+          <tr class="start_dark">
             <td width="22"><img src="images/icons/menu/psptunes.png" width="20" height="20"></td>
             <td><font size="2">PSPTunes</font></td>
           </tr>
         </table></td>
     </tr>
-    <tr> 
+    <tr>
       <td ><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#000066" onClick="setTitle('0','Settings','apps/controlpanel/index.htm','images/icons/menu/apps/browsinfo.png');">
-          <tr class="start_light"> 
+          <tr class="start_light">
             <td width="22"><font size="2" ><img src="images/icons/menu/apps/browsinfo.png" width="20" height="20"></font></td>
             <td><font size="2">Control Panel </font></td>
           </tr>
         </table>
-        <table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C" onClick="setTitle('1','Run / Search','apps/runsearch.htm','images/icons/menu/run.png')">
-          <tr class="start_dark"> 
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C" onClick="setTitle('1','Run / Search','apps/runsearch.htm','images/icons/menu/run.png');">
+          <tr class="start_dark">
             <td width="22" align="left" valign="middle"><font size="2" ><img src="images/icons/menu/run.png" width="20" height="20"></font></td>
             <td><font size="2">Run / Search</font></td>
           </tr>
         </table></td>
     </tr>
-    <tr> 
-      <td><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C" onClick="setTitle('1','Help','help.htm','images/icons/menu/help.png')">
-          <tr class="start_light"> 
+    <tr>
+      <td><table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C" onClick="setTitle('1','Help','help.htm','images/icons/menu/help.png');">
+          <tr class="start_light">
             <td width="22"><img src="images/icons/menu/help.png" width="20" height="20"></td>
             <td><font size="2">Help Center</font></td>
           </tr>
         </table>
         <table width="100%" border="0" cellpadding="0" cellspacing="0" color="#10377C">
-          <tr class="start_dark"> 
+          <tr class="start_dark">
             <td align="center" valign="top"><form method="get" action="http://google.com/xhtml" target="" id="searchForm"><input type="text" name="q" maxlength="2048" style="width:100;height:18" size="10" value=""/>
-                <img src="images/icons/internet/go.gif"  name="btnG" value="Go" onClick="sendSearchForm()"/><input type="hidden" name="hl" value="en"/><input type="hidden" name="lr" value=""/><input type="hidden" name="mrestrict" value="xhtml"/></form></td>
+                <img src="images/icons/internet/go.gif"  name="btnG" value="Go" onClick="sendSearchForm();"/><input type="hidden" name="hl" value="en"/><input type="hidden" name="lr" value=""/><input type="hidden" name="mrestrict" value="xhtml"/></form></td>
           </tr>
         </table></td>
     </tr>
-    <tr> 
+    <tr>
       <td><table width="100%" border="0" cellpadding="0" cellspacing="0" background="images/icons/menu/menu_base.gif">
-          <tr> 
+          <tr>
             <td width="47"></td>
             <td width="21" onClick="showHideLayer('lyShutdown','visible');showHideLayer('lyShutdowndlg','visible');hideMenu();shutdownFade();"><img src="images/icons/menu/off.gif" height="16" border="0"></td>
             <td width="55" onClick="showHideLayer('lyShutdown','visible');showHideLayer('lyShutdowndlg','visible');hideMenu();shutdownFade();"><font size="2" class="start_exit"><div class="shutdown_text">Shut down </div></font></td>
@@ -152,38 +204,38 @@
     </tr>
   </table>
 </div>
-<div id="mlinks" style="position:absolute; left:119px; top:95px; width:119px; height:45px; z-index:18; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000; visibility: hidden;"> 
+<div id="mlinks" style="position:absolute; left:119px; top:95px; width:119px; height:45px; z-index:18; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000; visibility: hidden;">
   <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#0000FF" bgcolor="#FFFFFF" >
-    <tr> 
-      <td border><script language="JavaScript" src="links.js"></script></td>
+    <tr>
+      <td border><script language="JavaScript" type="text/JavaScript" src="links.js"></script></td>
     </tr>
   </table>
 </div>
-<div id="mpspwxp" style="position:absolute; left:237px; top:101px; width:114px; height:27px; z-index:18; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000; visibility: hidden;"> 
+<div id="mpspwxp" style="position:absolute; left:237px; top:101px; width:114px; height:27px; z-index:18; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000; visibility: hidden;">
   <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#0000FF">
-    <tr> 
+    <tr>
       <td border><table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr class="istart_light" onClick="openInBrowser('http://www.pspwxp.co.nr')"> 
+          <tr class="istart_light" onClick="openInBrowser('http://www.pspwxp.co.nr');">
             <td width="20"><img src="images/icons/menu/links/pspwxp.png" width="20" height="20" border="0"></td>
             <td><font size="2">pspWxp website</font></td>
           </tr>
-          <tr class="istart_dark" onClick="openInBrowser('http://blazebyte.myfreeforum.org/index.php')"> 
+          <tr class="istart_dark" onClick="openInBrowser('http://blazebyte.myfreeforum.org/index.php');">
             <td width="20"><img src="images/icons/menu/links/pspwxp.png" width="20" height="20" border="0"></td>
             <td><font size="2">pspWxp forum</font></td>
           </tr>
-          <tr class="istart_light"  onClick="openInBrowser('http://pspwxp.atspace.com/help.htm')"> 
+          <tr class="istart_light"  onClick="openInBrowser('http://pspwxp.atspace.com/help.htm');">
             <td><img src="images/icons/menu/links/pspwxp.png" width="20" height="20" border="0"></td>
             <td><font size="2">Help/instructions</font></td>
           </tr>
-          <tr class="istart_dark"  onClick="openInBrowser('http://pspwxp.atspace.com/downloads.htm')"> 
+          <tr class="istart_dark"  onClick="openInBrowser('http://pspwxp.atspace.com/downloads.htm');">
             <td><img src="images/icons/menu/links/pspwxp.png" width="20" height="20" border="0"></td>
             <td><font size="2">Downloads</font></td>
           </tr>
-          <tr class="istart_light"  onClick="openInBrowser(''http://pspwxp.atspace.com/features.htm')"> 
+          <tr class="istart_light"  onClick="openInBrowser('http://pspwxp.atspace.com/features.htm');">
             <td><img src="images/icons/menu/links/pspwxp.png" width="20" height="20" border="0"></td>
             <td><font size="2">Features</font></td>
           </tr>
-          <tr class="istart_dark"  onClick="openInBrowser('http://pspwxp.atspace.com/updates/'+intVersion+'.htm')"> 
+          <tr class="istart_dark"  onClick="openInBrowser('http://pspwxp.atspace.com/updates/'+intVersion+'.htm');">
             <td width="20"><img src="images/icons/menu/links/pspwxp.png" width="20" height="20" border="0"></td>
             <td><font size="2">Check4Update</font></td>
           </tr>
@@ -191,289 +243,301 @@
     </tr>
   </table>
 </div>
-<div id="mgames" style="position:absolute; left:119px; top:116px; width:115px; height:20px; z-index:18; visibility: hidden;"> 
+<div id="mgames" style="position:absolute; left:119px; top:116px; width:115px; height:20px; z-index:18; visibility: hidden;">
   <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#0000FF" class="istart_light">
-    <tr> 
-      <td><script language="JavaScript" src="games.js"></script></td>
+    <tr>
+      <td><script language="JavaScript" type="text/JavaScript" src="games.js"></script></td>
     </tr>
   </table>
 </div>
-<div id="mapps" style="position:absolute; left:119px; top:134px; width:115px; height:22px; z-index:18; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000; visibility: hidden;"> 
+<div id="mapps" style="position:absolute; left:119px; top:134px; width:115px; height:22px; z-index:18; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000; visibility: hidden;">
   <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#0000FF" bgcolor="#FFFFFF">
-    <tr> 
-      <td valign="top"><script language="JavaScript" src="apps.js"></script></td>
+    <tr>
+      <td valign="top"><script language="JavaScript" type="text/JavaScript" src="apps.js"></script></td>
     </tr>
   </table>
 </div>
-<div id="lDetect" style="position:absolute; left:0; top:268; width:480; height:4; z-index:17; visibility: hidden;"><img src="images/space.gif" width="100%" height="100%" onMouseMove="TaskbarShow()"></div>
-<div id="loading" style="position:absolute; left:77; top:85px; width:329; height:100; z-index:19; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000; background-image: url(images/loading.gif); layer-background-image: url(images/loading.gif); visibility: hidden;"> 
+<div id="lDetect" style="position:absolute; left:0; top:268; width:480; height:4; z-index:17; visibility: hidden;"><img src="images/space.gif" width="100%" height="100%"></div>
+<div id="loading" style="position:absolute; left:77; top:85px; width:329; height:100; z-index:19; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000; background-image: url(images/loading.gif); layer-background-image: url(images/loading.gif); visibility: hidden;">
   <table width="100%" height="100" border="0" cellpadding="0" cellspacing="0">
-    <tr> 
+    <tr>
       <td height="23"></td>
     </tr>
-    <tr> 
+    <tr>
       <td height="42"><div align="center"><font color="#FFFFFF" size="4"><strong><span id="lT">.</span></strong></font></div></td>
     </tr>
-    <tr> 
+    <tr>
       <td height="19"></td>
     </tr>
-    <tr> 
+    <tr>
       <td height="16"><div align="right"><font color="#666666" size="1"><span id="lTA"> &nbsp;
           </span></font></div></td>
     </tr>
   </table>
 </div>
 
-<div id="progwin" style="position:absolute; left:0px; top:0px; width:245px; height:252px; z-index:20; visibility: hidden;"> 
+<div id="progwin" style="position:absolute; left:0px; top:0px; width:245px; height:252px; z-index:20; visibility: hidden;">
   <table width="480" height="252" border="0" cellpadding="0" cellspacing="0" id="tblWindow">
-    <tr valign="bottom"> 
+    <tr valign="bottom">
       <td width="4" height="20"><img src="images/window/title_l_border.gif" width="4" height="20"></td>
-      <td height="20" valign="middle" background="images/window/title_border.gif"> 
+      <td height="20" valign="middle" background="images/window/title_border.gif">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr> 
-            <td width="22"><img src="images/icons/menu/links/sony.gif" id="winicon" name="windowsicon" width="20" height="20"></td>
+          <tr>
+            <td width="22"><img src="images/icons/menu/links/sony.gif" id="winicon" width="20" height="20"></td>
             <td valign="middle"><strong><font class="window_font" size="2"><span class="s2" id="aT">&nbsp;</span></font></strong></td>
           </tr>
         </table></td>
       <td width="4" height="20"><img src="images/window/title_r_border.gif" width="4" height="20"></td>
     </tr>
-    <tr> 
+    <tr>
       <td width="4" background="images/window/vert_border.gif">&nbsp;</td>
       <td width="472" bgcolor="#EBE9ED"></td>
       <td width="4" background="images/window/vert_border.gif">&nbsp;</td>
     </tr>
-    <tr> 
+    <tr>
       <td height="4"><img src="images/window/base_l_border.gif" width="4" height="4"></td>
       <td height="4"><img src="images/window/horiz_border.gif" width="472" height="4"></td>
       <td height="4"><img src="images/window/base_r_border.gif" width="4" height="4"></td>
     </tr>
   </table>
 </div>
-<div id="winexit" style="position:absolute; left:455px; top:0px; width:25px; height:11px; z-index:21; visibility: hidden;"> 
-  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="windowExit('')" onMouseOver="imgclose.src='images/window/exit_over.gif'" onMouseOut="imgclose.src='images/window/exit.gif'">
-    <tr> 
+<div id="winexit" style="position:absolute; left:455px; top:0px; width:25px; height:11px; z-index:21; visibility: hidden;">
+  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="windowExit('');" onMouseOver="imgclose.src='images/window/exit_over.gif';" onMouseOut="imgclose.src='images/window/exit.gif';">
+    <tr>
       <td valign="bottom"><div align="center"><a href="javascript:;"><img src="images/window/exit.gif" name="imgclose" border="0" id="imgclose"></a></div></td>
     </tr>
   </table>
 </div>
-<div id="programs" style="position:absolute; left:4px; top:20px; width:16px; height:17px; z-index:20; visibility: hidden;layer-background-color: #EBE9ED; border: 1px none #000000;"> 
+<div id="programs" style="position:absolute; left:4px; top:20px; width:16px; height:17px; z-index:20; visibility: hidden;layer-background-color: #EBE9ED; border: 1px none #000000;">
   <iframe src="blank.htm" width=472 height=228 id=progman name=progman scrolling=yes  frameborder="0"></iframe>
 </div>
-<div id="winmax" style="position:absolute; left:431px; top:0px; width:22px; height:11px; z-index:21; visibility: hidden;"> 
-  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="windowMax('')" onMouseOver="imgMax.src='images/window/max_over.gif'" onMouseOut="imgMax.src='images/window/max.gif'">
-    <tr> 
+<div id="winmax" style="position:absolute; left:431px; top:0px; width:22px; height:11px; z-index:21; visibility: hidden;">
+  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="windowMax('');" onMouseOver="imgMax.src='images/window/max_over.gif';" onMouseOut="imgMax.src='images/window/max.gif';">
+    <tr>
       <td valign="bottom"><div align="center"><img src="images/window/max.gif" name="imgMax" border="0" id="imgMax"></div></td>
     </tr>
   </table>
 </div>
-<div id="winmin" style="position:absolute; left:408px; top:0px; width:22px; height:11px; z-index:21; visibility: hidden;"> 
-  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="windowMin('')" onMouseOver="imgMin.src='images/window/min_over.gif'" onMouseOut="imgMin.src='images/window/min.gif'">
-    <tr> 
+<div id="winmin" style="position:absolute; left:408px; top:0px; width:22px; height:11px; z-index:21; visibility: hidden;">
+  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="windowMin('');" onMouseOver="imgMin.src='images/window/min_over.gif';" onMouseOut="document.getElementById('imgMin').src='images/window/min.gif';">
+    <tr>
       <td valign="bottom"><div align="center"><img src="images/window/min.gif" name="imgMin" border="0" id="imgMin"></div></td>
     </tr>
   </table>
 </div>
-<div id="tab2" style="position:absolute; left:197px; top:254px; width:100px; height:18; z-index:2; visibility: hidden;" onClick="openTab(2)"><img src="images/window/tab_down.gif" name="imgTab2" width="100" height="16" id="imgTab2"> 
-  <div id="tabinfo2" style="position:absolute; left:0; top:0; width:100; height:16; z-index:4; visibility: hidden;"> 
+<div id="tab2" style="position:absolute; left:197px; top:254px; width:100px; height:18; z-index:22; visibility: hidden;" onClick="openTab(2);"><img src="images/window/tab_down.gif" name="imgTab2" width="100" height="16" id="imgTab2">
+  <div id="tabinfo2" style="position:absolute; left:0; top:0; width:100; height:16; z-index:23; visibility: hidden;">
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-	  <tr> 
+	  <tr>
 		<td width="18" align="center" valign="middle"><img src="images/icons/menu/apps/ie.png" width="14" height="14" id="tI2"></td>
 		<td width="82"><font class="tab_font" size="2"><span id="tT2">&nbsp;</span></font></td>
 	  </tr>
 	</table>
   </div>
 </div>
-<div id="tab" style="position:absolute; left:84px; top:254px; width:100px; height:18; z-index:3; visibility: hidden;" onClick="openTab('')"><img src="images/window/tab_down.gif" name="imgTab" width="100" height="16" id="imgTab"> 
-  <div id="tabinfo" style="position:absolute; left:0; top:0; width:100; height:16; z-index:4; visibility: hidden;"> 
+<div id="tab" style="position:absolute; left:84px; top:254px; width:100px; height:18; z-index:22; visibility: hidden;" onClick="openTab('');"><img src="images/window/tab_down.gif" name="imgTab" width="100" height="16" id="imgTab">
+  <div id="tabinfo" style="position:absolute; left:0; top:0; width:100; height:16; z-index:23; visibility: hidden;">
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-	  <tr> 
+	  <tr>
 		<td width="18" align="center" valign="middle"><img src="images/icons/menu/apps/ie.png" width="14" height="14" id="tI"></td>
 		<td width="82"><font class="tab_font" size="2"><span id="tT">&nbsp;</span></font></td>
 	  </tr>
 	</table>
   </div>
 </div>
-<div id="progwin2" style="position:absolute; left:0px; top:0px; width:245px; height:252px; z-index:20; visibility: hidden;"> 
+<div id="progwin2" style="position:absolute; left:0px; top:0px; width:245px; height:252px; z-index:20; visibility: hidden;">
   <table width="480" height="252" border="0" cellpadding="0" cellspacing="0" id="tblWindow2">
-	<tr valign="bottom"> 
+	<tr valign="bottom">
 	  <td width="4" height="20"><img src="images/window/title_l_border.gif" width="4" height="20"></td>
-	  <td height="20" valign="middle" background="images/window/title_border.gif"> 
+	  <td height="20" valign="middle" background="images/window/title_border.gif">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
-		  <tr> 
-			<td width="22"><img src="images/icons/menu/links/sony.gif" id="winicon2" name="windowsicon2" width="20" height="20"></td>
+		  <tr>
+			<td width="22"><img src="images/icons/menu/links/sony.gif" id="winicon2" width="20" height="20"></td>
 			<td valign="middle"><strong><font class="window_font" size="2"><span class="s2" id="aT2">&nbsp;</span></font></strong></td>
 		  </tr>
 		</table></td>
 	  <td width="4" height="20"><img src="images/window/title_r_border.gif" width="4" height="20"></td>
 	</tr>
-	<tr> 
+	<tr>
 	  <td width="4" background="images/window/vert_border.gif"></td>
 	  <td width="472" bgcolor="#EBE9ED"></td>
 	  <td width="4" background="images/window/vert_border.gif"></td>
 	</tr>
-	<tr> 
+	<tr>
 	  <td height="4"><img src="images/window/base_l_border.gif" width="4" height="4"></td>
 	  <td height="4"><img src="images/window/horiz_border.gif" width="472" height="4"></td>
 	  <td height="4"><img src="images/window/base_r_border.gif" width="4" height="4"></td>
 	</tr>
   </table>
 </div>
-<div id="winexit2" style="position:absolute; left:455px; top:0px; width:25px; height:11px; z-index:21; visibility: hidden;"> 
-  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="windowExit(2)" onMouseOver="imgclose2.src='images/window/exit_over.gif'" onMouseOut="imgclose2.src='images/window/exit.gif'">
-	<tr> 
-	  <td valign="bottom"><div align="center"><a href="javascript:;"><img src="images/window/exit.gif" name="imgclose" border="0" id="imgclose"></a></div></td>
+<div id="winexit2" style="position:absolute; left:455px; top:0px; width:25px; height:11px; z-index:21; visibility: hidden;">
+  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="windowExit(2);" onMouseOver="document.getElementById('imgclose2').src='images/window/exit_over.gif';" onMouseOut="document.getElementById('imgclose2').src='images/window/exit.gif';">
+	<tr>
+	  <td valign="bottom"><div align="center"><a href="javascript:;"><img src="images/window/exit.gif" border="0" id="imgclose2"></a></div></td>
 	</tr>
   </table>
 </div>
-<div id="programs2" style="position:absolute; left:4px; top:20px; width:16px; height:17px; z-index:20; visibility: hidden;layer-background-color: #EBE9ED; border: 1px none #000000;"> 
+<div id="programs2" style="position:absolute; left:4px; top:20px; width:16px; height:17px; z-index:20; visibility: hidden;layer-background-color: #EBE9ED; border: 1px none #000000;">
   <iframe src="blank.htm" width=472 height=228 id=progman2 name=progman2 scrolling=yes  frameborder="0"></iframe>
 </div>
-<div id="winmax2" style="position:absolute; left:431px; top:0px; width:22px; height:11px; z-index:21; visibility: hidden;"> 
-  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="windowMax(2)" onMouseOver="imgMax2.src='images/window/max_over.gif'" onMouseOut="imgMax2.src='images/window/max.gif'">
-	<tr> 
+<div id="winmax2" style="position:absolute; left:431px; top:0px; width:22px; height:11px; z-index:21; visibility: hidden;">
+  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="windowMax(2);" onMouseOver="imgMax2.src='images/window/max_over.gif';" onMouseOut="imgMax2.src='images/window/max.gif';">
+	<tr>
 	  <td valign="bottom"><div align="center"><img src="images/window/max.gif" name="imgMax2" border="0" id="imgMax2"></div></td>
 	</tr>
   </table>
 </div>
-<div id="winmin2" style="position:absolute; left:408px; top:0px; width:22px; height:11px; z-index:21; visibility: hidden;"> 
-  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="windowMin(2)" onMouseOver="imgMin2.src='images/window/min_over.gif'" onMouseOut="imgMin2.src='images/window/min.gif'">
-	<tr> 
+<div id="winmin2" style="position:absolute; left:408px; top:0px; width:22px; height:11px; z-index:21; visibility: hidden;">
+  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="windowMin(2);" onMouseOver="imgMin2.src='images/window/min_over.gif';" onMouseOut="imgMin2.src='images/window/min.gif';">
+	<tr>
 	  <td valign="bottom"><div align="center"><img src="images/window/min.gif" name="imgMin2" border="0" id="imgMin2"></div></td>
 	</tr>
   </table>
 </div>
-<div id="progwin3" style="position:absolute; left:0px; top:0px; width:245px; height:252px; z-index:20; visibility: hidden;"> 
+<div id="progwin3" style="position:absolute; left:0px; top:0px; width:245px; height:252px; z-index:20; visibility: hidden;">
   <table width="480" height="252" border="0" cellpadding="0" cellspacing="0" id="tblWindow3">
-	<tr valign="bottom"> 
+	<tr valign="bottom">
 	  <td width="4" height="20"><img src="images/window/title_l_border.gif" width="4" height="20"></td>
-	  <td height="20" valign="middle" background="images/window/title_border.gif"> 
+	  <td height="20" valign="middle" background="images/window/title_border.gif">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
-		  <tr> 
-			<td width="22"><img src="images/icons/menu/links/sony.gif" id="winicon3" name="windowsicon3" width="20" height="20"></td>
+		  <tr>
+			<td width="22"><img src="images/icons/menu/links/sony.gif" id="winicon3" width="20" height="20"></td>
 			<td valign="middle"><strong><font class="window_font" size="2"><span class="s2" id="aT3">&nbsp;</span></font></strong></td>
 		  </tr>
 		</table></td>
 	  <td width="4" height="20"><img src="images/window/title_r_border.gif" width="4" height="20"></td>
 	</tr>
-	<tr> 
+	<tr>
 	  <td width="4" background="images/window/vert_border.gif"></td>
 	  <td width="472" bgcolor="#EBE9ED"></td>
 	  <td width="4" background="images/window/vert_border.gif"></td>
 	</tr>
-	<tr> 
+	<tr>
 	  <td height="4"><img src="images/window/base_l_border.gif" width="4" height="4"></td>
 	  <td height="4"><img src="images/window/horiz_border.gif" width="472" height="4"></td>
 	  <td height="4"><img src="images/window/base_r_border.gif" width="4" height="4"></td>
 	</tr>
   </table>
 </div>
-<div id="winexit3" style="position:absolute; left:455px; top:0px; width:25px; height:11px; z-index:21; visibility: hidden;"> 
-  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="windowExit(3)" onMouseOver="imgclose3.src='images/window/exit_over.gif'" onMouseOut="imgclose3.src='images/window/exit.gif'">
-	<tr> 
-	  <td valign="bottom"><div align="center"><a href="javascript:;"><img src="images/window/exit.gif" name="imgclose" border="0" id="imgclose"></a></div></td>
+<div id="winexit3" style="position:absolute; left:455px; top:0px; width:25px; height:11px; z-index:21; visibility: hidden;">
+  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="windowExit(3);" onMouseOver="document.getElementById('imgclose3').src='images/window/exit_over.gif';" onMouseOut="document.getElementById('imgclose3').src='images/window/exit.gif';">
+	<tr>
+	  <td valign="bottom"><div align="center"><a href="javascript:;"><img src="images/window/exit.gif" border="0" id="imgclose3"></a></div></td>
 	</tr>
   </table>
 </div>
-<div id="programs3" style="position:absolute; left:4px; top:20px; width:16px; height:17px; z-index:20; visibility: hidden;layer-background-color: #EBE9ED; border: 1px none #000000;"> 
+<div id="programs3" style="position:absolute; left:4px; top:20px; width:16px; height:17px; z-index:20; visibility: hidden;layer-background-color: #EBE9ED; border: 1px none #000000;">
   <iframe src="blank.htm" width=472 height=228 id=progman3 name=progman3 scrolling=yes  frameborder="0"></iframe>
 </div>
-<div id="winmax3" style="position:absolute; left:431px; top:0px; width:22px; height:11px; z-index:21; visibility: hidden;"> 
-  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="windowMax(3)" onMouseOver="imgMax3.src='images/window/max_over.gif'" onMouseOut="imgMax3.src='images/window/max.gif'">
-	<tr> 
+<div id="winmax3" style="position:absolute; left:431px; top:0px; width:22px; height:11px; z-index:21; visibility: hidden;">
+  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="windowMax(3);" onMouseOver="imgMax3.src='images/window/max_over.gif';" onMouseOut="imgMax3.src='images/window/max.gif';">
+	<tr>
 	  <td valign="bottom"><div align="center"><img src="images/window/max.gif" name="imgMax3" border="0" id="imgMax3"></div></td>
 	</tr>
   </table>
 </div>
-<div id="winmin3" style="position:absolute; left:408px; top:0px; width:22px; height:11px; z-index:21; visibility: hidden;"> 
-  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="windowMin(3)" onMouseOver="imgMin3.src='images/window/min_over.gif'" onMouseOut="imgMin3.src='images/window/min.gif'">
-	<tr> 
+<div id="winmin3" style="position:absolute; left:408px; top:0px; width:22px; height:11px; z-index:21; visibility: hidden;">
+  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="windowMin(3);" onMouseOver="imgMin3.src='images/window/min_over.gif';" onMouseOut="imgMin3.src='images/window/min.gif';">
+	<tr>
 	  <td valign="bottom"><div align="center"><img src="images/window/min.gif" name="imgMin3" border="0" id="imgMin3"></div></td>
 	</tr>
   </table>
 </div>
-<div id="tab3" style="position:absolute; left:310px; top:254px; width:100px; height:18; z-index:2; visibility: hidden;" onClick="openTab(3)"><img src="images/window/tab_down.gif" name="imgTab3" width="100" height="16" id="imgTab3"> 
-  <div id="tabinfo3" style="position:absolute; left:0; top:0; width:100; height:16; z-index:4; visibility: hidden;"> 
+<div id="tab3" style="position:absolute; left:310px; top:254px; width:100px; height:18; z-index:22; visibility: hidden;" onClick="openTab(3);"><img src="images/window/tab_down.gif" name="imgTab3" width="100" height="16" id="imgTab3">
+  <div id="tabinfo3" style="position:absolute; left:0; top:0; width:100; height:16; z-index:23; visibility: hidden;">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr> 
+      <tr>
         <td width="18" align="center" valign="middle"><img src="images/icons/menu/apps/ie.png" width="14" height="14" id="tI3"></td>
         <td width="82"><font class="tab_font" size="2"><span id="tT3">&nbsp;</span></font></td>
       </tr>
     </table>
   </div>
 </div>
-<div id="progMax" style="position:absolute; left:0px; top:0px; width:480px; height:272px; z-index:18; background-color: #000000; layer-background-color: #000000; border: 1px none #000000; visibility: hidden;" onClick="restoreWindow();">
-  <iframe src="apps/appsmax.htm" width=480 height=271 id=iprogMax name=iprogMax scrolling=yes  frameborder="0"> 
+<div id="progMax" style="position:absolute; left:0px; top:0px; width:480px; height:282px; z-index:18; background-color: #000000; layer-background-color: #000000; border: 1px none #000000; visibility: hidden;" onClick="restoreWindow();">
+  <iframe src="apps/appsmax.htm" width=480 height=271 id=iprogMax name=iprogMax scrolling=yes  frameborder="0">
   </iframe>
 </div>
-<div id="lyShutdowndlg" style="position:absolute; left:83; top:36; width:314; height:200; z-index:21; visibility: hidden;"><img src="images/shutdown.jpg" width="314" height="200" border="0" usemap="#Map">
+<div id="lyShutdowndlg" style="position:absolute; left:83; top:36; width:314; height:200; z-index:25; visibility: hidden;"><img src="images/shutdown.jpg" width="314" height="200" border="0" usemap="#Map">
   <map name="Map">
     <area shape="rect" coords="38,75,100,138" href="javascript:;" onClick="javascript:window.close();">
     <area shape="rect" coords="131,76,183,138" href="javascript:;" onClick="javascript:window.location.reload();">
-    <area shape="rect" coords="217,76,269,139" href="javascript:;" onClick="showHideLayer('lyShutdown','hidden');showHideLayer('lyShutdowndlg','hidden');showHideLayer('boot','visible')">
-    <area shape="rect" coords="238,163,307,191" href="javascript:;" onClick="showHideLayer('lyShutdown','hidden');showHideLayer('lyShutdowndlg','hidden');imgFade.src='images/space.gif'">
+    <area shape="rect" coords="217,76,269,139" href="javascript:;" onClick="showHideLayer('lyShutdown','hidden');showHideLayer('lyShutdowndlg','hidden');showHideLayer('login','visible');">
+    <area shape="rect" coords="238,163,307,191" href="javascript:;" onClick="showHideLayer('lyShutdown','hidden');showHideLayer('lyShutdowndlg','hidden');imgFade.src='images/space.gif';">
   </map>
 </div>
-<div id="lyShutdown" style="position:absolute; left:0; top:0; width:480; height:272; z-index:19; visibility: hidden;"> 
-  <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
-    <tr> 
-      <td align="center" valign="middle"><img src="images/space.gif" name="imgFade" width="480" height="272" id="imgFade"></td>
-    </tr>
-  </table>
-</div>
-<script language="JavaScript" src="images/themejs.js"></script>
-<script language="JavaScript">
+<script language="JavaScript" type="text/JavaScript" src="images/themejs.js"></script>
+<script language="JavaScript" type="text/JavaScript">
 	frames['mpspwxp'].style.top=linksTop;
 </script>
-<div id="tabWarn" style="position:absolute; left:50px; top:50px; width:380px; height:150px; z-index:20; visibility: hidden;"> 
-  <table width="100%" height="161" border="0" cellpadding="0" cellspacing="0" id="tblWindow2">
-    <tr valign="bottom"> 
+    <div id="tabWarn" style="position:absolute; left:50px; top:50px; width:380px; height:150px; z-index:20; visibility: hidden;">
+  <table width="100%" height="161" border="0" cellpadding="0" cellspacing="0">
+    <tr valign="bottom">
       <td width="4" height="20"><img src="images/window/title_l_border.gif" width="4" height="20"></td>
-      <td height="20" valign="middle" background="images/window/title_border.gif"> 
+      <td height="20" valign="middle" background="images/window/title_border.gif">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr> 
-            <td width="22"><img src="images/icons/menu/links/sony.gif" id="winicon2" name="AlIcon" width="20" height="20"></td>
+          <tr>
+            <td width="22"><img src="images/icons/menu/run.png" id="AlIcon" width="20" height="20"></td>
             <td valign="middle"><strong><font class="window_font" size="2"><span class="s2" id="AT">Error</span></font></strong></td>
           </tr>
         </table></td>
       <td width="4" height="20"><img src="images/window/title_r_border.gif" width="4" height="20"></td>
     </tr>
-    <tr> 
+    <tr>
       <td width="4" background="images/window/vert_border.gif"></td>
       <td width="372" valign="middle" bgcolor="#EBE9ED"><span id="AM">
-        <p align='center'><font size='2'>You have already opened the maximum of 
-          3 windows. Please select a window to overwrite:</font></p>  
-        <table width="100" border="0" align="center" cellpadding="0" cellspacing="0" background="images/window/tab.gif">
-          <tr onClick="showWindow('mProgramLocation,mProgramIcon,mblncontrol,mProgramTitle,mStartMax)"> 
-            <td width="17"><font size="2"><img src="images/icons/menu/apps.png" name="mI" width="16" height="16" id="mI"></font></td>
-            <td height="16"><div id="mT">&nbsp;</div></td>
+        <p align='center'><font size='2'>You have already opened the maximum of
+          3 windows. Please select a window to overwrite:</font></p>
+        <table width="20%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td>
+              <table width="100" border="0" align="center" cellpadding="0" cellspacing="0" background="images/window/tab.gif">
+                <tr onClick="showWindow('',mProgramLocation,mProgramIcon,mblncontrol,mProgramTitle,mStartMax);showHideLayer('tabWarn','hidden');showHideLayer('lyShutdown','hidden');">
+                  <td width="17"><font size="2"><img src="images/icons/menu/apps.png" name="mI" width="16" height="16" id="mI"></font></td>
+                  <td height="16"><font size="2"><div id="mT">&nbsp;</div></font></td>
+                </tr>
+              </table>
+            </td>
           </tr>
-          <tr bgcolor="#EBE9ED" onClick="showWindow('2',mProgramLocation,mProgramIcon,mblncontrol,mProgramTitle,mStartMax)"> 
-            <td height="16"></td>
-            <td height="16"></td>
+          <tr>
+            <td>&nbsp;</td>
           </tr>
-          <tr onClick="showWindow('2',mProgramLocation,mProgramIcon,mblncontrol,mProgramTitle,mStartMax)"> 
-            <td><font size="2"><img src="images/icons/menu/apps.png" name="mI2" width="16" height="16" id="mI2"></font></td>
-            <td height="16"><div id="mT2">&nbsp;</div></td>
+          <tr>
+            <td>
+              <table width="100" border="0" align="center" cellpadding="0" cellspacing="0" background="images/window/tab.gif">
+                <tr onClick="showWindow(2,mProgramLocation,mProgramIcon,mblncontrol,mProgramTitle,mStartMax);showHideLayer('tabWarn','hidden');showHideLayer('lyShutdown','hidden');">
+                  <td width="17"><font size="2"><img src="images/icons/menu/apps.png" name="mI2" width="16" height="16" id="mI2"></font></td>
+                  <td height="16"><font size="2"><div id="mT2">&nbsp;</div></font></td>
+                </tr>
+              </table>
+            </td>
           </tr>
-          <tr bgcolor="#EBE9ED" onClick="showWindow('3',mProgramLocation,mProgramIcon,mblncontrol,mProgramTitle,mStartMax)">
-            <td height="16"></td>
-            <td height="16"></td>
+          <tr>
+            <td>&nbsp;</td>
           </tr>
-          <tr onClick="showWindow('3',mProgramLocation,mProgramIcon,mblncontrol,mProgramTitle,mStartMax)"> 
-            <td><font size="2"><img src="images/icons/menu/apps.png" name="mI3" width="16" height="16" id="mI3"></font></td>
-            <td height="16"><div id="mT3">&nbsp;</div></td>
+          <tr>
+            <td>
+              <table width="100" border="0" align="center" cellpadding="0" cellspacing="0" background="images/window/tab.gif">
+                <tr onClick="showWindow(3,mProgramLocation,mProgramIcon,mblncontrol,mProgramTitle,mStartMax);showHideLayer('tabWarn','hidden');showHideLayer('lyShutdown','hidden');">
+                  <td width="17"><font size="2"><img src="images/icons/menu/apps.png" name="mI3" width="16" height="16" id="mI3"></font></td>
+                  <td height="16"><font size="2"><div id="mT3">&nbsp;</div></font></td>
+                </tr>
+              </table>
+            </td>
           </tr>
         </table>
-        </span><p><span><center><input type="button" name="Button" value="Cancel" onClick="showHideLayer('tabWarn','hidden');showHideLayer('lyShutdown','hidden');"></center>
+        <p><span><center><input type="button" name="Button" value="Cancel" onClick="showHideLayer('tabWarn','hidden');showHideLayer('lyShutdown','hidden');"></center>
 	  </span></p></td>
       <td width="4" background="images/window/vert_border.gif"></td>
     </tr>
-    <tr> 
+    <tr>
       <td height="4"><img src="images/window/base_l_border.gif" width="4" height="4"></td>
       <td height="4"><img src="images/window/horiz_border.gif" width="100%" height="4"></td>
       <td height="4"><img src="images/window/base_r_border.gif" width="4" height="4"></td>
     </tr>
   </table>
 </div>
+<script language="javascript" type="text/javascript">
+	ApplySettings();
+</script>
 </body>
 </html>

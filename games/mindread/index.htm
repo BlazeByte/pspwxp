@@ -1,0 +1,88 @@
+<HTML>
+<BODY>
+<table border="0" bgcolor="#000000" cellspacing="0" cellpadding="3">
+  <tr>
+    <td width="100%">
+<p><font size="4" color="#FFFF00">Crystal Ball</font></p>
+<font color="#CCCCFF">
+<p>Please enter a yes/no question and it will respond</p>
+<p>Warning: the crystal ball has a tendency to be sarcastic!</p>
+<table width="40%" border="0">
+<tr>
+<td>
+<form name="input1">
+<input name="textfield" size=63>
+</form>
+</td>
+</tr>
+</table>
+<table width="8%" border="0">
+<tr>
+<td>
+<form>
+<input type="button" name="button1" value="Ask Me!"
+onClick="getAnswers()">
+</form>
+</td>
+</tr>
+</table>
+
+<script language="JavaScript">
+
+//Crystal Ball Script - By Michael McDermott (mcdemf1@wfu.edu)
+//http://www.wfu.edu/~mcdemf1
+//Visit JavaScript Kit (http://javascriptkit.com) for script
+
+
+function getAnswers() {
+
+time = new Date()
+randominteger = time.getSeconds()
+
+if (document.input1.textfield.value == "") { 
+alert("You dummy! You didn't enter anything into the Crystal Ball!!!")
+return
+}
+
+if (randominteger <= 3) answer="Did you really think so? Hahaha, I'm laughing now at your pitiful chances."
+if ((randominteger >= 4) && (randominteger <= 6)) answer ="Yeah, it it's got a 65% chance of happening."
+if ((randominteger >= 7) && (randominteger <= 9)) answer ="Oh come on! No way!"
+if ((randominteger >= 10) && (randominteger <= 12)) answer ="As sure as I'm made of glass, this is likely to happen."
+if ((randominteger >= 13) && (randominteger <= 15)) answer ="Why are you asking A CRYSTAL BALL? Do you really believe the answers?"
+if ((randominteger >= 16) && (randominteger <= 18)) answer ="Give me a break, give me a break, break me off a piece of that NO!"
+if ((randominteger >= 19) && (randominteger <= 21)) answer ="Good chances lie on the horizon."
+if ((randominteger >= 22) && (randominteger <= 24)) answer ="Ask me again, I am restless and overworked."
+if ((randominteger >= 25) && (randominteger <= 27)) answer ="Do you know how the Crystal Ball works? There's your answer."
+if ((randominteger >= 28) && (randominteger <= 30)) answer ="As the sun is hot, your answer is YES."
+if ((randominteger >= 31) && (randominteger <= 33)) answer ="Did you get drunk last weekend? There's your answer."
+if ((randominteger >= 34) && (randominteger <= 36)) answer ="Forget about it"
+if ((randominteger >= 37) && (randominteger <= 39)) answer ="Yeah, it could happen. 80% chance."
+if ((randominteger >= 40) && (randominteger <= 42)) answer ="Hitler has a better chance of raising from the dead."
+if ((randominteger >= 43) && (randominteger <= 45)) answer ="If you really think so, then it shall be."
+if ((randominteger >= 46) && (randominteger <= 48)) answer ="Who said ambiguous answers were bad? Not me, so YES!"
+if ((randominteger >= 49) && (randominteger <= 51)) answer ="You think I'm going to answer that after a day of hard work? Ask again later."
+if ((randominteger >= 52) && (randominteger <= 54)) answer ="If you own a pet, yes. Otherwise, no."
+if ((randominteger >= 55) && (randominteger <= 57)) answer ="The sun will rise in the east and set in the west. Thank you Captain Obvious. YES!"
+if ((randominteger >= 58) && (randominteger <= 60)) answer ="I'm laughing hard, very hard. You'd better ask again."
+
+var newWindow = window.open("","Results","width=300,height=300")
+newWindow.document.write("<html><body bgcolor='#000000' text='#FFFFCC' link='#00FFFF' alink='#000066' vlink='#6666FF'>")
+newWindow.document.write("<P align='center'><font size='4' color='#FFFF00'>Your Question:</P><P></P><font size='3' color='#FFFFCC'>")
+newWindow.document.write("<P align='center'>" + document.input1.textfield.value + "</P>")
+newWindow.document.write("<P></P><P></P><P></P><P align='center'><font size='4' color='#FFFF00'>The Great Crystal Ball Has Answered:</P><P></P>")
+newWindow.document.write("<font size='3' color='#FFFFCC'>")
+newWindow.document.write("<P align='center'>" + answer + "</P>")
+newWindow.document.write("<P></P><P></P><P align='center'><A HREF='javascript:window.close()'>Close Me</A></P>")
+}
+
+</script>
+</font>
+</td>
+  </tr>
+</table>
+
+<p align="center"><font face="arial" size="-2">This free script provided by</font><br>
+<font face="arial, helvetica" size="-2"><a href="http://javascriptkit.com">JavaScript
+Kit</a></font></p>
+</BODY>
+</HTML>

@@ -1,4 +1,4 @@
-//Games List - Do not delete any lines beginning with // 
+//Games List - Do not delete any lines beginning with //
 //to add a game to the list: on a new line in the list section, add Game("Game name",1,"Game URL",Icon URL,1);
 //for more detailed instructions, visit http://pspwxp.co.nr/
 
@@ -40,7 +40,7 @@ Game("Minesweeper",1,"games/minesweeper.swf","images/icons/menu/games/minesweepe
 Game("Package",1,"games/package.swf","images/icons/menu/games/package.png",1);
 Game("Poker",1,"games/poker.swf","images/icons/menu/games/poker.png",1);
 Game("Pong!",1,"games/pong/index.htm","images/icons/menu/games/pong.png",0);
-Game("Portaball",1,"games/portaball.swf","images/icons/menu/games/breakout.png",0);
+Game("Portaball",1,"games/portaball.swf","images/icons/menu/games/breakout.png",1);
 Game("Question?",1,"games/mindread/index.htm","images/icons/menu/games/mind2.PNG",0);
 Game("Reflex Test",1,"games/reflex/index.htm","images/icons/menu/games/reflex.png",0);
 Game("Reversi",1,"games/reversi.swf","images/icons/menu/games/reversi.png",1);

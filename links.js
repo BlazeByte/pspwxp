@@ -3,7 +3,7 @@ var strlight;
 var strFunction;
 var intColumn;
 var openedLink;
-var linksTop 
+var linksTop;
 
 if(strLinks.length>13){
 	intColumn=Math.ceil((strLinks.length-1)/2);
@@ -34,12 +34,12 @@ for (i=0;i<strLinks.length;i++){
 	}
 	document.write("<tr class=");
 	document.write(strlight);
-	
+
 	if (strLinkNewWindow[i]==1){
-		document.write(" onClick='")
-		document.write('window.open("'+intLinksPath[i]+'");hideMenu();'+"'")
+		document.write(" onClick='");
+		document.write('window.open("'+intLinksPath[i]+'");hideMenu();'+"'");
 	}else{
-		document.write(" onClick='openInBrowser(" +'"' +intLinksPath[i]+'");'+"'")
+		document.write(" onClick='openInBrowser(" +'"' +intLinksPath[i]+'");'+"'");
 	}
 	document.write("><td width='22'><img src='");
 	document.write(strLinksIconPath[i]);

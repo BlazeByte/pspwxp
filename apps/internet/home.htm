@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<script language="javascript" type="text/javascript">
+	function ConnectI(){
+		if(parent.parent.openedLink==""||parent.parent.openedLink==null||parent.parent.openedLink=="undefined"){
+			document.location.href=parent.strHome;
+		}else{
+			document.location.href=parent.parent.openedLink;
+			parent.parent.openedLink=null
+		}
+	}
+</script>
+</head>
+
+<body>
+<table width="300" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" id="tblWindow3">
+      <tr valign="bottom">
+        <td width="4" height="20"><img src="../../images/window/title_l_border.gif" width="4" height="20" /></td>
+        <td height="20" valign="middle" background="../../images/window/title_border.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="22" height="20"><img src="../../images/icons/menu/apps/ie.png" id="winicon3" width="20" height="20" /></td>
+              <td valign="middle"><strong><font class="window_font" size="2"><span class="s2" id="aT3">&nbsp;Internet Connection </span></font></strong></td>
+            </tr>
+        </table></td>
+        <td width="4" height="20"><img src="../../images/window/title_r_border.gif" width="4" height="20" /></td>
+      </tr>
+      <tr>
+        <td width="4" rowspan="2" background="../../images/window/vert_border.gif"></td>
+        <td align="center" bgcolor="#EBE9ED"><p>Internet requires an internet connection.</p>
+          <p>
+            <input type="button" name="Button" value="Connect" onclick="ConnectI();" />
+            <input type="button" name="Button2" value="Stay Offline" onclick="document.location.href='offline.htm'";">
+            <br>
+          </p></td>
+        <td width="4" rowspan="2" background="../../images/window/vert_border.gif"></td>
+      </tr>
+      <tr>
+        <td height="10" align="center" bgcolor="#EBE9ED">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="4"><img src="../../images/window/base_l_border.gif" width="4" height="4" /></td>
+        <td height="4"><img src="../../images/window/horiz_border.gif" width="100%" height="4" /></td>
+        <td height="4"><img src="../../images/window/base_r_border.gif" width="4" height="4" /></td>
+      </tr>
+    </table>    
+    <p><br>
+    </p></td>
+  </tr>
+</table>
+</body>
+</html>

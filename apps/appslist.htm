@@ -38,7 +38,7 @@ for (i=0;i<strApps.length;i++){
 		strlight= "'istart_dark'"
 	}
 	
-	strFunction='window.parent.setTitle("' + intAppsMinMax[i] + '","' + strApps[i] + '","' + intAppsPath[i] + '","../' + strAppsIconPath[i] + '",0)';
+	strFunction='top.setTitle("' + intAppsMinMax[i] + '","' + strApps[i] + '","../' + intAppsPath[i] + '","' + strAppsIconPath[i] + '",0)';
 	document.write("<tr class=");
 	document.write(strlight);
 	document.write("' onClick='");

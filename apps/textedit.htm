@@ -1,50 +1,263 @@
-<script type="text/javascript">
-	function cookieSave(name, text) {
-		document.cookie = name + "=" + escape(text);
+<html><head><script type="text/javascript">
+var SaveT = "";
+function SaveB(){
+	if(SaveT==""){
+		frames['lySave'].style.visibility='visible';
+		frames['lyText'].style.visibility='hidden';
+	}else{
+		SaveT.value=document.getElementById('editArea').value;
 	}
+}
 
-	function cookieLoad(name) {
-		var search = name + "=";
-		if (document.cookie.length > 0) {
-			offset = document.cookie.indexOf(search);
-			if (offset != -1) {
-				offset += search.length;
-				end = document.cookie.indexOf(";", offset);
-				if (end == -1) {
-					end = document.cookie.length;
-				}
-				return unescape(document.cookie.substring(offset, end));
-			}
+function NewDoc(){
+	if(confirm("Are you sure?")){
+		SaveT="";
+		document.getElementById('editArea').value="";
+	}
+}
+
+function SaveText() {
+	if(SaveT.value==""){
+		SaveOK();
+	}else{
+		if(confirm("There is already a document saved as this name. Do you wish to overwrite it?")){
+			SaveOK();
 		}
 	}
-</script>
-<script language="JavaScript" type="text/JavaScript">
-<!--
-function MM_popupMsg(msg) { //v1.0
-  alert(msg);
 }
-//-->
-</script><body bgcolor="#EBE9ED">
 
-
-
-
-<form id="editForm">
-  <div align="center">
-    <input name="Load" type="submit" id="Load" onClick="MM_popupMsg('Currently unavailable.')" value="Load">
-    <input name="Save" type="submit" id="Save" onClick="MM_popupMsg('Currently unavailable.')" value="Save">
-    <br>
-    <textarea id="editArea" style="width:100%;height:140px;border:1px solid #999;" onChange="cookieSave('editArea',this.value)"></textarea>
-  </div>
-  </form>
-
-<p>
-  <script type="text/javascript">
-	document.getElementById('editArea').value=cookieLoad('editArea');
-	if (document.getElementById('editArea').value="undefined" ){
-		document.getElementById('editArea').value=""
+function SaveOK(){
+	frames['lySave'].style.visibility='hidden';
+	frames['lyText'].style.visibility='visible';
+	switch(SaveT){
+		case "1":
+			document.icookie.document.editform.save1.value=document.getElementById('editArea').value;
+		case "2":
+			document.icookie.document.editform.save2.value=document.getElementById('editArea').value;
+		case "3":
+			document.icookie.document.editform.save3.value=document.getElementById('editArea').value;
+		case "4":
+			document.icookie.document.editform.save4.value=document.getElementById('editArea').value;
+		case "5":
+			document.icookie.document.editform.save5.value=document.getElementById('editArea').value;
+		case "6":
+			document.icookie.document.editform.save6.value=document.getElementById('editArea').value;
+		case "7":
+			document.icookie.document.editform.save7.value=document.getElementById('editArea').value;
+		case "8":
+			document.icookie.document.editform.save8.value=document.getElementById('editArea').value;
+		case "9":
+			document.icookie.document.editform.save9.value=document.getElementById('editArea').value;
+		case "10":
+			document.icookie.document.editform.save10.value=document.getElementById('editArea').value;
 	}
+	SaveT.value=document.getElementById('editArea').value;
+//	frames['icookie'].document.editForm.submit();
+}
+
+function OpenText() {
+	SaveT=frames['icookie'].document.getElementById("save"+OpenT);
+	document.getElementById('editArea').value=SaveT.value;
+	frames['lyOpen'].style.visibility='hidden';
+	frames['lyText'].style.visibility='visible';
+}
+
+function resetSelection(){
+	for(i=1;i<11;i++){
+		document.getElementById('savea'+i).style.background="";
+	}
+}
+
+function resetOSelection(){
+	for(i=1;i<11;i++){
+		document.getElementById('opena'+i).style.background="";
+	}
+}
+
 </script>
-</p>
-<p>The text editor is currently in development, so there is no save/load function. 
-</p>
+
+<style type="text/css">
+<!--
+body {
+	background-color: #949AAD;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style></head><body>
+
+<div id="lyOpen" style="position:absolute; left:0; top:0; width:100%; height:100%; z-index:9; visibility: hidden;">
+  <table width="100%%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="50%">&nbsp;</td>
+      <td><table width="308" border="0" cellpadding="0" cellspacing="0" bgcolor="#D6D3CE" id="tblWindow3">
+        <tr valign="bottom">
+          <td width="4" height="20"><img src="../images/window/title_l_border.gif" width="4" height="20" /></td>
+          <td height="20" valign="middle" background="../images/window/title_border.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="22" height="20"><img src="../images/icons/menu/apps/texteditor.png" name="winicon3" width="20" height="20" id="winicon3" /></td>
+                <td valign="middle"><strong><font class="window_font" size="2"><span class="s2" id="aT3">&nbsp;Open...</span></font></strong></td>
+              </tr>
+          </table></td>
+          <td width="4" height="20"><img src="../images/window/title_r_border.gif" width="4" height="20" /></td>
+        </tr>
+        <tr>
+          <td width="4" rowspan="2" background="../images/window/vert_border.gif"></td>
+          <td align="center"><table width="300" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="4" rowspan="2">&nbsp;</td>
+                <td valign="top"><strong>Open Existing document:</strong></td>
+                <td width="75" rowspan="2" align="right" valign="bottom"><p>
+                    <input name="openfile" type="button" id="openfile" value="Open" onClick="OpenText();" style="width:75">
+                    <input name="Cancel2" type="button" id="Cancel2" value="Cancel" onClick="frames['lyOpen'].style.visibility='hidden';frames['lyText'].style.visibility='visible';" style="width:75">
+                </p></td>
+              </tr>
+              <tr>
+                <td valign="top"><table width="100%%" border="1" cellpadding="0" cellspacing="0" bordercolor="#333333" bgcolor="#FFFFFF">
+                  <tr>
+                    <td width="102" bordercolor="#FFFFFF"><a href="#" id="opena1" onclick="resetOSelection();this.style.background='blue';OpenT='1';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0" />Document 1</a> </td>
+                    <td width="110" bordercolor="#FFFFFF"><a href="#" id="opena2" onclick="resetOSelection();this.style.background='blue';OpenT='2';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0" />Document 6</a> </td>
+                  </tr>
+                  <tr>
+                    <td width="110" bordercolor="#FFFFFF"><a href="#" id="opena3" onclick="resetOSelection();this.style.background='blue';OpenT='3';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0" />Document 2 </a></td>
+                    <td width="110" bordercolor="#FFFFFF"><a href="#" id="opena4" onclick="resetOSelection();this.style.background='blue';OpenT='4';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0" />Document 7</a> </td>
+                  </tr>
+                  <tr>
+                    <td width="110" bordercolor="#FFFFFF"><a href="#" id="opena5" onclick="resetOSelection();this.style.background='blue';OpenT='5';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0" />Document 3</a> </td>
+                    <td width="110" bordercolor="#FFFFFF"><a href="#" id="opena6" onclick="resetOSelection();this.style.background='blue';OpenT='6';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0" />Document 8</a> </td>
+                  </tr>
+                  <tr>
+                    <td width="110" bordercolor="#FFFFFF"><a href="#" id="opena7" onclick="resetOSelection();this.style.background='blue';OpenT='7';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0" />Document 4 </a></td>
+                    <td width="110" bordercolor="#FFFFFF"><a href="#" id="opena8" onclick="resetOSelection();this.style.background='blue';OpenT='8';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0" />Document 9 </a></td>
+                  </tr>
+                  <tr>
+                    <td width="110" bordercolor="#FFFFFF"><a href="#" id="opena9" onclick="resetOSelection();this.style.background='blue';OpenT='9';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0" />Document 5 </a></td>
+                    <td width="110" bordercolor="#FFFFFF"><a href="#" id="opena10" onclick="resetOSelection();this.style.background='blue';OpenT='10';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0" />Document 10</a> </td>
+                  </tr>
+                </table></td>
+              </tr>
+          </table></td>
+          <td width="4" rowspan="2" background="../images/window/vert_border.gif"></td>
+        </tr>
+        <tr>
+          <td height="10" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="4"><img src="../images/window/base_l_border.gif" width="4" height="4" /></td>
+          <td height="4"><img src="../images/window/horiz_border.gif" width="100%" height="4" /></td>
+          <td height="4"><img src="../images/window/base_r_border.gif" width="4" height="4" /></td>
+        </tr>
+      </table></td>
+      <td width="50%">&nbsp;</td>
+    </tr>
+  </table>
+</div>
+
+<div id="lySave" style="position:absolute; left:0; top:0; width:100%; height:100%; z-index:10; visibility: hidden;">
+  <table width="100%%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="50%">&nbsp;</td>
+      <td><table width="308" border="0" cellpadding="0" cellspacing="0" bgcolor="#D6D3CE" id="tblWindow3">
+          <tr valign="bottom">
+            <td width="4" height="20"><img src="../images/window/title_l_border.gif" width="4" height="20" /></td>
+            <td height="20" valign="middle" background="../images/window/title_border.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="22" height="20"><img src="../images/icons/menu/apps/texteditor.png" name="winicon3" width="20" height="20" id="winicon3" /></td>
+                  <td valign="middle"><strong><font class="window_font" size="2">Save As... <span class="s2" id="aT3"></span></font></strong></td>
+                </tr>
+            </table></td>
+            <td width="4" height="20"><img src="../images/window/title_r_border.gif" width="4" height="20" /></td>
+          </tr>
+          <tr>
+            <td width="4" rowspan="2" background="../images/window/vert_border.gif"></td>
+            <td align="center"><table width="300" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="4" rowspan="2">&nbsp;</td>
+                  <td width="225" valign="top"><strong>Save document as:</strong></td>
+                  <td width="75" rowspan="2" valign="bottom"><p>
+                    <input name="SaveAs2" type="button" id="SaveAs2" value="Save" onClick="SaveText();" style="width:75">
+                    <input name="Cancel3" type="button" id="Cancel3" value="Cancel" onClick="frames['lyText'].style.visibility='visible';frames['lySave'].style.visibility='hidden';" style="width:75">
+                  </p></td>
+                </tr>
+                <tr>
+                  <td valign="top"><table width="100%%" border="1" cellpadding="0" cellspacing="0" bordercolor="#333333" bgcolor="#FFFFFF">
+                    <tr>
+                      <td width="102" bordercolor="#FFFFFF"><a href="#" id="savea1" onClick="resetSelection();this.style.background='blue';SaveT='1';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0">Document 1</a> </td>
+                      <td width="110" bordercolor="#FFFFFF"><a href="#" id="savea2" onClick="resetSelection();this.style.background='blue';SaveT='2';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0">Document 6</a> </td>
+                    </tr>
+                    <tr>
+                      <td width="110" bordercolor="#FFFFFF"><a href="#" id="savea3" onClick="resetSelection();this.style.background='blue';SaveT='3';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0">Document 2 </a></td>
+                      <td width="110" bordercolor="#FFFFFF"><a href="#" id="savea4" onClick="resetSelection();this.style.background='blue';SaveT='4';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0">Document 7</a> </td>
+                    </tr>
+                    <tr>
+                      <td width="110" bordercolor="#FFFFFF"><a href="#" id="savea5" onClick="resetSelection();this.style.background='blue';SaveT='5';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0">Document 3</a> </td>
+                      <td width="110" bordercolor="#FFFFFF"><a href="#" id="savea6" onClick="resetSelection();this.style.background='blue';SaveT='6';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0">Document 8</a> </td>
+                    </tr>
+                    <tr>
+                      <td width="110" bordercolor="#FFFFFF"><a href="#" id="savea7" onClick="resetSelection();this.style.background='blue';SaveT='7';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0">Document 4 </a></td>
+                      <td width="110" bordercolor="#FFFFFF"><a href="#" id="savea8" onClick="resetSelection();this.style.background='blue';SaveT='8';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0">Document 9 </a></td>
+                    </tr>
+                    <tr>
+                      <td width="110" bordercolor="#FFFFFF"><a href="#" id="savea9" onClick="resetSelection();this.style.background='blue';SaveT='9';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0">Document 5 </a></td>
+                      <td width="110" bordercolor="#FFFFFF"><a href="#" id="savea10" onClick="resetSelection();this.style.background='blue';SaveT='10';"><img src="../images/icons/menu/apps/texteditor.png" width="20" height="20" border="0">Document 10</a> </td>
+                    </tr>
+                  </table></td>
+                </tr>
+            </table></td>
+            <td width="4" rowspan="2" background="../images/window/vert_border.gif"></td>
+          </tr>
+          <tr>
+            <td height="10" align="center">&nbsp;</td>
+          </tr>
+          <tr>
+            <td height="4"><img src="../images/window/base_l_border.gif" width="4" height="4" /></td>
+            <td height="4"><img src="../images/window/horiz_border.gif" width="100%" height="4" /></td>
+            <td height="4"><img src="../images/window/base_r_border.gif" width="4" height="4" /></td>
+          </tr>
+      </table></td>
+      <td width="50%">&nbsp;</td>
+    </tr>
+  </table>
+</div>
+  <table width="100%%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td height="29" background="../images/office/toolbartext.gif"><p><img src="../images/office/texttoolbar.gif" width="442" height="29" border="0" usemap="#Map"></p>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center"><p>
+	  <div id="lyText" style="visibility: visible;">
+        <textarea name="textarea" wrap="physical" id="editArea" style="width:75%;height:140px;border:1px solid #999;"></textarea>
+        <iframe name="icookie" src="textcookie.htm"></iframe>
+	  </div>
+      </p>
+	  <div align="center"></div></td>
+    </tr>
+  </table>
+<map name="Map">
+<area shape="rect" coords="0,0,23,29" href="#" onClick="NewDoc()">
+<area shape="rect" coords="23,0,46,29" href="#" onClick="frames['lyOpen'].style.visibility='visible';frames['lyText'].style.visibility='hidden';">
+<area shape="rect" coords="46,0,69,29" href="#" onClick="SaveB()"><area shape="rect" coords="73,0,109,29" href="#" onClick="frames['lySave'].style.visibility='visible';frames['lyText'].style.visibility='hidden';"><area shape="rect" coords="113,0,153,29" href="#"><area shape="rect" coords="217,0,240,29" href="#">
+<area shape="rect" coords="240,0,263,29" href="#">
+<area shape="rect" coords="263,0,286,29" href="#">
+<area shape="rect" coords="293,0,316,29" href="#">
+<area shape="rect" coords="316,0,339,29" href="#">
+<area shape="rect" coords="339,0,362,29" href="#">
+<area shape="rect" coords="362,0,385,29" href="#">
+<area shape="rect" coords="391,0,436,29" href="#" onClick="NewDoc()">
+</map></body></html>

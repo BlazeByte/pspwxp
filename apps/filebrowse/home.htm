@@ -3,40 +3,30 @@
 <head>
 <title>My PSP</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<style type="text/css">
-<!--
-input.hide {
-	position:absolute;
-	left:-63px;
-  -moz-opacity:0;
-  filter:alpha(opacity: 0);
-	opacity: 0;
-	z-index: 2;
-	top: 40px;
-	height: 42px;
-}
-input.hide1 {	position:absolute;
-	left:-53px;
-  -moz-opacity:0;
-  filter:alpha(opacity: 0);
-	opacity: 0;
-	z-index: 2;
-	top: 291px;
-	height: 42px;
-}
--->
-</style>
 </head>
 
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <img src="../../images/mypsp.gif" width="351" height="345" border="0" usemap="#Map"> 
     <map name="Map">
+      <area shape="rect" coords="8,32,170,88" href="#mydocs">
       <area shape="rect" coords="226,127,388,183" href="..\gameslist.htm">
       <area shape="rect" coords="8,128,170,184" href="..\appslist.htm">
       <area shape="rect" coords="8,186,170,242" href="..\controlpanel\index.htm">
+      <area shape="rect" coords="7,285,169,341" href="#mydocs">
     </map>
 </p>
-<input name="file" type="file" class="hide" id="mydocs">
-<input name="file2" type="file" class="hide1" id="mypsp">
+<p><a name="mydocs"></a></p>
+<p>Please press select and browse for a file then click open. </p>
+<p>  
+  <input type="file"id="pspfile">
+</p>
+<p>
+  <label>
+  <input type="submit" name="Submit" value="Open">
+  </label>
+</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="http://pspwxp.co.nr/">http://pspwxp.co.nr/</a></p>
 </body>
 </html>
