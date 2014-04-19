@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+
+<!-- Mirrored from home.comcast.net/~sheppoor/minesweeper/highscores/minewin.html by HTTrack Website Copier/3.x [XR&CO'2005], Sun, 24 Jul 2005 00:02:28 GMT -->
+<head>
+   <title>You Won JavaScript MineSweeper!</title>
+   <meta name="Author" content="Shep Poor">
+   <meta name="Description" content="Congratulations, you win!">
+
+
+<script language="JavaScript">
+<!--
+
+function SymError()
+{
+  return true;
+}
+
+window.onerror = SymError;
+
+var SymRealWinOpen = window.open;
+
+function SymWinOpen(url, name, attributes)
+{
+  return (new Object());
+}
+
+window.open = SymWinOpen;
+
+//-->
+</script>
+
+<script type="text/javascript" src="../minecookie.js"></script>
+<script type="text/javascript">
+<!--
+
+   // Read the 4 vars as cookies
+   maxX=parseInt(getCookie("maxX"),10);  // Cells wide (0..n-1)
+   maxY=parseInt(getCookie("maxY"),10);  // Cells high (0..n-1)
+   maxNumBombs = parseInt(getCookie("maxNumBombs"),10); // Number bombs
+   useQuestionMarks = ! (getCookie("useQuestionMarks") == 'false');
+   useMacroOpen = ! (getCookie("useMacroOpen") == 'false');
+   useFirstClickUseful = ! (getCookie("useFirstClickUseful") == 'false');
+   displayTime = ! (getCookie("displayTime") == 'false');
+   openRemaining = (getCookie("openRemaining") == 'true');
+   openRemainingUsed = (getCookie("openRemainingUsed") == 'true');
+   allowCheating = (getCookie("allowCheating") == 'true');
+   learningMode = (getCookie("learningMode") == 'true');
+   gameTime = parseInt(getCookie("gameTime"),10);
+   numMoves = parseInt(getCookie("numMoves"),10);
+   if (gameTime > 999)
+      gameTime = 999;
+   gameFormat = getCookie("gameFormat");
+   referrer = getCookie("referrer");
+   newRecord = false;  // Use to decide if "submit" button is used
+   highTime = parseInt(getCookie(gameFormat),10);
+   if ((gameTime < highTime) || (isNaN(highTime))) {
+      newRecord = true;
+      highTime = gameTime;
+      setCookie(gameFormat,highTime); }
+-->
+</script>
+</head>
+<body text="#000080" bgcolor="#FFC040" link="#0000FF" vlink="#008000" alink="#00FFFF">
+
+<center><p><font size=+4>YOU WIN!<br />
+</font>Congratulations on Winning JavaScript MineSweeper!</p></center>
+
+<form name="WinForm" method="post" action="http://www.dataexperts.com/sendform.asp">
+	<input type="hidden" name="redirect" value="http://home.comcast.net/~sheppoor/minesweeper/highscores/close.html">
+	<input type="hidden" name="subject" value="Minesweeper Winner">
+
+<center><p><script language="JavaScript1.1">
+   document.write("<p><font size=+2>Game time: "+gameTime+"<br /></font>");
+   if (gameFormat == "Custom")
+      document.write("Your game parameters were: "+(maxX+1)+"x"+(maxY+1)+" with "+maxNumBombs+" bombs.<BR>"); 
+   else 
+      document.write("Your best "+gameFormat+" time is: "+highTime+"<br />");
+   document.write("Number of Clicks: "+numMoves+"</p>");
+   document.write('<input type="hidden" name="gameFormat" value="'+gameFormat+'">');
+   if (gameFormat == "Custom")
+      document.write('<input type="hidden" name="gameParams" value="'+(maxX+1)+','+(maxY+1)+','+maxNumBombs+'">');
+   document.write('<input type="hidden" name="gameTime" value="'+gameTime+'">');
+   document.write('<input type="hidden" name="useQuestionMarks" value="'+useQuestionMarks+'">');
+   document.write('<input type="hidden" name="useMacroOpen" value="'+useMacroOpen+'">');
+   document.write('<input type="hidden" name="useFirstClickUseful" value="'+useFirstClickUseful+'">');
+   document.write('<input type="hidden" name="openRemaining" value="'+openRemaining+'">');
+   document.write('<input type="hidden" name="displayTime" value="'+displayTime+'">');
+   document.write('<input type="hidden" name="numMoves" value="'+numMoves+'">');
+   document.write('<input type="hidden" name="openRemainingUsed" value="'+openRemainingUsed+'">');
+   document.write('<input type="hidden" name="allowCheating" value="'+allowCheating+'">');
+   document.write('<input type="hidden" name="learningMode" value="'+learningMode+'">');
+   document.write('<input type="hidden" name="referrer" value="'+referrer+'">');
+</script>
+</p>
+
+
+<script type="text/javascript">
+<!--
+   if ((newRecord == true) && (gameFormat != "Custom")) {
+      document.write('<p>Winner&quot;s Circle Name (initials, tag, name or email)<br /><input type="text" name="tag" size="46"></p>');
+      document.write('<p>Comments: What do you think?<br /><textarea name="comments" rows="3" cols="35"></textarea></p>');
+      document.write('<p><input type="submit" value="Submit Score" name="submitButton"><input type="button" Name="dontSubmitButton" value="Do Not Submit" onClick="window.close();"></p>'); }
+   else
+      document.write('<p><input type="button" name="closeButton" value="Close" onClick="window.close();"></p>');
+-->
+</script>
+</center>
+
+</form>
+
+</body>
+
+<!-- Mirrored from home.comcast.net/~sheppoor/minesweeper/highscores/minewin.html by HTTrack Website Copier/3.x [XR&CO'2005], Sun, 24 Jul 2005 00:02:28 GMT -->
+</html>
+
+<script language="JavaScript">
+<!--
+var SymRealOnLoad;
+var SymRealOnUnload;
+
+function SymOnUnload()
+{
+  window.open = SymWinOpen;
+  if(SymRealOnUnload != null)
+     SymRealOnUnload();
+}
+
+function SymOnLoad()
+{
+  if(SymRealOnLoad != null)
+     SymRealOnLoad();
+  window.open = SymRealWinOpen;
+  SymRealOnUnload = window.onunload;
+  window.onunload = SymOnUnload;
+}
+
+SymRealOnLoad = window.onload;
+window.onload = SymOnLoad;
+
+//-->
+</script>
+

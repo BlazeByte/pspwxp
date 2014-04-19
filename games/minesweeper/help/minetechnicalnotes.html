@@ -1,0 +1,125 @@
+<html>
+
+
+<!-- Mirrored from home.comcast.net/~sheppoor/minesweeper/help/minetechnicalnotes.html by HTTrack Website Copier/3.x [XR&CO'2005], Sun, 24 Jul 2005 00:02:32 GMT -->
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta http-equiv="Copyright" content="1997 D. Shep Poor">
+<meta name="Author" content="Shep Poor">
+<title>JavaScript MineSweeper Technical Notes</title>
+</head>
+
+<body>
+
+<p align="center"><font size="6">Technical Notes</font>
+</p>
+
+<p><a name="bugs"></a><font size="4"><b>Difficulties &amp; Known
+Bugs:</b></font> </p>
+
+<ul>
+    <li>Pressing TAB will crash older versions of Netscape. I don't know why. Just don't do it.</li>
+    <li>In Internet Explorer 5.0 through at least 6.0, the OnMouseOver event forces the window to take
+        the focus from any other browser window.</li>
+    <li>Opera 7.x ignores the no scroll bars directive, and the status line seen during loading causes the
+        game window to have a left-right scroll bar. 
+        The horizontal scroll bar causes a vertical scroll bar, which in turn makes
+        the board wrap. On the plus side (sort of), Opera also ignores the 
+        non-resizable directives, so the user can adjust the screen size accordingly.</li>
+    <li>In Opera 7.x, the right mouse button doesn't work. The user must use
+        the space bar instead.</li>
+    <li>I'm sure there are more bugs. Tell me about yours, and
+        I'll see what I can do.</li>
+</ul>
+
+
+<p><font size="4"><b>Differences from the Microsoft Version:</b></font> </p>
+
+<ul>
+    <li>To use the &quot;Area Open&quot; option click on
+        an exposed square with the correct number of bomb
+        neighbors marked. <font size="2">(much easier than left 
+        and right clicking at the same time or double clicking).</font></li>
+    <li>Did you know the MS version has an error with the clock?
+        First of all, it jumps to 1 second immediately when you
+        open the first square. Then it makes the first second tic
+        based on the true clock, as opposed using the real-time
+        original click as the baseline. In other words, you
+        always have from 1 to 2 seconds added to your score! (<font
+        size="2">Needless to say, my version doesn't do this.)</font></li>
+    <li>The maximum number of bombs in a custom game is limited
+        to 1/3 the total number of squares. <font size="2">(Any
+        more than 1/3 bombs is unplayable anyway - but the real
+        reason I did this has to do with the way I randomly place
+        bombs in the program.)</font></li>
+    <li>There is no way to pause or stop the clock. 
+        <font size="2">(However, you can switch to counting clicks.)</font></li>
+</ul>
+
+
+<p><font size="4"><b>Enhancement in My Version:</b></font> </p>
+
+<ul>
+    <li><b>Opening Move option</b> - Not only will the first square never
+        be a bomb, but neither will any of the neighbors. This
+        goes a long way to leveling the playing field of random
+        chance in the first few seconds, making Minesweeper more
+        of a skill game. <font size="2">(It is statistically
+        possible to
+        have evenly spaced bombs and no 0-neighbor squares,
+        although it is extremely unlikely, and not much fun to play.)</font></li>
+    <li><b>Open Remaining option</b> - Many people play to find the bombs,
+        as opposed to opening all the safe squares. This option allows those players
+        to open all remaining squares all at once.
+        <font size="2">(This feature won't apeal to the world record
+        Minesweeper players, but makes the game more fun for the casual 
+        players).</font></li>
+    <li><b>Learning Mode</b> - I threw in this capability because I had the
+        images anyway for my JavaScript Minesweeper Solver 
+        <font size="2">(which I'm still working on.)</font></li>
+    <li><b>Cheating</b> - Cheating games do not count towards high
+        scores and cannot be submitted.</li>
+    <li><b>Show Clicks</b> - Toggle between showing the time and the number
+        of clicks made in the game.</li>
+</ul>
+
+
+<p><font size="4"><b>Update History:</b></font> </p>
+
+<ul>
+    <li>04/23/97 - Initial release</li>
+    <li>04/27/97 - Removed color mode; sticky cookies</li>
+    <li>04/27/97 - Spacebar for bomb marking</li>
+    <li>04/27/97 - fixed dragging focus control problem</li>
+    <li>05/24/97 - &quot;waiting&quot; yellow face; source download</li>
+    <li>05/26/97 - Better border images; bombs=0 on win</li>
+    <li>06/15/97 - Added HTML separate screen menus</li>
+    <li>07/11/97 - Sweep top-to-bottom; best times page</li>
+    <li>07/11/87 - Gray background (don't rely on default)</li>
+    <li>11/20/97 - Menu updates</li>
+    <li>11/27/97 - New intro; Select board size from menu</li>
+    <li>02/26/98 - Made help links work better</li>
+    <li>11/14/99 - MS IE as primary supported platform</li>
+    <li>03/03/00 - Better IE support; hide focus check box</li>
+    <li>10/07/00 - Converted menus to DHTML</li>
+    <li>10/15/00 - Better cookies, menu control</li>
+    <li>02/17/02 - Cosmetic updates, no code changes</li>
+    <li>03/01/02 - Right-click revisited, links</li>
+    <li>03/08/02 - Support IE6.0 and Netscape 6.2</li>
+    <li>03/14/02 - Options menu, more options</li>
+    <li>03/17/02 - Ignore drags, menu control</li>
+    <li>03/24/02 - Learning mode, some cheating mode</li>
+    <li>10/??/02 - Added the "oh" yellow face</li>
+    <li>02/07/03 - Resizable screen, better menus</li>
+    <li>07/12/03 - Some speed improvements</li>
+</ul>
+
+<form name="CloseForm" Method="post" action="http://home.comcast.net/~sheppoor/minesweeper/help/Dummy%20Action">
+<center><p><input type="button" name="dontSubmitButton" value="Close" onClick="window.close();"></p></center>
+</form>
+
+</body>
+
+<!-- Mirrored from home.comcast.net/~sheppoor/minesweeper/help/minetechnicalnotes.html by HTTrack Website Copier/3.x [XR&CO'2005], Sun, 24 Jul 2005 00:02:32 GMT -->
+</html>

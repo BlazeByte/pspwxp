@@ -1,0 +1,560 @@
+<html>
+<head>
+<title>Blazebyte PSPXP</title>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+
+function MM_changeProp(objName,x,theProp,theValue) { //v6.0
+  var obj = MM_findObj(objName);
+  if (obj && (theProp.indexOf("style.")==-1 || obj.style)){
+    if (theValue == true || theValue == false)
+      eval("obj."+theProp+"="+theValue);
+    else eval("obj."+theProp+"='"+theValue+"'");
+  }
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function winMax() {
+	var oframe = document.all("winframe");
+	oframe.style.width = "480";
+	oframe.style.height = "270";
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+.style1 {font-size: 9px}
+.style2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #FFFFFF;
+}
+-->
+</style>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+</head>
+<body style="margin: 0; padding: 0;" onLoad="StartClock()" onUnload="KillClock()">
+<div id="StartInfo" style="position:absolute; left:140px; top:81px; width:200px; height:20px; z-index:1; visibility: hidden;"> 
+  <table width="100%" height="100" border="0" cellpadding="0" cellspacing="0">
+    <tr valign="bottom"> 
+      <td width="4" height="13"><img src="pictures/main/window/title_l_border.gif" width="4" height="13"></td>
+      <td height="13" background="pictures/main/window/title_border.gif"><font color="#FFFFFF" size="1"><strong>Information</strong></font></td>
+      <td width="4" height="13"><img src="pictures/main/window/title_r_border.gif" width="4" height="13"></td>
+    </tr>
+    <tr> 
+      <td width="4" height="83"><img src="pictures/main/window/vert_border.gif" width="4" height="83"></td>
+      <td width="192" height="83" bgcolor="#EBE9ED"> <p align="center"><font size="2">Press 
+          Circle to remove the nav-bar. Use the analog stick to control the cursor.<br>
+          </font> 
+          <input name="Button" type="button" onClick="MM_showHideLayers('StartInfo','','hide')" value="OK">
+        </p></td>
+      <td width="4" height="83"><img src="pictures/main/window/vert_border.gif" width="4" height="83"></td>
+    </tr>
+    <tr> 
+      <td height="4" colspan="3"><img src="pictures/main/window/horiz_border.gif" width="200" height="4"></td>
+    </tr>
+  </table>
+</div>
+<div id="internetShadow" style="position:absolute; left:17px; top:59px; width:57px; height:21px; z-index:0"><font color="#FFFFFF" size="1"><strong>Internet</strong></font></div>
+<div id="readShadow" style="position:absolute; left:91px; top:59px; width:86px; height:21px; z-index:0"><font color="#FFFFFF" size="1"><strong>File 
+  Viewer </strong></font></div>
+<div id="editShadow" style="position:absolute; left:9px; top:137px; width:77px; height:21px; z-index:0"><font color="#FFFFFF" size="1"><strong>Text 
+  Editor </strong></font></div>
+<div id="calcShadow" style="position:absolute; left:93px; top:137px; width:57px; height:21px; z-index:0"><font color="#FFFFFF" size="1"><strong>Calculator</strong></font></div>
+<div id="linksShadow" style="position:absolute; left:106px; top:215px; width:57px; height:21px; z-index:0"><font color="#FFFFFF" size="1"><strong>Links</strong></font></div>
+<div id="vidShadow" style="position:absolute; left:20px; top:215px; width:57px; height:21px; z-index:0"><font color="#FFFFFF" size="1"><strong>Videos</strong></font></div>
+<div id="bgChange" style="position:absolute; left:115px; top:73px; width:237px; height:104px; z-index:29; background-color: #EBE9ED; layer-background-color: #EBE9ED; border: 1px none #000000; visibility: hidden;"> 
+  <p>Change the background image:</p>
+  <p>Click Select to browse (fix): 
+    <input name="bgFile" type="file" id="bgFile" size="20">
+  </p>
+  <p align="center"> 
+    <input name="bgOK" type="button" id="bgOK" onClick="desktop.background='file:/win/pictures/main/desktop.jpg';MM_showHideLayers('bgChange','','hide','window','','hide','winexit','','hide')" value="OK">
+    <input name="bgCancel" type="button" id="bgCancel" onClick="MM_showHideLayers('bgChange','','hide','window','','hide','winexit','','hide')" value="Cancel">
+  </p>
+</div>
+<div id="Clock" style="position:absolute; left:422px; top:254px; width:23px; height:0px; z-index:3; visibility: visible;"><span id=tick2>
+  <input name="theTime" type="text" disabled="true" style="border:0px;Arial; font-size:8px;" size="7" readonly="true">
+  </span></div>
+<table width="480" height="272" border="0" cellpadding="0" cellspacing="0" background="pictures/main/desktop.jpg" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','startoff','','show')" id="desktop">
+  <tr> 
+    <td height="252" colspan="3" valign="top"><table border="0" cellpadding="4" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="34%">
+        <tr> 
+          <td width="50%"> <p align="center"><strong><img src="pictures/desktop/internet.png" width="48" height="48" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','show','window','','show','winexit','','show','winmax','','show','programs','','hide','text','','hide');MM_swapImage('windowsicon','','pictures/menu/links/irc.gif',0);MM_changeProp('windowtitle','','innerText','Internet','SPAN')"></strong></td>
+          <td width="50%"> <p align="center"> <strong><img src="pictures/desktop/textreader.png" width="48" height="48" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','window','','show','winexit','','show','winmax','','show','text','','show');MM_swapImage('windowsicon','','pictures/menu/apps/text.gif',0);MM_changeProp('StartInfo','','style.fontFamily','','DIV')"></strong></td>
+        </tr>
+        <tr> 
+          <td width="50%"> <p align="center"><strong><font face="Verdana" size="1"> 
+              Internet</font></strong></td>
+          <td width="50%"> <p align="center"> <strong><font face="Verdana" size="1">File 
+              Viewer</font></strong></td>
+        </tr>
+        <tr> 
+          <td width="50%"> <p align="center"><strong><img src="pictures/desktop/word.png" width="48" height="48" onClick="frames['winframe'].location.href=&quot;file:/win/apps/access/access.html&quot;;MM_showHideLayers('menu','','hide','mapps','','hide','window','','show','winexit','','show','winmax','','show','programs','','show');MM_swapImage('windowsicon','','pictures/menu/apps/texteditor.gif',0);MM_changeProp('StartInfo','','style.fontFamily','','DIV')"></strong></td>
+          <td width="50%"> <p align="center"><strong> <img src="pictures/desktop/calculator.png" width="48" height="48" onClick="frames['winframe'].location.href=&quot;apps/calc/calculator.html&quot;;MM_showHideLayers('menu','','hide','mapps','','hide','window','','show','winexit','','show','winmax','','show','programs','','show');MM_swapImage('windowsicon','','pictures/menu/apps/calculator.gif',0);MM_changeProp('StartInfo','','style.fontFamily','','DIV')"></strong></td>
+        </tr>
+        <tr> 
+          <td width="50%"> <p align="center"> <strong><font face="Verdana" size="1">Text 
+              Editor</font></strong></td>
+          <td width="50%"> <p align="center"> <strong><font face="Verdana" size="1">Calculator</font></strong></td>
+        </tr>
+        <tr> 
+          <td width="50%"> <p align="center"><strong><a href="http://www.pspdd.com/index.php?subcat=2" target="_blank"><img border="0" src="pictures/desktop/videos.png" width="48" height="48"></a></strong></td>
+          <td width="50%"> <p align="center"><strong> <img src="pictures/desktop/links.png" width="48" height="48" onClick="MM_showHideLayers('menu','','hide','mapps','','hide','window','','show','winexit','','show','winmax','','show','programs','','show');frames['winframe'].location.href=&quot;apps/access/access.html&quot;;MM_swapImage('windowsicon','','pictures/menu/apps/links.gif',0);MM_changeProp('StartInfo','','style.fontFamily','','DIV')"></strong></td>
+        </tr>
+        <tr> 
+          <td width="50%"> <p align="center"> <strong><font face="Verdana" size="1">Videos</font></strong></td>
+          <td width="50%"> <p align="center"> <strong><font face="Verdana" size="1">Links</font></strong></td>
+        </tr>
+      </table> 
+  <tr valign="middle"> 
+    <td width="66" height="20"><a href="javascript:;" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','startoff','','show')"><img src="pictures/main/sbuttondown.gif" width="66" height="20" border="0"></a> 
+    <td width="349" height="20" background="pictures/main/start.gif">&nbsp; 
+    <td width="75" height="20" background="pictures/main/start_r.gif"><div align="right"><span id=tick2> 
+        </span> </div> 
+</table>
+<span id=tick2> 
+<script language="JavaScript">
+
+<!--
+//Supplied free by js.brimonet.com
+
+var clockID = 0;
+
+function UpdateClock() {
+   if(clockID) {
+      clearTimeout(clockID);
+      clockID  = 0;
+   }
+
+   var tDate = new Date();
+   var tHours = tDate.getHours();
+   var tMins = tDate.getMinutes();
+   var tSeconds = tDate.getSeconds();
+   
+   if (tSeconds<=9)
+   	tSeconds="0"+tSeconds
+	
+   if (tHours<=9)
+   	tHours="0"+tHours
+	
+   if (tMins<=9)
+   	tHours="0"+tHours
+	
+   theTime.value = "" 
+                                   + tHours + ":" 
+                                   + tMins + ":" 
+                                   + tSeconds;
+   
+   clockID = setTimeout("UpdateClock()", 1000);
+}
+function StartClock() {
+   clockID = setTimeout("UpdateClock()", 500);
+}
+
+function KillClock() {
+   if(clockID) {
+      clearTimeout(clockID);
+      clockID  = 0;
+   }
+}
+
+//-->
+
+  </script>
+</span> 
+<div id="menu" style="position:absolute; left:1px; top:75px; width:134px; height:136px; z-index:26; visibility: hidden;"> 
+  <table width="123" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><img src="pictures/menu/menu_top.gif" width="123" height="41"></td>
+    </tr>
+    <tr> 
+      <td bordercolor="#003366"><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#000066" onClick="MM_showHideLayers('mlinks','','show','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','startoff','','hide')">
+          <tr> 
+            <td width="22"><img src="pictures/menu/links.png" width="20" height="20"></td>
+            <td><font color="#FFFFFF" size="2">Links</font></td>
+            <td width="20"><font color="#FFFFFF" size="2"><img src="pictures/main/arrow.gif" width="10" height="18"></font></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td bordercolor="#003366"><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#10377C" onClick="MM_showHideLayers('mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','show','mapps','','hide','startoff','','hide')">
+          <tr> 
+            <td width="22"><img src="pictures/menu/games.png" width="20" height="20"></td>
+            <td><font color="#FFFFFF" size="2">Games</font></td>
+            <td width="20"><font color="#FFFFFF" size="2"><img src="pictures/main/arrow.gif" width="10" height="18"></font></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td bordercolor="#003366"><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#000066" onClick="MM_showHideLayers('mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','show','startoff','','hide')">
+          <tr> 
+            <td width="22"><img src="pictures/menu/apps.png" width="20" height="20"></td>
+            <td><font color="#FFFFFF" size="2">Applications</font></td>
+            <td width="20"><font color="#FFFFFF" size="2"><img src="pictures/main/arrow.gif" width="10" height="18"></font></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td bordercolor="#003366"><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#10377C" onClick="MM_showHideLayers('mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','startoff','','hide')">
+          <tr> 
+            <td width="22"><img src="pictures/menu/music.png" width="20" height="20"></td>
+            <td><font color="#FFFFFF" size="2">Music</font></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td bordercolor="#003366"><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#000066" onClick="MM_showHideLayers('mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','startoff','','hide')">
+          <tr> 
+            <td width="22"><img src="pictures/menu/vid.png" width="20" height="20"></td>
+            <td><font color="#FFFFFF" size="2">Video</font></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#10377C" onClick="MM_showHideLayers('StartInfo','','show','menu','','hide','mapps','','hide','window','','hide','winexit','','hide','programs','','hide','startoff','','show');MM_showHideLayers('mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','startoff','','hide')">
+          <tr> 
+            <td width="22"><img src="pictures/menu/help.png" width="20" height="20"></td>
+            <td><font color="#FFFFFF" size="2">Help</font></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td><table width="100%" border="0" cellpadding="0" cellspacing="0" background="pictures/menu/menu_base.gif">
+          <tr onClick="MM_callJS('javascript:window.close();')"> 
+            <td width="66">&nbsp;</td>
+            <td width="21"><img src="pictures/menu/off.gif" width="16" height="16" border="0"></td>
+            <td width="36"><font color="#FFFFFF" size="2">Exit</font></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+</div>
+<div id="mlinks" style="position:absolute; left:119px; top:3px; width:119px; height:150px; z-index:28; visibility: hidden;"> 
+  <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#0000FF">
+    <tr> 
+      <td bordercolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          
+          
+          
+          
+          
+          <tr bgcolor="#FFFFFF"  onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');frames['winframe'].location.href=&quot;http://www.google.com&quot;"> 
+            <td width="20"><font size="2" face="Arial, Helvetica, sans-serif"><img src="pictures/menu/links/google.gif" width="20" height="20" border="0"></font></td>
+            <td><font size="2" face="Arial, Helvetica, sans-serif">Google</font></td>
+            <td><font size="2" face="Arial, Helvetica, sans-serif">&nbsp;</font></td>
+          </tr>
+          <tr bgcolor="#D2D2FF" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');frames['winframe'].location.href=&quot;http://www.gmail.com&quot;"> 
+            <td width="20"><font size="2" face="Arial, Helvetica, sans-serif"><img src="pictures/menu/links/gmail.gif" width="20" height="20" border="0"></font></td>
+            <td><font size="2" face="Arial, Helvetica, sans-serif">GMail</font></td>
+            <td><font size="2" face="Arial, Helvetica, sans-serif">&nbsp;</font></td>
+          </tr>
+          <tr bgcolor="#FFFFFF" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');frames['winframe'].location.href=&quot;http://www.hotmail.com&quot;"> 
+            <td width="20"><font size="2" face="Arial, Helvetica, sans-serif"><img src="pictures/menu/links/hotmail.gif" width="20" height="20" border="0"></font></td>
+            <td><font size="2" face="Arial, Helvetica, sans-serif">Hotmail</font></td>
+            <td><font size="2" face="Arial, Helvetica, sans-serif">&nbsp;</font></td>
+          </tr>
+          <tr bgcolor="#D2D2FF" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');frames['winframe'].location.href=&quot;http://www.sony.com&quot;"> 
+            <td width="20"><font size="2" face="Arial, Helvetica, sans-serif"><a href="http://www.sony.com"><img src="pictures/menu/links/sony.gif" width="20" height="20" border="0"></a></font></td>
+            <td><font size="2" face="Arial, Helvetica, sans-serif">Sony</font></td>
+            <td><font size="2" face="Arial, Helvetica, sans-serif">&nbsp;</font></td>
+          </tr>
+          <tr bgcolor="#FFFFFF" onClick="MM_showHideLayers('mlaim','','show','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide')"> 
+            <td width="20"><font size="2" face="Arial, Helvetica, sans-serif"><a href="javascript:;" onClick="MM_showHideLayers('mlaim','','show','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide')"><img src="pictures/menu/links/aim.gif" width="20" height="20" border="0"></a></font></td>
+            <td><font size="2" face="Arial, Helvetica, sans-serif">AIM</font></td>
+            <td><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif"><img src="pictures/main/arrow.gif" width="10" height="18"></font></td>
+          </tr>
+          <tr bgcolor="#D2D2FF" onClick="MM_showHideLayers('mlaim','','hide','mlmsn','','show','mlyahoo','','hide','mlirc','','hide')"> 
+            <td width="20"><font size="2" face="Arial, Helvetica, sans-serif"><a href="javascript:;" onClick="MM_showHideLayers('mlaim','','hide','mlmsn','','show','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide')"><img src="pictures/menu/links/msn.gif" width="20" height="20" border="0"></a></font></td>
+            <td><font size="2" face="Arial, Helvetica, sans-serif">MSN</font></td>
+            <td><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif"><img src="pictures/main/arrow.gif" width="10" height="18"></font></td>
+          </tr>
+          <tr bgcolor="#FFFFFF" onClick="MM_showHideLayers('mlaim','','hide','mlmsn','','hide','mlyahoo','','show','mlirc','','hide')"> 
+            <td width="20"><font size="2" face="Arial, Helvetica, sans-serif"><a href="javascript:;" onClick="MM_showHideLayers('mlaim','','hide','mlmsn','','hide','mlyahoo','','show','mlirc','','hide','mgames','','hide','mapps','','hide')"><img src="pictures/menu/links/yahoo.gif" width="20" height="20" border="0"></a></font></td>
+            <td><font size="2" face="Arial, Helvetica, sans-serif">Yahoo!</font></td>
+            <td><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif"><img src="pictures/main/arrow.gif" width="10" height="18"></font></td>
+          </tr>
+          <tr bgcolor="#D2D2FF" onClick="MM_showHideLayers('mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','show')"> 
+            <td width="20"><font size="2" face="Arial, Helvetica, sans-serif"><a href="javascript:;" onClick="MM_showHideLayers('mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','show','mgames','','hide','mapps','','hide')"><img src="pictures/menu/links/irc.gif" width="20" height="20" border="0"></a></font></td>
+            <td><font size="2" face="Arial, Helvetica, sans-serif">IRC</font></td>
+            <td><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif"><img src="pictures/main/arrow.gif" width="10" height="18"></font></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+</div>
+<div id="mlaim" style="position:absolute; left:237px; top:40px; width:114px; height:80px; z-index:28; visibility: hidden;"> 
+  <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#0000FF">
+    <tr>
+      <td bordercolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr bgcolor="#FFFFFF" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');frames['winframe'].location.href=&quot;http://www.pspaim.com&quot;"> 
+            <td width="20"><font size="2" face="Arial, Helvetica, sans-serif"><a href="javascript:;" onClick="MM_showHideLayers('mlaim','','show','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide')"><img src="pictures/menu/links/aim.gif" width="20" height="20" border="0"></a></font></td>
+            <td><font size="2" face="Arial, Helvetica, sans-serif">PSPAIM</font></td>
+          </tr>
+          <tr bgcolor="#D2D2FF" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');frames['winframe'].location.href=&quot;http://www.webaim.net&quot;"> 
+            <td width="20"><font size="2" face="Arial, Helvetica, sans-serif"><a href="javascript:;" onClick="MM_showHideLayers('mlaim','','show','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide')"><img src="pictures/menu/links/aim.gif" width="20" height="20" border="0"></a></font></td>
+            <td><font size="2" face="Arial, Helvetica, sans-serif">WebAim</font></td>
+          </tr>
+          <tr bgcolor="#FFFFFF" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');frames['winframe'].location.href=&quot;http://www.e-messenger.net&quot;"> 
+            <td width="20"><font size="2" face="Arial, Helvetica, sans-serif"><a href="javascript:;" onClick="MM_showHideLayers('mlaim','','show','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide')"><img src="pictures/menu/links/aim.gif" width="20" height="20" border="0"></a></font></td>
+            <td><font size="2" face="Arial, Helvetica, sans-serif">WebMess</font></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+</div>
+<div id="mlmsn" style="position:absolute; left:237px; top:83px; width:140px; height:55px; z-index:11; visibility: hidden;"> 
+  <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#0000FF" bgcolor="#FFFFFF">
+    <tr>
+      <td bordercolor="#FFFFFF" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="22"><img src="pictures/menu/links/pspmsn.gif" width="20" height="20"></td>
+            <td><font size="2">PSPMSN</font></td>
+          </tr>
+          <tr bgcolor="#D2D2FF"> 
+            <td width="22"><img src="pictures/menu/links/pspmsn.gif" width="20" height="20"></td>
+            <td><font size="2">WebMess</font></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+</div>
+<div id="mlyahoo" style="position:absolute; left:237px; top:101px; width:143px; height:24px; z-index:12; visibility: hidden;"> 
+  <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#0000FF" bgcolor="#FFFFFF">
+    <tr> 
+      <td bordercolor="#FFFFFF" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="22"><a href="pictures/menu/links/pspyim.gif"><img src="pictures/menu/links/pspyim.gif" width="20" height="20" border="0"></a></td>
+            <td><font size="2">PSPYIM</font></td>
+          </tr>
+          <tr bgcolor="#D2D2FF"> 
+            <td width="22"><img src="pictures/menu/links/pspyim.gif" width="20" height="20"></td>
+            <td><font size="2">WebMess</font></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+</div>
+<div id="mlirc" style="position:absolute; left:237px; top:140px; width:143px; height:23px; z-index:13; visibility: hidden;">
+  <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#0000FF" bgcolor="#FFFFFF">
+    <tr> 
+      <td bordercolor="#FFFFFF" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="22"><font size="2" face="Arial, Helvetica, sans-serif"><a href="javascript:;" onClick="MM_showHideLayers('mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','show','mgames','','hide','mapps','','hide')"><img src="pictures/menu/links/irc.gif" width="20" height="20" border="0"></a></font></td>
+            <td><font size="2">PSP-IRC</font></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+</div>
+<div id="mgames" style="position:absolute; left:119px; top:3px; width:119px; height:216px; z-index:28; visibility: hidden;">
+  <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#0000FF">
+    <tr>
+      <td bordercolor="#FFFFFF" bgcolor="#FFFFFF"><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+          <tr bordercolor="#FFFFFF" bgcolor="#D2D2FF" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');frames['winframe'].location.href=&quot;games/battleship/index.htm&quot;"> 
+            <td width="22"><font size="2" face="Tahoma"><img src="pictures/menu/games/battleship.PNG" width="20" height="20" border="0"></font></td>
+            <td><font size="2" face="Tahoma">Battleships</font></td>
+          </tr>
+          <tr bordercolor="#FFFFFF" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');frames['winframe'].location.href=&quot;games/blackjack/blackjack.html&quot;"> 
+            <td width="22"><font size="2" face="Tahoma"><img src="pictures/menu/games/blackjack.PNG" width="20" height="20" border="0"></font></td>
+            <td><font size="2" face="Tahoma">Blackjack</font></td>
+          </tr>
+          <tr bordercolor="#FFFFFF" bgcolor="#D2D2FF" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');frames['winframe'].location.href=&quot;games/box-in/index.htm&quot;"> 
+            <td width="22"><font size="2" face="Tahoma"><a href="games/box-in/index.htm"><img src="pictures/menu/games/box.PNG" width="20" height="20" border="0"></a></font></td>
+            <td><font size="2" face="Tahoma">Box-In</font></td>
+          </tr>
+          <tr bordercolor="#FFFFFF" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');frames['winframe'].location.href=&quot;games/checkers/index.htm&quot;"> 
+            <td width="22"><font size="2" face="Tahoma"><a href="games/checkers/index.htm"><img src="pictures/menu/games/checkers.PNG" width="20" height="20" border="0"></a></font></td>
+            <td><font size="2" face="Tahoma">Checkers</font></td>
+          </tr>
+          <tr bordercolor="#FFFFFF" bgcolor="#D2D2FF" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');frames['winframe'].location.href=&quot;games/demolition/index.htm&quot;"> 
+            <td width="22"><font size="2" face="Tahoma"><a href="games/demolition/index.htm"><img src="pictures/menu/games/demolition.PNG" width="20" height="20" border="0"></a></font></td>
+            <td><font size="2" face="Tahoma">Demolition</font></td>
+          </tr>
+          <tr bordercolor="#FFFFFF" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');frames['winframe'].location.href=&quot;games/hangman/Hangman.html&quot;"> 
+            <td width="22"><font size="2" face="Tahoma"><a href="games/hangman/Hangman.html"><img src="pictures/menu/games/hangman.PNG" width="20" height="20" border="0"></a></font></td>
+            <td><font size="2" face="Tahoma">Hangman</font></td>
+          </tr>
+          <tr bordercolor="#FFFFFF" bgcolor="#D2D2FF" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');frames['winframe'].location.href=&quot;games/minesweeper/minecore.html&quot;"> 
+            <td width="22"><font size="2" face="Tahoma"><a href="games/minesweeper/minecore.html"><img src="pictures/menu/games/minesweeper.PNG" width="20" height="20" border="0"></a></font></td>
+            <td><font size="2" face="Tahoma">Minesweeper</font></td>
+          </tr>
+          <tr bordercolor="#FFFFFF" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');frames['winframe'].location.href=&quot;games/pegs/pegs.htm&quot;"> 
+            <td width="22"><font size="2" face="Tahoma"><a href="games/pegs/pegs.htm"><img src="pictures/menu/games/pegs.PNG" width="20" height="20" border="0"></a></font></td>
+            <td><font size="2" face="Tahoma">Pegs</font></td>
+          </tr>
+          <tr bordercolor="#FFFFFF" bgcolor="#D2D2FF" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');frames['winframe'].location.href=&quot;games/reflex/reflex test.htm&quot;">  
+            <td width="22"><font size="2" face="Tahoma"><a href="games/reflex/Reflex%20test.htm"><img src="pictures/menu/games/reflex.PNG" width="20" height="19" border="0"></a></font></td>
+            <td><font size="2" face="Tahoma">Reflex Test</font></td>
+          </tr>
+          <tr bordercolor="#FFFFFF" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');frames['winframe'].location.href=&quot;games/tetris/tetris.html&quot;"> 
+            <td width="22"><font size="2" face="Tahoma"><a href="games/tetris/Tetris.html"><img src="pictures/menu/games/tetris.PNG" width="20" height="20" border="0"></a></font></td>
+            <td><font size="2" face="Tahoma">Tetris</font></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+</div>
+<div id="mapps" style="position:absolute; left:119px; top:60px; width:119px; height:109px; z-index:27; visibility: hidden;"> 
+  <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#0000FF">
+    <tr>
+      <td bordercolor="#FFFFFF" bgcolor="#FFFFFF"><table width="100%" cellpadding="0" cellspacing="0" bordercolor="#003366">
+          <tr> 
+            <td><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#D2D2FF" onClick="MM_showHideLayers('menu','','hide','mapps','','hide','window','','show','winexit','','show','winmax','','show','programs','','show'); frames['winframe'].location.href=&quot;apps/calc/calculator.html&quot;">
+                <tr onClick="frames['winframe'].location.href=&quot;apps/calc/calculator.html&quot;;MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');"> 
+                  <td width="22"><font size="2"><img src="pictures/menu/apps/calc.png" width="20" height="20" border="0"></font></td>
+                  <td><font size="2">Calculator</font></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr onClick="frames['winframe'].location.href=&quot;apps/access/access.html&quot;;MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');"> 
+            <td><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+                <tr> 
+                  <td width="22"><font size="2"><a href="javascript:;" onClick="MM_showHideLayers('menu','','hide','mapps','','hide','window','','show','winexit','','show','winmax','','show','programs','','show')"><img src="pictures/menu/apps/texteditor.png" width="20" height="20" border="0" onClick="frames['winframe'].location.href=&quot;apps/access/access.html&quot;"></a></font></td>
+                  <td><font size="2">Text Editor </font></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr onClick="frames['winframe'].location.href=&quot;apps/access/access.html&quot;;MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');"> 
+            <td><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#D2D2FF">
+                <tr> 
+                  <td width="22"><font size="2"><a href="javascript:;" onClick="MM_showHideLayers('menu','','hide','mapps','','hide','window','','show','winexit','','show','winmax','','show','programs','','show')"><img src="pictures/menu/apps/ie.png" width="20" height="20" border="0" onClick="frames['winframe'].location.href=&quot;apps/access/access.html&quot;"></a></font></td>
+                  <td><font size="2">Internet</font></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr onClick="frames['winframe'].location.href=&quot;apps/access/access.html&quot;;MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');"> 
+            <td><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+                <tr> 
+                  <td width="22"><font size="2"><a href="javascript:;" onClick="MM_showHideLayers('menu','','hide','mapps','','hide','window','','show','winexit','','show','winmax','','show','programs','','show')"><img src="pictures/menu/games.png" width="20" height="20" border="0" onClick="frames['winframe'].location.href=&quot;apps/access/access.html&quot;"></a></font></td>
+                  <td><font size="2">Games Lists </font></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr onClick="frames['winframe'].location.href=&quot;apps/stopwatch/watch.html&quot;;MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');"> 
+            <td><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#D2D2FF">
+                <tr> 
+                  <td width="22"><font size="2"><a href="javascript:;" onClick="MM_showHideLayers('menu','','hide','mapps','','hide','window','','show','winexit','','show','winmax','','show','programs','','show')"><img src="pictures/menu/apps/stopwatch.png" width="20" height="20" border="0" onClick="frames['winframe'].location.href=&quot;apps/stopwatch/watch.html&quot;"></a></font></td>
+                  <td><font size="2">Stopwatch</font></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr>
+            <td><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#D2D2FF">
+                <tr bgcolor="#FFFFFF" onClick="frames['winframe'].location.href=&quot;textreader/browser.html&quot;;MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','programs','','show','startoff','','show','winmax','','show')"> 
+                  <td width="22"><font size="2"><a href="javascript:;" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','window','','show','winexit','','show','text','','show','winmax','','show')"><img src="pictures/menu/apps/paint.png" width="20" height="20" border="0"></a></font></td>
+                  <td><font size="2">PSP Draw</font></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr> 
+            <td><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#D2D2FF">
+                <tr onClick="frames['winframe'].location.href=&quot;textreader/browser.html&quot;;MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','show','winexit','','show','winmax','','show','programs','','show','startoff','','show');"> 
+                  <td width="22"><font size="2"><a href="javascript:;" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','window','','show','winexit','','show','winmax','','show','text','','show')"><img src="pictures/menu/apps/text.png" width="20" height="20" border="0"></a></font></td>
+                  <td><font size="2">Text Reader </font></td>
+                </tr>
+              </table></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+</div>
+<div id="ie" style="position:absolute; left:4px; top:20px; width:423px; height:185px; z-index:22; visibility: hidden;"> 
+  <iframe src="browser/browser.html" width=472 height=228 id=ieframe name=ieframe scrolling=yes></iframe>
+</div>
+<div id="window" style="position:absolute; left:0px; top:0px; width:245px; height:249px; z-index:20; visibility: hidden;"> 
+  <table width="480" height="244" border="0" cellpadding="0" cellspacing="0">
+    <tr valign="bottom"> 
+      <td width="4" height="20"><img src="pictures/main/window/title_l_border.gif" width="4" height="20"></td>
+      <td height="20" valign="middle" background="pictures/main/window/title_border.gif">
+        
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="22"><img src="pictures/menu/links/sony.gif" width="20" height="20" name="windowsicon"></td>
+              <td><font color="#FFFFFF" size="2"><strong><span id="windowtitle">Information</span></strong></font></td>
+            </tr>
+          </table>
+        
+        </td>
+      <td width="4" height="20"><img src="pictures/main/window/title_r_border.gif" width="4" height="20"></td>
+    </tr>
+    <tr> 
+      <td width="4" height="83"><img src="pictures/main/window/vert_border.gif" width="4" height="228"></td>
+      <td width="472" bgcolor="#EBE9ED">&nbsp;</td>
+      <td width="4" height="83"><img src="pictures/main/window/vert_border.gif" width="4" height="228"></td>
+    </tr>
+    <tr> 
+      <td height="4"><img src="pictures/main/window/base_l_border.gif" width="4" height="4"></td>
+      <td height="4"><img src="pictures/main/window/horiz_border.gif" width="472" height="4"></td>
+      <td height="4"><img src="pictures/main/window/base_r_border.gif" width="4" height="4"></td>
+    </tr>
+  </table>
+</div>
+<div id="winexit" style="position:absolute; left:458px; top:0px; width:22px; height:11px; z-index:21; visibility: hidden;">
+  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0" onClick="MM_showHideLayers('menu','','hide','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','ie','','hide','window','','hide','winexit','','hide','programs','','hide','text','','hide','startoff','','show','winmax','','hide')">
+    <tr>
+      <td valign="bottom"><a href="javascript:;"><img src="pictures/main/window/exit.gif" width="18" height="18" border="0"></a></td>
+    </tr>
+  </table>
+</div>
+<div id="programs" style="position:absolute; left:4px; top:20px; width:16px; height:17px; z-index:26; visibility: hidden;"> 
+  <iframe src="blank/blank.html" width=472 height=228 id=winframe name=winframe scrolling=yes  frameborder="0"></iframe>
+</div>
+<div id="text" style="position:absolute; left:4px; top:20px; width:185px; height:167px; z-index:24; visibility: hidden;"> 
+  <iframe src="browser/fileview.html" width=472 height=228 id=textframe name=textframe scrolling=yes></iframe>
+</div>
+<div id="startoff" style="position:absolute; left:1px; top:252px; width:9px; height:10px; z-index:6; visibility: visible;"><a href="javascript:;" onClick="MM_showHideLayers('menu','','show','mlinks','','hide','mlaim','','hide','mlmsn','','hide','mlyahoo','','hide','mlirc','','hide','mgames','','hide','mapps','','hide','startoff','','hide')"><img src="pictures/main/sbutton.gif" width="66" height="20" border="0"></a></div>
+<div id="winmax" style="position:absolute; left:437px; top:0px; width:21px; height:11px; z-index:21; visibility: hidden;"> 
+  <table width="100%" height="19" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td valign="bottom"><img src="pictures/main/window/max.gif" width="18" height="18" border="0" onClick="MM_callJS('winmax()')"></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

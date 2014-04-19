@@ -1,0 +1,480 @@
+<HTML>
+<HEAD>
+<TITLE>Box-in created by Herb Hasler</TITLE>
+<STYLE>
+.inputTableText {color=blue; font-size: 10pt}
+.resultTableText {color=white; background=gray; font-size: 10pt}
+</STYLE>
+
+<SCRIPT Language="Javascript">
+
+   // Copyright (c) 2003 Herb Hasler
+   //
+   boxes  = new Array(10);
+   vLines = new Array(10);
+   hLines = new Array(10);
+   
+
+   for (i=0; i<10; i++) {
+       boxes[i]  = new Array(10);
+       vLines[i] = new Array(10);
+       hLines[i] = new Array(10);
+   }
+   
+
+   var gridSize = 7;
+   var canMove = false;
+   var compBox = false;
+   var compMoveAgain;
+   var doneMoves;
+   var gameStarted = false;
+
+   var htype = 'h';
+   var vtype = 'v';
+   var utype = 'u';
+   var ctype = 'c';
+
+   var m1;
+   var m2;
+   var m3;
+   var m1cnt;
+   var m2cnt;
+   var m3cnt;
+   var userImage = 0;
+   var userScore;
+   var compScore;
+
+   m1x = new Array(10);
+   m1y = new Array(10);
+   m2x = new Array(10);
+   m2y = new Array(10);
+   m3x = new Array(100);
+   m3y = new Array(100);
+
+   boxBlank = new Image(30,30);
+   boxBlank.src = 'blank.gif';
+   boxComputer = new Image(30,30);
+   boxComputer.src = 'computer.gif';
+   var boxUser = new Array(5);
+   for (i=0; i<5; i++) {
+      boxUser[i] = new Image(30,30);
+      boxUser[i].src = 'user' + i + '.gif';
+   }
+   var digits = new Array(10);
+   for (i=0; i<10; i++) {
+      digits[i] = new Image(64,64);
+      digits[i].src = 'frutti-' + i + '.gif';
+   }
+   boxVLine = new Image(5,30);
+   boxVLine.src = 'vline0.gif';
+   boxVLineH = new Image(5,30);
+   boxVLineH.src = 'vline1.gif';
+   boxHLine = new Image(35,5);
+   boxHLine.src = 'hline0.gif';
+   boxHLineH = new Image(35,5);
+   boxHLineH.src = 'hline1.gif';
+   buttonBeg = new Image(100,28);
+   buttonBeg.src = 'beginButton.gif';
+   buttonEnd = new Image(100,28);
+   buttonEnd.src = 'endButton.gif';
+
+
+   function newGame() {
+      gameStarted = true;
+      for (i=0; i<10; i++) {
+         for (j=0; j<10; j++) {
+            boxes[i][j] = 0;
+            vLines[i][j] = 0;
+            hLines[i][j] = 0;
+         }
+      }
+      for (j=0; j< gridSize; j++) {
+           for (i=0; i< gridSize; i++) {
+               document.images['hline'+j+i].src = boxHLine.src;
+           }
+           for (i=0; i<gridSize; i++) {
+               document.images['vline'+j+i].src = boxVLine.src;
+               document.images['box'+j+i].src = boxBlank.src;
+           }
+           document.images['vline'+j+gridSize].src = boxVLine.src;
+
+      }
+      for (i=0; i<gridSize; i++) {
+               document.images['hline'+gridSize+i].src = boxHLine.src;
+      }
+      canMove = true;
+      compScore = 0;
+      userScore = 0;
+      document.images['cdig1'].src = digits[0].src;
+      document.images['cdig2'].src = digits[0].src;
+      document.images['udig1'].src = digits[0].src;
+      document.images['udig2'].src = digits[0].src;
+   }
+
+   function clickButton() {
+        if (gameStarted == true) {
+           endGame();
+        } else {
+           document.images['buttonImg'].src = buttonEnd.src;
+           newGame();
+        }
+   }
+
+   function endGame() {
+        canMove = false;
+        var totScore = gridSize * gridSize;
+        gameStarted = false;
+        if ((compScore *1 + userScore*1) < totScore) {
+            compScore = totScore - userScore;
+            displayScore(compScore, 'cdig');
+       }
+       document.images['box22'].src = 'frutti-y.gif';
+       document.images['box23'].src = 'frutti-o.gif';
+       document.images['box24'].src = 'frutti-u.gif';
+       if (userScore > compScore) {
+          document.images['box32'].src = 'frutti-w.gif';
+          document.images['box33'].src = 'frutti-o.gif';
+          document.images['box34'].src = 'frutti-n.gif';
+       } else {
+          document.images['box32'].src = 'frutti-l.gif';
+          document.images['box33'].src = 'frutti-o.gif';
+          document.images['box34'].src = 'frutti-s.gif';
+          document.images['box35'].src = 'frutti-t.gif';
+
+       }
+       document.images['buttonImg'].src = buttonBeg.src;
+   }
+
+
+   function highLight(ltype, y, x) {
+      if (ltype == "h") {
+          var imgName = 'hline'+y+x;
+          document.images[imgName].src = boxHLineH.src; 
+      } else {
+          var imgName = 'vline'+y+x;
+          document.images[imgName].src = boxVLineH.src; 
+      }
+   }
+
+   function unHighLight(ltype, y, x) {
+      if (ltype == "h") {
+          if (hLines[y][x] != 1) {
+              var imgName = 'hline'+y+x;
+              document.images[imgName].src = boxHLine.src; 
+          }
+      } else {
+          if (vLines[y][x] != 1) {
+             var imgName = 'vline'+y+x;
+             document.images[imgName].src = boxVLine.src; 
+          }
+      }
+   }
+
+   function addLine(mtype, ltype, y, x)
+   {
+       if (mtype == utype && canMove == false) {
+           return;
+       }
+       compMoveAgain = false;
+       compBox = false;
+       if (ltype == 'h') {
+          if (hLines[y][x] == 0) {
+             hLines[y][x] = 1;
+             var imgName = 'hline'+y+x;
+             document.images[imgName].src = boxHLineH.src; 
+             addBox(mtype, y, x);
+             if (y  > 0) {
+                addBox(mtype, y*1-1, x);
+             }
+          } else {
+             if (mtype == utype) {
+                return;
+             }
+          }
+       } else {
+          if (vLines[y][x] == 0) {
+             vLines[y][x] = 1;
+             var imgName = 'vline'+y+x;
+             document.images[imgName].src = boxVLineH.src;
+             addBox(mtype, y, x);
+             if (x  > 0) {
+                addBox(mtype, y, x*1-1);
+             }
+
+          } else {
+             if (mtype == utype) {
+                return;
+             }
+          }
+       }
+       if ((compBox == false) && (mtype == utype) && (gameStarted == true)) {
+              setTimeout(compMove,200);
+       } else {
+             if (mtype == ctype && compBox == true) {
+                 compMoveAgain = true;
+             }
+       }
+   }
+
+ 
+   function addBox(mtype, y, x) {
+       var gotBox;
+       boxes[y][x] = (boxes[y][x])*1 +1;
+       gotBox = false
+       if (boxes[y][x] > 3) {
+             var imgName = 'box'+y+x;
+             if (mtype == utype) {
+                  document.images[imgName].src = boxUser[userImage].src;
+             } else {
+                  document.images[imgName].src = boxComputer.src;
+             }
+             updateScore(mtype);
+             compBox = true;
+       }
+
+   }
+
+   function updateScore(mtype) {
+       var dig1;
+       var dig2;
+       if (mtype == utype) {
+           userScore = userScore * 1 + 1;
+           displayScore(userScore, 'udig');
+       } else {
+           compScore = compScore * 1 + 1;
+           displayScore(compScore, 'cdig');
+
+       }
+       if ((compScore*1 + userScore*1) >= (gridSize * gridSize)) {
+           endGame();
+       }
+   }
+
+   function displayScore(score, imgName) {
+        var dig1 = Math.floor(score / 10);
+        var dig2 = score % 10;
+        document.images[imgName + '1'].src = digits[dig1].src;
+        document.images[imgName + '2'].src = digits[dig2].src;
+   }
+
+   function compMove() {
+       if (gameStarted == false) {
+           return;
+       }
+       canMove = false;
+       compMoveAgain = false;
+       compDoMove();
+       if (compMoveAgain == false) {
+          canMove = true;
+       } else {
+          setTimeout(compMove,400);
+       }
+   }
+
+   function compDoMove() {
+       var boxY;
+       var boxX;
+       var cBoxY;
+       var cBoxX;
+       var foundMove;
+       var lpos;
+
+       m1cnt = 0;
+       m2cnt = 0;
+       m3cnt = 0;
+
+       doneMoves = true;
+       for (i=0; i<gridSize; i++) {
+           for (j=0; j<gridSize; j++) {
+               if (boxes[i][j] == 3) {
+                   if (m1cnt < 10) {
+                       m1x[m1cnt] = j;
+                       m1y[m1cnt] = i;
+                       m1cnt = m1cnt * 1 + 1;
+                   }
+               } else if (boxes[i][j] == 2) {
+                   if (m2cnt < 10) {
+                       m2x[m2cnt] = j;
+                       m2y[m2cnt] = i;
+                       m2cnt = m2cnt * 1 + 1;
+                   }
+               } else if (boxes[i][j] < 2) {
+                   if (m3cnt < 100) {
+                       m3x[m3cnt] = j;
+                       m3y[m3cnt] = i;
+                       m3cnt = m3cnt * 1 + 1;
+                   }
+               }
+            }
+        }
+
+   
+        if (m1cnt > 0) {
+           lpos = Math.floor(Math.random() * m1cnt);
+           boxX = m1x[lpos];
+           boxY = m1y[lpos];
+        } else if (m3cnt > 0) {
+           lpos = Math.floor(Math.random() * m3cnt);
+           boxX = m3x[lpos];
+           boxY = m3y[lpos];
+        } else if (m2cnt > 0) {
+           lpos = Math.floor(Math.random() * m2cnt);
+           boxX = m2x[lpos];
+           boxY = m2y[lpos];
+        } 
+
+
+        cBoxY = boxY;
+        cBoxX = boxX;
+
+        foundMove = false;
+
+        compMoveAgain = false;
+
+        if (Math.floor(Math.random() * 2) == 1) {
+           for (j=0; j<2 && foundMove == false; j++) {
+               cBoxY = (boxY*1 + j*1);
+               if (cBoxY >= 0 && cBoxY <= gridSize) {
+                   if (hLines[cBoxY][cBoxX] == 0) {
+                       addLine(ctype, htype, cBoxY, cBoxX);
+                       foundMove = true;
+                   }
+              }
+           }
+           cBoxY = boxY;
+           cBoxX = boxX;
+        }
+
+        for (i=0; i< 2 && foundMove == false; i++) {
+           cBoxX = (boxX*1 + i*1);
+           if (cBoxX >= 0 && cBoxX <= gridSize) {
+              if (vLines[cBoxY][cBoxX] == 0) {
+                 addLine(ctype, vtype, cBoxY, cBoxX);
+                 foundMove = true;
+              }
+           }
+         }
+
+         cBoxX = boxX;
+        
+         for (j=0; j<2 && foundMove == false; j++) {
+            cBoxY = (boxY*1 + j*1);
+            if (cBoxY >= 0 && cBoxY <= gridSize) {
+                 if (hLines[cBoxY][cBoxX] == 0) {
+                     addLine(ctype, htype, cBoxY, cBoxX);
+                     foundMove = true;
+                 }
+            }
+         }
+   }
+
+   function rotateImage() {
+      var prevImage = userImage;
+      userImage = userImage*1 + 1;
+      if (userImage > 4) {
+          userImage = 0;
+      }
+      document.images['userImage'].src = boxUser[userImage].src;
+
+      for (i=0; i<gridSize; i++) {
+          for (j=0; j<gridSize; j++) {
+             if (document.images['box'+i+j].src == boxUser[prevImage].src) {
+                 document.images['box'+i+j].src = boxUser[userImage].src;
+             }
+          }
+      }
+   }
+
+
+</SCRIPT> 
+</HEAD>
+
+<BODY topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" background="Clear_Day_Bkgrd.jpg">
+
+<TABLE BORDER="0" WIDTH="480" HEIGHT="272" CELLPADDING="0" CELLSPACING="0">
+<TR>
+<TD WIDTH="10" ROWSPAN="6">&nbsp;</TD>
+</TR>
+</TR>
+<TD WIDTH="292" ROWSPAN="6">
+<SCRIPT>
+
+
+   for (j=0; j<gridSize; j++) {
+       for (i=0; i<gridSize; i++) {
+           document.write('<a href="javascript:addLine(utype,htype,'+j+','+i+')" onMouseover="highLight(htype,'+j+','+i+')" onMouseout="unHighLight(htype,'+j+','+i+')"><IMG SRC="hline0.gif" BORDER=0 NAME="hline' + j + + i +'" WIDTH="35" HEIGHT="5"></A>');
+      }
+      document.write('<IMG SRC="hline0.gif" BORDER=0 NAME="hlineEnd" WIDTH="35" HEIGHT="5">');
+      document.write('<br>');
+      for (i=0; i<gridSize; i++) {
+         document.write('<a href="javascript:addLine(utype,vtype,'+j+','+i+')" onMouseover="highLight(vtype,'+j+','+i+')" onMouseout="unHighLight(vtype,'+j+','+i+')"><IMG SRC="vline0.gif" BORDER=0 NAME="vline' + j+ i+ '" WIDTH="5" HEIGHT="30"></a>');
+         document.write('<IMG SRC="blank.gif" BORDER=0 NAME="box' + j + i + '" WIDTH="30" HEIGHT="30">');
+      }
+      document.write('<a href="javascript:addLine(utype,vtype,'+j+','+gridSize+')" onMouseover="highLight(vtype,'+j+','+gridSize+')" onMouseout="unHighLight(vtype,'+j+','+gridSize+')"><IMG SRC="vline0.gif" BORDER=0 NAME="vline' + j+ gridSize + '" WIDTH="5" HEIGHT="30">');
+      document.write('<br>');
+  }
+  for (i=0; i<gridSize; i++) {
+       document.write('<a href="javascript:addLine(utype,htype,'+gridSize+','+i+')" onMouseover="highLight(htype,'+gridSize+','+i+')" onMouseout="unHighLight(htype,'+gridSize+','+i+')"><IMG SRC="hline0.gif" BORDER=0 NAME="hline' + gridSize + i +'" WIDTH="35" HEIGHT="5">');
+  }
+  document.write('<IMG SRC="hline0.gif" BORDER=0 NAME="hlineEnd" WIDTH="35" HEIGHT="5">');
+  document.write('<br>');
+
+  document.images['box11'].src = 'frutti-c.gif';
+  document.images['box12'].src = 'frutti-l.gif';
+  document.images['box13'].src = 'frutti-i.gif';
+  document.images['box14'].src = 'frutti-c.gif';
+  document.images['box15'].src = 'frutti-k.gif';
+
+  document.images['box21'].src = 'frutti-b.gif';
+  document.images['box22'].src = 'frutti-e.gif';
+  document.images['box23'].src = 'frutti-g.gif';
+  document.images['box24'].src = 'frutti-i.gif';
+  document.images['box25'].src = 'frutti-n.gif';
+
+  document.images['box32'].src = 'frutti-t.gif';
+  document.images['box33'].src = 'frutti-o.gif';
+
+  document.images['box41'].src = 'frutti-s.gif';
+  document.images['box42'].src = 'frutti-t.gif';
+  document.images['box43'].src = 'frutti-a.gif';
+  document.images['box44'].src = 'frutti-r.gif';
+  document.images['box45'].src = 'frutti-t.gif';
+</SCRIPT>
+
+</TD>
+</TR>
+<TR>
+<TD align="center">
+<br><A HREF="javascript:rotateImage()"><IMG SRC="user0.gif" BORDER=0 NAME="userImage" HEIGHT="48" WIDTH="48"></A><br><i>
+<font color="blue">Click To Change Your Graphic</font>
+</TD>
+</TR>
+<TR>
+<TD align="center">
+<BUTTON NAME="beginButton" onClick="clickButton()"><IMG NAME="buttonImg" SRC="beginButton.gif" WIDTH="100" HEIGHT="28"></BUTTON>
+</TD>
+</TR>
+<TR>
+<TD align="center">
+<IMG SRC="frutti-y.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-o.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-u.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-dash.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-0.gif" BORDER=0 WIDTH="18" HEIGHT="18" NAME="udig1">
+<IMG SRC="frutti-0.gif" BORDER=0 WIDTH="18" HEIGHT="18" NAME="udig2">
+</TD>
+</TR>
+<TR>
+<TD align="center">
+<IMG SRC="frutti-c.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-m.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-p.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-dash.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-0.gif" BORDER=0 WIDTH="18" HEIGHT="18" NAME="cdig1">
+<IMG SRC="frutti-0.gif" BORDER=0 WIDTH="18" HEIGHT="18" NAME="cdig2">
+</TD>
+</TR>
+</TABLE>
+
+</BODY>
+</HTML>

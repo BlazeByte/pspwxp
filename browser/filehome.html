@@ -1,0 +1,37 @@
+<!--
+Accent JavaScript Browser Version 1.0
+Copyright 2001 by www.CodeLifter.com
+Free for all users; but please leave in this header.
+//-->
+
+<html>
+
+<head>
+<style type="text/css">
+<!--
+.style1 {font-size: 9px}
+-->
+</style>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
+//-->
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<p align="center"><font color="#000000" size="3" face="Arial">File Viewer </font></p>
+<p align="center"><span class="style1"><font size="2">Click Select to browse for 
+  a file. Use the directional buttons to select a file/folder and click X to open 
+  it. Use Circle to go back a folder or cancel. You will than be taken to that 
+  file. If you wish to open a different file, click the browse button in the toolbar 
+  above or click the '?' button to take you back to this page.</font></span></p>
+<p align="center"> 
+  <input name="readFile" type="file" id="readFile" onChange="MM_goToURL('parent.frames[\'Content\']',readFile.value);return document.MM_returnValue" size="20">
+</p>
+        </body>
+
+</html>

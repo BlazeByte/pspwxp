@@ -1,0 +1,465 @@
+<HTML>
+<HEAD>
+<TITLE>Demolition created by Herb Hasler</TITLE>
+<STYLE>
+.buttons {color=blue; font-size: 14pt}
+.inputTableText {color=blue; font-size: 10pt}
+.resultTableText {color=white; background=gray; font-size: 10pt}
+</STYLE>
+
+
+
+
+<SCRIPT Language="Javascript">
+   // Copyright (c) 2003 Herb Hasler
+   //
+   boxes  = new Array(10);
+
+   for (i=0; i<10; i++) {
+       boxes[i]  = new Array(10);
+   }
+   var gridSize = 8;
+   var numBoxes = 10;
+   var moveX = 'X';
+   var moveY = 'Y';
+   var gameStarted = false;
+   var canMove = true;
+   var isHole = 9;
+   var moveTimer;
+
+   var startX;
+   var startY;
+   var endX;
+   var endY;
+   var pivotX;
+   var pivotY;
+   var diffY;
+   var curX;
+   var curY;
+   var curBox;
+   var dropY;
+   var dropX;
+   var curScore;
+   var numBoxesCleared;
+   var hintX;
+   var hintY;
+   var hintCount;
+
+
+   var digits = new Array(10);
+   for (i=0; i<10; i++) {
+      digits[i] = new Image(64,64);
+      digits[i].src = 'frutti-' + i + '.gif';
+   }
+
+   var boxImgs = new Array(10);
+   for (i=0; i<numBoxes; i++) {
+      boxImgs[i] = new Image(64,64);
+      boxImgs[i].src = 'brick' + i + '.gif';
+   }
+
+   blankBox = new Image(30,30);
+   blankBox.src = 'blank.gif';
+
+   buttonBeg = new Image(100,28);
+   buttonBeg.src = 'beginButton.gif';
+   buttonEnd = new Image(100,28);
+   buttonEnd.src = 'endButton.gif';
+
+   function newGame() {
+      gameStarted = true;
+      for (i=0; i<8; i++) {
+         for (j=0; j<8; j++) {
+            var g = Math.floor(Math.random() * (numBoxes*1 - 1));
+            boxes[i][j] = g;
+            document.images['box'+i+j].src = boxImgs[g].src;
+         }
+      }
+      curScore = 0;
+      moveTimer = 15;
+      canMove = true;
+      displayTimer();
+      displayScore();
+   }
+
+   function clickButton() {
+        if (gameStarted == true) {
+           endGame();
+        } else {
+           document.forms[0].beginButton.value = 'End Game';
+           setTimeout(newGame,1000);
+        }
+   }
+
+   function clickBox(y, x) {
+
+        if (canMove == false) {
+           return;
+        }
+        canMove = false;
+        //alert("in click box y=" + y + ", x=" + x);
+        pivotX = x;
+        pivotY = y;
+        curBox = boxes[y][x];
+        if (curBox == isHole) {
+           canMove = true;
+           return;
+        }
+        var validMove = false;
+
+        if ((x < (gridSize*1-1) && boxes[y][x*1+1] == curBox) || (x > 0 && boxes[y][x*1-1] == curBox)) {
+             validMove = true;
+        } else {
+           if ((y < (gridSize*1-1) && boxes[y*1+1][x] == curBox) || (y > 0 && boxes[y*1-1][x] == curBox)) {
+               validMove = true;
+           }
+        }
+        if (validMove == false) {
+           //alert("Not a legal move");
+           canMove = true;
+           return;
+        }
+
+        moveTimer = 15;
+        startX  = x;
+        comp = false;
+        for(cx =x*1-1; cx >= 0 && comp == false; cx--) {
+            if (boxes[y][cx] == curBox) {
+               startX = cx;
+            } else {
+               comp = true;
+            }
+        }
+
+        comp = false;
+        startY = y;
+        for (cy = y; cy<gridSize && comp == false; cy++) {
+            if (boxes[cy][x] == curBox) {
+               startY = cy;
+            } else {
+               comp = true;
+            }
+        }
+   
+        curX = startX;
+        curY = startY;
+        numBoxesCleared = 0;
+        setTimeout(dropBoxes, 200);
+    }
+
+    function dropBoxes() {
+        //alert("drop boxes, curY=" + curY + ", curX=" + curX);
+        
+        endX = startX;
+        for (cx = startX; cx < gridSize && boxes[pivotY][cx] == curBox; cx++) {
+            document.images['box' + pivotY + cx].src = blankBox.src;
+            numBoxesCleared++;
+            endX = cx;
+        }
+        if (startX != endX) {
+           dropY = pivotY;
+           curDir  = moveX;     
+        } else {
+           endY = startY;
+           for (cy = startY; cy >= 0 && boxes[cy][pivotX] == curBox; cy--) {
+               document.images['box' + cy + pivotX].src = blankBox.src;
+               endY = cy;
+           }
+           curDir = moveY;
+           dropY = startY;
+           diffY = startY * 1 - endY * 1 + 1;
+        }
+        setTimeout(dropABox,150);
+     }
+
+  function dropABox() {
+        //alert("drop a box, dropy=" + dropY + ", startx=" + startX + ", endx=" + endX);
+        var bi;
+        var ncy;
+        if (curDir == moveX) {
+           ncy = dropY * 1 -1;
+           for (cx = startX; cx <= endX; cx++) {
+                 if (dropY == 0) {
+                    boxes[0][cx] = Math.floor(Math.random() * numBoxes);
+                    bi = boxes[0][cx];
+                 } else {
+                    boxes[dropY][cx] = boxes[ncy][cx];
+                    bi = boxes[dropY][cx];
+                    document.images['box' + ncy + cx].src = blankBox.src;
+                 }
+                 document.images['box' + dropY + cx].src = boxImgs[bi].src;
+                 playSound = true;
+                 //alert("drop a box, dropy=" + dropY + ", cx=" + cx + ", bi=" + bi);
+           }
+           if (dropY > 0) {
+              dropY = ncy;
+              setTimeout(dropABox, 150);
+           } else {
+              if (boxes[startY][pivotX] == curBox) {
+                 for (cy = startY; cy >= 0 && boxes[cy][pivotX] == curBox; cy--) {
+                    document.images['box' + cy + pivotX].src = blankBox.src;
+                    endY = cy;
+                    numBoxesCleared++;
+                 }
+                 curDir = moveY;
+                 dropY = startY;
+                 diffY = startY * 1 - endY * 1 + 1;
+                 setTimeout(dropABox, 150);
+               } else {
+                  endMove()
+               }
+           }
+        } else {
+           //alert("drop a box Y, dropy=" + dropY + ", px=" + pivotX + ", endY=" + endY + ", diffY=" + diffY);
+           if (dropY* 1 - diffY*1 < 0) {
+                if (dropY >= 0) {
+                   //alert("drop a box, dropy=" + dropY + ", px=" + cx + ", bi=" + bi);
+                    boxes[dropY][pivotX] = Math.floor(Math.random() * numBoxes);
+                    bi = boxes[dropY][pivotX];
+                    document.images['box' + dropY + pivotX].src = boxImgs[bi].src;
+                    dropY = dropY * 1 - 1;
+                    setTimeout(dropABox, 150);
+                } else {
+                    endMove();
+                }
+           } else {
+                ncy = dropY* 1 - diffY*1;
+                boxes[dropY][pivotX] = boxes[ncy][pivotX];
+                bi = boxes[dropY][pivotX];
+                document.images['box' + ncy + pivotX].src = blankBox.src;
+                document.images['box' + dropY + pivotX].src = boxImgs[bi].src;
+                setTimeout(dropABox, 150);
+                dropY = dropY * 1 - 1;
+           }
+        }
+
+   }
+
+   function endMove() {
+       curScore = curScore * 1 + numBoxesCleared;
+       if (numBoxesCleared > 5) {
+          curScore = curScore *1 + 10;
+       } else if (numBoxesCleared > 4) {
+          curScore = curScore *1 + 5;
+       } else if (numBoxesCleared > 3) {
+          curScore = curScore *1 + 3;
+       } else if (numBoxesCleared > 2) {
+          curScore = curScore *1 + 1;
+       }
+
+       displayScore();
+       canMove = true;
+       moveTimer = 15;
+       moreMoves();
+   }
+
+   function displayScore () {
+        var dig1 = Math.floor(curScore / 100);
+        var dig2 = Math.floor(curScore / 10) % 10;
+        var dig3 = curScore % 10;
+        document.images['udig1'].src = digits[dig1].src;
+        document.images['udig2'].src = digits[dig2].src;
+        document.images['udig3'].src = digits[dig3].src;
+   }
+
+   function displayTimer () {
+        if (gameStarted == false) {
+            return;
+        }
+        var dig1 = Math.floor(moveTimer / 10);
+        var dig2 = moveTimer % 10;
+        document.images['cdig1'].src = digits[dig1].src;
+        document.images['cdig2'].src = digits[dig2].src;
+        if (moveTimer <= 0) {
+             document.buzzer.play();
+             moveTimer = 15;
+             showHint();
+        } else {
+              moveTimer = moveTimer * 1 - 1;
+        }
+        setTimeout(displayTimer, 1000);
+   }
+
+   function moreMoves() {
+       var isMove = false;
+       var toCheck;
+
+       toCheck = gridSize * 1 - 1;
+        
+       for(i=0; i<gridSize && isMove == false; i++) {
+           for (j=0; j<toCheck && isMove == false; j++) {
+               if (boxes[i][j] != isHole && boxes[i][j] == boxes[i][j+1]) {
+                   isMove = true;
+               }
+           }
+       }
+       for(i=0; i<gridSize && isMove == false; i++) {
+           for (j=0; j<toCheck && isMove == false; j++) {
+               if (boxes[j][i] != isHole && boxes[j][i] == boxes[j+1][i]) {
+                   isMove = true;
+               }
+           }
+       }
+
+       if (isMove == false) {
+           endGame();
+       }
+   }
+
+   function showHint() {
+       isMove = false;
+       var toCheck;
+
+       toCheck = gridSize * 1 - 1;
+        
+       for(i=0; i<gridSize && isMove == false; i++) {
+           for (j=0; j<toCheck && isMove == false; j++) {
+               if (boxes[i][j] != isHole && boxes[i][j] == boxes[i][j+1]) {
+                   hintX = j;
+                   hintY = i;
+                   //alert ("Found hint hintY=" + hintY + ", hintX=" + hintX);
+                   isMove = true;
+               }
+           }
+       }
+       for(i=0; i<gridSize && isMove == false; i++) {
+           for (j=0; j<toCheck && isMove == false; j++) {
+               if (boxes[j][i] != isHole && boxes[j][i] == boxes[j+1][i]) {
+                   hintX = i;
+                   hintY = j;
+                   //alert ("Found hint hintY=" + hintY + ", hintX=" + hintX);
+                   isMove = true;
+               }
+           }
+       }
+
+       if (isMove == true) {
+           canMove = false;
+           hintCount = 0;
+           flashHint();
+       }
+   }
+
+   function flashHint() {
+         //alert ("flash hint hintY=" + hintY + ", hintX=" + hintX);
+         var bi = boxes[hintY][hintX];
+         hintCount = hintCount * 1 + 1;
+         if (hintCount > 8) {
+              canMove = true;
+              document.images['box' + hintY + hintX].src = boxImgs[bi].src;
+              curScore = curScore * 1 - 3;
+              if (curScore < 0) {
+                 curScore = 0;
+              }
+              displayScore();
+         } else {
+              if (hintCount % 2 == 0) {
+                  document.images['box' + hintY + hintX].src = boxImgs[bi].src;
+              } else {
+                  document.images['box' + hintY + hintX].src = blankBox.src;
+              }
+              setTimeout(flashHint, 200);
+         }
+   }
+
+   function endGame() {
+       document.forms[0].beginButton.value = 'Begin Game';
+       canMove = false;
+       gameStarted = false;
+       alert("Game Over!");
+   }
+
+    
+   
+
+</SCRIPT> 
+</HEAD>
+
+<BODY topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" background="Clear_Day_Bkgrd.jpg">
+
+<FORM METHOD="post">
+<TABLE BORDER="0" WIDTH="480" HEIGHT="272" CELLPADDING="0" CELLSPACING="0">
+<TR>
+<TD WIDTH="10" ROWSPAN="6">&nbsp;</TD>
+</TR>
+</TR>
+<TD WIDTH="250" ROWSPAN="6">
+<SCRIPT>
+
+
+   for (j=0; j<gridSize; j++) {
+       for (i=0; i<gridSize; i++) {
+         document.write('<IMG SRC="blank.gif" BORDER=0 NAME="box' + j + i + '" WIDTH="30" HEIGHT="30" onClick="clickBox('+j+','+i+')">');
+      }
+      document.write('<br>');
+  }
+  document.write('<br>');
+
+  document.images['box21'].src = 'frutti-c.gif';
+  document.images['box22'].src = 'frutti-l.gif';
+  document.images['box23'].src = 'frutti-i.gif';
+  document.images['box24'].src = 'frutti-c.gif';
+  document.images['box25'].src = 'frutti-k.gif';
+
+  document.images['box31'].src = 'frutti-b.gif';
+  document.images['box32'].src = 'frutti-e.gif';
+  document.images['box33'].src = 'frutti-g.gif';
+  document.images['box34'].src = 'frutti-i.gif';
+  document.images['box35'].src = 'frutti-n.gif';
+
+  document.images['box42'].src = 'frutti-t.gif';
+  document.images['box43'].src = 'frutti-o.gif';
+
+  document.images['box51'].src = 'frutti-s.gif';
+  document.images['box52'].src = 'frutti-t.gif';
+  document.images['box53'].src = 'frutti-a.gif';
+  document.images['box54'].src = 'frutti-r.gif';
+  document.images['box55'].src = 'frutti-t.gif';
+</SCRIPT>
+
+</TD>
+</TR>
+
+<TR>
+<TD align="center" roswspan="2">
+<INPUT TYPE="button" class="buttons" NAME="beginButton" VALUE="Begin Game" onClick="clickButton()">
+<br>
+&nbsp;
+<br>
+<INPUT TYPE="button" class="buttons" NAME="hintButton" VALUE="Show Hint" onClick="showHint()">
+<br>
+&nbsp;
+<br>
+</TD>
+</TR>
+<TR>
+<TD align="center">
+<IMG SRC="frutti-s.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-c.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-o.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-r.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-e.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-dash.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-0.gif" BORDER=0 WIDTH="18" HEIGHT="18" NAME="udig1">
+<IMG SRC="frutti-0.gif" BORDER=0 WIDTH="18" HEIGHT="18" NAME="udig2">
+<IMG SRC="frutti-0.gif" BORDER=0 WIDTH="18" HEIGHT="18" NAME="udig3">
+</TD>
+</TR>
+<TR HEIGHT="20%">
+<TD align="center">
+<IMG SRC="frutti-t.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-i.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-m.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-e.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-r.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-dash.gif" BORDER=0 WIDTH="18" HEIGHT="18">
+<IMG SRC="frutti-0.gif" BORDER=0 WIDTH="18" HEIGHT="18" NAME="cdig1">
+<IMG SRC="frutti-0.gif" BORDER=0 WIDTH="18" HEIGHT="18" NAME="cdig2">
+</TD>
+</TR>
+</TABLE>
+
+</FORM>
+
+</BODY>
+</HTML>
