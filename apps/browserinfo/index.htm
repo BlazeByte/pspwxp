@@ -1,54 +1,31 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
 <html>
-<head>
-<title>PSP Browser Info</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<style type="text/css">
-<!--
-Body {margin-top: 2; margin-left: 0; margin-right: 0; padding: 0px; font-family: arial, helvetica, tahoma, sans-serif;}
-h2 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 12pt; font-weight: bold; color: #000000;}
-td {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: bold; color: #000000;}
-a {font-family: arial, helvetica, tahoma, sans-serif; font-size: 8pt; text-decoration: underline;}
-:link {color: blue;}
-:visited {color: blue;}
-:hover {color: green;}
-input.i1 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
-:link.i1 {color: #000000;}
-:visited.i1 {color: #000000;}
-:hover.i1 {color: #000000;}
--->
-</style>
-</head>
-
 <body bgcolor="#EBE9ED">
-<h2>Your Browser Info</h2>
+<center><h2>PSP Browser Info</h2>
 <SCRIPT LANGUAGE="JavaScript" type="text/javascript">
 <!-- This script and many more are available free online at -->
 <!-- The JavaScript Source!! http://javascript.internet.com -->
 <!-- Begin
 var xy = navigator.appVersion;
 xz = xy.substring(0,4);
-document.write("<center><table border=2 bordercolor=#225AD5 cellspacing=2 cellpadding=0><tr><td>");
-document.write("<center><b>", navigator.appName,"</b>");
+document.write("<table border=2 bordercolor=#225AD5 cellspacing=2 cellpadding=0><tr><td>");
+document.write("<b>", navigator.appName,"</b>");
 document.write("</td></tr><tr><td>");
-document.write("<center><table border=1 bordercolor=#225AD5 cellspacing=2 cellpadding=0><tr>");
-document.write("<td>Code Name: </td><td><center>");
+document.write("<table border=1 bordercolor=#225AD5 cellspacing=2 cellpadding=0><tr>");
+document.write("<td>Code Name: </td><td>");
 document.write("<b>", navigator.appCodeName,"</td></tr>");
-document.write("<tr><td>Version: </td><td><center>");
+document.write("<tr><td>Version: </td><td>");
 document.write("<b>",xz,"</td></tr>");
-document.write("<tr><td>Platform: </td><td><center>");
+document.write("<tr><td>Platform: </td><td>");
 document.write("<b>", navigator.platform,"</td></tr>");
-document.write("<tr><td>Pages Viewed: </td><td><center>");
+document.write("<tr><td>Pages Viewed: </td><td>");
 document.write("<b>", history.length," </td></tr>");
-document.write("<tr><td>Java enabled: </td><td><center><b>");
+document.write("<tr><td>Java enabled: </td><td><b>");
 if (navigator.javaEnabled()) document.write("Yes</td></tr>");
 else document.write("No</td></tr>")
-document.write("<tr><td>Screen Resolution: </td><td><center>");
+document.write("<tr><td>Screen Resolution: </td><td>");
 document.write("<b>",screen.width," x ",screen.height,"</td></tr>");
-document.write("</table></tr></td></table></center>");
+document.write("</table></tr></td></table>");
 // End -->
-</script>
-<br>
-<div align="center"></div>
+</script></center>
 </body>
 </html>

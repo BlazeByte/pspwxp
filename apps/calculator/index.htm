@@ -1,59 +1,27 @@
 <HTML>
 <HEAD>
-
-
-
-<!-- This script and many more are available free online at -->
-
-<!-- The JavaScript Source!! http://javascript.internet.com -->
-
-<!-- Original:  Denis Makarov (info@binarythings.com) -->
-
-<!-- Web Site:  http://www.binarythings.com -->
-
+<!-- Original:  Denis Makarov (info@binarythings.com)  Web Site:  http://www.binarythings.com -->
 <style>
 
 input {
-
 	width: 100%;
-
 	font-size: medium;
-
-
-
 }
 
 body {
-
 	font-family: Verdana, Arial, Helvetica, sans-serif;
-
 	font-size: x-small;
-
 	margin: 0px;
-
 	padding: 0px;
-
-}
-
-h1 {
-
-	font-size: medium;
-
-	font-weight: bold;
-
 }
 
 td {
-
 	text-align: center;
-
 	vertical-align: middle;
-
 }
 
 </style>
-
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></head>
+</head>
 
 <script language="JavaScript">
 
@@ -62,11 +30,8 @@ var Result=0, Operator=0, Second=0, Ready=0, Done=1, Complete=0, Integer, Curren
 function reset(value)
 
 {
-
 	document.calculator.LED.value = value;
-
 	Result = 0, Operator = 0, Second = 0, Ready = 0; Done = 1; Complete = 0;
-
 }
 
 function SetValue(NewValue)
@@ -74,7 +39,6 @@ function SetValue(NewValue)
 {
 
 	Integer = 1;
-
 	if(Second || Done)
 
 	{
