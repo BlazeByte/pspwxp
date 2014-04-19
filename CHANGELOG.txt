@@ -1,0 +1,124 @@
+Version 3.22 - minor bug fixes, 1 new feature
+---------------------------------------------
+New features
+- Alphanumeric phone number convertor added
+
+Bug fixes
+- Login sound 
+- "Maximum Windows"dialog fixed
+- psphone fixed
+- PSPTunes opens in separate window to save memory
+- Clock (in apps) fixed
+- start menu, minmimize, maximize and close rollover images no longer cause the bg to refresh. (fixed by preloading those images)
+
+
+Version 3.2 - minor and major bug fixed, new features added
+------------------------------------------------------------
+New features
+- menu items and desktop shortcuts can be selected using the arrows on the psp, thus providing ease of use!
+- PSPTunes V2
+- More added to style.css
+- PSP Portals link added
+- Credits updated
+- Better Internet Browser icons
+- More 'Vista-like' My PSP interface
+- White space underneath portal gone
+- login image
+- Portals menu in apps menu
+- Improved menu positions
+- PSPhone added - thanks christek!
+- New sound function - so new sounds will be added!
+
+Bug Fixes
+- Start up routine
+- PSPTunes
+- Flash Games
+- 'Skip Maximize Info'
+- PSP
+- Menus now appear above the taskbar
+- pixles fixer fixed
+- taskbar diabled when shutdown dlg appears
+- Removed useless stop button from interent browser
+
+
+Version 3.00 - minor and major bug fixes, new features added - including flash
+-------------------------------------------------------------------------------
+
+New features
+- flash games open in maximize
+- run / search added
+- mouse over min and max images
+- mouse over start menu image
+- My PSP added
+- improved games icons
+- customizable links menu
+- customizable games menu
+- customizable apps menu
+- customizable desktop shortcuts
+- decreased file size
+- most javascript games removed
+- help center added
+- fading shutdown screen
+- loading screens
+- much impproved performance
+- some flash apps added
+- many new flash games added
+- psptunes added
+- search bar on start menu
+- control panel
+- multiple windows - up to 3 windows may be opened at once
+- themejs.js in images folder - for theme specific instructions
+- msn messenger
+- clock
+- links to pspwxp website
+
+Fixed bugs:
+- improved performance
+- no more close button down image
+- Maximize fixed (can now restore to window)
+- Clock is less process consuming
+- links open in internet browser
+- internet explorer toolbar fix
+- control panel fix - lost two features for now (auto hide, stay on top)
+- updated help
+- fixed update
+
+Version 2.01 - minor bug fix
+----------------------------
+- slowdown fix
+
+
+Version 2.00 - minor bug fixes, new features added - including mulitple windows
+-------------------------------------------------------------------------------
+
+New features
+- multiple windows - up to 3 windows may be opened at once
+- themejs.js in images folder - for theme specific instructions
+- msn messenger
+- clock
+- links to pspwxp website
+
+Fixed bugs:
+- internet explorer toolbar fix
+- control panel fix - lost two features for now (auto hide, stay on top)
+- updated help
+- fixed update
+
+Version 1.02 - minor bug fixes and new features
+-----------------------------------------------
+
+Bug fixes / New features
+- does not show previous app/game on starting a new app/game
+- fixed music menu button
+- five card stud poker slightly changed and bug fixes
+- PSPaint fix (thanks to chrisw92)
+- New apps:
+  - Coin flip (thanks to chrisw92)
+  - dice roller (thanks to chrisw92)
+- New feature - videos
+- fixed update bug
+- added 'about' to settings
+- added style.css to images folder. controls colors of some things in index.htm. This can be changed in themes.
+- fixed edges of windows
+- desktop icon shadows lined up more
+
