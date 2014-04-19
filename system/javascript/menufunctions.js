@@ -25,7 +25,9 @@ function initiateMenu(strListURL){
 
 
 function MenuItem(itemName,itemPath,itemIconPath,itemMax){   // Function for adding games. This is used by /user/games.js to make a list of the games.
-	intItem++;
+	intItem++;	// keep a count of the menu items
+	
+	// arrays for each item
 	strItems[intItem]=itemName;
 	strItemPath[intItem]=itemPath;
 	strItemIconPath[intItem]=itemIconPath;
@@ -42,9 +44,9 @@ function createMenu(strTitle,strID,strIcon){
 	var intRows = strItems.length-1;		// The amount of items in the submenu
 	var intCols1 = intRows/intMaxRows;		// work out how many columns will be required
 	var intCols = Math.ceil(intCols1);		// round this value up (eg, there cannot be 3.2 cols, so it is rounded to 4)
-	var intLastColRows = (intCols1 - Math.floor(intCols1))*intMaxRows;		// work out the amount of rows in the final column
+	var intLastColRows = Math.ceil((intCols1 - Math.floor(intCols1))*intMaxRows);		// work out the amount of rows in the final column
 	var strClickCommand = "";		// define the variable that will store the command used by the item
-	var i = 1;		// i is used in the for loop
+	var i = 1;		// i is used within the for loop
 
 	intItem = 0;	//reset the Item counter
 
@@ -66,13 +68,13 @@ function createMenu(strTitle,strID,strIcon){
 			strClass=' class="subMenuColContainer"';
 		}
 		
-		document.write('<td' + strClass + '>');	// create a new column
+		document.write('<td' + strClass + ' valign="top">');	// create a new column
 
 		for(var intRow=1 ; intRow<=intNewMaxRows ; intRow++){	// for each item on the row
 
 			strClickCommand='loadApp("' + strItems[i] + '","' + strItemPath[i] + '","' + strItemIconPath[i] + '",' + '"' + intItemMax[i] + '"' + ');';		// create the onclick command
 
-			document.write("<div onclick='" + strClickCommand + "' class='subMenuRow'><table cellpadding='0' cellspacing='0'><tr><td class='itemIconContainer'><img src='../theme"+strThemeDir+"/" + strItemIconPath[i] + "' class='itemIcon'></td><td class='itemTitleContainer'>" + strItems[i] + "</td></tr></table></div>");		// create the item for that row
+			document.write("<div onclick='" + strClickCommand + "' class='subMenuRow'><table cellpadding='0' cellspacing='0'><tr><td class='itemIconContainer'><img src='../theme"+strThemeDir+"/" + strItemIconPath[i] + "' class='itemIcon'></td><td class='itemTitleContainer'><a href='javascript:;'>" + strItems[i] + "</a></td></tr></table></div>");		// create the item for that row
 			
 			i++;
 
@@ -116,7 +118,7 @@ function makeMainMenu(){ // Make the main 'start' menu
 
 		strID = "lyMM"+strMenuID[i];
 
-		strClickCommand = "hideMenu(1);showHideLayer(" + '"ly' + strMenuID[i] + '"' +","+'"visible"' +");";	// make the onclick command
+		strClickCommand = "hideMenu(1);alignSubMenu("+i+");showHideLayer(" + '"ly' + strMenuID[i] + '"' +","+'"visible"' +");";	// make the onclick command
 		
 		makeMainMenuItem(strMenu[i],strIconURL[i],strID,strClickCommand,1);
 
@@ -126,11 +128,9 @@ function makeMainMenu(){ // Make the main 'start' menu
 	makeMainMenuHeader("Actions");
 	makeMainMenuItem('Settings','../theme'+strThemeDir+'/images/icons/mainmenu/settings.png','lyMMSettings','msgBox("The Settings are still in development","Settings");');
 	makeMainMenuItem('Run Command...','../theme'+strThemeDir+'/images/icons/mainmenu/run.png','lyMMRun','msgBox("The Run command is still in development","Run Command");');
-	makeMainMenuItem('Log Out...','../theme'+strThemeDir+'/images/icons/mainmenu/logout.png','lyMMLogout','msgBox("The Log Out feature is still in development","Log Out");');
+	makeMainMenuItem('Log Out...','../theme'+strThemeDir+'/images/icons/mainmenu/logout.png','lyMMLogout','showHideLogin("visible");');
 	document.write("</tr></table>");
 	document.getElementById('menu').style.height=(intMainMenuItemCount*20);
-
-	document.getElementById('menu').style.top=272-((intMainMenuItemCount*20)+document.getElementById('lyTaskbar').offsetHeight);
 
 }
 
@@ -156,21 +156,21 @@ function setSubMenusX(){
 		var intX = document.getElementById('menu').offsetLeft + document.getElementById('menu').offsetWidth;	// define the left value for the submenu
 
 		eval(objLyMenu + ".style.left=intX;");	//set left property for each sub menu. This must come now, where the main menu layer has already been loaded.
+		alignSubMenu(i);	// align Y
 	}
+	
+	// get main menu out of way
+	document.getElementById('menu').style.top="0px";	// then make it appear above the panel
+	
 }
 
-function alignSubMenus(){
+function alignSubMenu(intSubMenu){
 	var intSubMenuY = 0;
 
-	for(var i = 0;i<strMenu.length;i++){
-
-		intSubMenuY = document.getElementById("lyMM"+strMenuID[i]).offsetTop+document.getElementById("menu").offsetTop;
-
-		if(intSubMenuY+document.getElementById("ly"+strMenuID[i]).offsetHeight>272){
-			document.getElementById("ly"+strMenuID[i]).style.top=272-document.getElementById("ly"+strMenuID[i]).offsetHeight;
-		}else{
-			document.getElementById("ly"+strMenuID[i]).style.top=intSubMenuY;
-		}
-
+	intSubMenuY = document.getElementById("lyMM"+strMenuID[intSubMenu]).offsetTop+document.getElementById("menu").offsetTop;
+	if(intSubMenuY+document.getElementById("ly"+strMenuID[intSubMenu]).offsetHeight>272){
+		document.getElementById("ly"+strMenuID[intSubMenu]).style.top=(272-document.getElementById("ly"+strMenuID[intSubMenu]).offsetHeight)+"px";
+	}else{
+		document.getElementById("ly"+strMenuID[intSubMenu]).style.top=intSubMenuY;
 	}
 }

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<script>
+function showPreview(strTheme) {
+	document.getElementById("preview").src="../../theme"+strTheme+"/preview.jpg";
+}
+
+function saveSettings() {
+	top.icookies.document.settings.theme.value=document.getElementById("slTheme").value;
+	top.icookies.document.settings.submit();
+}
+
+function closeMe() {
+	parent.eval("closeWindow(intCurrWindow);")
+}
+</script>
+</head>
+
+<body>
+<p>Themes can be downloaded from the official Encore website.</p>
+<p>Select an installed theme:<br />
+  <select name="select" id="slTheme" onchange="showPreview(this.value);">
+    <option value="/default">KDE (Default)</option>
+    <option value="/winxp">Windows XP</option>
+  </select>
+</p>
+<p>Preview:<br />
+<img width="240" height="136" id="preview" border="1" /></p>
+<p align="left">
+  <input type="button" name="btnOk" value="OK" style="width:70px;" onclick="saveSettings();closeMe();" />
+  <input type="button" name="btnCancel" value="Cancel" style="width:70px;" onclick="closeMe();"/>
+  <input type="button" name="btnApply" value="Apply" style="width:70px;" onclick="saveSettings();" />
+</p>
+</body>
+</html>

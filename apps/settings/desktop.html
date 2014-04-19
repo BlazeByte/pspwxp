@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<script>
+function showPreview(strTheme) {
+	document.getElementById("preview").src="../../theme"+strTheme+"/preview.jpg";
+}
+
+function saveSettings() {
+	top.icookies.document.settings.bgcolor.value=document.getElementById('txtcolor').value;
+	top.icookies.document.settings.chkbg.value=document.getElementById('chkBGImage').checked;
+	top.icookies.document.settings.bg.value=document.getElementById('bgUrl').value;
+	top.icookies.document.settings.desktopicons.value=document.getElementById('chkIcons').checked;
+	top.icookies.document.settings.submit();
+	parent.ApplyLoadSettings();
+}
+
+function closeMe() {
+	parent.eval("closeWindow(intCurrWindow);");
+}
+</script>
+</head>
+
+<body>
+<div align="center"><img alt="" name="imgPreview" width="141" height="71" id="imgPreview" />
+</div>
+ Desktop<br />
+        <table width="100%" border="0" cellspacing="1" cellpadding="1">
+          <tr>
+            <td width="300" valign="top"><p align="left"><font size="2">
+                <label>
+                <input name="chkBGImage" type="checkbox" id="chkBGImage" value="1" checked="checked" />
+                  Background image:</label>
+                <br />
+                </font>
+                    <input name="bgUrl" type="file" id="bgUrl" onchange="imgPreview.src=File.value;chkBGImage.checked=true;" />
+                    <input name="default" type="submit" id="default" value="Default" onclick="themebgload()" />
+            </p></td>
+            <td valign="top"><font size="2">&nbsp; </font>
+                <table height="42" border="1" cellpadding="0" cellspacing="0" bordercolor="#D6D3CE">
+                  <tr>
+                    <td><font size="2">Background color:</font></td>
+                    <td width="20" height="20" bordercolor="#000000"><div id="activecolor" style="width:100%;height:100%"><img alt="" src="../images/space.gif" width="100%" height="100%" /></div></td>
+                  </tr>
+                  <tr>
+                    <td height="20" colspan="2"><input name="txtcolor" id="txtcolor" type="text" value="#000000" maxlength="7" onchange="document.getElementById('activecolor').style.background=txtcolor.value" style="width:100%;" /></td>
+                  </tr>
+              </table></td>
+          </tr>
+          <tr>
+            <td width="300" valign="top"><input type="button" name="btnOk" value="OK" style="width:70px;" onclick="saveSettings();closeMe();" />
+              <input type="button" name="btnCancel" value="Cancel" style="width:70px;" onclick="closeMe();"/>
+              <input type="button" name="btnApply" value="Apply" style="width:70px;" onclick="saveSettings();" /></td>
+            <td valign="top">
+              <label>
+              <input name="chkIcons" type="checkbox" id="chkIcons" value="1" />
+                Do not show desktop icons</label>
+				</td>
+          </tr>
+      </table>
+
+</body>
+</html>

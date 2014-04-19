@@ -7,7 +7,7 @@
 <form action="" method="post" name="settings" id="settings">
   <ul>
     <li>Theme
-      <input name="theme" type="text" id="theme" value="/default" />
+      <input name="theme" type="text" id="theme" />
 </li>
     <li>BGImage
       <input type="text" name="bg" id="bg" />
@@ -17,6 +17,9 @@
     </li>
     <li>BGImage? Yes No
       <input type="text" name="chkbg" id="chkbg" />
+    </li>
+    <li>First Use 
+      <input type="text" name="firstuse" id="firstuse" />
     </li>
     <li>Desktop Icons?
       <input type="text" name="desktopicons" id="desktopicons" />
@@ -51,7 +54,7 @@
   </ul>
 </form>
 <script language="javascript" type="text/javascript">
-	top.sendCookiesReady();
+	top.sendCookiesReady();	//when settings have loaded, load the desktop.
 </script>
 </body>
 </html>

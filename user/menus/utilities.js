@@ -13,6 +13,7 @@ MenuItem("Stop Watch","../apps/stopwatch.htm","images/icons/menu/apps/stopwatch.
 MenuItem("Conversion Calculator","../apps/stopwatch.htm","images/icons/menu/apps/conversion.png");
 MenuItem("Day Planner","../apps/stopwatch.htm","images/icons/menu/apps/day.png");
 MenuItem("Periodic Table","../apps/stopwatch.htm","images/icons/menu/apps/periodictable.png");
+MenuItem("Update","../apps/system/update.html","images/icons/menu/apps/update.png");
 
 // Do not edit below this line
 createMenu("Utilities","MenuUtilities","/icons/mainmenu/utilities.png");

@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>Image Viewer</title>
+
+<style>
+body{
+	margin:0px;
+}
+#viewimage{
+	height:100%;
+	width:100%;
+	position:absolute;
+	top:0px;
+	left:0px;
+	background-color:#000000;
+	visibility:hidden;
+	background-position:center;
+	background-repeat:no-repeat;
+}
+</style>
+
+<script>
+	function hideBigImage(){
+		document.getElementById("viewimage").style.visibility="hidden";
+		document.getElementById("main").style.visibility="visible";
+	}
+	
+	function viewImage(strURL){
+		document.getElementById("main").style.visibility="hidden";
+		document.getElementById("viewimage").style.backgroundImage="url("+strURL+")";
+		document.getElementById("viewimage").style.visibility="visible";
+	}
+	
+	function enableSelectToolbar(){
+		
+	}
+</script>
+
+</head>
+
+<body>
+<div id="main">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th scope="col"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>Add Photo </td>
+        <td>Slideshow</td>
+      </tr>
+      <tr>
+        <td>Image View </td>
+        <td>List view </td>
+      </tr>
+    </table></th>
+    <th rowspan="3" scope="col"><iframe src="photos.htm" width="376" height="100%" name="iphoto" id="iphoto"></iframe></th>
+  </tr>
+  <tr>
+    <th scope="row"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><a href="javascript:;" onClick="viewImage(frames['iphoto'].currentImg);">View Image </a></td>
+        <td>Category</td>
+      </tr>
+      <tr>
+        <td colspan="2">Start slideshow here </td>
+        </tr>
+      <tr>
+        <td colspan="2">Add caption </td>
+        </tr>
+      <tr>
+        <td colspan="2">Remove image </td>
+        </tr>
+    </table></th>
+  </tr>
+  <tr>
+    <th scope="row"><iframe src="categories.htm" width="120" height="120"></iframe></th>
+  </tr>
+</table>
+</div>
+<div id="viewimage" onclick="hideBigImage();">
+	
+</div>
+</body>
+</html>

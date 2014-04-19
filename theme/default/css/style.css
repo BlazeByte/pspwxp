@@ -1,3 +1,7 @@
+* {	/* for viewing on computer, set font */
+	font-family:Arial, Helvetica, sans-serif;
+}
+
 body {
 	background-color:#000000;
 	margin:0px;
@@ -101,36 +105,46 @@ body {
 	background-image:url(../images/wallpapers/kde34.jpg);
 }
 
-#lyTaskbar {
-	position:absolute;
-	left:0px;
-	top:248px;
-	width:480px;
-	height:24px;
-	background-image: url(../images/taskbar_texture.gif);
-	background-color:#000000;
-	visibility: visible;
-	vertical-align:middle;
+#lyLogin {
+	position:absolute; 
+	left:0px; 
+	top:0px;
+	width:480px; 
+	height:272px; 
+	z-index:100; 
+	background-image:url(../images/wallpapers/login.jpg);
+	visibility: hidden;
+}
+
+.loginTitle {
+	text-align:center;
+	color:#FFFFFF;
+}
+
+.loginMed {
+	color:#FFFFFF;
+	font-size:12px;
+}
+
+.loginSmall {
+	color:#FFFFFF;
+	font-size:11px;
+}
+
+a.loginLink {
+	color:#FFFFFF;
+	font-size:12px;
 }
 
 .mainMenuCols{
 	width:100%;
 }
 
-#mainMenuIcon {
-	position:absolute;
-	top:0px;
-	left:0px;
-	width:22px;
-	height:22px;
-	margin: 1px;
-}
-
 .subMenu {
 	position:absolute;
 	background-color:#CCCCCC;
 	visibility: hidden;
-	z-index:1;
+	z-index:22;
 }	
 
 .subMenuCol {
@@ -153,7 +167,7 @@ body {
 	top:90px;
 	width:150px;
 	height:158px;
-	z-index:2;
+	z-index:21;
 	background-color: #FFFFFF;
 	visibility: hidden;
 	border-right-width: 1px;
@@ -167,6 +181,11 @@ body {
 .subMenuRow {
 	font-size:14px;
 	height:20px;
+}
+
+.subMenuRow a{
+	color:#000000;
+	text-decoration:none;
 }
 
 .itemIcon {
@@ -221,43 +240,6 @@ body {
 	text-decoration:none
 }
 
-#clockContainer {
-	position:absolute;
-	width:70px;
-	height:24px;
-	top:248px;
-	left:400px;
-	color:#000000;
-	font-size:20px;
-	margin-right:4px;
-	text-align:right;
-	vertical-align:middle;
-	font-weight: bolder;
-	visibility: visible;
-}
-
-#taskbarMinMax{	
-	position:absolute;
-	left:470px;
-	top:248px;
-	width:10px;
-	height:24px;
-	background-image: url(../images/taskbar_texture.gif);
-	background-color:#003399;
-	visibility: visible;
-	vertical-align:middle;
-}
-
-#taskbarMinMaxImg{
-	position:absolute;
-	left:4px;
-	top:8px;
-	width:5px;
-	height:10px;
-	background-image:url(../images/icons/sub-menu-arrow.gif);
-	background-repeat:no-repeat;
-}
-
 .mainMenuRibbon{
 	background-color:#0066FF;
 	background-image:url(../images/menu_ribbon.jpg);
@@ -307,10 +289,15 @@ body {
 
 .windowContent	{
 	background-color:#EFEFEF;
+	height:226px;
+	text-align:left;
+}
+
+.msgContent	{
+	background-color:#EFEFEF;
 	height:100px;
 	text-align:center;
 }
-
 
 .windowRight	{
 	background-image:url(../images/window/right_edge.gif);
@@ -339,7 +326,7 @@ body {
 	top:19px;
 	width:276px;
 	height:133px;
-	z-index:3;
+	z-index:20;
 	text-align:center;
 	visibility: hidden;
 }
@@ -349,14 +336,19 @@ body {
 	left:0px;
 	top:0px;
 	width:480px;
-	height:248px;
+	height:244px;
 	z-index:5;
 	visibility: hidden;
 }
 
 .iWindow{
+	position:absolute;
 	width:476px;
-	height:228px;
+	height:226px;
+	visibility:hidden;
+	display:none;
+	background-color:#CCCCCC;
+	z-index:0;
 }
 
 .WindowMin{
@@ -381,13 +373,6 @@ body {
 	background-repeat:no-repeat;
 }
 
-#systemSound{
-	position:absolute;
-	left:0px;
-	top:0px;
-	visibility:hidden;
-}
-
 .WindowClose{
 	position:absolute;
 	width:18px;
@@ -409,8 +394,9 @@ body {
 }
 
 .WindowIcon {
-	width:20px;
-	height:20px;
+	width:18px;
+	height:18px;
+	float:left;
 }
 
 .shortcutItem {
@@ -447,4 +433,127 @@ body {
 
 .msgBoxOK {
 	width:45px;
+}
+
+#bottomPanel{
+	position:absolute;
+	left:0px;
+	top:248px;
+	width:480px;
+	height:24px;
+	background-image:url(../images/taskbar_texture.gif);
+	background-color:#000000;
+	visibility: visible;
+	z-index:20;
+}
+	
+#topPanel{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:480px;
+	height:24px;
+	background-image:url(../images/taskbar_texture.gif);
+	background-color:#000000;
+	visibility: visible;
+	vertical-align:middle;
+}
+
+.Tab,.TabDown{
+	width:100px;
+	height:21px;
+	margin-right:2px;
+	float:left;
+}
+
+.Tab{
+	background-image:url(../images/tab_up.png);
+	visibility:hidden;
+	margin-left:2px;
+}
+
+.TabDown{
+	background-color:#00CC00;
+	background-image:none;
+	/*background-image:url(../images/tab_up.png);*/
+}
+
+.Tab:hover{
+	background-image:url(../images/tab_over.png);
+}
+
+.imgTabIcon{
+	padding:1px;
+	height:18px;
+	width:18px;
+}
+
+.TabTitle{
+	display:inline;
+}
+
+.PanelMinMaxImg{
+	/*position:absolute;
+	left:4px;
+	top:8px;*/
+	width:5px;
+	height:10px;
+	background-image:url(../images/icons/sub-menu-arrow.gif);
+	background-repeat:no-repeat;
+}
+
+#iSound, #iNetComm { /* hidden iframe */
+	width:0px;
+	height:0px;
+}
+
+#systemSound{
+	position:absolute;
+	left:0px;
+	top:0px;
+	visibility:hidden;
+}
+
+
+/* Applets 
+   ======= */
+
+#tasklistContainer{
+	padding-top:2px;
+	margin-left:3px;
+	float:left;
+	height:20px;
+}
+
+#soundApplet{
+	padding-top:2px;
+	float:left;
+	width:22px;
+	height:20px;
+}
+
+#clock {
+	float:left;
+	color:#000000;
+	font-size:20px;
+	width:60px;
+	text-align:right;
+	font-weight: bolder;
+}
+
+#spacerApplet {
+	float:left;
+}
+
+.PanelMinMax{	
+	float:left;
+	width:10px;
+	height:24px;
+}
+
+#mainMenuIcon {
+	float:left;
+	width:22px;
+	height:22px;
+	margin: 1px;
 }

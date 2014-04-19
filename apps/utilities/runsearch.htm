@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Run/Search Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+</head>
+
+<body bgcolor="#EBE9ED">
+<p align="center"><strong><font size="4">Run / Search</font></strong></p>
+<table border="0" width="100%" cellspacing="0" cellpadding="0" height="36">
+  <tr>
+    <td width="173">Run
+      an application or game:</td>
+    <td width="186">
+      <input type="file" name="q2" style="width:163" value="" />
+      <input type="submit" name="Submit" value="Run" onclick="location.href=q2.value" />
+       </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Search the web via Google:</td>
+    <td>
+      <form method="get" action="http://google.com/xhtml">
+        <input type="text" name="q" maxlength="2048" style="width:163" size="15" value="" />
+        <input type="submit" name="btnG" value="Search" />
+        <input type="hidden" name="hl" value="en" />
+        <input type="hidden" name="lr" value="" />
+        <br />
+        <input type="radio" name="site" value="search" checked="checked" />
+        Web
+        <input type="radio" name="site" value="images" />
+        Images
+        <input type="radio" name="site" value="local" />
+        Local
+        <input type="hidden" name="mrestrict" value="xhtml" />
+        <p></p>
+      </form></td>
+  </tr>
+</table>
+</body>
+</html>

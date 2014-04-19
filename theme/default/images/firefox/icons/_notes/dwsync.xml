@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="back.png" local="128134397385937500" remote="128134396460000000" testing="0" />
-<file name="forward.png" local="128134397699218750" remote="128134396460000000" testing="0" />
-<file name="go.png" local="128132852986718750" remote="128132850280000000" testing="0" />
-<file name="home.png" local="128134398691406250" remote="128134396460000000" testing="0" />
-<file name="reload.png" local="128134398433906250" remote="128134396460000000" testing="0" />
-<file name="search.png" local="128132855235625000" remote="128132854560000000" testing="0" />
+<file name="back.png" local="128134397385937500" remote="128210073000000000" testing="0" />
+<file name="forward.png" local="128134397699218750" remote="128210073000000000" testing="0" />
+<file name="go.png" local="128132852986718750" remote="128210073000000000" testing="0" />
+<file name="home.png" local="128134398691406250" remote="128210073000000000" testing="0" />
+<file name="reload.png" local="128134398433906250" remote="128210073000000000" testing="0" />
+<file name="search.png" local="128132855235625000" remote="128210073000000000" testing="0" />
 </dwsync>

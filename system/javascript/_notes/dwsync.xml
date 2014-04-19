@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="appfunctions.js" local="128132577455937500" remote="128132575400000000" testing="0" />
-<file name="bootfunctions.js" local="128132545573750000" remote="128132545340000000" testing="0" />
-<file name="loadfunctions.js" local="128134481365312500" remote="128134478060000000" testing="0" />
-<file name="menufunctions.js" local="128134572092187500" remote="128134568260000000" testing="0" />
-<file name="portalfunctions.js" local="128134500865156250" remote="128134499540000000" testing="0" />
-<file name="versioninfo.js" local="128134455399843750" remote="128134452300000000" testing="0" />
+<file name="appfunctions.js" local="128199383465781250" remote="128210072400000000" testing="0" />
+<file name="bootfunctions.js" local="128198965448437500" remote="128210072400000000" testing="0" />
+<file name="loadfunctions.js" local="128198988423593750" remote="128210072400000000" testing="0" />
+<file name="menufunctions.js" local="128198469239062500" remote="128210072400000000" testing="0" />
+<file name="portalfunctions.js" local="128199160791406250" remote="128210073000000000" testing="0" />
+<file name="versioninfo.js" local="128144589688125000" remote="128210073000000000" testing="0" />
+<file name="applets.js" local="128198160688906250" remote="128210072400000000" testing="0" />
+<file name="loginfunctions.js" local="128198966117500000" remote="128210072400000000" testing="0" />
 </dwsync>

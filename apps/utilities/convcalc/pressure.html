@@ -1,0 +1,165 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<HTML>
+<HEAD>
+
+<TITLE>Conversion Calculator created by Unit-Conversion.info</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style type="text/css">
+<!--
+a {font-family: arial, helvetica, tahoma, sans-serif; font-size: 12px; text-decoration: underline;}
+:link {color: #FFFFFF;}
+:visited {color: #FFFFFF;}
+:hover {color: #FFFFFF;}
+input.i1 {font-family: arial, helvetica, tahoma, sans-serif; font-size: 12px; text-decoration: none;}
+:link.i1 {color: #000000;}
+:visited.i1 {color: #000000;}
+:hover.i1 {color: #000000;}
+Body {background-color: #006699; margin-top: 0; margin-left: 0; margin-right: 0; padding: 0px; font-family: arial,  helvetica, tahoma, sans-serif; font-size:12px; color:#FFFFFF;}
+td {font-family: arial, helvetica, tahoma, sans-serif; font-size:14px; color:#FFFFFF;}
+td.td1 {font-family: arial, helvetica, tahoma, sans-serif; font-size:16px; color:#FFFFFF;}
+img { border:0px; }
+-->
+</style>
+
+<script language="JavaScript1.2" type="text/javascript">
+<!--
+var factors=[0.98692326671601,1,1000,1.0197162129779,10197.162129779,100,1000,750.06168270417,100000,2088.5456325465,14.503789114906,750.06168270417];
+var gbrt=["atmosphere (atm)","bar (b)","hectopascal (hPa)","kilogram per sq. cm (kgf/cm^2)","kilogram per sq. meter (kgf/m^2)","kilopascal (kPa)","millibar","millimeter of mercury (mmHg) ","pascal (Pa)","pounds per square foot (psf)","pounds per square inch (psi)","torr (Torr)"];
+function fix(v){
+//Copyright 2003 Unit-conversion.info
+if (!isFinite(v)) return "";
+if (v==0) return "0";
+st=""+v;
+epos=st.indexOf('E');
+if (epos==-1) epos=st.indexOf('e');
+sdigi=Math.log(Math.abs(v)) / Math.LN10;
+sdigif=Math.floor(sdigi);
+if (epos==-1){
+adjust=Math.pow(10, sdigif-12);
+faqs=Math.round(v/adjust);
+norst=""+faqs;
+if (sdigif<12){
+adjust2=Math.pow(10, 12-sdigif);
+return (faqs / adjust2);}
+else return (faqs*adjust);}
+else {
+zo=v*Math.pow(10, 12-sdigif);
+szo=String(Math.round(zo));
+inse=-1;
+if (szo.charAt(0)=='-') inse=2;
+else inse=1;
+rest=szo.substring(inse,szo.length);
+i=rest.length-1;
+while (i>=0 && rest.charAt(i)=='0')
+i--;
+rest=rest.substring(0,i+1);
+rou=szo.substring(0,inse);
+if (rest.length>0) rou += "."+rest;
+if (sdigif<0) sa=rou+"E";
+else sa=rou+"E+";
+snow=sa+sdigif;
+vanow=Math.abs(parseFloat(snow));
+faqsvab=Math.abs(v);
+if (sdigif>=0){
+if (vanow>5*faqsvab)
+snow=sa+String(sdigif-1);
+else if (vanow<faqsvab/5)
+snow=sa+String(sdigif+1);}
+else if (sdigif>=0){
+if (vanow>5*faqsvab)
+snow=sa+String(sdigif+1);
+else if (vanow<faqsvab/5)
+snow=sa+String(sdigif-1);}
+vanow=parseFloat(snow);
+if (vanow>1.1*v || vanow<0.9*v) return v;
+else return snow;}}
+
+function convert()
+{
+//Copyright 2003 Unit-conversion.info
+isNS4=(document.layers) ? true : false;
+isIE4=(document.all && !document.getElementById) ? true : false;
+isIE5=(document.all && document.getElementById) ? true : false;
+isNS6=(!document.all && document.getElementById) ? true : false;
+myform=document.forms['cform'];
+w1=myform.D1.options[myform.D1.selectedIndex].value;
+w2=myform.D2.options[myform.D2.selectedIndex].value;
+faqsorg=factors[w2]/factors[w1];
+resfaqs=myform.T1.value*faqsorg;
+if (isIE5 || isNS6){
+elm=document.getElementById("N1");
+elm2=document.getElementById("N2");
+elm.innerHTML=gbrt[w1];
+elm2.innerHTML=gbrt[w2];}
+if (isNaN(parseFloat(resfaqs)))
+myform.T2.value="";
+else
+{myform.T2.value=fix(parseFloat(resfaqs))+" ";}}
+// -->
+</script>
+</HEAD>
+
+<BODY BGCOLOR="#006699" onload="convert()">
+<div align="center">
+<form method="post" name="cform" action="open">
+<table align="center" width="390" height="200" bgcolor="#006699" border="0" cellpadding="1" cellspacing="1">
+<tr>
+<td height="40" colspan="2" align="center">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="td1" align="left"><b>Pressure Conversion</b></td>
+<td align="right"><a href="javascript:history.go(-1)">Select Calculator</a></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="#003366">
+<td align="center">
+From:<br>
+<input name="T1" class="i1" value="1" onChange="convert()" onKeyUp="convert(); return true" size="28"><br>
+<SPAN id="N1" title="N1"></span>
+</td>
+<td align="center">
+To:<br>
+<input name="T2" class="i1" value="1" onChange="convert()" disabled size="28"><br>
+<SPAN id="N2" title="N2"></span>
+</td>
+</tr><tr bgcolor="#003366">
+<td align="center">
+<select name="D1" class="i1" size="5" onChange="convert()">
+<option value="0">atmosphere (atm)</option>
+<option value="1">bar (b)</option>
+<option value="2">hectopascal (hPa)</option>
+<option value="3">kilogram per sq. cm (kgf/cm^2)</option>
+<option value="4">kilogram per sq. meter (kgf/m^2)</option>
+<option value="5">kilopascal (kPa)</option>
+<option value="6">millibar</option>
+<option value="7">millimeter of mercury (mmHg) </option>
+<option selected value="8">pascal (Pa)</option>
+<option value="9">pounds per square foot (psf)</option>
+<option value="10">pounds per square inch (psi)</option>
+<option value="11">torr (Torr)</option>
+</select>
+</td>
+<td align="center">
+<select name="D2" class="i1" size="5" onChange="convert()">
+<option value="0">atmosphere (atm)</option>
+<option value="1">bar (b)</option>
+<option value="2">hectopascal (hPa)</option>
+<option value="3">kilogram per sq. cm (kgf/cm^2)</option>
+<option value="4">kilogram per sq. meter (kgf/m^2)</option>
+<option value="5">kilopascal (kPa)</option>
+<option value="6">millibar</option>
+<option value="7">millimeter of mercury (mmHg) </option>
+<option selected value="8">pascal (Pa)</option>
+<option value="9">pounds per square foot (psf)</option>
+<option value="10">pounds per square inch (psi)</option>
+<option value="11">torr (Torr)</option>
+</select>
+</td>
+</tr>
+</table>
+</form>
+</div>
+</BODY>
+</HTML>

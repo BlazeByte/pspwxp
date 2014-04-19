@@ -1,0 +1,46 @@
+<HTML>
+<head>
+<title>Encore Loader</title>
+<style type="text/css">
+* {	/* for viewing on computer, set font */
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+
+h1 {
+	color:#FFFFFF;
+	font-size:24px;
+	text-align:center
+}
+
+h2 {
+	font-size:16px;
+	font-weight:bold;
+}
+
+body {
+	margin:10px 30% 0px 30%;
+}
+</style>
+
+</head>
+
+<body bgcolor="#000000" text="#CCCCCC">
+<h1>Encore</h1>
+<p/>
+<div id="Info">Encore is loading, please wait...</div>
+
+<script language="javascript" type="text/javascript">
+	if(screen.width!==480){		//If not the PSP, then display a warning for PC users that it will not diplay properly.
+		document.getElementById('Info').innerHTML="<h2>Encore viewing problems on your browser:</h2><h4>Encore has detected you are not running this on a PSP. The interface will be significantly improved on the PSP, and functions will be fully operational. To continue anyway, click Continue.<p/> <center><input onclick='"+'window.open("desktop.htm",null,"height=272,width=480,status=no,toolbar=yes,menubar=yes,location=no,scrollbars=no")'+";' value='Continue >>>' type='button'></center></h4>";
+	}else{
+		document.location="desktop.htm";
+	}	
+</script>
+
+<noscript>
+	It appears you have JavaScript disabled. JavaScript is required to run Encore. Please enable it in the tools 	menu of the PSP's browser.
+</noscript>
+
+</body>
+</HTML>

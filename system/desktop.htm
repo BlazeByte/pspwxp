@@ -1,58 +1,58 @@
-<HTML>
+<html>
 <head>
 <title>Encore Portal</title>
-<link href="../theme/default/css/style.css" rel="stylesheet" type="text/css">	<!-- Link the style sheer !-->
+<link href="../theme/default/css/style.css" rel="stylesheet" type="text/css">	<!-- Link the style sheet -->
 </head>
 <body>
 
-	<iframe src="cookies.htm" width="1" height="1" id="icookies" name="icookies" scrolling="no" frameborder="0" style="visibility:hidden;position:absolute;top:0;left:0;"></iframe>	<!-- Load the cookies file to refer from later !-->
-
-	<div id="lyBoot">
-		<div id="lyLoadIcon1"></div>
+	<div id="lyBoot">	<!-- the boot screen -->
+		<div id="lyLoadIcon1"></div>	<!-- the loading icons. background-image in css for icon -->
 		<div id="lyLoadIcon2"></div>
 		<div id="lyLoadIcon3"></div>
 		<div id="lyLoadIcon4"></div>
 		<div id="lyLoadIcon5"></div>
 		<div id="lyLoadIcon6"></div>
-		<div id="loadingStatus">Preparing for boot...</div>
+		<div id="loadingStatus">Preparing for boot...</div> <!-- dynamic load status -->
 </div>
 
 	<script language="javascript" type="text/javascript" src="javascript/bootfunctions.js">	</script>
-
-	<div id="lyTaskbar" onClick="hideMenu();"><img src="../theme/default/images/menu.gif" onClick="showAppMenu();" id="mainMenuIcon">	</div>
-	<div id="ClockContainer"><span id="tP">00:00</span></div><div id="taskbarMinMax" onClick="minMaxTaskbar();"><div id="taskbarMinMaxImg"></div></div>
-
-	<script language="javascript" type="text/javascript" src="javascript/loadfunctions.js">
+	<script language="javascript" type="text/javascript" src="javascript/applets.js">	</script>
+	
+	<script language="javascript" type="text/javascript" src="javascript/loadfunctions.js"></script>
+	
+	<script language="javascript" type="text/javascript">
+		ApplyBootSettings();
 	</script>
-
-	<div id="systemSound"><iframe width="1" height="1" id="iSound" src="blank.htm" name="iSound"></iframe></div>
+	
+	<script language="javascript" type="text/javascript" src="../theme/default/panels.js">	</script>
+	
+	<div id="systemSound">
+		<iframe id="iSound" src="blank.htm" name="iSound"></iframe>
+		<iframe id="iNetComm" src="blank.htm" name="iNetComm"></iframe>
+	</div>
 
 	<script language="javascript" type="text/javascript" src="javascript/menufunctions.js">	</script>
 		<script language="javascript" type="text/javascript" src="javascript/appfunctions.js">	</script>
 
-	<div id="lyDesktop" onClick="hideMenu();">
+<div id="lyDesktop" onClick="hideMenu();">
 		<script language="javascript" type="text/javascript" src="../user/shortcuts.js"></script>
-	</div>
+</div>
 	
+	<script language="javascript" type="text/javascript">
+		ApplyLoadSettings();
+		if(blnShortcuts==true) createShortcuts();
+		if(blnLogin==true) document.write('<script language="javascript" type="text/javascript" src="javascript/loginfunctions.js">	</'+'script>')
+	</script>
 	<script language="javascript" type="text/javascript" src="../user/menus/submenus.js"></script>
-
 	<script language="javascript" type="text/javascript" src="javascript/portalfunctions.js">	</script>
 	<script language="javascript" type="text/javascript" src="javascript/versioninfo.js">	</script>
-
-	<div id="menu">
+	
+	<div id="menu" style="visibility:hidden;">
 		<script language="javascript" type="text/javascript" >
 			makeMainMenu();		//add all
-			// Line up menus
-			alignSubMenus();
 		</script>
 	</div>
 	
-	
-
-	<script language="javascript" type="text/javascript">
-		setSubMenusX(); //set left property for each sub menu. This must come now, where the main menu layer has already been loaded.
-	</script>
-
 	<div id="msgDlg">
 	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
@@ -62,7 +62,7 @@
         </tr>
         <tr>
           <td class="windowLeft"></td>
-          <td class="windowContent"><div id="msgDlgMsg">
+          <td class="msgContent"><div id="msgDlgMsg">
             Content</div>
             <br/>
               <input type="button" value="OK" class="msgBoxOK" onClick="showHideLayer('msgDlg','hidden');"/>
@@ -77,29 +77,59 @@
         </tr>
       </table>
 	</div>
-
-	<div id="Window1" class="Window">
-	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td class="windowTopLeft"></td>
-          <td class="windowTopTitle"><img id="imgWindowIcon1" class="WindowIcon"><div id="WindowTitle1" class="WindowTitle"></div><div id="windowControlBox1" class="WindowControlBox"><div id="windowMin1" class="WindowMin" onClick="minWindow(1);"></div><div id="windowMax1" class="WindowMax" onClick="maxWindow(1);"></div><div id="windowClose1" class="WindowClose" onClick="closeWindow(1);"></div></div></td>
-          <td class="windowTopRight"></td>
-        </tr>
-        <tr>
-          <td class="windowLeft"></td>
-          <td class="windowContent">
-              <iframe src="blank.htm" id="iWindow1" frameborder="0" class="iWindow"></iframe>
-
-          </td>
-          <td class="windowRight"></td>
-        </tr>
-        <tr>
-          <td class="windowBottomLeft"></td>
-          <td class="windowBottom"></td>
-          <td class="windowBottomRight"></td>
-        </tr>
-      </table>
+	
+	<script language="javascript" type="text/javascript">
+		returnLoadStatus("Aligning menus...");
+		
+		setSubMenusX(); //set left property for each sub menu. This must come now, where the main menu layer has already been loaded.
+	</script>
+	
+	<div id="WindowContainer" class="Window">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="windowTopLeft">
+				</td>
+				<td class="windowTopTitle">
+					<img id="imgWindowIcon" class="WindowIcon">
+					<div id="WindowTitle" class="WindowTitle">
+						Window Title
+					</div>
+					<div id="windowControlBox" class="WindowControlBox">
+						<div id="windowMin" class="WindowMin" onClick="minWindow(intCurrWindow);">
+						</div>
+						<div id="windowMax" class="WindowMax" onClick="maxWindow(intCurrWindow);">
+						</div>
+						<div id="windowClose" class="WindowClose" onClick="closeWindow(intCurrWindow);">
+						</div>
+					</div>
+				</td>
+				<td class="windowTopRight">
+				</td>
+			</tr>
+			<tr>
+				<td class="windowLeft">
+				</td>
+				<td class="windowContent" align="left" valign="top">
+					<script language="javascript" type="text/javascript">			
+						returnLoadStatus("Generating Windows...");
+						makeWindows();	// make all the windows
+					</script>
+				</td>
+				<td class="windowRight">
+				</td>
+			</tr>
+			<tr>
+				<td class="windowBottomLeft">
+				</td>
+				<td class="windowBottom"></td><td class="windowBottomRight">
+				</td>
+			</tr>
+		</table>
 	</div>
+			
+	<script language="javascript" type="text/javascript">				
+		hideBoot();
+	</script>
 </body>
 
-</HTML>
+</html>
