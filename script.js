@@ -17,11 +17,12 @@ var mStartMax;
 var tableft=0;
 var tab2left=0;
 var tab3left=0;
-var alreadymaxed=0
+var alreadymaxed=0;
 var playSounds;
 var screensaver;
 var screensaverTime;
 var loaded = 0;
+var scrActive = "false"
 
 function showHideLayer(layerName,showHide){
 	frames[layerName].style.visibility=showHide;
@@ -34,16 +35,21 @@ function shutdownFade() {
 }
 
 function deScr() {
-//	screensaverTime=document.getElementById('scrtime').value;
+	screensaverTime=icookies.document.getElementById('scrtime').value*2;
 }
 
 function ScrTimeout(){
-//	if(!(document.getElementById('screensaver').value=='none')&&frames['iProgMax'].style.visibility=='hidden'&&frames['progwin'].style.visibility=='hidden'&&frames['progwin2'].style.visibility=='hidden'&&frames['progwin3'].style.visibility=='hidden'){
-//		screensaverTime--;
-//		if(screensaverTime==0){
-//			setTitle(1,"Screen Saver","apps/screensavers/" + document.getElementById('screensaver').value,"",11);
-//		}
-//	}
+	if(document.getElementById('boot').style.visibility=='hidden'&&document.getElementById('login').style.visibility=='hidden'&&document.getElementById('progwin').style.visibility=='hidden'&&document.getElementById('progwin2').style.visibility=='hidden'&&document.getElementById('progwin3').style.visibility=='hidden'&&document.getElementById('progMax').style.visibility=='hidden'){
+		screensaverTime--;
+		if(screensaverTime==0){
+			setTitle(1,"Screen Saver","apps/screensavers/" + icookies.document.getElementById('screensaver').value,"",11);
+			deScr();
+			scrActive="true"
+		}
+	}else{
+		deScr();
+	}
+	autoClock();
 }
 
 function setTitle(blncontrol,ProgramTitle,ProgramLocation,ProgramIcon,StartMax){
@@ -59,13 +65,13 @@ function setTitle(blncontrol,ProgramTitle,ProgramLocation,ProgramIcon,StartMax){
 			document.getElementById('lT').innerHTML=ProgramTitle;
 			document.getElementById('lTA').innerHTML=ProgramLocation;
 			showHideLayer('loading','visible');
-	
+
 			skiploading=0;
 			if(StartMax==0||StartMax==null){
 				var tabspace1='false';
 				var tabspace2='false';
 				var tabspace3='false';
-	
+
 				if(frames['tab'].style.visibility=='visible'){
 					tableft=frames['tab'].style.left;
 				}else{
@@ -81,7 +87,7 @@ function setTitle(blncontrol,ProgramTitle,ProgramLocation,ProgramIcon,StartMax){
 				}else{
 					tab3left=0;
 				}
-	
+
 				if((tableft=='84px'||tab2left=='84px'||tab3left=='84px')&&tabopen=='true'){
 					tabspace1='false';
 				}
@@ -91,7 +97,7 @@ function setTitle(blncontrol,ProgramTitle,ProgramLocation,ProgramIcon,StartMax){
 				if(tabspace2=='false'&&(tableft=='310px'||tab2left=='310px'||tab3left=='310px')&&tab3open=='true'){
 					tabspace3='false';
 				}
-	
+
 				var emptytab = "";
 				if(tabopen=='false'){
 					emptytab="";
@@ -129,6 +135,7 @@ function setTitle(blncontrol,ProgramTitle,ProgramLocation,ProgramIcon,StartMax){
 			skiploading=1;
 		}
 	}
+	deScr();
 }
 
 function showWindow(windowNo,ProgramLocation,ProgramIcon,blncontrol,ProgramTitle,StartMax){
@@ -166,7 +173,7 @@ function showWindow(windowNo,ProgramLocation,ProgramIcon,blncontrol,ProgramTitle
 		showHideLayer('progMax','visible');
 		blnStartMax="true";
 	}
-	
+
 	if(StartMax==10){
 		window.open(ProgramLocation);
 	}
@@ -186,7 +193,7 @@ function theClock() {
 	document.getElementById('tP').innerHTML=strHours+":"+strMins;
 }
 
-function hideMenu(){showHideLayer('menu','hidden'); showHideLayer('mlinks','hidden'); showHideLayer('mpspwxp','hidden');showHideLayer('mportals','hidden'); showHideLayer('mgames','hidden'); showHideLayer('mapps','hidden'); showHideLayer('startoff','visible');deScr();
+function hideMenu(){showHideLayer('menu','hidden');showHideLayer('muser','hidden'); showHideLayer('mlinks','hidden');showHideLayer('mpspwxp','hidden');showHideLayer('mportals','hidden'); showHideLayer('mgames','hidden');showHideLayer('mapps','hidden');showHideLayer('startoff','visible');deScr();
 }
 
 function openTab(windowNo){
@@ -260,6 +267,19 @@ function restoreWindow() {
 	if(blnStartMax=="false"){
 		openTab(activewindow);
 	}
-	showHideLayer('progMax','hidden');
-	frames['iprogMax'].location.href="apps/appsmax.htm";
+	if(scrActive=="true"){
+		if(icookies.document.getElementById('scrPass').value=="true"){
+			hideMenu();
+			showHideLayer('txtPassword','visible');
+			showHideLayer('portalmenu','visible');
+			showHideLayer('lyShutdown','hidden');
+			showHideLayer('lyShutdowndlg','hidden');
+			showHideLayer('login','visible');
+		}
+		scrActive="false"
+	}
+	if(frames['progMax'].style.visibility=="visible"){
+		showHideLayer('progMax','hidden');
+		frames['iprogMax'].location.href="apps/appsmax.htm";
+	}
 }

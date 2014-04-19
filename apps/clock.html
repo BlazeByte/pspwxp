@@ -1,6 +1,9 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML>
 <HEAD>
-<SCRIPT language="JavaScript">
+<TITLE>Clock</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<SCRIPT language="JavaScript" type="text/javascript">
 <!--
 
 function startclock()
@@ -60,18 +63,18 @@ document.clockform.clockspot.value=nhours+": "+nmins+": "+nsecn+" "+AorP+" "+nda
 
 setTimeout('startclock()',1000);
 
-} 
+}
 
 //-->
 </SCRIPT>
 </HEAD>
 
-<BODY>
-
-<FORM name="clockform">
+<BODY bgcolor="#EBE9ED">
+<br><br><br>
+<FORM name="clockform" action="display">
 Current Time: <INPUT TYPE="text" name="clockspot" size="40">
 </FORM>
-<SCRIPT language="JavaScript">
+<SCRIPT language="JavaScript" type="text/javascript">
 <!--
 startclock();
 //-->

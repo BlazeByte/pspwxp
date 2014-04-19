@@ -1,10 +1,10 @@
-var intlight = 1;
+var intlight = 0;
 var strlight;
 var strFunction;
 var intColumn;
 
-if(strGames.length>13){
-	if(strGames.length>26){
+if(strGames.length>12){
+	if(strGames.length>24){
 		intColumn=Math.ceil(strGames.length/3);
 	}else{
 		intColumn=Math.ceil(strGames.length/2);
@@ -20,7 +20,7 @@ document.write("<table width='115' cellpadding='0.4' cellspacing='0' >");
 for (i=0;i<strGames.length;i++){
 	if(i==intColumn||i==intColumn*2){
 		document.write("</table></td><td valign='top'><table width='115' cellpadding='0.4' cellspacing='0' >");
-		intlight=1;
+		intlight=0;
 	}
 
 	if(intlight==1){
@@ -38,7 +38,7 @@ for (i=0;i<strGames.length;i++){
 	document.write(strFunction);
 	document.write("')><td width='22'><img src='");
 	document.write(strGamesIconPath[i]);
-	document.write("' width='20' height='20'></td><td><a href='#' class='a"+strlight+"'>");
+	document.write("' width='20' height='20'></td><td><a href='#a' class='a"+strlight+"'>");
 	document.write(strGames[i]);
 	document.write("</a></td></tr>");
 }

@@ -1,7 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<script language="JavaScript">
+<title>Sound Page</title>
+<script language="JavaScript" type="text/javascript">
 	function ChangeSettings(){
 		top.icookies.document.settings.chkPlaySounds.value=document.getElementById('sounds').checked;
 		top.icookies.document.settings.submit();
@@ -20,11 +21,11 @@
 
 <body bgcolor="#F5F6F7" onLoad="GetSettings();">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
-	<tr> 
-	  <td><div align="center"> 
-		  
+	<tr>
+	  <td><div align="center">
+
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr> 
+          <tr>
             <td> <div align="center">
                 <label><input name="sounds" type="checkbox" id="sounds" value="checkbox">
                 Use system sounds</label>
@@ -33,15 +34,15 @@
         </table>
 		</div></td>
 	</tr>
-	<tr> 
+	<tr>
 	  <td>
-<div align="center"> 
+<div align="center">
 		  <table width="150" height="30" border="0" align="center" cellpadding="0" cellspacing="0">
-			<tr valign="bottom"> 
-			  <td width="50%"><div align="center"> 
+			<tr valign="bottom">
+			  <td width="50%"><div align="center">
 				  <input name="OK" type="button" id="OK" onClick="ChangeSettings();" value="OK">
 				</div></td>
-			  <td width="50%"><div align="center"> 
+			  <td width="50%"><div align="center">
 				  <input name="Cancel" type="button" id="Cancel" onClick="window.parent.windowExit(settingswindow)" value="Cancel">
 				</div></td>
 			</tr>

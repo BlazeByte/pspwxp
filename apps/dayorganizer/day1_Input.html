@@ -1,0 +1,73 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>Day 1 Input Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- Original Code written by mooncricket11 July 2006 -->
+<!-- Code modified by Fuzzie 360 for textarea use late July 2006 -->
+<!-- Code modified for this organizer usage by TimW (TombstoneTim) August 2006 -->
+<!-- This app designed and released by Ocean19 pspWxp forum August 2006 -->
+
+<style type="text/css">
+<!--
+Body {background-color: silver; margin-top: 0; margin-left: 0; margin-right: 0; padding: 0px; font-family: arial, helvetica, tahoma, sans-serif;}
+td {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+div {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+div.d1 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+div.d2 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 12pt; font-weight: bold; color: #000000;}
+a {font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; text-decoration: underline;}
+:link {color: blue;}
+:visited {color: blue;}
+:hover {color: green;}
+textarea.t1 {text-align: left; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+:link.t1 {color: #000000;}
+:visited.t1 {color: #000000;}
+:hover.t1 {color: #000000;}
+-->
+</style>
+<script type="text/javascript">
+function getValue1() {
+document.saveForm1.input1D.value = document.saveForm1.input1DTxt.value;
+document.saveForm1.input11.value = document.saveForm1.input11Txt.value;
+document.saveForm1.input12.value = document.saveForm1.input12Txt.value;
+document.saveForm1.input13.value = document.saveForm1.input13Txt.value;
+document.saveForm1.input14.value = document.saveForm1.input14Txt.value;
+}
+</script>
+</head>
+<body onload="getValue1();">
+<div class="d1">
+<form name="saveForm1" action="day1_Input.html" method="post">
+<font size=4 color="blue">Day 1</font>&nbsp;&nbsp;&nbsp;&nbsp;<font size=3>Date:</font>&nbsp;<textarea class="t1" name="input1D" cols="22" rows="1"></textarea><br>
+<hr color="green">
+<font size=4 color="blue">&nbsp;&nbsp;<u>AM</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time Plans&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>PM</u>&nbsp;&nbsp;</font><br>
+<table align="center" width="440" border="0" cellspacing="2" cellpadding="0">
+<tr>
+<td width="50%">
+<font size=2>12:00 am - 5:59 am<br></font><textarea class="t1" name="input11" cols="24" rows="4">
+</textarea><br>
+<font size=2>6:00 am - 11:59 am<br></font><textarea class="t1" name="input12" cols="24" rows="4">
+</textarea><br>
+</td>
+<td width="50%">
+<font size=2>12:00 pm - 5:59 pm<br></font><textarea class="t1" name="input13" cols="24" rows="4">
+</textarea><br>
+<font size=2>6:00 pm - 11:59 pm<br></font><textarea class="t1" name="input14" cols="24" rows="4">
+</textarea>
+</td>
+</tr>
+</table>
+<hr color="green"><hr color="green">
+End
+<hr color="green">
+<br><br><br><br><br><br><br><br><br>
+<div class="d2">DO NOT MODIFY THE TEXTBOXES BELOW</div>
+<input name="input1DTxt" readonly>
+<input name="input11Txt" readonly>
+<input name="input12Txt" readonly>
+<input name="input13Txt" readonly>
+<input name="input14Txt" readonly>
+</form>
+</div>
+</body>
+</html>

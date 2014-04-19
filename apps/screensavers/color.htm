@@ -3,7 +3,10 @@
 <head>
 <title>Untitled Document</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<script language="JavaScript">
+<script language="javascript" type="text/javascript">
+	var i = 0
+	setTimeout("intScrStart=1",1250);
+
 	function randomColor(){
 		var rndColor = "#";
 		var intrnd;
@@ -40,13 +43,28 @@
 		document.bgColor=rndColor;
 		rndTimeout()
 	}
-	
+
 	function rndTimeout(){
 		setTimeout("randomColor()",500)
 	}
 </script>
-</head>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style></head>
 
 <body onLoad="randomColor()">
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" onClick="top.restoreWindow();"  onMouseMove="if(top.icookies.document.settings.scrMouse.value=='true'&&intScrStart==1){top.restoreWindow();}">
+	<tr>
+		<td>
+		</td>
+	</tr>
+</table>
 </body>
 </html>

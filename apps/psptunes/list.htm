@@ -1,8 +1,10 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+<title>PSPTunes Playlist</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <script type="text/javascript" src="songs.js"></script>
-<style>
+<style type="text/css">
  a {
  	color:#000000;
  }
@@ -34,13 +36,13 @@
 
 function setIndex(x) {
 	switch(x){
-		case 'next': 
+		case 'next':
 			curIndex++;
 			if (curIndex == songList.length) { curIndex = 0; }
 			updateCurrentSong();
 			return;
 			break
-			
+
 		case 'end':
 			if (parent.blnrepeat=='false') {
 				if (parent.blnshuffle=='true') {
@@ -53,16 +55,16 @@ function setIndex(x) {
 			updateCurrentSong();
 			return;
 			break
-			
+
 		case 'prev':
 			if (curIndex == 0) {
 				curIndex = songList.length - 1;
 			} else {
-				curIndex-- 
+				curIndex--
 			}
 			updateCurrentSong();
 			return;
-					
+
 	}
 
   if (x) {
@@ -72,7 +74,7 @@ function setIndex(x) {
   }
 
  }
-   
+
  function updateCurrentSong() {
   var songInfo = songList[curIndex].split("||");
   songTitle = songInfo[0];
@@ -92,25 +94,25 @@ function setIndex(x) {
   var trData=(swapColor==1)? 'class="swap"' : '';
 
   document.write(
-   "<tr "+trData+" onClick=\"setIndex("+ i +");\">"
+    "<table width=100% cellspacing=0 cellpadding=0>"
+   +"<tr "+trData+" onClick=\"setIndex("+ i +");\">"
    + "<td width='20'><b>"+ i +"</b></td>"
-   + "<td align=left width='223'><a href='#'>"+ songTitle +"</a></td>"
+   + "<td align=left width='223'><a href='#tune'>"+ songTitle +"</a></td>"
    + "<td bgcolor='#cccccc' width='1'></td>"
    + "<td align=left>"+ songArtist +"</td>"
    + "</tr>"
+   + "</table>"
   );
   }
  }
 
 </script>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
 </head>
 
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-<table width="100%" cellspacing="0" cellpadding="0">
-  <tr>
-    <script>drawTable();</script>
-  </tr>
-</table>
-</body>
+<div id="palylist_table">
+    <script type="text/javascript">drawTable();</script>
+</div>
+  </body>
 </html>

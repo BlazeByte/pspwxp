@@ -1,6 +1,10 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
 <HEAD>
+<TITLE>Dice Roll</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<SCRIPT LANGUAGE="JavaScript">
+<SCRIPT LANGUAGE="JavaScript" type="text/javascript">
 <!-- Original:  Michael Hensley (yelsneh@geocities.com) -->
 <!-- Web Site:  http://geocities.com/TimesSquare/Castle/6274 -->
 
@@ -20,48 +24,48 @@ document.form.text.value = roll;
 }
 // End -->
 </script>
+</HEAD>
 
-<BODY>
-
+<BODY bgcolor="#EBE9ED">
 <center>
-<form name=form>
-<table border=2 cellpadding=5>
+<form name="form" action="display">
+<table border=1 cellpadding=2 cellspacing=0 bordercolor="#225AD5">
 <tr>
-<td colspan=2 align=middle>What dice type?</td>
-<td colspan=2 align=middle>How many dice to roll?</td>
+<td colspan=2 align=center>What dice type?</td>
+<td colspan=2 align=center>How many dice to roll?</td>
 </tr>
 <tr>
-<td valign=top align=middle>
-<p><input type=radio name=sides onclick="die = 3">3 Sided
-<p><input type=radio name=sides onclick="die = 4">4 Sided 
-<p><input type=radio name=sides onclick="die = 5">5 Sided
-<p><input type=radio checked name=sides onclick="die = 6">6 Sided
-<p><input type=radio name=sides onclick="die = 8">8 Sided
+<td valign=top align=center>
+<p><input type=radio name=sides value="" onclick="die = 3">3 Sided
+<p><input type=radio name=sides value="" onclick="die = 4">4 Sided
+<p><input type=radio name=sides value="" onclick="die = 5">5 Sided
+<p><input type=radio checked name=sides value="" onclick="die = 6">6 Sided
+<p><input type=radio name=sides value="" onclick="die = 8">8 Sided
 </td>
-<td valign=top align=middle>
-<p><input type=radio name=sides onclick="die = 10">10 Sided
-<p><input type=radio name=sides onclick="die = 12">12 Sided
-<p><input type=radio name=sides onclick="die = 20">20 Sided
-<p><input type=radio name=sides onclick="die = 30">30 Sided
-<p><input type=radio name=sides onclick="die = 100">100 Sided
+<td valign=top align=center>
+<p><input type=radio name=sides value="" onclick="die = 10">10 Sided
+<p><input type=radio name=sides value="" onclick="die = 12">12 Sided
+<p><input type=radio name=sides value="" onclick="die = 20">20 Sided
+<p><input type=radio name=sides value="" onclick="die = 30">30 Sided
+<p><input type=radio name=sides value="" onclick="die = 100">100 Sided
 </td>
-<td valign=top align=middle>
-<p><input type=radio name=number onclick="dice = 1">1 
-<p><input type=radio name=number onclick="dice = 2">2
-<p><input type=radio checked name=number onclick="dice = 3">3
-<p><input type=radio name=number onclick="dice = 4">4
-<p><input type=radio name=number onclick="dice = 5">5
+<td valign=top align=center>
+<p><input type=radio name=number value="" onclick="dice = 1">1
+<p><input type=radio name=number value="" onclick="dice = 2">2
+<p><input type=radio checked name=number value="" onclick="dice = 3">3
+<p><input type=radio name=number value="" onclick="dice = 4">4
+<p><input type=radio name=number value="" onclick="dice = 5">5
 </td>
-<td valign=top align=middle>
-<p><input type=radio name=number onclick="dice = 6">6
-<p><input type=radio name=number onclick="dice = 7">7
-<p><input type=radio name=number onclick="dice = 8">8
-<p><input type=radio name=number onclick="dice = 9">9
-<p><input type=radio name=number onclick="dice = 10">10
+<td valign=top align=center>
+<p><input type=radio name=number value="" onclick="dice = 6">6
+<p><input type=radio name=number value="" onclick="dice = 7">7
+<p><input type=radio name=number value="" onclick="dice = 8">8
+<p><input type=radio name=number value="" onclick="dice = 9">9
+<p><input type=radio name=number value="" onclick="dice = 10">10
 </td>
 </tr>
 <tr>
-<td align=middle colspan=4>
+<td align=center colspan=4>
 <input type=button value="Roll Dice" name=button onclick="dice_roll(die, dice)">
 <input type=text size=10 name=text>
 </td>
@@ -69,10 +73,9 @@ document.form.text.value = roll;
 </table>
 </form>
 </center>
-
 <p><center>
 <font face="arial, helvetica" size="-2">Free JavaScripts provided<br>
 by <a href="http://javascriptsource.com">The JavaScript Source</a></font>
 </center><p>
-
-<!-- Script Size:  2.57 KB  -->
+</BODY>
+</HTML>

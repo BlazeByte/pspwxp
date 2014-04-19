@@ -1,94 +1,61 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<script language="JavaScript">
-var chkIconsstatus="false";
-var chkBGImagestatus="true";
-var chkMenuTopstatus="true";
-var chkTaskbarHidestatus ;
-var settingswindow=window.parent.activewindow
-var showHideLayer = window.parent.showHideLayer;
-var imgDesktop=window.parent.document.imgDesktop;
-
+<title>Time Page</title>
+<script language="JavaScript" type="text/javascript">
 function ChangeSettings(){
-	if(chkIconsstatus=="true"){
-		for (i=0;i<strShortcuts.length;i++){
-			showHideLayer('s'+i+'s','hidden');
-		}
-		showHideLayer('lIcons','hidden');
-	}else{
-		for (i=0;i<strShortcuts.length;i++){
-			showHideLayer('s'+i+'s','visible');
-		}
-		showHideLayer('lIcons','visible');
-	}
-	
-	if(chkBGImagestatus=="true"){
-		if(File.value==""){
-			imgDesktop.src="images/desktop.jpg";
-		} else {
-			imgDesktop.src=File.value;
-		}
-	} else {
-		imgDesktop.src="images/space.gif"
-	}
-	
-	if(chkTaskbarHidestatus=="true"){
-		window.parent.TaskbarHide = 'true';
-		window.parent.programs.style.height='248';
-		window.parent.progwin.style.height='272';
-		window.parent.tblWindow.style.height='272';
-	}else{
-		window.parent.TaskbarHide = 'false';
-		window.parent.programs.style.height='228';
-		window.parent.progwin.style.height='252';
-		window.parent.tblWindow.style.height='252';
-	}
-	if(chkMenuTopstatus=="false"){
-		window.parent.programs.style.height='248';
-		window.parent.progwin.style.height='272';
-		window.parent.tblWindow.style.height='272';
-	} else {
-		window.parent.programs.style.height='228';
-		window.parent.progwin.style.height='222';
-		window.parent.tblWindow.style.height='222';
-	}
-
-	
-	window.parent.windowExit(settingswindow);
-
+	top.icookies.document.settings.noAutoTime.value=document.getElementById('noAuto').checked;
+	top.icookies.document.settings.submit();
+	top.ApplySettings();
+	alert('pspWxp will need to be restarted for changes to take effect.');
 }
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-</head>
+<style type="text/css">
+<!--
+body {
+	background-color: #EBE9ED;
+}
+-->
+</style></head>
 
-<body bgcolor="#EBE9ED" onLoad="File.value=window.parent.document.imgDesktop;;imgPreview.src=window.parent.document.imgDesktop;">
+<body onLoad="File.value=window.parent.document.imgDesktop;;imgPreview.src=window.parent.document.imgDesktop;">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
-	<tr> 
-	  <td><div align="center"> 
-		  
+	<tr>
+	  <td><div align="center">
+
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr> 
-            <td><label><input type="checkbox" name="checkbox" value="checkbox">Disable auto-refresh time (you will have to click on the clock to update it)</label></td>
+          <tr>
+            <td>Disabling the automatic clock may make some applications and games run slightly faster, and may reduce interference. <br>
+            <br>
+            		<label><input type="checkbox" id="noAuto" name="noAuto" value="checkbox">
+            Disable auto-refresh clock (you will have to click on the clock to update it) - <strong>this will also disable the screensaver!</strong> </label></td>
           </tr>
         </table>
 		</div></td>
 	</tr>
-	<tr> 
+	<tr>
 	  <td>
-<div align="center"> 
+<div align="center">
 		  <table width="150" height="30" border="0" align="center" cellpadding="0" cellspacing="0">
-			<tr valign="bottom"> 
-			  <td width="50%"><div align="center"> 
-				  <input name="OK" type="button" id="OK" onClick="ChangeSettings();" value="OK">
+			<tr valign="bottom">
+			  <td width="50%"><div align="center">
+				  <input name="OK" type="button" id="OK" onClick="ChangeSettings();history.go(-1);" value="OK" style="width:60">
 				</div></td>
-			  <td width="50%"><div align="center"> 
-				  <input name="Cancel" type="button" id="Cancel" onClick="window.parent.windowExit(settingswindow)" value="Cancel">
+			  <td width="50%"><div align="center">
+				  <input name="Cancel" type="button" id="Cancel" onClick="history.go(-1);" value="Cancel" style="width:60">
 				</div></td>
 			</tr>
 		  </table>
 		</div></td>
 	</tr>
   </table>
+  <script language="javascript" type="text/javascript">
+	if(top.document.icookies.document.getElementById('noAutoTime').value=="true"){
+		noAuto.checked=true;
+	}else{
+		noAuto.checked=false;
+	}
+</script>
 </body>
 </html>

@@ -1,0 +1,43 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>Input Page for pspWxp Text Editor</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- Original Code by mooncricket12 July 2006 -->
+<!-- Modified for Sony PSP portal usage by TimW July 2006 -->
+<!-- Modified for additional features by Fuzzie Late July 2006 -->
+<!-- Modified again by TombstoneTim August 2006 - used Fuzzy's work to make this pspWxp Text Editor functional -->
+<!-- Put together by TombstoneTim August 2006 to use in pspWxp Portal by BigBondFan -->
+<style type="text/css">
+<!--
+Body {background-color: #949AAD; margin-top: 0; margin-left: 0; margin-right: 0; padding: 0px; font-family: arial, helvetica, tahoma, sans-serif;}
+td {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+div {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+div.d1 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+div.d2 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 12pt; font-weight: bold; color: #000000;}
+a {font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; text-decoration: underline;}
+:link {color: blue;}
+:visited {color: blue;}
+:hover {color: green;}
+textarea.t1 {text-align: left; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
+:link.t1 {color: #000000;}
+:visited.t1 {color: #000000;}
+:hover.t1 {color: #000000;}
+-->
+</style>
+<script type="text/javascript">
+function gettext2Value() {
+document.textForm2.textInput2.value = document.textForm2.textInput2Txt.value;
+}
+</script>
+</head>
+<body onload="gettext2Value();">
+<div id="d1">
+<form name="textForm2" action="textedit2_input.htm" method="post">
+<textarea class="t1" name="textInput2" rows="9" cols="46" wrap="virtual"></textarea><br><br><br><br><br><br>
+<div class="d2">DO NOT MODIFY THE TEXTBOX BELOW</div><br>
+<input name="textInput2Txt" readonly><br>
+</form>
+</div>
+</body>
+</html>

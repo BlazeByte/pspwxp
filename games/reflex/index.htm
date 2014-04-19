@@ -1,3 +1,4 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
 <head>
@@ -6,7 +7,7 @@
 </head>
 
 <body bgcolor="#EBE9ED">
-<script language="JavaScript">
+<script language="JavaScript" type="text/javascript">
 <!-- hiding for old browsers
 	// response time test, created by Jasper van Zandbeek
 	// e-mail: jasperz@net-v.com
@@ -51,7 +52,7 @@ function stopTest()
 		endTime=new Date();
 		var responseTime=(endTime.getTime()-startTime.getTime())/1000;
 
-		document.bgColor="white";       
+		document.bgColor="white";
 		alert("Your response time is: " + responseTime + " seconds " + "\n" + remark(responseTime));
 		startPressed=false;
 		bgChangeStarted=false;
@@ -63,11 +64,11 @@ function stopTest()
 			alert("press start first to start test");
 		}
 		else
-		{       
+		{
 			clearTimeout(timerID);
-			startPressed=false;             
+			startPressed=false;
 			alert("cheater! you pressed too early!");
-		}               
+		}
 	}
 }
 
@@ -90,18 +91,18 @@ function startit()
 	}
 	else
 	{
-		startPressed=true; 
+		startPressed=true;
 		timerID=setTimeout('startTest()', 6000*randNumber());
 	}
 }
-// --> 
+// -->
 </script>
 <p>Test your Response time!</p>
 Click on "Start" first, and wait until the background color changes. As soon as it changes, hit "stop!"
 
 
-<form name="response">
-Change background color in: 
+<form name="response" action="display">
+Change background color in:
 <select name="bgColorChange">
 <option selected>deeppink
 <option>aliceblue

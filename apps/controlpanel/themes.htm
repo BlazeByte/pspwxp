@@ -1,7 +1,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<script language="JavaScript">
+<title>Themes Page</title>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<script language="JavaScript" type="text/javascript">
 var chkIconsstatus="false";
 var chkBGImagestatus="true";
 var chkMenuTopstatus="true";
@@ -22,7 +24,7 @@ function ChangeSettings(){
 		}
 		showHideLayer('lIcons','visible');
 	}
-	
+
 	if(chkBGImage.checked){
 		if(File.value==""){
 			imgDesktop.src="images/desktop.jpg";
@@ -32,7 +34,7 @@ function ChangeSettings(){
 	} else {
 		imgDesktop.src="images/space.gif"
 	}
-	
+
 	window.parent.document.bgColor=activecolor.bgColor;
 
 }
@@ -62,7 +64,7 @@ function preview(){
 </head>
 
 <body bgcolor="#EBE9ED" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="File.value=imgDesktop.src;imgPreview.src=imgDesktop.src;">
-Select a theme: 
+Select a theme:
 <select name="select">
   <option>Vista</option>
   <option>XP Luna</option>

@@ -5,7 +5,7 @@ var intColumn;
 var openedLink;
 var linksTop;
 
-if(strLinks.length>13){
+if(strLinks.length>12){
 	intColumn=Math.ceil((strLinks.length)/2);
 }else{
 	intColumn=strLinks.length;
@@ -19,7 +19,7 @@ document.write('<tr class="istart_dark" onClick="' + "showHideLayer('mpspwxp','v
 for (i=0;i<strLinks.length;i++){
 	if(i==intColumn){
 		document.write("</table></td><td valign='top'><table width='115' cellpadding='0' cellspacing='0' >");
-		intlight=1;
+		intlight=0;
 	}
 
 	if(intlight==1){
@@ -40,7 +40,7 @@ for (i=0;i<strLinks.length;i++){
 	}
 	document.write("><td width='22'><img src='");
 	document.write(strLinksIconPath[i]);
-	document.write("' width='20' height='20'></td><td><a href='#' class='a"+strlight+"'>");
+	document.write("' width='20' height='20'></td><td><a href='#a' class='a"+strlight+"'>");
 	document.write(strLinks[i]);
 	document.write("</a></td><td></td></tr>");
 }

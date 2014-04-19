@@ -13,4 +13,6 @@ a.aistart_dark	{color: #000000;}
 .login_small {color:#FFFFFF; font-size:10px;}
 .login_med {color:#FFFFFF; font-size:12px;}
 .login_title {color:#FFFFFF;font-size: 24px;font-weight: bold;}
-.login_shutdown_text {color:#000000;}
+.login_shutdown_text {color:#FFFFFF;}
+.menu_edges {border-right:solid; border-right-color:#000000; border-right-width:1px; border-left:solid; border-left-color:#000000; border-left-width:1px;}
+.menu_highlight_edge {border-right:solid; border-right-color:#959FB4; border-right-width:1px;}
