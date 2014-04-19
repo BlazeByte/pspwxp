@@ -4,22 +4,6 @@
 <head>
 <title>Navigation Page</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<script language="JavaScript" type="text/javascript">
-function getUrl(){
-	document.getElementById('txtUrl').value=parent.Content.location.href;
-	parent.Content.focus();
-}
-
-	function ChToolbar(){
-		if (parent.frames['InternetFrameset'].rows=='4,*'){
-			parent.frames['InternetFrameset'].rows='31,*';
-			document.getElementById('imgMin').src="../../images/icons/internet/up.gif";
-		}else{
-			parent.frames['InternetFrameset'].rows='4,*';
-			document.getElementById('imgMin').src="../../images/icons/internet/down.gif";
-		}
-	}
-</script>
 </head>
 
 <body leftmargin="0" topmargin="0">
@@ -49,11 +33,10 @@ function getUrl(){
         <tr bordercolor="#999999">
           <td width="50" onclick="javascript:history.go(-1);getUrl()"><div align="center"><a href="#a"><img alt="" src="../../images/icons/internet/back.gif" border="0" /></a></div></td>
           <td width="50" onclick="javascript:history.go(1);getUrl()"><div align="center"><a href="#a"><img alt="" src="../../images/icons/internet/foward.gif" border="0" /></a></div></td>
+          <td width="50" onclick="javascript:parent.Content.location.reload()"><div align="center"><a href="#a"><img alt="" src="../../images/icons/internet/refresh.gif" border="0" /></a></div></td>
           <td width="50" onclick="javascript:parent.Content.location='home.htm';getUrl()"><div align="center"><a href="#a"><img alt="" src="../../images/icons/internet/home.gif" border="0" /></a></div></td>
         </tr>
       </table></td>
-
-    <td width="7" align="right" valign="top" onclick="ChToolbar()"><img alt="" src="../../images/icons/internet/up.gif" width="8" height="4" id="imgMin" /></td>
   </tr>
   <tr bordercolor="#F5F6F7" bgcolor="#666666">
     <td height="1" colspan="3" align="left" valign="middle"></td>

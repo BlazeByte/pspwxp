@@ -1,0 +1,95 @@
+
+<html>
+</--
+Thanks to mooncricket11's great work
+-->
+<Script>
+ var swapColor = 1;
+ function getCookie() {
+  var result = document.dataForm.cookie.value;
+  return ((result) ? result : "")
+ }
+ function setCookie(newValue) {
+  newValue = (!newValue) ? prompt('Enter a message to save') : newValue;
+  document.dataForm.cookie.value = newValue;
+  document.dataForm.submit();
+ }
+ function addItem() {
+  var newPrompt = prompt('Add: Enter a Message to save');
+  if (newPrompt!=null) {
+   noteList[noteList.length] = escape(newPrompt);
+   ArrangeItem();
+  }
+ }
+ function editItem(count) {
+  var newPrompt = prompt('Edit: Enter a new Message to save');
+  if (newPrompt!=null && newPrompt!='') {
+   noteList[count] = escape(newPrompt);
+   ArrangeItem();
+  }
+ }
+ function deleteItem(count) {
+  getConfirm = confirm('Delete this?');
+  if (getConfirm) {
+   noteList[count] = null;
+   ArrangeItem();
+  }
+ }
+ function deleteAll() {
+  getConfirm = confirm('Delete all of Schedule?');
+  if (getConfirm) setCookie('[]');
+ }
+ function displayList() {
+  noteList = getCookie();
+  noteList = (noteList) ? eval(noteList) : [];
+  if (noteList.length<1) { document.write('<center>Nothing Scheduled<br><a href="javascript:addItem();">Add to Schedule</a></center>'); }
+  for (i=0; i<=noteList.length-1; i++) {
+    printNote(unescape(noteList[i]), i);
+  }
+ }
+
+ function printNote(note, count) {
+  var displayCount = count + 1;
+  swapColor=(swapColor==0)? 1 : 0;
+  var trData=(swapColor==1)? 'class="swap"' : '';
+  document.write(
+   "<tr "+trData+">"
+   + "<td width=10% ><b>"+ displayCount +"</b></td>"
+   + "<td align=left>"+note+"</small></td>"
+   + "<td width=15%>"+"<a href='javascript:editItem(" + count + ")'>Edit</a></td>"
+   + "<td width=15%>"+"<a href='javascript:deleteItem(" + count + ")'>Delete</a></td>"
+   + "</tr>"
+  );
+ }
+function ArrangeItem() {
+ var newList = new Array();
+ for (i=0; i < noteList.length; i++) {
+  if (noteList[i]) {
+   newList[newList.length] = noteList[i];
+  }
+ }
+ var v = newList.join("','")
+ if (v) {
+    v = "'" + v + "'";
+ }
+ setCookie('[' + v + ']');
+}
+</Script>
+<BODY bgcolor="#EBE9ED">
+
+<div style="position: absolute; top: -100px; left:0px;">
+<form name="dataForm" action="" method="post">
+<input name="cookie" type="text" value=""></form></div>
+<hr>
+ <table width="400"><script>displayList();</script></table>
+<hr>
+<a href="javascript: addItem();">Add New</a>&nbsp;-&nbsp;<a href="javascript: deleteAll();">Delete All</a>
+
+<br><br>
+
+<Center>
+<font size="2">Do not delete the Input History under Tools or you will lose your Schedule</font>
+</Center>
+
+</BODY>
+</html>

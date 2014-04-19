@@ -51,6 +51,15 @@ function ApplySettings(){
 			document.getElementById('imgDesktop').src="../images/desktop.jpg";
 		}
 	}
+	if(icookies.document.getElementById('chkul').value=='true'){
+		document.getElementById('imgUserlogin').src=icookies.document.getElementById('ul').value;
+	}else{
+		if(icookies.document.getElementById('chkul').value=='false'){
+			document.getElementById('imgUserlogin').src="../images/space.gif";
+		}else{
+			document.getElementById('imgUserlogin').src="../images/userlogin.gif";
+		}
+	}
 	
 	playSounds=icookies.document.getElementById('chkPlaySounds').value;
 }

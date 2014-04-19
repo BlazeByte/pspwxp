@@ -33,10 +33,10 @@ document.noteForm.noteInput.value = document.noteForm.noteInputTxt.value;
 <body onload="getnoteValue();">
 <div id="d1">
 <form name="noteForm" action="notes_Input.html" method="post">
-<textarea class="t1" name="noteInput" rows="10" cols="41" wrap="virtual"></textarea><br><br><br><br><br><br>
-<div class="d2">DO NOT MODIFY THE TEXTBOX BELOW</div><br>
-<input name="noteInputTxt" readonly><br>
-</form>
+<textarea class="t1" name="noteInput" rows="10" cols="41" wrap="virtual"></textarea>
+<div style="position:absolute;left:0;top:0;width:50;height:50;">
+<input name="noteInputTxt" readonly style="visibility: hidden;">
 </div>
+</form>
 </body>
 </html>

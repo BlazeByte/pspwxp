@@ -35,20 +35,33 @@ input.i1 {text-align: center; text-decoration: none;  font-family: arial, helvet
 
 
 <body>
-<hr color="green">
 <div class="d2">PSP Day Organizer</div>
 <div id="image1"><img src="organizer.gif" width="96" height="60" alt=""></div>
-<hr color="green"><div class="d1">Pick a day to edit or read:</div>
+<hr color="green" width="470"><div class="d1">Pick a day to edit or read:</div>
+
+<table align="center" width="40" border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td>
 <form name="day1" action="day1.html">
 <input class="i1" type="button" value="Day 1" onClick="location.href='day1.html';"></form>
-<form name="day2" action="day2.html"><br>
+</td>
+<td>
+<form name="day2" action="day2.html">
 <input class="i1" type="button" value="Day 2" onClick="location.href='day2.html';"></form>
-<form name="notepad" action="notes.html"><br>
+</td>
+</tr>
+<tr>
+<td COLSPAN="4">
+<form name="notepad" action="notes.html">
 <input class="i1" type="button" value="Notes" onClick="location.href='notes.html';"></form>
-<hr color="green">
+</td>
+</tr>
+<tr>
+<td COLSPAN="4">
 <form name="credits" action="credits.html">
 <input class="i1" type="button" value="Credits" onClick="location.href='credits.html';"></form>
-<hr color="green">
-<hr color="green">
+</td>
+</tr>
+</table>
 </body>
 </html>

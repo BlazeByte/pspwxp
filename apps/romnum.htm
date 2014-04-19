@@ -1,136 +1,281 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<html>
-<head>
-<title>Roman Numeral Converter</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<style type="text/css">
-<!--
-Body {margin-top: 10; margin-left: 0; margin-right: 0; padding: 0px; font-family: arial, helvetica, tahoma, sans-serif;}
-div {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
-td {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
-input {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
-a {font-family: arial, helvetica, tahoma, sans-serif; font-size: 8pt; text-decoration: underline;}
-:link {color: blue;}
-:visited {color: blue;}
-:hover {color: green;}
-input.i1 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
-:link.i1 {color: #000000;}
-:visited.i1 {color: #000000;}
-:hover.i1 {color: #000000;}
--->
-</style>
 
-<script language="javascript" type="text/javascript">
-<!-- This script and many more are available free online at -->
-<!-- The JavaScript Source!! http://javascript.internet.com -->
-<!-- Original:  Matthew D Krieg (battlebots102001@yahoo.com) -->
-<!-- Web Site:  http://geocities.com/battlebots102001/javascript_gizmos/index.htm -->
-<!-- Begin
-var ones_numerals = new Array();
-ones_numerals[0] = "";
-ones_numerals[1] = "I";
-ones_numerals[2] = "II";
-ones_numerals[3] = "III";
-ones_numerals[4] = "IV";
-ones_numerals[5] = "V";
-ones_numerals[6] = "VI";
-ones_numerals[7] = "VII";
-ones_numerals[8] = "VIII";
-ones_numerals[9] = "IX";
-var tens_numerals = new Array();
-tens_numerals[0] = "";
-tens_numerals[1] = "X";
-tens_numerals[2] = "XX";
-tens_numerals[3] = "XXX";
-tens_numerals[4] = "XL";
-tens_numerals[5] = "L";
-tens_numerals[6] = "LX";
-tens_numerals[7] = "LXX";
-tens_numerals[8] = "LXXX";
-tens_numerals[9] = "XC";
-var hundreds_numerals = new Array();
-hundreds_numerals[0] = "";
-hundreds_numerals[1] = "C";
-hundreds_numerals[2] = "CC";
-hundreds_numerals[3] = "CCC";
-hundreds_numerals[4] = "CD";
-hundreds_numerals[5] = "D";
-hundreds_numerals[6] = "DC";
-hundreds_numerals[7] = "DCC";
-hundreds_numerals[8] = "DCCC";
-hundreds_numerals[9] = "CM";
-var thousands_numerals = new Array();
-thousands_numerals[0] = "";
-thousands_numerals[1] = "M";
-thousands_numerals[2] = "MM";
-thousands_numerals[3] = "MMM";
-function checkNumber(number)
-{
-if((parseInt(number) < 4000) && (parseInt(number) > 0))
-{
-var numeral = createNumeral(number);
-if(numeral.indexOf('undefined') == -1)
-{
-window.document.form.numeral.value = numeral;
+<html>
+
+<!-- This free script provided by JavaScript Kit -->
+
+<script type="text/javascript">
+
+// Roman Numerial Converter- By Scott Hulberg (http://s88315453.onlinehome.us)
+// For this and over 400+ free scripts, visit JavaScript Kit- http://www.javascriptkit.com/
+// Please keep this notice intact
+
+ /*************************************************************
+ *           Thesh Ooter's Roman Numeral Convertor            *
+ *                                                            *
+ * For converting between integers and Roman Numerals as well *
+ * as checking the validity of Roman Numerals and correcting  *
+ * some common Roman Numeral mistakes.                        *
+ *                                                            *
+ * This script should work with any web browser that supports *
+ * ECMAScript V3 (specifically try and catch) and the DOM2    *
+ * method 'getElementById()'; this has been tested to work    *
+ * in IE5+ and Mozilla 1.7 (although it should work with      *
+ * earlier versions, it is untesed) as well as Opera 7.5. I   *
+ * do not have access to a KHTML based browser like Safari or *
+ * Konqueror, but I expect this to work in recent versions.   *
+ *                                                            *
+ * This script was written by Scott Hulberg (AKA Thesh Ooter) *
+ * scott_hulberg@yahoo.com                                    *
+ *************************************************************/
+
+var undefined; //needed for this to work in IE5
+
+ /***********************************
+ * These first arrays are used by   *
+ * the functions which convert      *
+ * roman numerals into integers.    *
+ ***********************************/
+
+var counter = new Array(7);
+
+var romans = new Array(7);
+romans["I"] = 1;
+romans["V"] = 5;
+romans["X"] = 10;
+romans["L"] = 50;
+romans["C"] = 100;
+romans["D"] = 500;
+romans["M"] = 1000;
+
+var subs = new Array(4);
+subs["I"] = true;
+subs["X"] = true;
+subs["C"] = true;
+subs["M"] = true;
+
+ /***********************************
+ * This next array stores the data  *
+ * needed to convert integers into  *
+ * roman numerals.                  *
+ ***********************************/
+
+var getChar = new Array(7);
+getChar[0] = "I";
+getChar[1] = "V";
+getChar[2] = "X";
+getChar[3] = "L";
+getChar[4] = "C";
+getChar[5] = "D";
+getChar[6] = "M";
+
+ /***********************************
+ * This first function is a pretty  *
+ * simple and generic function used *
+ * to define and throw errors       *
+ ***********************************/
+
+ function createError(ErrorName, ErrorMessage) {
+	 var theError = new Error();
+	 theError.name = ErrorName;
+	 theError.message = ErrorMessage;
+	 throw theError;
+ }
+
+ /***********************************
+ * These next four functions are    *
+ * used to test for errors in the   *
+ * input and convert roman numerals *
+ * into integers.                   *
+ ***********************************/
+
+function checkRom(Rcur, Rnext, lSub, n, l) {
+	if ((romans[Rcur] == undefined) || ((romans[Rnext] == undefined) && ((n + 1) < l))) {
+		createError("InputError", "Not a Roman Numeral");
+	}
+	else if (romans[Rcur] >= lSub) {
+		createError("InputError", "Not a Properly Formed Numeral");
+	}
 }
-}else{
-alert('you must enter a valid number');
+
+function testSub(cR, nR, pR) {
+	if (romans[cR] < romans[nR]) {
+		if ((romans[pR] == romans[nR]) && (subs[nR] != true)) {
+			createError("InputError", "Not a Properly Formed Numeral");
+		}
+		else if ((subs[cR] == true) && (10*romans[cR] >= romans[nR])) {
+			return true;
+		}
+		else {
+			createError("InputError", "Not a Properly Formed Numeral");
+		}
+	}
+	return false;
 }
+
+function testRom(rome) {
+	if (counter[rome] < 3) {
+		return true;
+	}
+	else {
+		createError("InputError", "Not a Properly Formed Numeral");
+	}
+	return false;
 }
-function createNumeral(num)
-{
-var new_num = num
-var thousands = Math.floor(new_num / 1000);
-new_num -= thousands * 1000;
-var hundreds = Math.floor(new_num / 100);
-new_num -= hundreds * 100;
-var tens = Math.floor(new_num / 10);
-new_num -= tens * 10;
-var ones = Math.floor(new_num / 1);
-if((thousands == NaN)||(hundreds == NaN)||(tens == NaN)||(ones == NaN))
-{
-alert('you must enter a valid number');
-}else{
-var array = new Array(thousands,hundreds,tens,ones);
-return makeNumeral(array);
+
+function parseRomanToInt(rNumb, strict) {
+	counter["I"] = 0;
+	counter["V"] = 2;
+	counter["X"] = 0;
+	counter["L"] = 2;
+	counter["C"] = 0;
+	counter["D"] = 2;
+	counter["M"] = Number.NEGATIVE_INFINITY;
+	var intNumb = 0;
+	var lastNumb = Number.POSITIVE_INFINITY;
+	var thisNumb = 0;
+	var lastSub = Number.POSITIVE_INFINITY;
+	rNumb = rNumb.toString().toUpperCase()
+	for (var i=0; i<rNumb.length; i++) {
+		var currentR = rNumb.charAt(i);
+		var nextR = rNumb.charAt(i + 1);
+		var prevR = rNumb.charAt(i - 1);
+		try {
+			if (strict != false) {
+				checkRom(currentR, nextR, lastSub, i, rNumb.length);
+				if (testSub(currentR, nextR, prevR) == true) {
+					thisNumb = (romans[nextR] - romans[currentR]);
+					i++;
+					lastSub = romans[currentR];
+				}
+				else if (testRom(currentR) == true){
+					thisNumb = romans[currentR];
+					counter[currentR]++;
+				}
+				if (thisNumb > lastNumb) {
+					createError("InputError", "Not a Properly Formed Numeral");
+				}
+				else {
+					intNumb += thisNumb;
+					lastNumb = thisNumb;
+				}
+			}
+			else {
+				if ((romans[currentR] == undefined) || ((romans[nextR] == undefined) && ((i + 1) < rNumb.length))) {
+					createError("InputError", "Not a Roman Numeral");
+				}
+				else if (romans[currentR] < romans[nextR]) {
+					thisNumb = (romans[nextR] - romans[currentR]);
+					i++;
+				}
+				else {
+					thisNumb = romans[currentR];
+				}
+				intNumb += thisNumb;
+			}
+		}
+
+		catch(e) {
+			intNumb = e.name + ": " + e.message;
+			break;
+		}
+	}
+	return intNumb;
 }
+
+ /***********************************
+ * The next two functions are used  *
+ * for converting an integer into a *
+ * roman Numeral.                   *
+ ***********************************/
+
+function ints(pos, iValue) {
+	var charValue = "";
+	var s = 2*pos;
+	if (pos > 2) {
+		for (var i=0; i<iValue*Math.pow(10,(pos-3)); i++) {
+			charValue += "M";
+		}
+	}
+	else if (iValue < 4) {
+		for (var i=0; i<iValue; i++) {
+			charValue += getChar[s];
+		}
+	}
+	else if (iValue == 4) {
+		charValue = getChar[s] + getChar[s+1];
+	}
+	else if (iValue < 9) {
+		charValue = getChar[s+1];
+		for (var i=0; i<iValue-5; i++) {
+			charValue += getChar[s];
+		}
+	}
+	else if (iValue == 9) {
+		charValue = getChar[s] + getChar[s+2];
+	}
+	return new String(charValue);
 }
-function makeNumeral(place_values)
-{
-var numeral = "";
-numeral += thousands_numerals[place_values[0]];
-numeral += hundreds_numerals[place_values[1]];
-numeral += tens_numerals[place_values[2]];
-numeral += ones_numerals[place_values[3]];
-return numeral;
+
+function parseIntToRoman(intNumb, whichError) {
+	var romNumb;
+	var romNumbFinal = "";
+	if ((parseInt(intNumb, 10) != intNumb) || (parseInt(intNumb,10) < 0)) {
+		try {		
+			if (whichError == 0) {
+				createError("InputError", "Cannot create a valid Roman Numeral");
+			}
+			else {
+				createError("InputError", "Not a positive Integer");
+			}
+		}
+		catch(err) {
+			romNumbFinal = err.name.toString() + ": " + err.message.toString();
+		}
+	}
+	else {
+		intNumb = parseInt(intNumb, 10).toString();
+		for (var k=0; k<intNumb.length; k++) {
+			var currentI = parseInt(intNumb.charAt(intNumb.length - (k + 1)));
+			romNumb = romNumbFinal;
+			romNumbFinal = ints(k, currentI) + romNumb;
+		}
+	}
+	return romNumbFinal;
 }
-//  End -->
+
+ /***********************************
+ * These next functions are used to *
+ * interact with the input in the   *
+ * forms in the page - modify as    *
+ * needed.                          *
+ ***********************************/
+function convertRoman() {
+	var rominput = document.getElementById("roman").value;
+	document.getElementById("number").value = parseRomanToInt(rominput, true);
+}
+function convertToRoman() {
+	var intput = document.getElementById("number").value;
+	document.getElementById("roman").value = parseIntToRoman(intput, 1);
+}
+//The next function should fix common mistakes, and at least put out a valid numeral
+function correctRoman() {
+	var wrongput = document.getElementById("roman2").value;
+	document.getElementById("roman").value = parseIntToRoman(parseRomanToInt(wrongput, false), 0);
+}
+
 </script>
-</head>
 
 <body bgcolor="#EBE9ED">
-<div align="center">
-<table width="350" align="center" border="2" bordercolor="#225AD5" cellspacing="2" cellpadding="0">
-<tr>
-<td align="center" valign="middle"><h3>Roman Numeral Converter</h3><form name="form" action="open"><div align="center">Type a Number (1-3999): <input type="text" class="i1" size="5" name="number">&nbsp;&nbsp;<input type="button" class="i1" value="Click..." onclick="checkNumber(window.document.form.number.value)"></div><div align="center">Conversion appears here: <input type="text" class="i1" size="15" name="numeral"></div><div align="center"><a href="romnum.htm">Clear</a></div></form></td>
-</tr>
-</table>
-<br>
-<table width="350" align="center" border="1" bordercolor="#225AD5" cellspacing="2" cellpadding="0">
-<tr>
-<td>Legend:</td>
-<td>M = 1000</td>
-<td>D = 500</td>
-<td>C = 100</td>
-</tr>
-<tr>
-<td>L = 50</td>
-<td>X = 10</td>
-<td>V = 5</td>
-<td>I = 1</td>
-</tr>
-</table>
-</div>
-<br>
+<center>
+<form>
+
+<p>Decimal:<br /><input id="number" type="text" style="width: 30%"> <input type="button" onClick="convertToRoman()" value="Convert"></p>
+
+<p>Roman:<br /><input id="roman" type="text" style="width: 30%"> <input type="button"  onClick="convertRoman()" value="Convert"></p>
+
+<p>Correct a Roman Numeral:<br /><input id="roman2" type="text" style="width: 30%"> <input type="button" onClick="correctRoman()" value="Convert">
+<br><br><input type="reset" value="Reset" /></p>
+</form>
+</center>
 </body>
 </html>

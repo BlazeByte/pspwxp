@@ -1,23 +1,9 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+
 <html>
-<head>
-<title>JavaScript Stopwatch</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<style type="text/css">
 <!--
-body {margin-top: 25; margin-left: 0; margin-right: 0; padding: 0px; font-family: arial, helvetica, tahoma, sans-serif;}
-a {font-family: arial, helvetica, tahoma, sans-serif; font-size: 8pt; text-decoration: underline;}
-:link {color: blue;}
-:visited {color: blue;}
-:hover {color: green;}
-input.i1 {text-align: center; text-decoration: none;  font-family: arial, helvetica, tahoma, sans-serif; font-size: 10pt; font-weight: normal; color: #000000;}
-:link.i1 {color: #000000;}
-:visited.i1 {color: #000000;}
-:hover.i1 {color: #000000;}
-p {text-align: center; text-decoration: none; font-family: arial, helvetica, tahoma, sans-serif; font-size: 8pt; font-weight: normal; color: #000000;}
-input.text {text-align: center;}
+Thanks to Shoba Subramanian for his code
 -->
-</style>
+<BODY bgcolor="#EBE9ED">
 <script type="text/javascript" language="JavaScript">
 <!-- Acknowledgement: Thanks to Shoba Subramanian for his code. -->
 <!--
@@ -80,32 +66,25 @@ timerRunning = true
 }
 //-->
 </script>
-</head>
 
-<body bgcolor="#EBE9ED" onLoad="resetclock()">
-<table width="300" align="center" cellspacing="2" cellpadding="3" border="2" bordercolor="#225AD5">
-<tr>
-<td>
-<h2 align="center">Stopwatch</h2>
 <div align="center">
 <form name="clock" action="0" onSubmit="0">
-<table width="200" border="2" bordercolor="#225AD5" cellspacing="2" cellpadding="3">
+<table width="200" border="4" cellspacing="0" cellpadding="1">
 <tr>
-<td valign="middle" align="center"><input class="i1" type="text" name="facehr" size="5"></td>
-<td valign="middle" align="center"><input class="i1" type="text" name="facemn" size="6"></td>
-<td valign="middle" align="center"><input class="i1" type="text" name="facesc" size="6"></td>
+<td COLSPAN="4" align="center">Stopwatch</td>
 </tr>
 <tr>
-<td valign="middle" align="center"><input class="i1" type="button" value="Start" onClick="startclock()" name="button"></td>
-<td valign="middle" align="center"><input class="i1" type="button" value="Stop" onClick="stopclock()" name="button"></td>
-<td valign="middle" align="center"><input class="i1" type="button" value="Reset" onClick="resetclock()" name="button"></td>
+<td valign="middle" align="center"><input type="text" name="facehr" size="5"></td>
+<td valign="middle" align="center"><input type="text" name="facemn" size="6"></td>
+<td valign="middle" align="center"><input type="text" name="facesc" size="6"></td>
+</tr>
+<tr>
+<td valign="middle" align="center"><input type="button" value="Start" onClick="startclock()" name="button"></td>
+<td valign="middle" align="center"><input type="button" value="Stop" onClick="stopclock()" name="button"></td>
+<td valign="middle" align="center"><input type="button" value="Reset" onClick="resetclock()" name="button"></td>
 </tr>
 </table>
 </form>
 </div>
-<p>Thanks to Shoba Subramanian for his code.</p>
-</td>
-</tr>
-</table>
 </body>
 </html>

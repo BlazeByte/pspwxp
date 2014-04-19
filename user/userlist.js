@@ -17,16 +17,16 @@ function User(UserName,MinMax,UserPath,IconPath,StartMax){
 }
 
 //BEGIN LIST (add new apps below here)
-User("Instructions",1,"apps/addition.html","images/icons/menu/user/instructions.png");
-User("My Addition",1,"apps/addition.html","images/icons/menu/user/user.png");
-User("My Addition",1,"apps/addition.html","images/icons/menu/user/user.png");
-User("My Addition",1,"apps/addition.html","images/icons/menu/user/user.png");
-User("My Addition",1,"apps/addition.html","images/icons/menu/user/user.png");
-User("My Addition",1,"apps/addition.html","images/icons/menu/user/user.png");
-User("My Addition",1,"apps/addition.html","images/icons/menu/user/user.png");
-User("My Addition",1,"apps/addition.html","images/icons/menu/user/user.png");
-User("My Addition",1,"apps/addition.html","images/icons/menu/user/user.png");
-User("My Addition",1,"apps/addition.html","images/icons/menu/user/user.png");
-User("My Addition",1,"apps/addition.html","images/icons/menu/user/user.png");
-User("My Addition",1,"apps/addition.html","images/icons/menu/user/user.png");
+User("Instructions",1,"../apps/addition.html","../images/icons/menu/user/instructions.png");
+User("My Addition",1,"../apps/addition.html","../images/icons/menu/user/user.png");
+User("My Addition",1,"../apps/addition.html","../images/icons/menu/user/user.png");
+User("My Addition",1,"../apps/addition.html","../images/icons/menu/user/user.png");
+User("My Addition",1,"../apps/addition.html","../images/icons/menu/user/user.png");
+User("My Addition",1,"../apps/addition.html","../images/icons/menu/user/user.png");
+User("My Addition",1,"../apps/addition.html","../images/icons/menu/user/user.png");
+User("My Addition",1,"../apps/addition.html","../images/icons/menu/user/user.png");
+User("My Addition",1,"../apps/addition.html","../images/icons/menu/user/user.png");
+User("My Addition",1,"../apps/addition.html","../images/icons/menu/user/user.png");
+User("My Addition",1,"../apps/addition.html","../images/icons/menu/user/user.png");
+User("My Addition",1,"../apps/addition.html","../images/icons/menu/user/user.png");
 //END LIST (add new apps above here)

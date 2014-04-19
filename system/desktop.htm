@@ -23,7 +23,7 @@
 <td align="center" valign="middle"><img alt="" src="../images/boot.gif"><br> <img alt="" src="../images/progress.gif" border="0" loop="1"><br>
 <div id="logIn2"><font color="#CCCCCC">Please Wait...</font></div>
 <script language="javascript" type="text/javascript">
-setTimeout("LoadedPlaySound();",11000);
+setTimeout("LoadedPlaySound();",15000);
 function LoadedPlaySound(){
 loaded=1;
 if(document.getElementById('boot').style.visibility=='visible'&&document.getElementById('login').style.visibility=='hidden'){
@@ -36,48 +36,41 @@ showHideLayer('boot','hidden');
 </tr>
 </table>
 </div>
-<div id="login" name="login" style="position:absolute; left:0px; top:0px; width:480px; height:272px; z-index:24; background-color: #387095; visibility: hidden;">
+<div id="login" style="position:absolute; left:0px; top:0px; width:480px; height:272px; z-index:24; background-color: #387095; visibility: hidden;">
 <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="#000033" background="../images/login.jpg">
 <tr>
-<td height="50"><span class="login_title">pspWxp Login</span></td>
+<td height="50" colspan="3"><b>pspWxp Login</b></td>
 </tr>
 <tr>
-<td height="172">
+<td height="172" colspan="3">
 <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
 <tr>
 <td height="132" align="center" valign="middle" colspan="2">
-<table width="53%" border="0" cellspacing="0" cellpadding="0">
+<table width="53%" border="0" cellspacing="0" cellpadding="0"><div align=center><img alt="" width="70" height="70" id="imgUserlogin"><br>
+Password
 <tr>
-<td width="29%" align="right" class="login_med">Password:&nbsp;</td>
-<td width="60%"><input name="txtPassword" type="password" id="txtPassword" style="height:18"></td>
-<td width="11%"><a href="#a"><img alt="" src="../images/icons/internet/go.gif" name="btnG" border="0" onClick="CheckPass();"></a></td>
+<td width="21%" align="right" class="login_med">&nbsp;</td>
+<td width="57%"><input name="txtPassword" type="password" id="txtPassword" style="height:18"></td>
+<td width="22%"><a href="#a"><img src="../images/icons/internet/go.gif" alt="" name="btnG" width="19" height="16" border="0" onClick="CheckPass();"></a></td>
 </tr>
-</table>
-</td>
+</table></td>
 </tr>
 <tr>
-<td height="40"><p class="login_small">Start a different portal:
-<select name="portalmenu">
+<td class="login_small"><a href="../apps/internet/index.htm" class="astart_dark">
+<img alt="" src="../images/icons/menu/apps/ie.png" width="15" height="15" border="0">Browse the internet</a></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td width="30%" height="50"><span class="login_small"><br><a class="astart_dark" href="#a" onClick="showHideLayer('txtPassword','hidden');showHideLayer('portalmenu','hidden');showHideLayer('lyShutdown','visible');showHideLayer('lyShutdowndlg','visible');shutdownFade();"><img src="../images/icons/menu/off.gif" border="0">Shut Down</a></span></td>
+<td width="39%"><span class="login_small"><a href="#a"></a></span></td>
+<td width="58%"><br><span class="login_small">
+Portal <select name="portalmenu">
 <option selected>Select ---&gt;</option>
 <script language="javascript" type="text/javascript" src="../user/portallist.js"></script>
 </select>
-<a href="#a"><img alt="" src="../images/icons/internet/go.gif" name="cmdPassGo" border="0" onClick="document.location.href=portalmenu.value;"></a>
-</td>
-<td class="login_small"><a href="../apps/internet/index.htm" class="astart_dark"><img alt="" src="../images/icons/menu/apps/ie.png" width="15" height="15" border="0">Browse
-the internet</a></td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td height="50"><table width="133" border="0" cellpadding="0" cellspacing="0">
-<tr>
-<td width="28" align="center"><img alt="" src="../images/icons/menu/off.gif" border="0" onClick="showHideLayer('txtPassword','hidden');showHideLayer('portalmenu','hidden');showHideLayer('lyShutdown','visible');showHideLayer('lyShutdowndlg','visible');shutdownFade();"></td>
-<td><div class="login_shutdown_text"><font size="2">
-<a class="astart_dark" href="#a" onClick="showHideLayer('txtPassword','hidden');showHideLayer('portalmenu','hidden');showHideLayer('lyShutdown','visible');showHideLayer('lyShutdowndlg','visible');shutdownFade();">Shut down</a></font></div>
-</td>
-</tr>
-</table></td>
+<a href="#a"><img alt="" src="../images/icons/internet/go.gif" width="19" height="16" name="cmdPassGo" border="0" onClick="document.location.href=portalmenu.value;"></a>
+  </span></td>
 </tr>
 </table>
 </div>
@@ -166,9 +159,9 @@ setTimeout("login.style.visibility='visible'",3000);
 	<td width="22"><img alt="" src="../images/icons/menu/psptunes.png" width="20" height="20"></td>
 	<td><a href="#a" class="astart_light">PSPTunes</a></td>
 	</tr>
-</table>	<table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#000066" onClick="setTitle('0','Control Panel','../apps/controlpanel/index.htm','../images/icons/menu/apps/browsinfo.png');" class="menu_highlight_edge">
+</table>	<table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#000066" onClick="setTitle('0','Control Panel','../controlpanel/index.htm','../images/icons/menu/user/user.png');" class="menu_highlight_edge">
 	<tr class="start_dark">
-	<td width="22"><font size="2"><img alt="" src="../images/icons/menu/apps/browsinfo.png" width="20" height="20"></font></td>
+	<td width="22"><font size="2"><img alt="" src="../images/icons/menu/user/user.png" width="20" height="20"></font></td>
 	<td><a href="#a" class="astart_dark">Control Panel</a></td>
 	</tr>
 	</table><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#10377C" onClick="setTitle('1','Run / Search','../apps/runsearch.htm','../images/icons/menu/run.png');" class="menu_highlight_edge">
@@ -581,7 +574,7 @@ document.write("</table>");
 </table>
 </div>
 <script language="javascript" type="text/javascript">
-frames['mapps'].style.top=0; //113-(frames['mapps'].style.height.slice(0,-2)/2);
+frames['mapps'].style.top=8; //113-(frames['mapps'].style.height.slice(0,-2)/2);
 frames['mgames'].style.top=122-(frames['mgames'].style.height.slice(0,-2)/2);
 frames['mlinks'].style.top=134-(frames['mlinks'].style.height.slice(0,-2)/2);
 frames['muser'].style.top=122-(frames['muser'].style.height.slice(0,-2)/2);

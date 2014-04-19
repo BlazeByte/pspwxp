@@ -38,7 +38,7 @@ for (i=0;i<strLinks.length;i++){
 	}else{
 		document.write(" onClick='openInBrowser(" +'"' +intLinksPath[i]+'");'+"'");
 	}
-	document.write("><td width='22'><img src='../");
+	document.write("><td width='22'><img src='");
 	document.write(strLinksIconPath[i]);
 	document.write("' width='20' height='20'></td><td><a href='#a' class='a"+strlight+"'>");
 	document.write(strLinks[i]);

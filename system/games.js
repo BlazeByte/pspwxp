@@ -36,7 +36,7 @@ for (i=0;i<strGames.length;i++){
 	document.write(strlight);
 	document.write("' onClick='");
 	document.write(strFunction);
-	document.write("')><td width='22'><img src='../");
+	document.write("')><td width='22'><img src='");
 	document.write(strGamesIconPath[i]);
 	document.write("' width='20' height='20'></td><td><a href='#a' class='a"+strlight+"'>");
 	document.write(strGames[i]);
